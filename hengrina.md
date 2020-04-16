@@ -1,5 +1,5 @@
 Last Name: Ly
 First Name: Hengrina
 Email: hengrina.ly@polytechnique.edu
-Github:
-Computer: Macbook 
+Github:rinaly13
+Computer: Macbook Pro
