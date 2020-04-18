@@ -7,9 +7,9 @@ jupyter:
       format_version: '1.2'
       jupytext_version: 1.4.2
   kernelspec:
-    display_name: Julia 1.4.0
+    display_name: Julia 1.3.1
     language: julia
-    name: julia-1.4
+    name: julia-1.3
 ---
 
 <!-- #region -->
@@ -37,7 +37,8 @@ Understanding why these two assumptions are very costly for economists will keep
 ### Simple SIR model
 
 There is a continuum of agents of mass $1$. Each agent can be either "Susceptible" (S), "Infected" (I) or "Recovered" (R).
-Agents meet randomly. The probability that two agents meet in a given period is $\mu$. During a meeting susceptible agents catch the disease (or the fad) for sure an infected agent, but are not contagious. Infected agents, have a probability $\pi$ of being recovered. No distinction is made between recovering as a healthy or a dead person.
+Agents meet randomly. Each agent meets another agent drawn randomly in each period.
+During a meeting Susceptible agents who meet an infected agent, will always catch the disease (or the fad) but are not contagious. Infected agents, have a probability $\pi$ of being recovered. No distinction is made between recovering as a healthy or a dead person.
 
 We're interested in the evolution in the number infected persons, both the speed of infection and the total amount of infected people in every period.
 
@@ -46,16 +47,39 @@ __Write down the transition equations for $n_I$, the number of infected people, 
 
 
 
-```julia
 
+$n_{R,t} =  n_{R,t-1} + n_{I,t-1}*\pi$
+
+$n_{I,t} = n_{I,t-1} \underbrace{- n_{I,t-1}*\pi}_{\text{those who have recovered}} + n_{S,t-1} \frac{  n_{I,t-1} } {1} $
+
+$n_{S,t} = n_{S,t-1} - n_{S,t-1}   \frac{  n_{I,t-1} } {1} $
+
+(recall that $ 1= n_I+n_S+n_R$)
+
+
+__Compute the transition function `f` for the vector state $s_t$ returning $s_{t+1}$__
+
+
+
+```julia
+Π = 0.10
 ```
 
-__Compute the transition matrix $M$ for the vector state $s_t$ such that $s_{t+1}= M s_t$__
-
-
+```julia
+function f(s)
+    n_S, n_I, n_R = s
+    new_recovered = n_I*Π
+    new_infected = n_S*n_I
+    nn_R = n_R + new_recovered
+    nn_S = n_S - new_infected
+    nn_I = n_I + new_infected - new_recovered
+    # nn_R + nn_S + nn_I sums to  n_R + n_S + n_I = 1
+    return [nn_S, nn_I, nn_R]
+end
+```
 
 ```julia
-
+f([0.3, 0.4, 0.3])
 ```
 
 __Compute the transitions over $T$ periods. Plot the result using Plots.jl. (bonus: check against closed form solution)__
@@ -63,7 +87,25 @@ __Compute the transitions over $T$ periods. Plot the result using Plots.jl. (bon
 
 
 ```julia
+T = 100
+v0 = [0.1, 0.9, 0.0]
+sim  = Vector{Float64}[]
+for t=1:T
+    push!(sim, v0)
+    v1 = f(v0)
+    v0 = v1
+end
+```
 
+```julia
+using Plots
+```
+
+```julia
+pl = plot(x=1:T, [el[1] for el in sim], label="Suceptible" )
+
+plot!(pl, x=1:T, [el[2] for el in sim], label="Infected" )
+plot!(pl, x=1:T, [el[3] for el in sim], label="Recovered" )
 ```
 
 __Write a function of $\mu$, $\pi$ which returns the simulation. Compare different values of the parameters. How would you interpret "social distancing"?__

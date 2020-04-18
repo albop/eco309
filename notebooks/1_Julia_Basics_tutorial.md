@@ -42,10 +42,11 @@ Some useful links from QuantEcon:
 Excellent resources at: [julialang](https://julialang.org/learning/)
 - checkout JuliaAcademy, it's free
 
-
+<!-- #region jupyter={"source_hidden": true} -->
 ### an example of what you shouldn't do in Matlab
 
 How I learnt: interpreted code is slow, so vectorize your coe.
+<!-- #endregion -->
 
 ```julia
 function stupid_loop(I,J,K)
@@ -54,7 +55,7 @@ function stupid_loop(I,J,K)
         for j=1:J
             for k = 1:K
                 t += 1.0
-            end        
+            end
         end
     end
     return t
@@ -89,6 +90,10 @@ x = 10
 ```
 
 ```julia
+=== # skip
+```
+
+```julia
 # Variable names can have Unicode characters
 # To get ϵ in the REPL, type \epsilon<TAB>
 ϵ = 1e-4
@@ -113,6 +118,10 @@ b
 ```
 
 ```julia
+a == b
+```
+
+```julia
 a .== b
 ```
 
@@ -127,11 +136,10 @@ a === b
 #### Basic types
 
 ```julia
-
+a = [1.0,2.0,3.0,4.0]
 ```
 
 ```julia
-# for any object `typeof` returns the type
 ?typeof
 ```
 
@@ -160,6 +168,7 @@ y = 2 + 2
 ```julia
 # Scalar multiplication doesn't require *
 3(4 - 2)
+3y
 ```
 
 ```julia
@@ -172,7 +181,15 @@ typeof(x)
 ```
 
 ```julia
-sizeof(a)
+big(12)^100
+```
+
+```julia
+sizeof(x)
+```
+
+```julia
+bitstring(x)
 ```
 
 #### Booleans
@@ -215,7 +232,7 @@ true && false
 ```
 
 ```julia
-true || false
+false || true
 ```
 
 ```julia
@@ -257,6 +274,7 @@ println("It took me $(a) iterations")
 
 ```julia
 println("hello ", "world")
+println("how are you?")
 ```
 
 #### Arrays
@@ -281,7 +299,7 @@ A''
 ```julia
 a1 = [1,2,3,4]
 a2 = [1,2,3,4].+4
-[a1; a2]
+#[a1; a2]
 cat(a1, a2; dims=1)
 ```
 
@@ -290,11 +308,16 @@ b = [1 0.6 0]
 ```
 
 ```julia
-B = [0.1 0.2 0.3; 4 5 6]
+B = [0.1 0.2 0.3;
+    4 5 6]
 ```
 
 ```julia
-B*B'
+B * B'
+```
+
+```julia
+B .* B
 ```
 
 Vectorized operations take a ., even comparisons:
@@ -308,7 +331,15 @@ f(x) = x^2+1
 ```
 
 ```julia
+f(3)
+```
+
+```julia
 f(43)
+```
+
+```julia
+broadcast(f, B)
 ```
 
 ```julia
@@ -318,11 +349,16 @@ f.(B)
 Elements are always accessed with square brackets:
 
 ```julia
+
+B
+```
+
+```julia
 B[:,1]
 ```
 
 ```julia
-B[:,1:end-1]
+B[:, 1:(end-1)]
 ```
 
 #### Control flow
@@ -345,7 +381,7 @@ While
 
 ```julia
 i = 3
-while i > 0
+while (i>0)
     println(i)
     i = i - 1
 end
@@ -355,7 +391,7 @@ For loops
 
 ```julia
 # Iterate through ranges of numbers
-for i = 1:3
+for i = (1:3)
     println(i)
 end
 ```
@@ -373,11 +409,21 @@ cities
 ```
 
 ```julia
-states
+states =  ["Massachussets", "New York", "Pennsylvania"]
 ```
 
 ```julia
-collect( zip(cities, states) )
+collect(zip(cities, states))
+```
+
+```julia
+[zip(cities, states)...]
+```
+
+```julia
+for k in zip(cities, states)
+    println(k)
+end
 ```
 
 ```julia
@@ -403,6 +449,27 @@ end
 
 ```julia
 [i^2 for i=1:10 if mod(i,2)==0]
+```
+
+#### Functions (take 1)
+
+```julia
+function fib(x)
+    if x in (0,1)
+        return 1
+    else
+        return fib(x-1)+fib(x-2)
+    end
+end
+```
+
+```julia
+ffun(x) = x^2
+```
+
+```julia
+# ANONYMOUS
+(x->x+1)(10)
 ```
 
 ### Data Types and multiple dispatch
