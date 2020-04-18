@@ -1,5 +1,7 @@
 # Computational Economics
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/albop/eco309.git/master?urlpath=lab)
+
 ## General
 
 All the course material is written inside notebooks. Notebooks whose filename ends with `_slides_` are meant to be viewed with `Rise` or `Voila-reveal`. Those ending with `_tutorial` are meant to be run and filled by students.
