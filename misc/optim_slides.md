@@ -198,14 +198,28 @@ We can also replace the function by another one $g$ such that $g(x)=x\iff f(x)=x
 ### Dynamics around a stable point
 We can write:
 
+$$|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| $$
+
 $$|x_t - x_{t-1}| \sim |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| $$
 
+$\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}$
 
-How do we derive an error bound? Suppose that we have $\overline{\lambda}>f^{\prime}(x_k)$ for all $k\geq k_0$:
+
+---
+
+### Dynamics around a stable point (2)
+How do we derive an error bound? Suppose that we have $\overline{\lambda}>|f^{\prime}(x_k)|$ for all $k\geq k_0$:
 
 $$|x_t - x| \leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... $$
 
-$$|x_t - x| \leq \frac{\overline{\lambda}} {1-\lambda} | x_t - x_{t+1} |$$
+$$|x_t - x| \leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... $$
+
+
+
+$$|x_t - x| \leq |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... $$
+
+
+$$|x_t - x| \leq \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |$$
 
 ---
 
@@ -321,15 +335,14 @@ $x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$
 ### Backtracking
 
 Simple idea:
-  - at stage $n$ given $f(x_n)$ compute Newton step $\Delta=-f(x_n)/f^{\prime}(x_n)$
-  - find the smallest $k$ such that $f(x_n-\Delta/2^k)<f(x_n)$
+  - at stage $n$ given $f(x_n)$ compute Newton step $\Delta_n=-f(x_n)/f^{\prime}(x_n)$
+  - find the smallest $k$ such that $|f(x_n-\Delta/2^k)|<|f(x_n)|$
   - set $x_{n+1}=x_n-\Delta/2^k$
 
 
 ---
 
-## One dimensional root-finding
-
+## One dimensional minimization
 ---
 
 ### Golden section search
