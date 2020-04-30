@@ -33,15 +33,23 @@ Each session is 4 hours, and expected to be evenly but not contiguously divided 
 
 ### Session 2
 
-- Math: Optimization
-- Julia: Packages
-- Models: Static Trade and Production models
-    - Cournot
-    - Computational General Equilibrium
+- Math: Series Convergence, Optimization (1)
+- Julia: Git/Linux
 
 ### Session 3
 
-- Math: Series Convergence, Markov Chains
+- Math: Optimization (2)
+- Julia Basics 2
+- Models:
+    - profit optimization
+    - solow model
+    - consumer choice
+
+---
+
+### Session 3
+
+- Math: Markov Chains, Value iteration
 - Julia: Types, Multiple Dispatch
 - Models: Discrete Dynamic Programming
     - job search

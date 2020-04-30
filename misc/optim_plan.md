@@ -34,9 +34,6 @@
 - golden search
 
 
-
-
-
 # Optimization: introduction
 
 - optimization flavours

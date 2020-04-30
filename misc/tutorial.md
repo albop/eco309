@@ -2,37 +2,11 @@
 
 list some functions here
 
-__Consider the logistic function $f(x)=a x (1-x)$. __
+__Consider the logistic function $f(x)=a x (1-x)$.__
 
 ---
 
 
-
-__Write a function `fixed_point(f::Function, x0::Float64)` which computes the fixed point of `f` starting from initial point `x0`. Test with ...__
-
-__Write a function `bisection(f::Function, a::Float64, b::Float64)` which computes a zero of function `f` within `(a,b)` using a bisection method.__
-
-__Write a function `golden(f::Function, a::Float64, b::Float64)` which computes a zero of function `f` within `(a,b)` using a golden ratio method.__
-
-__Write a function `zero_newton(f::Function, x0::Float64)` which computes the zero of function `f` starting from initial point `x0`. __
-
-__Add an option `zero_newton(f::Function, x0::Float64, backtracking=true)` which computes the zero of function `f` starting from initial point `x0` using backtracking in each iteration. __
-
-__Write a function `min_gd(f::Function, x0::Float64)` which computes the minimum of function `f` using gradient descent. Assume `f` returns a scalar and a gradient.__
-
-__Write a function `min_nr(f::Function, x0::Float64)` which computes the minimum of function `f` using Newton-Raphson method. Assume `f` returns a scalar, a gradient, and a hessian.__
-
----
-
-# Profit optimization by a monopolist
-
-A monopolist produces quantity $q$ of goods X at price $p$. Its cost function is $c(q) = 0.5 + q (1-qe^{-q})$
-
-The consumer's demand for price $p$ is $x(p)=2 e^{-0.5 p}$ (constant elasticity of demand to price).
-
-__Write down the profit function of the monopolist and find the optimal production (if any). Don't use any library except for plotting.__
-
----
 
 
 # (modified) Solow model
