@@ -8,7 +8,7 @@ All the course material is written inside notebooks. Notebooks whose filename en
 
 Each student is expected to have a clone of the course repository, and commit his completed tutorials by Friday night. Intermediary assignments must be done in the same fashion by the next Friday.
 
-During the course, each student will be ased to choose and present one Julia library.
+During the course, each student will be asked to choose and present one Julia library.
 
 The tutorial in the last session will be the final exam.
 
