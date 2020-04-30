@@ -40,7 +40,10 @@ Each session is 4 hours, and expected to be evenly but not contiguously divided 
 
 - Math: Optimization (2)
 - Julia Basics 2
-- Static models
+- Models:
+    - profit optimization
+    - solow model
+    - consumer choice
 
 ---
 
