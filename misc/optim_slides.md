@@ -426,11 +426,11 @@ Simple idea:
 
 - Build a local model of $f$ around $x_0$
 
-$$f(x) = f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} + o(x-x_0)$$
+$$f(x) = f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} + o(x-x_0)^2$$
 
 - According to this model,
 
-$$ f(x{\star}) = min_x f(x)\iff \frac{d}{d x} f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} = 0$$
+$$ f(x{\star}) = min_x f(x)\iff \frac{d}{d x} \left[ f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} \right] = 0$$
 
 which yields: $x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
 
@@ -441,6 +441,7 @@ which yields: $x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
 
 - Algorithm:
   - start with $x_n$
+
   - compute $x_{n+1} = x_n-\frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
   - stop if $|x_{n+1}-x_n|<\eta$ or $|f^{\prime}(x_n)| < \epsilon$
 
@@ -495,7 +496,7 @@ following explanations also work with other norms.
 
 - Algorithm:
   - start with $x_n$
-  - compute $x_{n+1} = x_n- f(x_n).H(x_{n-1})^{-1}=f^{\text{newton}}(x_n)$
+  - compute $x_{n+1} = x_n- J(x_{n})^{-1}f(x_n)=f^{\text{newton}}(x_n)$
   - stop if $|x_{n+1}-x_n|<\eta$ or $|f(x_n)| < \epsilon$
 
 - Convergence: __quadratic__
@@ -531,6 +532,10 @@ following explanations also work with other norms.
   - lots of variants
   - automatic differentiation software makes gradient easy to compute
   - convergence is typically __linear__
+----
+
+![Contours](contours_evaluation_optimizers.gif)
+
 ---
 
 ### Multidimensional Newton Minimization
