@@ -22,17 +22,6 @@ __Write a function `min_gd(f::Function, x0::Float64)` which computes the minimum
 
 __Write a function `min_nr(f::Function, x0::Float64)` which computes the minimum of function `f` using Newton-Raphson method. Assume `f` returns a scalar, a gradient, and a hessian.__
 
----
-
-# Profit optimization by a monopolist
-
-A monopolist produces quantity $q$ of goods X at price $p$. Its cost function is $c(q) = 0.5 + q (1-qe^{-q})$
-
-The consumer's demand for price $p$ is $x(p)=2 e^{-0.5 p}$ (constant elasticity of demand to price).
-
-__Write down the profit function of the monopolist and find the optimal production (if any). Don't use any library except for plotting.__
-
----
 
 
 # (modified) Solow model
