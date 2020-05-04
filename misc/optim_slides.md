@@ -543,7 +543,7 @@ following explanations also work with other norms.
 
 - Algorithm:
   - start with $x_n$
-  - compute $x_{n+1} = x_n-{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)}$
+  - compute $x_{n+1} = x_n-{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)'}$
   - stop if $|x_{n+1}-x_n|<\eta$ or $|f(x_n)| < \epsilon$
 - Convergence: __quadratic__
 - Problem:
@@ -556,7 +556,7 @@ following explanations also work with other norms.
 ### Quasi-Newton method for multidimensional minimization
 
 - Recall the secant method: $f(x_{n-1})$ and $f(x_{n-2})$ are used to approximate $f^{\prime}(x_{n-2})$.
-  - Intuitively, $n$ iterates would be needed to approximate a jacobian of size $n$....
+  - Intuitively, $n$ iterates would be needed to approximate a hessian of size $n$....
 - Broyden method: takes $2 n$ steps to solve a linear problem of size $n$
   - uses past information incrementally
 
@@ -644,7 +644,7 @@ Combine with the budget constraint to get a *second* condition.
 
 ### Penalty function
 
-- Take a penalty function $p(x)$ such that $p(x)=K>0$ if $x>0$ and $p(x)=0$ if $x \leq 0$. Minimize: $V(x_1, x_2) = U(x_1, x_2) - p( p_1 x_1 + p_2 x_2 - B)$
+- Take a penalty function $p(x)$ such that $p(x)=K>0$ if $x>0$ and $p(x)=0$ if $x \leq 0$. Maximize: $V(x_1, x_2) = U(x_1, x_2) - p( p_1 x_1 + p_2 x_2 - B)$
 - Clearly, $\min U \iff \min V$
 - Problem: $\nabla V$ is always equal to $\nabla U$.
  - Solution: use a smooth solution function like $p(x) = x^2$
@@ -667,7 +667,7 @@ Clearly, when the constraint is not binding we must have $\lambda=0$. What shoul
 ### Karush-Kuhn-Tucker conditions
 
 - If $(x^{\star},y^{\star})$ is optimal there exists $\lambda$ such that:
-  - $(x^{\star},y^{\star})$ minimizes $U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$
+  - $(x^{\star},y^{\star})$ maximizes $U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$
   - $\lambda \geq 0$
   - $\lambda  (p_1 x_1 + p_2 x_2 - B) = 0$
 - The two latest conditions are called "complementarity" or "slackness" conditions
@@ -705,7 +705,7 @@ Clearly, when the constraint is not binding we must have $\lambda=0$. What shoul
 
 ## Smooth method
 
-- Consider the *Fisher-Burmeister* function $\phi(a,b) = a+b+\sqrt(a^2+b^2)$. It is infinitely differentiable, except at $(0,0)
+- Consider the *Fisher-Burmeister* function $\phi(a,b) = a+b-\sqrt(a^2+b^2)$. It is infinitely differentiable, except at $(0,0)$
 - Show that $\phi(a,b) = 0 \iff \min(a,b)=0$
 - After substitution in the original system one can a regular non-linear solver
   - fun fact: the formulation with a $\min$ is nonsmooth but also works quite often
