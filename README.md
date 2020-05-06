@@ -4,13 +4,15 @@
 
 ## General
 
-All the course material is written inside notebooks. Notebooks whose filename ends with `_slides_` are meant to be viewed with `Rise` or `Voila-reveal`. Those ending with `_tutorial` are meant to be run and filled by students.
+All the course material is written inside notebooks `notebooks/*` and markdown files (usually in `slides/`). Those ending with `_tutorial` are meant to be run and filled by students.
+The content of the session is integrated can be browsed [online](http://www.mosphere.fr/eco309/). (PRs are welcome)
 
 Each student is expected to have a clone of the course repository, and commit his completed tutorials by Friday night. Intermediary assignments must be done in the same fashion by the next Friday.
 
 During the course, each student will be asked to choose and present one Julia library.
 
 The tutorial in the last session will be the final exam.
+
 
 
 
