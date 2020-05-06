@@ -12,6 +12,37 @@ During the course, each student will be asked to choose and present one Julia li
 
 The tutorial in the last session will be the final exam.
 
+
+
+
+## Git Workflow
+
+Instructions to follow the course:
+
+Here is the goal:
+- each student A must be able to update its online copy of the main repository from professor
+- he can share his work by pushing to a branchin his own online repository (aka fork)
+
+One challenge, is that jupyter notebooks are not really appropriate for merging modifications (it's not a source format).
+
+Hence it is suggested students do not work directly on the files from the github repository but on a copy.
+
+Here is the basic workflow:
+
+1. `git clone https://github.com/albop/eco309.git` to get a copy of the main repository (do it only once)
+    - it will be referred as `origin`
+2. add your fork as another remote: `git add remote fork https://github.com/EconForge/eco309.git`
+  - replace EconForge by your github login
+  - the fork will be referred to as `fork`
+3. copy a file like `cp 1_Optimization_tutorial.ipynb 1_Optimization_tutorial_mycopy.ipynb` 
+  - work on the copy
+4. put the copy under version control: `git add 1_Optimization_tutorial_mycopy.ipynb` (only once per file)
+5. commit your changes with a message `git commit -a -m "Edited optimization"`
+6. push them to the branch in the fork you own: `git push fork`
+
+When there is an update in the main repository you can get them with `git pull origin`. Then you continue with steps 3,4,5,6.
+
+
 ## Setup requirement
 
 To make the most of the course, it is recommended to install

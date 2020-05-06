@@ -1,6 +1,10 @@
 # Linux and Git
 
+---
+
 ## Linux
+
+---
 
 ### The command line:
 
@@ -21,11 +25,48 @@
     - *any* UNIX-like shell to provide basic commands
     - git
 
+---
+
 ### Basic commands
 
+- most command line commands take the form `command argument1 argument2`
+- some accept options like
+    - `-h`: one letter option (`-h` usually means help)
+    - `--h`: multi-letter option
+    - `-o param`: option taking some parameter
+    - `--option=parameter`: option taking some paramter
+- you can get documentation on a given command
+    - by typing `man doc`. That one is verbose but very detailed
+    - by googling...
+- some commands accept wildcards:
+    - `ls late*done` will list all files starting with `late` and ending in `done`
 
+---
+
+### Basic commands
+
+- basic file management commands:
+    - `pwd`: show current directory
+    - `cd path`: changes the current directory to "`path`"
+    - `cd ~` goes to the home folder
+    - `ls` list files in the current directory 
+    - `rmdir dir`: deletes a directory `dir`
+    - `rm filename` deletes a file
+        - `rm -rf dir` removes a directory and its content (DOUBLE-CHECK)
+    - `cat filename` prints the name of a file `filename
+    - `touch filename` creates a new, empty file
+    
+
+??? note
+    In the Unix world, the root of the file system is denoted by `/` (a slash). Folders are separated by slashes and the last element is a file). For instance `/home/pablo/file.txt`.
+
+    In the Windows world the root is usually a hard drive denoted by a letter and a colon (typically `C:`). Then folders are separated by an anteslash `\` like in `C:\Users\Pablo\Documents\file.txt`. Note that in most places Windows also accept slashes. If you copy and paste the adress of a windows directory in a Linux bash it typicall works as long as it's a windows machine. For instance in git bash you can do: `cd "C:\Users\Pablo\Documents\file.txt"` (we double quote the string otherwise `\` is intepreted as an escape character)
+
+---
 
 ## Version Control
+
+---
 
 ### What is under version control?
 
@@ -302,7 +343,7 @@ What should Mr A do ?
      Nulla dapibus magna nibh, ac rutrum lorem viverra quis.
     ```
 
-- by C `diff -u text text_C > patch_C`
+  - by C `diff -u text text_C > patch_C`
 
     ```diff linenums="1"
     --- text        2020-05-06 13:02:43.006841045 +0200
@@ -318,6 +359,44 @@ What should Mr A do ?
 
     ```
 
-- Now he can B and C are proposing to change different lines, except the one starting with "In maximus" that they both want to change. He can then keep the change from both of them.
+- Now he can see that B and C are proposing to change different lines, except the one starting with "In maximus" that they both want to change. He can then keep the change from both of them.
 - In practice he uses a merging tool (like meld)
     - TODO: include screenshot
+
+---
+
+<!-- ## Branches in git
+
+The ability to merge several modifications allows us to keep several sets of concurrent modifications. 
+
+- Take the former example: `cd
+
+--- -->
+
+
+## Workflows
+
+Instructions to follow the course:
+
+Here is the goal:
+- each student A must be able to update its online copy of the main repository from professor
+- he can share his work by pushing to a branchin his own online repository (aka fork)
+
+One challenge, is that jupyter notebooks are not really appropriate for merging modifications (it's not a source format).
+
+Hence it is suggested students do not work directly on the files from the github repository but on a copy.
+
+Here is the basic workflow:
+
+1. `git clone https://github.com/albop/eco309.git` to get a copy of the main repository (do it only once)
+    - it will be referred as `origin`
+2. add your fork as another remote: `git add remote fork https://github.com/EconForge/eco309.git`
+  - replace EconForge by your github login
+  - the fork will be referred to as `fork`
+3. copy a file like `cp 1_Optimization_tutorial.ipynb 1_Optimization_tutorial_mycopy.ipynb` 
+  - work on the copy
+4. put the copy under version control: `git add 1_Optimization_tutorial_mycopy.ipynb` (only once per file)
+5. commit your changes with a message `git commit -a -m "Edited optimization"`
+6. push them to the branch in the fork you own: `git push fork`
+
+When there is an update in the main repository you can get them with `git pull origin`. Then you continue with steps 3,4,5,6.
