@@ -4,6 +4,7 @@ nav:
 - Introduction: notebooks/0_General_Introduction.ipynb
 - System: linux_and_git.md
 - Optimization: optim_slides.md
+- Dynamic Programming: discrete_dynamic_programming.md
 
 theme:
   name: material
@@ -16,6 +17,7 @@ plugins:
 
 markdown_extensions:
   - mdx_math
+  - markdown_inline_graphviz
   - markdown.extensions.admonition
   - pymdownx.details
   - pymdownx.arithmatex
