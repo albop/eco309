@@ -12,7 +12,7 @@
 - represent an infinite dimensional object with a finite set of parameters:
     - $f \equiv (f(x_i))_{i=1:N}$ with $x_i=a+\frac{i-1}{N-1}(b-a)$
       - discretize arguments
-    - $\omega \equiv (\mu_i, \omega_i)_{i=1:N}$ such that $E_\omega f(\omega) \approx \sum_i \mu_i f(\omega_i)$
+    - $\omega \equiv (\mu_i, \omega_i)_{i=1:N}$ such that $E_\omega f(\omega) \approx \sum_i \mu_i f(\omega_i)$ (quantization)
 - discretize continous process by a discrete one: (today)
   - continuous markov chain to discrete markov Chain
 
@@ -34,12 +34,12 @@
 - The unconditional distribution of an AR1 is a normal law $N(0,\frac{\sigma}{\sqrt{1-\rho^2}})$
 
 - Choose $m>0$, typically $m=3$
-- Bound the process: $\underline{x} = -m \frac{\sigma}{\sqrt{1-\rho^2}}$ and $\overline{x} = m \frac{\sigma}{\sqrt{1-\rho^2}}$ 
-- Define the $N$ discretized points: $y_i = \underline{x} + \frac{i}{N-1}(\overline{x}-\underline{x})$
+- Bound the process: $\underline{x} = -m \frac{\sigma}{\sqrt{1-\rho^2}}$ and $\overline{x} = m \frac{\sigma}{\sqrt{1-\rho^2}}$
+- Define the $N$ discretized points ($i\in[1,n]$): $y_i = \underline{x} + \frac{i-1}{N-1}(\overline{x}-\underline{x})$
 - Define the transitions:
    $$\begin{aligned}
    \pi_{ij} & = & prob(y_{t+1}=y_j|y_t=y_i)\\
-            & = & prob( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_j| |y_t=y_i)
+            & = & prob( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_k| |y_t=y_i)
    \end{aligned}$$
 
 
@@ -47,8 +47,8 @@
 
 ## AR1: Tauchen (2)
 
-- Formulas:
-  
+- Formulas $\delta=(\overline{x}-\underline{x})/N$:
+
     - if $1<k<N-1$
 
         $$\pi_{jk} = F(\frac{y_k + \delta/2-\rho y_j}{\sigma_{\epsilon}}) - F(y_k + \delta/2-\rho y_j)$$
@@ -80,7 +80,7 @@
 - N = 2
   - choose $y_1=-\psi$, $y_2=\psi$
   - define transition matrix:
-$$\Theta_2 = \begin{bmatrix} 
+$$\Theta_2 = \begin{bmatrix}
 p & 1-p\\
 1-q & q
 \end{bmatrix}$$
@@ -97,7 +97,7 @@ $$\Theta_N =
 p \begin{bmatrix}  
 \Theta_{N-1}  & 0\\
 0 & 0
-\end{bmatrix} + 
+\end{bmatrix} +
 (1-p) \begin{bmatrix}  
 0 & \Theta_{N-1} \\
 0 & 0
@@ -109,7 +109,7 @@ p \begin{bmatrix}
 q \begin{bmatrix}  
 0 & 0\\
 0 & \Theta_{N-1}
-\end{bmatrix} 
+\end{bmatrix}
 $$
 
 - Normalize all lines
