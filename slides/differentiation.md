@@ -193,3 +193,18 @@ exp(x) + log(y)
 - Deep learning framework:
   - higher order diff w.r.t. any vector -> tensor operations
   - Flux.jl, MXNet.jl, Tensorflow.jl
+
+
+## Libraries for AutoDiff
+
+- Other libraries like *NLsolve* or *Optim.jl* rely on on the former libraries to perform automatic differentiation automatically.
+
+```julia
+using NLSolve
+function fun!(F, x)
+    F[1] = (x[1]+3)*(x[2]^3-7)+18
+    F[2] = sin(x[2]*exp(x[1])-1)
+end
+nlsolve(fun!, [0.1, 0.2], autodiff = :forward)
+```
+
