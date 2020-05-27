@@ -15,8 +15,8 @@
 
 - Trick:
     - never use $\frac{d}{dx} \frac{u(x)}{v(x)} = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}$
-    - use instead $$\frac{d}{dx} {u(x)v(x)} = {u'(x)v(x)+u(x)v'(x)}$$ and $$\frac{d}{dx} u(x) = \frac{1}{u(x)^2}$$
-- Just kidding. 
+    - use instead $$\frac{d}{dx} {u(x)v(x)} = {u'(x)v(x)+u(x)v'(x)}$$ and $$\frac{d}{dx} u(x) = -\frac{u^{\prime}}{u(x)^2}$$
+- Just kidding.
 
 ---
 
@@ -40,7 +40,7 @@
 
 ---
 
-## Finite Differences: Higher order 
+## Finite Differences: Higher order
 
 - Central formula:
 $$\begin{aligned}
@@ -58,7 +58,7 @@ f''(x) & \approx & \frac{f'(x)-f'(x-\epsilon)}{\epsilon} \approx \frac{(f(x+\eps
 - requires mathematical expression
 - can produce mathematical insights
 - sometimes inaccurate:
-  - cf: $\left(\frac{1+u(x)}{1+v(x)}\right)$
+  - cf: $\left(\frac{1+u(x)}{1+v(x)}\right)^{100}$
 
 ---
 
@@ -102,7 +102,7 @@ end
 
 ```julia
 function f(x::Float64)
-    
+
     # x is an argument
     x_dx = 1.0
 
@@ -142,7 +142,7 @@ end
 
 ---
 
-## Compatible with control flow 
+## Compatible with control flow
 
 ```julia
 import ForwardDiff: Dual
