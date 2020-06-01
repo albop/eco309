@@ -239,7 +239,7 @@ $$<P,Q> = \int_a^b w(x) P(x)Q(x) dx$$
 
 - Construct an orthogonal base $(T_n)_{n=[1,K]}$. 
 
-- Approximate $$f(x)\approx f(x; \theta) = \sum_{n=0}^K \theta_n T_n(x)=\sum_{n=0}^K \theta_n <f|T_n>(x)$$
+- Approximate $$f(x)\approx f(x; \theta) = \sum_{n=0}^K \theta_n T_n(x)=\sum_{n=0}^K <f|T_n> T_n(x)$$
 
     - this is optimal for the norm associated to $<>$ (projection on the orthogonal base)
 
@@ -249,7 +249,7 @@ $$<P,Q> = \int_a^b w(x) P(x)Q(x) dx$$
 ### Vandermonde matrix
 
 Coefficients can still be identified by inverting: 
-$$\forall n \in[0,K] \underbrace{\sum_k \theta_k T_k(x_n)}_{M \theta} = y_k$$
+$$\forall n \in[0,K] \underbrace{\sum_k \theta_k T_k(x_n)}_{M \theta} = y_n$$
 
 
 
