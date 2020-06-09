@@ -1,0 +1,1202 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>System - ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-and-git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              System
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        System
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="System" class="md-nav__link md-nav__link--active">
+      System
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-command-line" class="md-nav__link">
+    The command line:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    Basic commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands_1" class="md-nav__link">
+    Basic commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    Version Control
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-under-version-control" class="md-nav__link">
+    What is under version control?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff-example" class="md-nav__link">
+    Diff: Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-diff-to-git-history" class="md-nav__link">
+    From diff to git history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-diff-to-git-history-example" class="md-nav__link">
+    From diff to git history: example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-files" class="md-nav__link">
+    Merging files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-files-example" class="md-nav__link">
+    Merging files (example)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    Workflows
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optim_slides/" title="Optimization" class="md-nav__link">
+      Optimization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discrete_dynamic_programming/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../differentiation/" title="Differentiation" class="md-nav__link">
+      Differentiation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/9_Homework_2/" title="Homework (2)" class="md-nav__link">
+      Homework (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    Linux
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-command-line" class="md-nav__link">
+    The command line:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    Basic commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands_1" class="md-nav__link">
+    Basic commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    Version Control
+  </a>
+  
+    <nav class="md-nav" aria-label="Version Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-under-version-control" class="md-nav__link">
+    What is under version control?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff-example" class="md-nav__link">
+    Diff: Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-diff-to-git-history" class="md-nav__link">
+    From diff to git history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-diff-to-git-history-example" class="md-nav__link">
+    From diff to git history: example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-files" class="md-nav__link">
+    Merging files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-files-example" class="md-nav__link">
+    Merging files (example)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    Workflows
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="linux-and-git">Linux and Git</h1>
+<hr />
+<h2 id="linux">Linux</h2>
+<hr />
+<h3 id="the-command-line">The command line:</h3>
+<ul>
+<li>text interface with basic abilities:<ul>
+<li>manipulate files</li>
+<li>launch programs</li>
+<li>manage system resources</li>
+</ul>
+</li>
+<li>UNIX-like command-line<ul>
+<li>defines what kind of commands can be run(<code>ls</code>, <code>cd</code>, ...)</li>
+</ul>
+</li>
+<li>many alernatives<ul>
+<li>default command line on Linux is <code>bash</code></li>
+<li>MacosX has <code>zsh:</code></li>
+<li>under Windows:<ul>
+<li>Git Bash (gets installed automatically with Git)</li>
+<li>Windows Linux Subsystem: you can add the Linux kernel to windows...</li>
+<li>if you use Julia, typing <code>;</code> in the console switches it to bash mode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>to follow this lecture you need:<ul>
+<li><em>any</em> UNIX-like shell to provide basic commands</li>
+<li>git</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="basic-commands">Basic commands</h3>
+<ul>
+<li>most command line commands take the form <code>command argument1 argument2</code></li>
+<li>some accept options like<ul>
+<li><code>-h</code>: one letter option (<code>-h</code> usually means help)</li>
+<li><code>--h</code>: multi-letter option</li>
+<li><code>-o param</code>: option taking some parameter</li>
+<li><code>--option=parameter</code>: option taking some paramter</li>
+</ul>
+</li>
+<li>you can get documentation on a given command<ul>
+<li>by typing <code>man doc</code>. That one is verbose but very detailed</li>
+<li>by googling...</li>
+</ul>
+</li>
+<li>some commands accept wildcards:<ul>
+<li><code>ls late*done</code> will list all files starting with <code>late</code> and ending in <code>done</code></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="basic-commands_1">Basic commands</h3>
+<ul>
+<li>basic file management commands:<ul>
+<li><code>pwd</code>: show current directory</li>
+<li><code>cd path</code>: changes the current directory to "<code>path</code>"</li>
+<li><code>cd ~</code> goes to the home folder</li>
+<li><code>ls</code> list files in the current directory </li>
+<li><code>rmdir dir</code>: deletes a directory <code>dir</code></li>
+<li><code>rm filename</code> deletes a file<ul>
+<li><code>rm -rf dir</code> removes a directory and its content (DOUBLE-CHECK)</li>
+</ul>
+</li>
+<li><code>cat filename</code> prints the name of a file `filename</li>
+<li><code>touch filename</code> creates a new, empty file</li>
+</ul>
+</li>
+</ul>
+<details class="note"><summary>Note</summary><p>In the Unix world, the root of the file system is denoted by <code>/</code> (a slash). Folders are separated by slashes and the last element is a file). For instance <code>/home/pablo/file.txt</code>.</p>
+<p>In the Windows world the root is usually a hard drive denoted by a letter and a colon (typically <code>C:</code>). Then folders are separated by an anteslash <code>\</code> like in <code>C:\Users\Pablo\Documents\file.txt</code>. Note that in most places Windows also accept slashes. If you copy and paste the adress of a windows directory in a Linux bash it typicall works as long as it's a windows machine. For instance in git bash you can do: <code>cd "C:\Users\Pablo\Documents\file.txt"</code> (we double quote the string otherwise <code>\</code> is intepreted as an escape character)</p>
+</details>
+<hr />
+<h2 id="version-control">Version Control</h2>
+<hr />
+<h3 id="what-is-under-version-control">What is under version control?</h3>
+<ul>
+<li>Keeps history of all modifications for:<ul>
+<li>the content of a directory</li>
+<li>all files staged for VCS</li>
+</ul>
+</li>
+<li>Can switch the content of a directory to:<ul>
+<li>a past version (a past commit)</li>
+<li>a version written by a collaborator (a commit on another branch)</li>
+</ul>
+</li>
+<li>Can merge the work done concurrently (merge commits from different branches)</li>
+</ul>
+<hr />
+<h3 id="diff">Diff</h3>
+<ul>
+<li>How can one track modifications between in a directory in two successive states?<ul>
+<li>watch for new/deleted/renamed files</li>
+<li>compute the difference between the content of a given file in two different states (a <code>diff</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="diff-example">Diff: Example</h3>
+<p>Type the following instructions (you can use a text editor to edit the files instead):</p>
+<ul>
+<li>create a new, empty file: <code>touch file.txt</code></li>
+<li>write a few lines in this file: <code>echo "Line 1\nLine 2\nLine 3\nLine 4" &gt; file.txt</code><ul>
+<li>"\n" means end of line under Linux</li>
+<li><code>echo</code> writes its argument to the pipe <code>&gt;</code> writes the pipe to a file</li>
+</ul>
+</li>
+<li>look a the original file <code>cat file.txt</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Line 1
+Line 2
+Line 3
+Line 4
+</code></pre></div>
+</td></tr></table></li>
+<li>change one of the line and write the result in another file: <code>sed '2 c Line 1a' file.txt &gt; newfile.txt</code></li>
+<li>look at the resulting file: <code>cat newfile.txt</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Line 1
+Line 1a
+Line 3
+Line 4
+</code></pre></div>
+</td></tr></table></li>
+<li>compute the change and store the result in patch: <code>diff -u file.txt newfile.txt &gt; patch</code><ul>
+<li>option <code>-c</code> instructs the <code>diff</code> program to add contextual information which creates a more verbose patch and also one that is more robust to changes in the original file</li>
+</ul>
+</li>
+<li>
+<p>look at the patch: <code>cat patch</code>:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="gd">--- newfile_from_patch.txt      2020-05-05 12:38:12.498602372 +0200</span>
+<span class="gi">+++ newfile.txt 2020-05-06 11:17:38.938087155 +0200</span>
+<span class="gu">@@ -1,3 +1,4 @@</span>
+ Line 1
+<span class="gd">-&quot;Line 1a&quot;</span>
+<span class="gd">- Line 3</span>
+<span class="gi">+Line 1a</span>
+<span class="gi">+Line 3</span>
+<span class="gi">+Line 4</span>
+</code></pre></div>
+</td></tr></table></p>
+<ul>
+<li>content is self-explanatory</li>
+</ul>
+</li>
+<li>
+<p>now apply the patch to create a new file with the same modification: <code>patch -i patch -u file.txt -o newfile_from_patch.txt</code></p>
+<ul>
+<li>this applies the changes included in input (<code>-i</code>) file <code>patch</code>...</li>
+<li>assuming input is in the universal format (<code>-u</code>)</li>
+<li>to file <code>file.txt</code></li>
+<li>to produce <code>newfile_from_patch.txt</code></li>
+</ul>
+</li>
+<li>we can check both files are identical: <code>cat newfile_from_patch.txt</code> and <code>cat newfile.txt</code> are identical<ul>
+<li><code>cat newfile_from_patch.txt</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Line 1
+Line 1a
+Line 3
+Line 4
+</code></pre></div>
+</td></tr></table></li>
+<li>or <code>diff newfile.txt newfile_from_patch.txt</code></li>
+</ul>
+</li>
+</ul>
+<!-- ??? note
+    Story of end of line -->
+
+<hr />
+<h3 id="from-diff-to-git-history">From diff to git history</h3>
+<ul>
+<li>To record history Git stores differences between successive revisions.</li>
+<li>Current revision from an older revision by applying recursively all modifications that happened since.</li>
+<li>The action of storing a revision, i.e. computing the <code>diff</code> which defines it is called a commit.</li>
+<li>One can represent all past commits of a given revision as a one branch tree.</li>
+</ul>
+<hr />
+<h3 id="from-diff-to-git-history-example">From diff to git history: example</h3>
+<ul>
+<li>Let's create an empty directory and do some version control in it:<ul>
+<li><code>mkdir linear_history</code></li>
+<li><code>cd linear_history</code></li>
+<li><code>git init</code>: start versioning in it by creating an empty git repository. This creates a hidden <code>.git</code> folder which will store all the git history</li>
+</ul>
+</li>
+<li>Create a new, empty file: <code>touch file.txt</code></li>
+<li>Make some edits <code>echo "Line 1\nLine 2\nLine 3\nLine 4" &gt; file.txt</code></li>
+<li>Check the status: <code>git status</code>
+    <div class="highlight"><pre><span></span><code>On branch master
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+        file.txt
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre></div></li>
+<li>Put this file under version control: <code>git add file.txt</code></li>
+<li>Now <code>git status</code> records the fact there is a file under version control whose modifications have not been recorded.
+    <div class="highlight"><pre><span></span><code>On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   file.txt
+</code></pre></div></li>
+<li>
+<p>Commit this modifications: <code>git commit -a -m "Created file.txt"</code></p>
+<div class="highlight"><pre><span></span><code>[master (root-commit) cb39aac] Created file.txt
+ 1 file changed, 4 insertions(+)
+ create mode 100644 file.txt
+</code></pre></div>
+
+<ul>
+<li>note the commit message which helps our future selves understand what's going on</li>
+<li>this records a new revision, identified by commit number <code>cb39aac</code></li>
+</ul>
+</li>
+<li>
+<p>Let's make some more modifications: <code>sed -i '2 c Line 1a' file.txt</code></p>
+<ul>
+<li><code>-i</code> stands for inplace modifications</li>
+</ul>
+</li>
+<li>Commit them <code>git commit -a -m "Changed line 2"</code>(no need to add <code>file.txt</code> as it is already under version control)</li>
+<li>Let's do some more edits: <code>sed -i '3 c Line 2' file.txt &gt; newfile.txt</code></li>
+<li>And commit them <code>git commit -a -m "Changed line 3"</code></li>
+<li>
+<p>Now we can look at the history: <code>git log</code></p>
+<div class="highlight"><pre><span></span><code>commit 9a320760c874c7f8bf25e89d2077d4525c5f8e45 (HEAD -&gt; master)
+Author: Winant Pablo &lt;pablo.winant@gmail.com&gt;
+Date:   Wed May 6 12:16:44 2020 +0200
+
+    Changed line 3
+
+commit 0c4c1ebb9f4ce078f0e35b3a06a6f53b18c54db0
+Author: Winant Pablo &lt;pablo.winant@gmail.com&gt;
+Date:   Wed May 6 12:16:09 2020 +0200
+
+    Changed line 2
+
+commit 03e2c8ca95170a413d3c0aa84fc940c66ac2cfe3
+Author: Winant Pablo &lt;pablo.winant@gmail.com&gt;
+Date:   Wed May 6 12:15:21 2020 +0200
+
+    Created file.txt
+</code></pre></div>
+
+<ul>
+<li>Now we have nice history.</li>
+</ul>
+</li>
+<li>
+<p>We can see what happened since a particular commit: <code>git diff HEAD 03e2c8ca95170a413d3c0aa84fc940c66ac2cfe3</code>
+    <div class="highlight"><pre><span></span><code><span class="gh">diff --git a/file.txt b/file.txt</span>
+<span class="gh">index f36933c..e579141 100644</span>
+<span class="gd">--- a/file.txt</span>
+<span class="gi">+++ b/file.txt</span>
+<span class="gu">@@ -1,4 +1,4 @@</span>
+ Line 1
+<span class="gd">-Line 1a</span>
+ Line 2
+<span class="gi">+Line 3</span>
+ Line 4
+</code></pre></div></p>
+</li>
+<li>
+<p>Now look back at the  "HEAD" word in the git log: it means that our directory is currently synchronized with the latest commit. Indeed the content of <code>file.txt</code> is the result from all edits (check <code>cat file.txt</code>). Let's explore the past, we copy the commit number of the first modification and check it out: <code>git checkout 03e2c8ca95170a413d3c0aa84fc940c66ac2cfe3</code></p>
+<div class="highlight"><pre><span></span><code>Note: checking out &#39;03e2c8ca95170a413d3c0aa84fc940c66ac2cfe3&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 03e2c8c Created file.txt
+</code></pre></div>
+
+<ul>
+<li><code>cat file.txt</code> shows that the file has reverted to its former state</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Line 1
+Line 2
+Line 3
+Line 4
+</code></pre></div>
+</td></tr></table>
+
+<ul>
+<li>note that from the message above, you are in "detached mode": if you make modifications, they would conflict with the actual history wouldn't they ? You can make them but they will be discarded when you go back to the most revision. That is unless you save them in a branch. (in the next slide)</li>
+</ul>
+</li>
+<li>
+<p>Let's go back to the latest revision and check everything is normal: <code>git checkout master</code> and <code>git log</code></p>
+<ul>
+<li>here <code>master</code> is the name of the default branch and <code>git checkout master</code> means "go to latest commit on master branch". We cold also have done <code>git checkout 9a320760c874c7f8bf25e89d2077d4525c5f8e45</code></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="merging-files">Merging files</h3>
+<ul>
+<li>
+<p>So far we have seen how to record revison history. This is already quite useful but on the tip of the git iceberg.</p>
+</li>
+<li>
+<p>What happens if, starting from a given file, we make concurrent modifications ? Can we merge them together ?</p>
+<ul>
+<li>if two people edit different files no problem: just keep the two of them</li>
+<li>if two people edit the same file, we have a merge issue</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="merging-files-example">Merging files (example)</h3>
+<p>Consider the following story. Mr A writes a file <code>text</code> with the following content (to tell the truth he used a lorem ipsum generator):</p>
+<div class="highlight"><pre><span></span><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis ac tristique erat.
+Nullam et lorem dignissim sem efficitur fringilla a eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+In maximus diam ac lorem aliquam, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.
+Nulla dapibus magna nibh, ac rutrum lorem viverra quis.
+</code></pre></div>
+
+<p>He then asks two collaborators B and C to propose modifications. B proposes <code>text_B</code> (he used google translate some of A's text):</p>
+<div class="highlight"><pre><span></span><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis ac tristique erat.
+relais de football Lorem et une salade de thérapie écologique besoin.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+In maximus diam ac certains lorem, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.
+Nulla dapibus magna nibh, ac rutrum lorem viverra quis.
+</code></pre></div>
+
+<p>Just before the deadline, C proposes <code>text_C</code>:</p>
+<div class="highlight"><pre><span></span><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis ac tristique erat.
+Nullam et lorem dignissim sem efficitur fringilla a eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+In maximus diam ac algunos lorem, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.
+Nulla dapibus nibh, ac rutrum lorem viverra quis.
+</code></pre></div>
+
+<p>What should Mr A do ?</p>
+<ul>
+<li>
+<p>He can compte the changes (diff) proposed by B and C:</p>
+<ul>
+<li>by B <code>diff -u text text_B &gt; patch_B</code></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="gd">--- text        2020-05-06 13:02:43.006841045 +0200</span>
+<span class="gi">+++ text_B      2020-05-06 13:02:54.762919889 +0200</span>
+<span class="gu">@@ -1,5 +1,6 @@</span>
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Duis ac tristique erat.
+<span class="gd">-Nullam et lorem dignissim sem efficitur fringilla a eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</span>
+<span class="gd">-In maximus diam ac lorem aliquam, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.</span>
+<span class="gi">+relais de football Lorem et une salade de thérapie écologique besoin.</span>
+<span class="gi">+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</span>
+<span class="gi">+In maximus diam ac certains lorem, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.</span>
+ Nulla dapibus magna nibh, ac rutrum lorem viverra quis.
+</code></pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>by C <code>diff -u text text_C &gt; patch_C</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="gd">--- text        2020-05-06 13:02:43.006841045 +0200</span>
+<span class="gi">+++ text_C      2020-05-06 13:03:57.855340061 +0200</span>
+<span class="gu">@@ -1,5 +1,5 @@</span>
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Duis ac tristique erat.
+ Nullam et lorem dignissim sem efficitur fringilla a eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+<span class="gd">-In maximus diam ac lorem aliquam, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.</span>
+<span class="gd">-Nulla dapibus magna nibh, ac rutrum lorem viverra quis.</span>
+<span class="gi">+In maximus diam ac algunos lorem, nec mollis nunc vehicula. Fusce sodales est eget risus imperdiet, a rhoncus nunc malesuada.</span>
+<span class="gi">+Nulla dapibus nibh, ac rutrum lorem viverra quis.</span>
+</code></pre></div>
+</td></tr></table>
+
+</li>
+<li>
+<p>Now he can see that B and C are proposing to change different lines, except the one starting with "In maximus" that they both want to change. He can then keep the change from both of them.</p>
+</li>
+<li>In practice he uses a merging tool (like meld)<ul>
+<li>TODO: include screenshot</li>
+</ul>
+</li>
+</ul>
+<hr />
+<!-- ## Branches in git
+
+The ability to merge several modifications allows us to keep several sets of concurrent modifications. 
+
+- Take the former example: `cd
+
+--- -->
+
+<h2 id="workflows">Workflows</h2>
+<p>Instructions to follow the course:</p>
+<p>Here is the goal:
+- each student A must be able to update its online copy of the main repository from professor
+- he can share his work by pushing to a branchin his own online repository (aka fork)</p>
+<p>One challenge, is that jupyter notebooks are not really appropriate for merging modifications (it's not a source format).</p>
+<p>Hence it is suggested students do not work directly on the files from the github repository but on a copy.</p>
+<p>Here is the basic workflow:</p>
+<ol>
+<li><code>git clone https://github.com/albop/eco309.git</code> to get a copy of the main repository (do it only once)<ul>
+<li>it will be referred as <code>origin</code></li>
+</ul>
+</li>
+<li>add your fork as another remote: <code>git add remote fork https://github.com/EconForge/eco309.git</code></li>
+<li>replace EconForge by your github login</li>
+<li>the fork will be referred to as <code>fork</code></li>
+<li>copy a file like <code>cp 1_Optimization_tutorial.ipynb 1_Optimization_tutorial_mycopy.ipynb</code> </li>
+<li>work on the copy</li>
+<li>put the copy under version control: <code>git add 1_Optimization_tutorial_mycopy.ipynb</code> (only once per file)</li>
+<li>commit your changes with a message <code>git commit -a -m "Edited optimization"</code></li>
+<li>push them to the branch in the fork you own: <code>git push fork</code></li>
+</ol>
+<p>When there is an update in the main repository you can get them with <code>git pull origin</code>. Then you continue with steps 3,4,5,6.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../notebooks/0_General_Introduction/" title="Introduction" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../optim_slides/" title="Optimization" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Optimization
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,823 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#welcome-to-eco309" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Index
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="." title="Index" class="md-nav__link md-nav__link--active">
+      Index
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-workflow" class="md-nav__link">
+    Git Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-requirement" class="md-nav__link">
+    Setup requirement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    Roadmap
+  </a>
+  
+    <nav class="md-nav" aria-label="Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-1" class="md-nav__link">
+    Session 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-2" class="md-nav__link">
+    Session 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-3" class="md-nav__link">
+    Session 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-3_1" class="md-nav__link">
+    Session 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-4" class="md-nav__link">
+    Session 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-5" class="md-nav__link">
+    Session 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-6" class="md-nav__link">
+    Session 6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-8" class="md-nav__link">
+    Session 8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-9" class="md-nav__link">
+    Session 9
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="linux_and_git/" title="System" class="md-nav__link">
+      System
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="optim_slides/" title="Optimization" class="md-nav__link">
+      Optimization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="discrete_dynamic_programming/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="differentiation/" title="Differentiation" class="md-nav__link">
+      Differentiation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/9_Homework_2/" title="Homework (2)" class="md-nav__link">
+      Homework (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="notebooks/10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-workflow" class="md-nav__link">
+    Git Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-requirement" class="md-nav__link">
+    Setup requirement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    Roadmap
+  </a>
+  
+    <nav class="md-nav" aria-label="Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-1" class="md-nav__link">
+    Session 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-2" class="md-nav__link">
+    Session 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-3" class="md-nav__link">
+    Session 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-3_1" class="md-nav__link">
+    Session 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-4" class="md-nav__link">
+    Session 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-5" class="md-nav__link">
+    Session 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-6" class="md-nav__link">
+    Session 6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-8" class="md-nav__link">
+    Session 8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-9" class="md-nav__link">
+    Session 9
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="welcome-to-eco309">Welcome to ECO309</h1>
+<h2 id="general">General</h2>
+<p>All the course material is written inside notebooks <code>notebooks/*</code> and markdown files (usually in <code>slides/</code>). Those ending with <code>_tutorial</code> are meant to be run and filled by students.
+The content of the session is integrated can be browsed <a href="http://www.mosphere.fr/eco309/">online</a>. (PRs are welcome)</p>
+<p>Each student is expected to have a clone of the course repository, and commit his completed tutorials by Friday night. Intermediary assignments must be done in the same fashion by the next Friday.</p>
+<p>During the course, each student will be asked to choose and present one Julia library.</p>
+<p>The tutorial in the last session will be the final exam.</p>
+<h2 id="git-workflow">Git Workflow</h2>
+<p>Instructions to follow the course:</p>
+<p>Here is the goal:
+- each student A must be able to update its online copy of the main repository from professor
+- he can share his work by pushing to a branchin his own online repository (aka fork)</p>
+<p>One challenge, is that jupyter notebooks are not really appropriate for merging modifications (it's not a source format).</p>
+<p>Hence it is suggested students do not work directly on the files from the github repository but on a copy.</p>
+<p>Here is the basic workflow:</p>
+<ol>
+<li><code>git clone https://github.com/albop/eco309.git</code> to get a copy of the main repository (do it only once)<ul>
+<li>it will be referred as <code>origin</code></li>
+</ul>
+</li>
+<li>add your fork as another remote: <code>git add remote fork https://github.com/EconForge/eco309.git</code></li>
+<li>replace EconForge by your github login</li>
+<li>the fork will be referred to as <code>fork</code></li>
+<li>copy a file like <code>cp 1_Optimization_tutorial.ipynb 1_Optimization_tutorial_mycopy.ipynb</code> </li>
+<li>work on the copy</li>
+<li>put the copy under version control: <code>git add 1_Optimization_tutorial_mycopy.ipynb</code> (only once per file)</li>
+<li>commit your changes with a message <code>git commit -a -m "Edited optimization"</code></li>
+<li>push them to the branch in the fork you own: <code>git push fork</code></li>
+</ol>
+<p>When there is an update in the main repository you can get them with <code>git pull origin</code>. Then you continue with steps 3,4,5,6.</p>
+<h2 id="setup-requirement">Setup requirement</h2>
+<p>To make the most of the course, it is recommended to install</p>
+<ul>
+<li>JuliaPro 1.4 (or Julia 1.4 + a good text editor + JupyterLab)</li>
+<li>Git</li>
+</ul>
+<h2 id="roadmap">Roadmap</h2>
+<p>Each session is 4 hours, and expected to be evenly but not contiguously divided between lectures and hands-on tutorials.</p>
+<h3 id="session-1">Session 1</h3>
+<ul>
+<li>General Introduction</li>
+<li>Git + Linux</li>
+<li>Setup</li>
+<li>Julia: Basics<ul>
+<li>...</li>
+</ul>
+</li>
+<li>Tutorial: contagion model</li>
+</ul>
+<h3 id="session-2">Session 2</h3>
+<ul>
+<li>Math: Series Convergence, Optimization (1)</li>
+<li>Julia: Git/Linux</li>
+</ul>
+<h3 id="session-3">Session 3</h3>
+<ul>
+<li>Math: Optimization (2)</li>
+<li>Julia Basics 2</li>
+<li>Models:<ul>
+<li>profit optimization</li>
+<li>solow model</li>
+<li>consumer choice</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="session-3_1">Session 3</h3>
+<ul>
+<li>Math: Markov Chains, Value iteration</li>
+<li>Julia: Types, Multiple Dispatch</li>
+<li>Models: Discrete Dynamic Programming<ul>
+<li>job search</li>
+<li>ressource management</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-4">Session 4</h3>
+<ul>
+<li>Julia: performance (1)</li>
+<li>Math: Probabilities and Integration, Distributions</li>
+<li>Simulation heavy models:<ul>
+<li>asset pricing (1)</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-5">Session 5</h3>
+<ul>
+<li>Math: Differentiation, Perturbation, Linear Algebra</li>
+<li>Local Rational Expectations Models (DSGE)<ul>
+<li>neoclassical model</li>
+<li>RBC model</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-6">Session 6</h3>
+<ul>
+<li>Math: Function Approximation, Solution Methods (VFI)</li>
+<li>Rational Expectations Models (2)<ul>
+<li>consumption-savings</li>
+</ul>
+</li>
+</ul>
+<h3 id="session-8">Session 8</h3>
+<ul>
+<li>Math: Weighted Residuals, Solution Methods (TI, ITI)</li>
+<li>Rational Expectations (3)</li>
+</ul>
+<h3 id="session-9">Session 9</h3>
+<ul>
+<li>Rational Expectations Models (2): DSGE modeling<ul>
+<li>FRBNY?</li>
+</ul>
+</li>
+<li>Exam</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="notebooks/0_General_Introduction/" title="Introduction" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2609 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>Optimization - ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#primer-on-optimization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Optimization
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../linux_and_git/" title="System" class="md-nav__link">
+      System
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Optimization
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Optimization" class="md-nav__link md-nav__link--active">
+      Optimization
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction_1" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-basic-kinds-of-optimization-problem" class="md-nav__link">
+    Two basic kinds of optimization problem:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    Plan
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-considerations" class="md-nav__link">
+    General considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="General considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimization-tasks-come-in-many-flavours" class="md-nav__link">
+    Optimization tasks come in many flavours
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-versus-discrete-optimization" class="md-nav__link">
+    Continuous versus discrete optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-versus-discrete-optimization-2" class="md-nav__link">
+    Continuous versus discrete optimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constrained-and-unconstrained-optimization" class="md-nav__link">
+    Constrained and Unconstrained optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-vs-determinstic" class="md-nav__link">
+    Stochastic vs Determinstic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-vs-global-algorithms" class="md-nav__link">
+    Local vs global Algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-theory-vs-practice" class="md-nav__link">
+    Math &amp; theory vs practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-theory-vs-practice_1" class="md-nav__link">
+    Math &amp; theory vs practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-do-you-need-to-know" class="md-nav__link">
+    What do you need to know?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-of-recursive-series" class="md-nav__link">
+    Convergence of recursive series
+  </a>
+  
+    <nav class="md-nav" aria-label="Convergence of recursive series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursive-series" class="md-nav__link">
+    Recursive series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-series_1" class="md-nav__link">
+    Recursive series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence" class="md-nav__link">
+    Convergence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-the-problem" class="md-nav__link">
+    Change the problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamics-around-a-stable-point" class="md-nav__link">
+    Dynamics around a stable point
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamics-around-a-stable-point-2" class="md-nav__link">
+    Dynamics around a stable point (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-we-improve-convergence" class="md-nav__link">
+    How do we improve convergence ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aitkens-extrapolation" class="md-nav__link">
+    Aitken's extrapolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aitkens-extrapolation-2" class="md-nav__link">
+    Aitken's extrapolation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steffensens-method" class="md-nav__link">
+    Steffensen's Method:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-speed" class="md-nav__link">
+    Convergence speed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-speed_1" class="md-nav__link">
+    Convergence speed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-dimensional-root-finding" class="md-nav__link">
+    One-dimensional root-finding
+  </a>
+  
+    <nav class="md-nav" aria-label="One-dimensional root-finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bisection" class="md-nav__link">
+    Bisection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bisection-2" class="md-nav__link">
+    Bisection (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm" class="md-nav__link">
+    Newton algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm-2" class="md-nav__link">
+    Newton algorithm (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm-3" class="md-nav__link">
+    Newton algorithm (3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton" class="md-nav__link">
+    Quasi-Newton
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limits-of-newtons-method" class="md-nav__link">
+    Limits of Newton's method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backtracking" class="md-nav__link">
+    Backtracking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-dimensional-minimization" class="md-nav__link">
+    One dimensional minimization
+  </a>
+  
+    <nav class="md-nav" aria-label="One dimensional minimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#golden-section-search" class="md-nav__link">
+    Golden section search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#golden-section-search-2" class="md-nav__link">
+    Golden section search (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent-2" class="md-nav__link">
+    Gradient Descent (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-raphson-method" class="md-nav__link">
+    Newton-Raphson method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-raphson-algorithm-2" class="md-nav__link">
+    Newton-Raphson Algorithm (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-optimization" class="md-nav__link">
+    Unconstrained Multidimensional Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unconstrained-problems" class="md-nav__link">
+    Unconstrained problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-terminology" class="md-nav__link">
+    Quick terminology
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-root-finding" class="md-nav__link">
+    Unconstrained Multidimensional Root-Finding
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Root-Finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-raphson" class="md-nav__link">
+    Multidimensional Newton-Raphson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-2" class="md-nav__link">
+    Multidimensional Newton Minimization (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-minimization" class="md-nav__link">
+    Unconstrained Multidimensional Minimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Minimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-gradient-descent" class="md-nav__link">
+    Multidimensional Gradient Descent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-1" class="md-nav__link">
+    Multidimensional Newton Minimization (1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-2_1" class="md-nav__link">
+    Multidimensional Newton Minimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-method-for-multidimensional-minimization" class="md-nav__link">
+    Quasi-Newton method for multidimensional minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-method-for-multidimensional-minimization_1" class="md-nav__link">
+    Quasi-Newton method for multidimensional minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauss-newton-minimization" class="md-nav__link">
+    Gauss-Newton Minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#levenberg-marquardt" class="md-nav__link">
+    Levenberg-Marquardt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-optimization-and-complementarity-conditions" class="md-nav__link">
+    Constrained optimization and complementarity conditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Constrained optimization and complementarity conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization" class="md-nav__link">
+    Consumption optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization-1" class="md-nav__link">
+    Consumption optimization (1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization-2" class="md-nav__link">
+    Consumption optimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penalty-function" class="md-nav__link">
+    Penalty function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penalty-function_1" class="md-nav__link">
+    Penalty function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#karush-kuhn-tucker-conditions" class="md-nav__link">
+    Karush-Kuhn-Tucker conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#karush-kuhn-tucker-conditions_1" class="md-nav__link">
+    Karush-Kuhn-Tucker conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-strategies-for-ncp-problems" class="md-nav__link">
+    Solution strategies for NCP problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smooth-method" class="md-nav__link">
+    Smooth method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pervasiveness-of-complementarity-problems" class="md-nav__link">
+    Pervasiveness of complementarity problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-in-an-endowment-economy" class="md-nav__link">
+    Trade in an endowment economy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practicalities" class="md-nav__link">
+    Practicalities
+  </a>
+  
+    <nav class="md-nav" aria-label="Practicalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimisation-libraries" class="md-nav__link">
+    Optimisation libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-you-compute-derivatives" class="md-nav__link">
+    How do you compute derivatives?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-differences" class="md-nav__link">
+    Finite differences
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discrete_dynamic_programming/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../differentiation/" title="Differentiation" class="md-nav__link">
+      Differentiation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/9_Homework_2/" title="Homework (2)" class="md-nav__link">
+      Homework (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction_1" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-basic-kinds-of-optimization-problem" class="md-nav__link">
+    Two basic kinds of optimization problem:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    Plan
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-considerations" class="md-nav__link">
+    General considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="General considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimization-tasks-come-in-many-flavours" class="md-nav__link">
+    Optimization tasks come in many flavours
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-versus-discrete-optimization" class="md-nav__link">
+    Continuous versus discrete optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-versus-discrete-optimization-2" class="md-nav__link">
+    Continuous versus discrete optimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constrained-and-unconstrained-optimization" class="md-nav__link">
+    Constrained and Unconstrained optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-vs-determinstic" class="md-nav__link">
+    Stochastic vs Determinstic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-vs-global-algorithms" class="md-nav__link">
+    Local vs global Algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-theory-vs-practice" class="md-nav__link">
+    Math &amp; theory vs practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-theory-vs-practice_1" class="md-nav__link">
+    Math &amp; theory vs practice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-do-you-need-to-know" class="md-nav__link">
+    What do you need to know?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-of-recursive-series" class="md-nav__link">
+    Convergence of recursive series
+  </a>
+  
+    <nav class="md-nav" aria-label="Convergence of recursive series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursive-series" class="md-nav__link">
+    Recursive series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-series_1" class="md-nav__link">
+    Recursive series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence" class="md-nav__link">
+    Convergence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-the-problem" class="md-nav__link">
+    Change the problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamics-around-a-stable-point" class="md-nav__link">
+    Dynamics around a stable point
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamics-around-a-stable-point-2" class="md-nav__link">
+    Dynamics around a stable point (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-we-improve-convergence" class="md-nav__link">
+    How do we improve convergence ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aitkens-extrapolation" class="md-nav__link">
+    Aitken's extrapolation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aitkens-extrapolation-2" class="md-nav__link">
+    Aitken's extrapolation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steffensens-method" class="md-nav__link">
+    Steffensen's Method:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-speed" class="md-nav__link">
+    Convergence speed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-speed_1" class="md-nav__link">
+    Convergence speed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-dimensional-root-finding" class="md-nav__link">
+    One-dimensional root-finding
+  </a>
+  
+    <nav class="md-nav" aria-label="One-dimensional root-finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bisection" class="md-nav__link">
+    Bisection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bisection-2" class="md-nav__link">
+    Bisection (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm" class="md-nav__link">
+    Newton algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm-2" class="md-nav__link">
+    Newton algorithm (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-algorithm-3" class="md-nav__link">
+    Newton algorithm (3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton" class="md-nav__link">
+    Quasi-Newton
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limits-of-newtons-method" class="md-nav__link">
+    Limits of Newton's method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backtracking" class="md-nav__link">
+    Backtracking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-dimensional-minimization" class="md-nav__link">
+    One dimensional minimization
+  </a>
+  
+    <nav class="md-nav" aria-label="One dimensional minimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#golden-section-search" class="md-nav__link">
+    Golden section search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#golden-section-search-2" class="md-nav__link">
+    Golden section search (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    Gradient Descent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent-2" class="md-nav__link">
+    Gradient Descent (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-raphson-method" class="md-nav__link">
+    Newton-Raphson method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newton-raphson-algorithm-2" class="md-nav__link">
+    Newton-Raphson Algorithm (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-optimization" class="md-nav__link">
+    Unconstrained Multidimensional Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unconstrained-problems" class="md-nav__link">
+    Unconstrained problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-terminology" class="md-nav__link">
+    Quick terminology
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-root-finding" class="md-nav__link">
+    Unconstrained Multidimensional Root-Finding
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Root-Finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-raphson" class="md-nav__link">
+    Multidimensional Newton-Raphson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-2" class="md-nav__link">
+    Multidimensional Newton Minimization (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-multidimensional-minimization" class="md-nav__link">
+    Unconstrained Multidimensional Minimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Unconstrained Multidimensional Minimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-gradient-descent" class="md-nav__link">
+    Multidimensional Gradient Descent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-1" class="md-nav__link">
+    Multidimensional Newton Minimization (1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multidimensional-newton-minimization-2_1" class="md-nav__link">
+    Multidimensional Newton Minimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-method-for-multidimensional-minimization" class="md-nav__link">
+    Quasi-Newton method for multidimensional minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quasi-newton-method-for-multidimensional-minimization_1" class="md-nav__link">
+    Quasi-Newton method for multidimensional minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauss-newton-minimization" class="md-nav__link">
+    Gauss-Newton Minimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#levenberg-marquardt" class="md-nav__link">
+    Levenberg-Marquardt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-optimization-and-complementarity-conditions" class="md-nav__link">
+    Constrained optimization and complementarity conditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Constrained optimization and complementarity conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization" class="md-nav__link">
+    Consumption optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization-1" class="md-nav__link">
+    Consumption optimization (1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumption-optimization-2" class="md-nav__link">
+    Consumption optimization (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penalty-function" class="md-nav__link">
+    Penalty function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penalty-function_1" class="md-nav__link">
+    Penalty function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#karush-kuhn-tucker-conditions" class="md-nav__link">
+    Karush-Kuhn-Tucker conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#karush-kuhn-tucker-conditions_1" class="md-nav__link">
+    Karush-Kuhn-Tucker conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-strategies-for-ncp-problems" class="md-nav__link">
+    Solution strategies for NCP problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smooth-method" class="md-nav__link">
+    Smooth method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pervasiveness-of-complementarity-problems" class="md-nav__link">
+    Pervasiveness of complementarity problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-in-an-endowment-economy" class="md-nav__link">
+    Trade in an endowment economy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practicalities" class="md-nav__link">
+    Practicalities
+  </a>
+  
+    <nav class="md-nav" aria-label="Practicalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimisation-libraries" class="md-nav__link">
+    Optimisation libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-you-compute-derivatives" class="md-nav__link">
+    How do you compute derivatives?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-differences" class="md-nav__link">
+    Finite differences
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="primer-on-optimization">Primer on optimization</h1>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<hr />
+<h3 id="introduction_1">Introduction</h3>
+<p>Optimization is everywhere in economics:</p>
+<ul>
+<li>to model agent's behaviour: what would a rational agent do?<ul>
+<li>consumer maximizes utility from consumption</li>
+<li>firm maximizes profit</li>
+</ul>
+</li>
+<li>an economist tries to solve a model:<ul>
+<li>find prices that clear the market</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="two-basic-kinds-of-optimization-problem">Two basic kinds of optimization problem:</h3>
+<ul>
+<li>
+<p>root finding: find  <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> such that <span><span class="MathJax_Preview">f(x)=0</span><script type="math/tex">f(x)=0</script></span></p>
+</li>
+<li>
+<p>minimization/maximization <span><span class="MathJax_Preview">\min_{x\in X} f(x)</span><script type="math/tex">\min_{x\in X} f(x)</script></span></p>
+</li>
+<li>
+<p>often a minimization problem can be reformulated as a root-finding problem</p>
+<div>
+<div class="MathJax_Preview">x_0 = {argmin}_{x\in X} f(x) \overbrace{\iff}^{??} f^{\prime} (x_0) = 0</div>
+<script type="math/tex; mode=display">x_0 = {argmin}_{x\in X} f(x) \overbrace{\iff}^{??} f^{\prime} (x_0) = 0</script>
+</div>
+</li>
+</ul>
+<hr />
+<h3 id="plan">Plan</h3>
+<ul>
+<li>general consideration about optimization problems</li>
+<li>convergence of recursive series</li>
+<li>one-dimensional root-finding</li>
+<li>one-dimensional optimization  (*)</li>
+<li>local root-finding</li>
+<li>local optimization</li>
+<li>constrained optimization and complementarity conditions</li>
+</ul>
+<hr />
+<h2 id="general-considerations">General considerations</h2>
+<hr />
+<h3 id="optimization-tasks-come-in-many-flavours">Optimization tasks come in many flavours</h3>
+<ul>
+<li>continuous versus discrete optimization</li>
+<li>constrained and unconstrained optimization</li>
+<li>global and local</li>
+<li>stochastic and deterministic optimization</li>
+<li>convexity</li>
+</ul>
+<hr />
+<h3 id="continuous-versus-discrete-optimization">Continuous versus discrete optimization</h3>
+<p>Where is the choice picked from <span><span class="MathJax_Preview">x\in X</span><script type="math/tex">x\in X</script></span>? It can be</p>
+<ul>
+<li>continuous: choose amount of debt <span><span class="MathJax_Preview">b_t \in [0,\overline{b}]</span><script type="math/tex">b_t \in [0,\overline{b}]</script></span>, of capital <span><span class="MathJax_Preview">k_t \in R^{+}</span><script type="math/tex">k_t \in R^{+}</script></span></li>
+<li>discrete: choose whether to repay or default <span><span class="MathJax_Preview">\delta\in{0,1}</span><script type="math/tex">\delta\in{0,1}</script></span>, how many machines to buy (<span><span class="MathJax_Preview">\in N</span><script type="math/tex">\in N</script></span>), at which age to retire...</li>
+<li>a combination of both: mixed integer programming</li>
+</ul>
+<hr />
+<h3 id="continuous-versus-discrete-optimization-2">Continuous versus discrete optimization (2)</h3>
+<p>Discrete optimization requires a lot of combinatorial thinking. We don't cover it.</p>
+<p>Sometimes a discrete choice can be approximated by a mixed strategy (i.e. a random strategy).
+Instead of <span><span class="MathJax_Preview">\delta\in{0,1}</span><script type="math/tex">\delta\in{0,1}</script></span> we choose <span><span class="MathJax_Preview">prob(\delta=1)=\sigma(x)</span><script type="math/tex">prob(\delta=1)=\sigma(x)</script></span> where we determine <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span><span class="MathJax_Preview">\sigma(x)=\frac{2}{1+\exp(-x)}</span><script type="math/tex">\sigma(x)=\frac{2}{1+\exp(-x)}</script></span></p>
+<hr />
+<h3 id="constrained-and-unconstrained-optimization">Constrained and Unconstrained optimization</h3>
+<p>Unconstrained optimization: <span><span class="MathJax_Preview">x\in R</span><script type="math/tex">x\in R</script></span></p>
+<p>Constrained optimization: <span><span class="MathJax_Preview">x\in X</span><script type="math/tex">x\in X</script></span></p>
+<ul>
+<li>budget set: <span><span class="MathJax_Preview">p_1 c_1 + p_2 c_2 \leq I</span><script type="math/tex">p_1 c_1 + p_2 c_2 \leq I</script></span></li>
+<li>positivity of consumption: <span><span class="MathJax_Preview">c \geq 0</span><script type="math/tex">c \geq 0</script></span>.</li>
+</ul>
+<p>In good cases, the optimization set is <em>convex</em>...</p>
+<ul>
+<li>pretty much always in this course</li>
+</ul>
+<hr />
+<h3 id="stochastic-vs-determinstic">Stochastic vs Determinstic</h3>
+<p>Common case, especially in machine learning</p>
+<div>
+<div class="MathJax_Preview">f(x) = E_{\epsilon}\left[ \xi(x;\epsilon)\right]</div>
+<script type="math/tex; mode=display">f(x) = E_{\epsilon}\left[ \xi(x;\epsilon)\right]</script>
+</div>
+<p>One wants to maximize (resp solve) w.r.t. <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> but it is costly to compute expectation precisely using Monte-Carlo draws (there are other methods).</p>
+<p>A <em>stochastic</em> optimization method allows to use noisy estimates of the expectation, and will still converge in expectation.
+For now we focus on <em>deterministic</em> methods. Maybe later...</p>
+<hr />
+<h3 id="local-vs-global-algorithms">Local vs global Algorithms</h3>
+<ul>
+<li>
+<p>In principle, there can be many roots (resp maxima) within the optimization set.</p>
+</li>
+<li>
+<p>Alorithm that converge to all of them are called "global". For instance:</p>
+<ul>
+<li>grid search</li>
+<li>simulated annealing</li>
+</ul>
+</li>
+<li>
+<p>We will deal only with local algorithm, and consider local convergence properties.</p>
+<ul>
+<li>-&gt;then it might work or not</li>
+<li>to perform global optimization just restart from different points.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="math-theory-vs-practice">Math &amp; theory vs practice</h3>
+<ul>
+<li>
+<p>The full mathematical treatment will typically assume that <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is smooth (<span><span class="MathJax_Preview">\mathcal{C}_1</span><script type="math/tex">\mathcal{C}_1</script></span> or <span><span class="MathJax_Preview">\mathcal{C}_2</span><script type="math/tex">\mathcal{C}_2</script></span> depending on the algorithm).</p>
+</li>
+<li>
+<p>In practice we often don't know about these properties</p>
+</li>
+<li>
+<p>we still try and check we have a local optimal</p>
+</li>
+<li>
+<p>So: fingers crossed</p>
+</li>
+</ul>
+<hr />
+<h3 id="math-theory-vs-practice_1">Math &amp; theory vs practice</h3>
+<p>Here is the surface representing the objective that a deep neural network training algorithm tries to minimize.</p>
+<p><img alt="non smooth minimization" src="../graphs/nonsmooth.png" /></p>
+<p>And yet, neural networks do great things!</p>
+<hr />
+<h3 id="what-do-you-need-to-know">What do you need to know?</h3>
+<ul>
+<li>be able to handcode simple algos (Newton, Gradient Descent)</li>
+<li>understand the general principle of the various algorithms to compare them in terms of<ul>
+<li>robustness</li>
+<li>efficiency</li>
+<li>accuracy</li>
+</ul>
+</li>
+<li>then you can just switch the various options, when you use a library...<ul>
+<li>we'll do that in the tutorial session</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="convergence-of-recursive-series">Convergence of recursive series</h2>
+<hr />
+<h3 id="recursive-series">Recursive series</h3>
+<p>Consider a function <span><span class="MathJax_Preview">f: R\rightarrow R</span><script type="math/tex">f: R\rightarrow R</script></span> and a recursive series <span><span class="MathJax_Preview">(x_n)</span><script type="math/tex">(x_n)</script></span> defined by <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> and <span><span class="MathJax_Preview">x_n = f(x_{n-1})</span><script type="math/tex">x_n = f(x_{n-1})</script></span>.</p>
+<p>We want to compute a fixed point of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> and study its properties.</p>
+<hr />
+<h3 id="recursive-series_1">Recursive series</h3>
+<ul>
+<li>
+<p>Wait: does a fixed point exist?</p>
+<ul>
+<li>we're not very concerned by the existence problem here</li>
+</ul>
+</li>
+<li>
+<p>We can assume there is an interval such that <span><span class="MathJax_Preview">f([a,b])\subset[a,b]</span><script type="math/tex">f([a,b])\subset[a,b]</script></span>. Then we know there exists <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in <span><span class="MathJax_Preview">[a,b]</span><script type="math/tex">[a,b]</script></span> such that <span><span class="MathJax_Preview">f(x)=x</span><script type="math/tex">f(x)=x</script></span>. But there can be many such points (graph)</p>
+</li>
+</ul>
+<hr />
+<h3 id="convergence">Convergence</h3>
+<ul>
+<li>How do we characterize behaviour around <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> such that <span><span class="MathJax_Preview">f(x)=x</span><script type="math/tex">f(x)=x</script></span>?<ul>
+<li>if <span><span class="MathJax_Preview">|f^{\prime}(x)|&gt;1</span><script type="math/tex">|f^{\prime}(x)|>1</script></span>: series is unstable and will not converge to <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> except by chance</li>
+<li>if <span><span class="MathJax_Preview">|f^{\prime}(x)|&lt;1</span><script type="math/tex">|f^{\prime}(x)|<1</script></span>: <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is a stable fixed point</li>
+<li>if <span><span class="MathJax_Preview">|f^{\prime}(x)|=1</span><script type="math/tex">|f^{\prime}(x)|=1</script></span>: ??? (look at higher order terms)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="change-the-problem">Change the problem</h3>
+<ul>
+<li>Sometimes, we are interested by tweaking the convergence speed:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">x_{n+1} = (1-\lambda) x_n + \lambda f(x_n)</div>
+<script type="math/tex; mode=display">x_{n+1} = (1-\lambda) x_n + \lambda f(x_n)</script>
+</div>
+<ul>
+<li>
+<p><span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> is the learning rate:</p>
+<ul>
+<li><span><span class="MathJax_Preview">\lambda&gt;1</span><script type="math/tex">\lambda>1</script></span>: acceleration</li>
+<li><span><span class="MathJax_Preview">\lambda&lt;1</span><script type="math/tex">\lambda<1</script></span>: dampening</li>
+</ul>
+</li>
+<li>
+<p>We can also replace the function by another one <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> such that <span><span class="MathJax_Preview">g(x)=x\iff f(x)=x</span><script type="math/tex">g(x)=x\iff f(x)=x</script></span>, for instance:</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}</div>
+<script type="math/tex; mode=display">g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}</script>
+</div>
+<hr />
+<h3 id="dynamics-around-a-stable-point">Dynamics around a stable point</h3>
+<ul>
+<li>We can write:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| </div>
+<script type="math/tex; mode=display">|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| </script>
+</div>
+<div>
+<div class="MathJax_Preview">|x_t - x_{t-1}| \sim |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| </div>
+<script type="math/tex; mode=display">|x_t - x_{t-1}| \sim |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| </script>
+</div>
+<div>
+<div class="MathJax_Preview">\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}</div>
+<script type="math/tex; mode=display">\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}</script>
+</div>
+<hr />
+<h3 id="dynamics-around-a-stable-point-2">Dynamics around a stable point (2)</h3>
+<p>How do we derive an error bound? Suppose that we have <span><span class="MathJax_Preview">\overline{\lambda}&gt;|f^{\prime}(x_k)|</span><script type="math/tex">\overline{\lambda}>|f^{\prime}(x_k)|</script></span> for all <span><span class="MathJax_Preview">k\geq k_0</span><script type="math/tex">k\geq k_0</script></span>:</p>
+<div>
+<div class="MathJax_Preview">|x_t - x| \leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... </div>
+<script type="math/tex; mode=display">|x_t - x| \leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... </script>
+</div>
+<div>
+<div class="MathJax_Preview">|x_t - x| \leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... </div>
+<script type="math/tex; mode=display">|x_t - x| \leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... </script>
+</div>
+<div>
+<div class="MathJax_Preview">|x_t - x| \leq |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... </div>
+<script type="math/tex; mode=display">|x_t - x| \leq |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... </script>
+</div>
+<div>
+<div class="MathJax_Preview">|x_t - x| \leq \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |</div>
+<script type="math/tex; mode=display">|x_t - x| \leq \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |</script>
+</div>
+<hr />
+<h3 id="how-do-we-improve-convergence">How do we improve convergence ?</h3>
+<div>
+<div class="MathJax_Preview">\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \sim |f^{\prime}(x_{t-1})|  </div>
+<script type="math/tex; mode=display">\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \sim |f^{\prime}(x_{t-1})|  </script>
+</div>
+<p>corresponds to the case of <strong>linear</strong> convergence (kind of slow).</p>
+<hr />
+<h3 id="aitkens-extrapolation">Aitken's extrapolation</h3>
+<p>note that</p>
+<div>
+<div class="MathJax_Preview">\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}</div>
+<script type="math/tex; mode=display">\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}</script>
+</div>
+<p>Take <span><span class="MathJax_Preview">x_{t-1}, x_t</span><script type="math/tex">x_{t-1}, x_t</script></span> and <span><span class="MathJax_Preview">x_{t+1}</span><script type="math/tex">x_{t+1}</script></span> as given and solve for <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>:</p>
+<div>
+<div class="MathJax_Preview">x = \frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}</div>
+<script type="math/tex; mode=display">x = \frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}</script>
+</div>
+<hr />
+<h3 id="aitkens-extrapolation-2">Aitken's extrapolation (2)</h3>
+<p>or after some reordering</p>
+<div>
+<div class="MathJax_Preview">x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}</div>
+<script type="math/tex; mode=display">x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}</script>
+</div>
+<hr />
+<h3 id="steffensens-method">Steffensen's Method:</h3>
+<ol>
+<li>start with a guess <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span>, compute <span><span class="MathJax_Preview">x_1=f(x_0)</span><script type="math/tex">x_1=f(x_0)</script></span> and <span><span class="MathJax_Preview">x_2=f(x_1)</span><script type="math/tex">x_2=f(x_1)</script></span></li>
+<li>use Aitken's guess for <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span>.
+  If required tolerance is met, stop.</li>
+<li>otherwise, set <span><span class="MathJax_Preview">x_0 = x^{\star}</span><script type="math/tex">x_0 = x^{\star}</script></span> and go back to step 1.</li>
+</ol>
+<p>It can be shown that the sequence generated from Steffensen's method converges <strong>quadratically</strong>, that is</p>
+<p><span><span class="MathJax_Preview">\lim_{t\rightarrow\infty} \frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \leq M</span><script type="math/tex">\lim_{t\rightarrow\infty} \frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \leq M</script></span></p>
+<hr />
+<h3 id="convergence-speed">Convergence speed</h3>
+<p>Rate of convergence of series <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> towards <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span> is:</p>
+<ul>
+<li>linear:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = \mu \in R^+</div>
+<script type="math/tex; mode=display">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = \mu \in R^+</script>
+</div>
+<ul>
+<li>superlinear:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = 0</div>
+<script type="math/tex; mode=display">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = 0</script>
+</div>
+<ul>
+<li>quadratic:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^2} = \mu \in R^+</div>
+<script type="math/tex; mode=display">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^2} = \mu \in R^+</script>
+</div>
+<hr />
+<h3 id="convergence-speed_1">Convergence speed</h3>
+<p>Remark: in the case of linear convergence:</p>
+<div>
+<div class="MathJax_Preview">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \mu \in R^+ \iff {\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|}</div>
+<script type="math/tex; mode=display">{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \mu \in R^+ \iff {\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|}</script>
+</div>
+<hr />
+<h2 id="one-dimensional-root-finding">One-dimensional root-finding</h2>
+<hr />
+<h3 id="bisection">Bisection</h3>
+<ul>
+<li>Find <span><span class="MathJax_Preview">x \in [a,b]</span><script type="math/tex">x \in [a,b]</script></span> such that <span><span class="MathJax_Preview">f(x) = 0</span><script type="math/tex">f(x) = 0</script></span>. Assume <span><span class="MathJax_Preview">f(a)f(b) &lt;0</span><script type="math/tex">f(a)f(b) <0</script></span>.</li>
+<li>Algorithm<ol>
+<li>Start with <span><span class="MathJax_Preview">a_n, b_n</span><script type="math/tex">a_n, b_n</script></span>. Set <span><span class="MathJax_Preview">c_n=(a_n+b_n)/2</span><script type="math/tex">c_n=(a_n+b_n)/2</script></span></li>
+<li>Compute <span><span class="MathJax_Preview">f(c_n)</span><script type="math/tex">f(c_n)</script></span><ul>
+<li>if <span><span class="MathJax_Preview">f(c_n)f(a_n)&gt;0</span><script type="math/tex">f(c_n)f(a_n)>0</script></span> then set <span><span class="MathJax_Preview">(a_{n+1},b_{n+1})=(a_n,c_n)</span><script type="math/tex">(a_{n+1},b_{n+1})=(a_n,c_n)</script></span></li>
+<li>else set <span><span class="MathJax_Preview">(a_{n+1},b_{n+1})=(c_n,b_n)</span><script type="math/tex">(a_{n+1},b_{n+1})=(c_n,b_n)</script></span></li>
+</ul>
+</li>
+<li>If <span><span class="MathJax_Preview">f(c_n)&lt;\epsilon</span><script type="math/tex">f(c_n)<\epsilon</script></span> and/or <span><span class="MathJax_Preview">\frac{b-a}/2^n&lt;\delta</span><script type="math/tex">\frac{b-a}/2^n<\delta</script></span> stop. Otherwise go back to 1.</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h3 id="bisection-2">Bisection (2)</h3>
+<ul>
+<li>No need for initial guess: <em>globally convergent algorithm</em><ul>
+<li>not a <em>global</em> algorithm</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> is a guaranteed accuracy on <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span></li>
+<li><span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> is a measure of how good the solution is</li>
+<li>think about your tradeoff: (<span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> or <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> ?)</li>
+</ul>
+<hr />
+<h3 id="newton-algorithm">Newton algorithm</h3>
+<p>Find <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> such that <span><span class="MathJax_Preview">f(x) = 0</span><script type="math/tex">f(x) = 0</script></span>. Use <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span> as initial guess.</p>
+<ul>
+<li>
+<p><span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> must be <span><span class="MathJax_Preview">\mathcal{C_1}</span><script type="math/tex">\mathcal{C_1}</script></span> and we assume we can compute its derivative <span><span class="MathJax_Preview">f^{\prime}</span><script type="math/tex">f^{\prime}</script></span></p>
+</li>
+<li>
+<p>General idea: observe that the zero <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span> must satisfy <span><span class="MathJax_Preview">f(x^{\star})=0=f(x_0)+f^{\prime}(x_0)(x^{\star}-x_0) + o(x-x_0)</span><script type="math/tex">f(x^{\star})=0=f(x_0)+f^{\prime}(x_0)(x^{\star}-x_0) + o(x-x_0)</script></span>. Hence a good approximation should be <span><span class="MathJax_Preview">x^{\star}\approx x_0- f(x_0)/f^{\prime}(x_0)</span><script type="math/tex">x^{\star}\approx x_0- f(x_0)/f^{\prime}(x_0)</script></span></p>
+</li>
+</ul>
+<hr />
+<h3 id="newton-algorithm-2">Newton algorithm (2)</h3>
+<ul>
+<li>
+<p>Algorithm:</p>
+<ul>
+<li>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></li>
+<li>compute <span><span class="MathJax_Preview">x_{n+1} = x_n- f(x_n)/f^{\prime}(x_n)=f^{\text{newton}}(x_n)</span><script type="math/tex">x_{n+1} = x_n- f(x_n)/f^{\prime}(x_n)=f^{\text{newton}}(x_n)</script></span></li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f(x_n)| &lt; \epsilon</span><script type="math/tex">|f(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+<li>
+<p>Convergence: <strong>quadratic</strong></p>
+</li>
+</ul>
+<hr />
+<h3 id="newton-algorithm-3">Newton algorithm (3)</h3>
+<p>Let's prove that Newton convergence is quadratic.
+The main ingredient is a Taylor expansion of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> at the second order. The trick is to formulate it around <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> instead of the fixed point. Since the <span><span class="MathJax_Preview">o()</span><script type="math/tex">o()</script></span> would depend on the rank <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, we use the Taylor-Lagrange version to control the remainder:</p>
+<div>
+<div class="MathJax_Preview">f(x^{\star}) = f(x_n) + f^{\prime}(x_n) (x^{\star} - x_n) +  f^{\prime\prime}(\xi_n) \frac{(x_n - x^{\star})^2}{2}</div>
+<script type="math/tex; mode=display">f(x^{\star}) = f(x_n) + f^{\prime}(x_n) (x^{\star} - x_n) +  f^{\prime\prime}(\xi_n) \frac{(x_n - x^{\star})^2}{2}</script>
+</div>
+<p>where <span><span class="MathJax_Preview">\xi_n \in [x^{\star}, x_n]</span><script type="math/tex">\xi_n \in [x^{\star}, x_n]</script></span>. Note that the left hand side is zero by definition of the root.</p>
+<p>Now we divide by <span><span class="MathJax_Preview">f^{\prime}(x_n)</span><script type="math/tex">f^{\prime}(x_n)</script></span></p>
+<div>
+<div class="MathJax_Preview">0 = \frac{f(x_n)}{f^{\prime}(x_n)} + (x^{\star} - x_n) +  \frac{f^{\prime\prime}(\xi_n)}{{f^{\prime}(x_n)}} \frac{(x^{\star} - x_n)^2}{2}</div>
+<script type="math/tex; mode=display">0 = \frac{f(x_n)}{f^{\prime}(x_n)} + (x^{\star} - x_n) +  \frac{f^{\prime\prime}(\xi_n)}{{f^{\prime}(x_n)}} \frac{(x^{\star} - x_n)^2}{2}</script>
+</div>
+<p>we recognize the term <span><span class="MathJax_Preview">\frac{f(x_n)}{f^{\prime}(x_n)} - x_n</span><script type="math/tex">\frac{f(x_n)}{f^{\prime}(x_n)} - x_n</script></span>: it is equal to <span><span class="MathJax_Preview">-x_{n+1}</span><script type="math/tex">-x_{n+1}</script></span>. Hence we have:</p>
+<div>
+<div class="MathJax_Preview">x_{n+1}- x^{\star} =  \frac{f^{\prime\prime}(\xi_n)}{{f^{\prime}(x_n)}} \frac{(x^{\star} - x_n)^2}{2}</div>
+<script type="math/tex; mode=display">x_{n+1}- x^{\star} =  \frac{f^{\prime\prime}(\xi_n)}{{f^{\prime}(x_n)}} \frac{(x^{\star} - x_n)^2}{2}</script>
+</div>
+<p>In the limit, since <span><span class="MathJax_Preview">\xi_n\rightarrow x^{\star}</span><script type="math/tex">\xi_n\rightarrow x^{\star}</script></span>, it yields:</p>
+<div>
+<div class="MathJax_Preview">x_{n+1} - x^{\star} \sim \frac{ f^{\prime\prime} (x^{\star}) }{2 f^{\prime}(x^{\star})  } (x_n - x^{\star})^2</div>
+<script type="math/tex; mode=display">x_{n+1} - x^{\star} \sim \frac{ f^{\prime\prime} (x^{\star}) }{2 f^{\prime}(x^{\star})  } (x_n - x^{\star})^2</script>
+</div>
+<p>This corresponds to quadratic convergence.</p>
+<hr />
+<h3 id="quasi-newton">Quasi-Newton</h3>
+<ul>
+<li>
+<p>What if we can't compute <span><span class="MathJax_Preview">f^{\prime}</span><script type="math/tex">f^{\prime}</script></span> or it is expensive to do so?</p>
+<ul>
+<li>Idea: try to approximate <span><span class="MathJax_Preview">f^{\prime}(x_n)</span><script type="math/tex">f^{\prime}(x_n)</script></span> from the last iterates</li>
+</ul>
+</li>
+<li>
+<p>secant method: <span><span class="MathJax_Preview">f^{\prime}(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}</span><script type="math/tex">f^{\prime}(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}</script></span>
+<span><span class="MathJax_Preview">x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}</span><script type="math/tex">x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}</script></span></p>
+<ul>
+<li>requires two initial guesses: <span><span class="MathJax_Preview">x_1</span><script type="math/tex">x_1</script></span> and <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span></li>
+<li>superlinear convergence: <span><span class="MathJax_Preview">\lim \frac{x_t-x^{\star}}{x_{t-1}-x^{\star}}\rightarrow 0</span><script type="math/tex">\lim \frac{x_t-x^{\star}}{x_{t-1}-x^{\star}}\rightarrow 0</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="limits-of-newtons-method">Limits of Newton's method</h3>
+<ul>
+<li>How could Newton method fail?<ul>
+<li>bad guess<ul>
+<li>-&gt; start with a better guess</li>
+</ul>
+</li>
+<li>overshoot<ul>
+<li>-&gt; dampen the update (problem: much slower)</li>
+<li>-&gt; backtrack</li>
+</ul>
+</li>
+<li>stationary point  <ul>
+<li>-&gt; if root of multiplicity <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> try  <span><span class="MathJax_Preview">x_{n+1} = x_n- m f(x_n)/f^{\prime}(x_n)</span><script type="math/tex">x_{n+1} = x_n- m f(x_n)/f^{\prime}(x_n)</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>(TODO: some graphs of failed Newton convergence)</p>
+<hr />
+<h3 id="backtracking">Backtracking</h3>
+<ul>
+<li>Simple idea:<ul>
+<li>at stage <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> given <span><span class="MathJax_Preview">f(x_n)</span><script type="math/tex">f(x_n)</script></span> compute Newton step <span><span class="MathJax_Preview">\Delta_n=-f(x_n)/f^{\prime}(x_n)</span><script type="math/tex">\Delta_n=-f(x_n)/f^{\prime}(x_n)</script></span></li>
+<li>find the smallest <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> such that <span><span class="MathJax_Preview">|f(x_n-\Delta/2^k)|&lt;|f(x_n)|</span><script type="math/tex">|f(x_n-\Delta/2^k)|<|f(x_n)|</script></span></li>
+<li>set <span><span class="MathJax_Preview">x_{n+1}=x_n-\Delta/2^k</span><script type="math/tex">x_{n+1}=x_n-\Delta/2^k</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="one-dimensional-minimization">One dimensional minimization</h2>
+<hr />
+<h3 id="golden-section-search">Golden section search</h3>
+<ul>
+<li>Minimize <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> for  <span><span class="MathJax_Preview">x \in [a,b]</span><script type="math/tex">x \in [a,b]</script></span></li>
+<li>
+<p>Choose <span><span class="MathJax_Preview">\Phi \in [0,0.5]</span><script type="math/tex">\Phi \in [0,0.5]</script></span></p>
+</li>
+<li>
+<p>Algorithm:</p>
+<ul>
+<li>start with <span><span class="MathJax_Preview">a_n &lt; b_n</span><script type="math/tex">a_n < b_n</script></span> (initially equal to <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> and <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span></li>
+<li>define <span><span class="MathJax_Preview">c_n = a_n+\Phi(b_n-a_n)</span><script type="math/tex">c_n = a_n+\Phi(b_n-a_n)</script></span> and <span><span class="MathJax_Preview">d_n = a_n+(1-\Phi)(b_n-a_n)</span><script type="math/tex">d_n = a_n+(1-\Phi)(b_n-a_n)</script></span><ul>
+<li>if <span><span class="MathJax_Preview">c_n&lt;d_n</span><script type="math/tex">c_n<d_n</script></span> set <span><span class="MathJax_Preview">a_{n+1},b_{n+1}=a_n, d_n</span><script type="math/tex">a_{n+1},b_{n+1}=a_n, d_n</script></span></li>
+<li>else set <span><span class="MathJax_Preview">a_{n+1}, b_{n+1}= c_n, b_n</span><script type="math/tex">a_{n+1}, b_{n+1}= c_n, b_n</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="golden-section-search-2">Golden section search (2)</h3>
+<ul>
+<li>This is guaranteed to converge to a local minimum</li>
+<li>In each step, the size of the interval is reduced by a factor <span><span class="MathJax_Preview">\Phi</span><script type="math/tex">\Phi</script></span></li>
+<li>
+<p>By choosing <span><span class="MathJax_Preview">\Phi=\frac{\sqrt{5}-1}{2}</span><script type="math/tex">\Phi=\frac{\sqrt{5}-1}{2}</script></span> one can save one evaluation by iteration.</p>
+</li>
+<li>
+<p>Remark that bisection is not enough</p>
+</li>
+</ul>
+<hr />
+<h3 id="gradient-descent">Gradient Descent</h3>
+<ul>
+<li>Minimize <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> for  <span><span class="MathJax_Preview">x \in R</span><script type="math/tex">x \in R</script></span> given initial guess <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span></li>
+<li>Algorithm:<ul>
+<li>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></li>
+<li>compute <span><span class="MathJax_Preview">x_{n+1} = x_n (1-\lambda)- \lambda f^{\prime}(x_n)</span><script type="math/tex">x_{n+1} = x_n (1-\lambda)- \lambda f^{\prime}(x_n)</script></span></li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f^{\prime}(x_n)| &lt; \epsilon</span><script type="math/tex">|f^{\prime}(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="gradient-descent-2">Gradient Descent (2)</h3>
+<ul>
+<li>Uses local information<ul>
+<li>one needs to compute the gradient</li>
+<li>note that gradient at <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> does not provide a better guess for the minimum than <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> itself</li>
+<li>learning speed is crucial</li>
+</ul>
+</li>
+<li>Convergence speed: <strong>linear</strong><ul>
+<li>rate depend on the learning speed</li>
+<li>optimal learning speed? the fastest for which there is convergence</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="newton-raphson-method">Newton-Raphson method</h3>
+<ul>
+<li>
+<p>Minimize <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> for  <span><span class="MathJax_Preview">x \in R</span><script type="math/tex">x \in R</script></span> given initial guess <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span></p>
+</li>
+<li>
+<p>Build a local model of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> around <span><span class="MathJax_Preview">x_0</span><script type="math/tex">x_0</script></span></p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">f(x) = f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} + o(x-x_0)^2</div>
+<script type="math/tex; mode=display">f(x) = f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} + o(x-x_0)^2</script>
+</div>
+<ul>
+<li>According to this model,</li>
+</ul>
+<div>
+<div class="MathJax_Preview"> f(x{\star}) = min_x f(x)\iff \frac{d}{d x} \left[ f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} \right] = 0</div>
+<script type="math/tex; mode=display"> f(x{\star}) = min_x f(x)\iff \frac{d}{d x} \left[ f(x_0) + f^{\prime}(x_0)(x-x_0) + f^{\prime\prime}(x_0)\frac{(x-x_0)^2}{2} \right] = 0</script>
+</div>
+<p>which yields: <span><span class="MathJax_Preview">x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}</span><script type="math/tex">x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}</script></span></p>
+<hr />
+<h3 id="newton-raphson-algorithm-2">Newton-Raphson Algorithm (2)</h3>
+<ul>
+<li>
+<p>Algorithm:</p>
+<ul>
+<li>
+<p>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></p>
+</li>
+<li>
+<p>compute <span><span class="MathJax_Preview">x_{n+1} = x_n-\frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}</span><script type="math/tex">x_{n+1} = x_n-\frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}</script></span></p>
+</li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f^{\prime}(x_n)| &lt; \epsilon</span><script type="math/tex">|f^{\prime}(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+<li>
+<p>Convergence: <em>quadratic</em></p>
+</li>
+</ul>
+<hr />
+<h2 id="unconstrained-multidimensional-optimization">Unconstrained Multidimensional Optimization</h2>
+<hr />
+<h3 id="unconstrained-problems">Unconstrained problems</h3>
+<ul>
+<li>
+<p>Minimize <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> for  <span><span class="MathJax_Preview">x \in R^n</span><script type="math/tex">x \in R^n</script></span> given initial guess <span><span class="MathJax_Preview">x_0 \in R^n</span><script type="math/tex">x_0 \in R^n</script></span></p>
+</li>
+<li>
+<p>Many intuitions from the 1d case, still apply</p>
+<ul>
+<li>replace derivative by gradient, jacobian and hessian</li>
+<li>recall that matrix multiplication is not commutative</li>
+</ul>
+</li>
+<li>Some specific problems:<ul>
+<li>update speed can be specific to each dimension</li>
+<li>saddle-point issues (for minimization)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="quick-terminology">Quick terminology</h3>
+<p>Function <span><span class="MathJax_Preview">f: R^p \rightarrow R^q</span><script type="math/tex">f: R^p \rightarrow R^q</script></span></p>
+<ul>
+<li><em>Jacobian</em>: <span><span class="MathJax_Preview">J(x)</span><script type="math/tex">J(x)</script></span> or <span><span class="MathJax_Preview">f^{\prime}\_x(x)</span><script type="math/tex">f^{\prime}\_x(x)</script></span>, <span><span class="MathJax_Preview">p\times q</span><script type="math/tex">p\times q</script></span> matrix such that:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">J(x)_ {ij} = \frac{\partial f(x)_ i} {\partial x_j}</div>
+<script type="math/tex; mode=display">J(x)_ {ij} = \frac{\partial f(x)_ i} {\partial x_j}</script>
+</div>
+<ul>
+<li><em>Gradient</em>: <span><span class="MathJax_Preview">\nabla J(x)</span><script type="math/tex">\nabla J(x)</script></span>, gradient when <span><span class="MathJax_Preview">q=1</span><script type="math/tex">q=1</script></span></li>
+<li><em>Hessian</em>: denoted by <span><span class="MathJax_Preview">H(x)</span><script type="math/tex">H(x)</script></span> or <span><span class="MathJax_Preview">f^{\prime\prime}\_{xx}(x)</span><script type="math/tex">f^{\prime\prime}\_{xx}(x)</script></span> when <span><span class="MathJax_Preview">q=1</span><script type="math/tex">q=1</script></span>:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">H(x)_ {jk} = \frac{\partial f(x)}{\partial x_ j\partial x_k}</div>
+<script type="math/tex; mode=display">H(x)_ {jk} = \frac{\partial f(x)}{\partial x_ j\partial x_k}</script>
+</div>
+<ul>
+<li>In the following explanations, <span><span class="MathJax_Preview">|x|</span><script type="math/tex">|x|</script></span> denotes the supremum norm, but most of the
+following explanations also work with other norms.</li>
+</ul>
+<hr />
+<h2 id="unconstrained-multidimensional-root-finding">Unconstrained Multidimensional Root-Finding</h2>
+<hr />
+<h3 id="multidimensional-newton-raphson">Multidimensional Newton-Raphson</h3>
+<ul>
+<li>
+<p>Algorithm:</p>
+<ul>
+<li>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></li>
+<li>compute <span><span class="MathJax_Preview">x_{n+1} = x_n- J(x_{n})^{-1}f(x_n)=f^{\text{newton}}(x_n)</span><script type="math/tex">x_{n+1} = x_n- J(x_{n})^{-1}f(x_n)=f^{\text{newton}}(x_n)</script></span></li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f(x_n)| &lt; \epsilon</span><script type="math/tex">|f(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+<li>
+<p>Convergence: <strong>quadratic</strong></p>
+</li>
+</ul>
+<hr />
+<h3 id="multidimensional-newton-minimization-2">Multidimensional Newton Minimization (2)</h3>
+<ul>
+<li>what matters is the computation of the step <span><span class="MathJax_Preview">\Delta_n = {\color{\red}{J(x_{n})^{-1}}} f(x_n)</span><script type="math/tex">\Delta_n = {\color{\red}{J(x_{n})^{-1}}} f(x_n)</script></span></li>
+<li>don't compute <span><span class="MathJax_Preview">J(x_n)^{-1}</span><script type="math/tex">J(x_n)^{-1}</script></span><ul>
+<li>it takes less operations to compute <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> in <span><span class="MathJax_Preview">AX=Y</span><script type="math/tex">AX=Y</script></span> than <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span> then <span><span class="MathJax_Preview">A^{-1}Y</span><script type="math/tex">A^{-1}Y</script></span></li>
+</ul>
+</li>
+<li>strategies to improve convergence:<ul>
+<li><em>dampening</em>: <span><span class="MathJax_Preview">x_n = (1-\lambda)x^{n-1} - \lambda \Delta_n</span><script type="math/tex">x_n = (1-\lambda)x^{n-1} - \lambda \Delta_n</script></span></li>
+<li><em>backtracking</em>: choose <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> such that <span><span class="MathJax_Preview">|f(x_n-2^{-k}\Delta_n)|</span><script type="math/tex">|f(x_n-2^{-k}\Delta_n)|</script></span>&lt;<span><span class="MathJax_Preview">|f(x_{n-1})|</span><script type="math/tex">|f(x_{n-1})|</script></span></li>
+<li><em>linesearch</em>: choose <span><span class="MathJax_Preview">\lambda\in[0,1]</span><script type="math/tex">\lambda\in[0,1]</script></span> so that <span><span class="MathJax_Preview">|f(x_n-\lambda\Delta_n)|</span><script type="math/tex">|f(x_n-\lambda\Delta_n)|</script></span> is minimal</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="unconstrained-multidimensional-minimization">Unconstrained Multidimensional Minimization</h2>
+<hr />
+<h3 id="multidimensional-gradient-descent">Multidimensional Gradient Descent</h3>
+<ul>
+<li>Minimize <span><span class="MathJax_Preview">f(x) \in R</span><script type="math/tex">f(x) \in R</script></span> for  <span><span class="MathJax_Preview">x \in R^n</span><script type="math/tex">x \in R^n</script></span> given  <span><span class="MathJax_Preview">x_0 \in R^n</span><script type="math/tex">x_0 \in R^n</script></span></li>
+<li>Algorithm<ul>
+<li>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></li>
+<li>
+<div>
+<div class="MathJax_Preview">x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)</div>
+<script type="math/tex; mode=display">x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)</script>
+</div>
+</li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f(x_n)| &lt; \epsilon</span><script type="math/tex">|f(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+<li>Comments:<ul>
+<li>lots of variants</li>
+<li>automatic differentiation software makes gradient easy to compute</li>
+<li>convergence is typically <strong>linear</strong></li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><img alt="Contours" src="../contours_evaluation_optimizers.gif" /></p>
+<hr />
+<h3 id="multidimensional-newton-minimization-1">Multidimensional Newton Minimization (1)</h3>
+<ul>
+<li>Algorithm:<ul>
+<li>start with <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span></li>
+<li>compute <span><span class="MathJax_Preview">x_{n+1} = x_n-{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)'}</span><script type="math/tex">x_{n+1} = x_n-{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)'}</script></span></li>
+<li>stop if <span><span class="MathJax_Preview">|x_{n+1}-x_n|&lt;\eta</span><script type="math/tex">|x_{n+1}-x_n|<\eta</script></span> or <span><span class="MathJax_Preview">|f(x_n)| &lt; \epsilon</span><script type="math/tex">|f(x_n)| < \epsilon</script></span></li>
+</ul>
+</li>
+<li>Convergence: <strong>quadratic</strong></li>
+<li>Problem:<ul>
+<li><span><span class="MathJax_Preview">H(x_{n})</span><script type="math/tex">H(x_{n})</script></span> hard to compute efficiently</li>
+<li>rather unstable</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="multidimensional-newton-minimization-2_1">Multidimensional Newton Minimization (2)</h3>
+<p>Intuition for the size of the Newton step : <span><span class="MathJax_Preview">{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)'}</span><script type="math/tex">{\color{\red}{H(x_{n})^{-1}}}\color{\green}{ J(x_n)'}</script></span>
+Suppose <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> is known and that we have derivative information <span><span class="MathJax_Preview">J(x_n) \in R</span><script type="math/tex">J(x_n) \in R</script></span> and <span><span class="MathJax_Preview">H(x_n) \in R^p</span><script type="math/tex">H(x_n) \in R^p</script></span> where p (such that <span><span class="MathJax_Preview">x_n \in R^p</span><script type="math/tex">x_n \in R^p</script></span>). We can write a second order taylor expansion of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> around <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> as follows:</p>
+<div>
+<div class="MathJax_Preview">f(x^{\star}) = f(x_n) + \underbrace{f^{\prime}(x_n)}_{\nabla_n = J_n \in R^p} . (x^{\star} - x_n) + \frac{1}{2}(x^{\star} - x_n)' \underbrace{f^{\prime\prime}(x_n)}_{H_n \in R^p \times R^p} (x^{\star} - x_n) + o(x^{\star} - x_n)</div>
+<script type="math/tex; mode=display">f(x^{\star}) = f(x_n) + \underbrace{f^{\prime}(x_n)}_{\nabla_n = J_n \in R^p} . (x^{\star} - x_n) + \frac{1}{2}(x^{\star} - x_n)' \underbrace{f^{\prime\prime}(x_n)}_{H_n \in R^p \times R^p} (x^{\star} - x_n) + o(x^{\star} - x_n)</script>
+</div>
+<p>The expression on the right is a quadratic form (the hessian <span><span class="MathJax_Preview">H_n</span><script type="math/tex">H_n</script></span> is symmetric). If we consider it is a good approximation of <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> we can minimize it w.r.t. <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span> to find a suitable guess.</p>
+<p>The derivative operator of the right hand side (without the <span><span class="MathJax_Preview">o()</span><script type="math/tex">o()</script></span>) is the linear form:</p>
+<div>
+<div class="MathJax_Preview">D_n = J_n + H_n (x^{\star} - x_n)</div>
+<script type="math/tex; mode=display">D_n = J_n + H_n (x^{\star} - x_n)</script>
+</div>
+<details class="note"><summary>Note</summary><p>The Frechet Derivative of a function <span><span class="MathJax_Preview">f: R^p\rightarrow R^q</span><script type="math/tex">f: R^p\rightarrow R^q</script></span> at <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is a linear operator <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> such that <span><span class="MathJax_Preview">\lim_{|x|\rightarrow 0} \frac{|f(x+dx) - f(x) - L.x| } {|dx|} = 0</span><script type="math/tex">\lim_{|x|\rightarrow 0} \frac{|f(x+dx) - f(x) - L.x| } {|dx|} = 0</script></span>.</p>
+<p>Since <span><span class="MathJax_Preview">J_n (x+dx) = J_n x + J_n dx</span><script type="math/tex">J_n (x+dx) = J_n x + J_n dx</script></span> then the differential of <span><span class="MathJax_Preview">x \rightarrow J_n x</span><script type="math/tex">x \rightarrow J_n x</script></span> is trivially <span><span class="MathJax_Preview">J_n</span><script type="math/tex">J_n</script></span>.</p>
+<p>For the hessian we have <span><span class="MathJax_Preview">q(x+dx) = (x+dx-x_n)'H_n(x+dx-x_n) = (x-x_n)' H_n (x-x_n) + (x-x_n)' H_n dx + dx' H_n (x-x_n)' + dx' H_n dx</span><script type="math/tex">q(x+dx) = (x+dx-x_n)'H_n(x+dx-x_n) = (x-x_n)' H_n (x-x_n) + (x-x_n)' H_n dx + dx' H_n (x-x_n)' + dx' H_n dx</script></span>.
+Since <span><span class="MathJax_Preview">|dx'H_n dx|\leq M ||H_n|| | dx| ^2</span><script type="math/tex">|dx'H_n dx|\leq M ||H_n|| | dx| ^2</script></span> for some constant <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> depending on the exact norms we choose, we have thus proven that the derivative of <span><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> is the linear operator <span><span class="MathJax_Preview">L: dx \rightarrow  (x-x_n)' H_n dx + dx' H_n (x-x_n)'</span><script type="math/tex">L: dx \rightarrow  (x-x_n)' H_n dx + dx' H_n (x-x_n)'</script></span> (it is trivial to check it is linear). By chance since <span><span class="MathJax_Preview">dx' H_n (x-x_n)'</span><script type="math/tex">dx' H_n (x-x_n)'</script></span> belongs to <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> it is equal to its transpose which can be rewritten as  <span><span class="MathJax_Preview">dx' (x-x_n)</span><script type="math/tex">dx' (x-x_n)</script></span>. Hence we can say that the differenatial operator is <span><span class="MathJax_Preview">L.dx = 2 dx' H_n (x-x_n)</span><script type="math/tex">L.dx = 2 dx' H_n (x-x_n)</script></span> which is a simple left matrix multiplication.</p>
+</details>
+<p>When <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is minimized any deviation <span><span class="MathJax_Preview">dx \in R^p</span><script type="math/tex">dx \in R^p</script></span> must satisfy <span><span class="MathJax_Preview">D_n.dx=0</span><script type="math/tex">D_n.dx=0</script></span>. This is true if <span><span class="MathJax_Preview">D_n=0</span><script type="math/tex">D_n=0</script></span> that is:</p>
+<div>
+<div class="MathJax_Preview">x^{\star} = x_n - {H_n}^{-1} J_n</div>
+<script type="math/tex; mode=display">x^{\star} = x_n - {H_n}^{-1} J_n</script>
+</div>
+<hr />
+<h3 id="quasi-newton-method-for-multidimensional-minimization">Quasi-Newton method for multidimensional minimization</h3>
+<ul>
+<li>Recall the secant method: <span><span class="MathJax_Preview">f(x_{n-1})</span><script type="math/tex">f(x_{n-1})</script></span> and <span><span class="MathJax_Preview">f(x_{n-2})</span><script type="math/tex">f(x_{n-2})</script></span> are used to approximate <span><span class="MathJax_Preview">f^{\prime}(x_{n-2})</span><script type="math/tex">f^{\prime}(x_{n-2})</script></span>.<ul>
+<li>Intuitively, <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> iterates would be needed to approximate a hessian of size <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>....</li>
+</ul>
+</li>
+<li>Broyden method: takes <span><span class="MathJax_Preview">2 n</span><script type="math/tex">2 n</script></span> steps to solve a linear problem of size <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span></li>
+<li>uses past information incrementally</li>
+</ul>
+<hr />
+<h3 id="quasi-newton-method-for-multidimensional-minimization_1">Quasi-Newton method for multidimensional minimization</h3>
+<p>Consider the approximation:</p>
+<div>
+<div class="MathJax_Preview">f(x_n)-f(x_{n-1}) \approx J(x_n) (x_n - x_{n-1})</div>
+<script type="math/tex; mode=display">f(x_n)-f(x_{n-1}) \approx J(x_n) (x_n - x_{n-1})</script>
+</div>
+<ul>
+<li><span><span class="MathJax_Preview">J(x_n)</span><script type="math/tex">J(x_n)</script></span> is unknown and cannot be determined directly as in the secant method.</li>
+<li>idea: <span><span class="MathJax_Preview">J(x_n)</span><script type="math/tex">J(x_n)</script></span> as close as possible to <span><span class="MathJax_Preview">J(x_{n-1})</span><script type="math/tex">J(x_{n-1})</script></span> while solving the secant equation</li>
+<li>formula:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">J_n = J_{n-1} + \frac{(f(x_n)-f(x_{n-1})) - J_{n-1}(x_n-x_{n-1})}{||x_n-x_{n-1}||^2}(x_n-x_{n-1})^{\prime}</div>
+<script type="math/tex; mode=display">J_n = J_{n-1} + \frac{(f(x_n)-f(x_{n-1})) - J_{n-1}(x_n-x_{n-1})}{||x_n-x_{n-1}||^2}(x_n-x_{n-1})^{\prime}</script>
+</div>
+<hr />
+<h3 id="gauss-newton-minimization">Gauss-Newton Minimization</h3>
+<ul>
+<li>
+<p>Restrict to least-square minimization: $min_x \sum_i f(x)_i^2 \in R $</p>
+</li>
+<li>
+<p>Then up to first order, <span><span class="MathJax_Preview">H(x_n)\approx J(x_n)^{\prime}J(x_n)</span><script type="math/tex">H(x_n)\approx J(x_n)^{\prime}J(x_n)</script></span></p>
+</li>
+<li>
+<p>Use the step: <span><span class="MathJax_Preview">{J(x_n)^{\prime}J(x_n)}^{-1}\color{\green}{ J(x_n)}</span><script type="math/tex">{J(x_n)^{\prime}J(x_n)}^{-1}\color{\green}{ J(x_n)}</script></span></p>
+</li>
+<li>
+<p>Convergence:</p>
+<ul>
+<li>can be <strong>quadratic</strong> at best</li>
+<li>linear in general</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="levenberg-marquardt">Levenberg-Marquardt</h3>
+<ul>
+<li>
+<p>Least-square minimization: $min_x \sum_i f(x)_i^2 \in R $</p>
+</li>
+<li>
+<p>replace <span><span class="MathJax_Preview">{J(x_n)^{\prime}J(x_n)}^{-1}</span><script type="math/tex">{J(x_n)^{\prime}J(x_n)}^{-1}</script></span> by <span><span class="MathJax_Preview">{J(x_n)^{\prime}J(x_n)}^{-1} + μ I</span><script type="math/tex">{J(x_n)^{\prime}J(x_n)}^{-1} + μ I</script></span></p>
+<ul>
+<li>adjust <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> depending on progress</li>
+</ul>
+</li>
+<li>uses only gradient information like Gauss-Newton</li>
+<li>equivalent to Gauss-Newton close to the solution</li>
+<li>equivalent to Gradient far from solution</li>
+</ul>
+<hr />
+<h2 id="constrained-optimization-and-complementarity-conditions">Constrained optimization and complementarity conditions</h2>
+<hr />
+<h3 id="consumption-optimization">Consumption optimization</h3>
+<p>Consider the optimization problem:</p>
+<div>
+<div class="MathJax_Preview">\max U(x_1, x_2)</div>
+<script type="math/tex; mode=display">\max U(x_1, x_2)</script>
+</div>
+<p>under the constraint <span><span class="MathJax_Preview">p_1 x_1 + p_2 x_2 \leq B</span><script type="math/tex">p_1 x_1 + p_2 x_2 \leq B</script></span></p>
+<p>where <span><span class="MathJax_Preview">U(.)</span><script type="math/tex">U(.)</script></span>, <span><span class="MathJax_Preview">p_1</span><script type="math/tex">p_1</script></span>, <span><span class="MathJax_Preview">p_2</span><script type="math/tex">p_2</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> are given.</p>
+<p>How do you find a solution by hand?</p>
+<hr />
+<h3 id="consumption-optimization-1">Consumption optimization (1)</h3>
+<ul>
+<li>Compute by hand</li>
+<li>
+<p>Easy: since the budget constraint must be binding, get rid of it by stating <span><span class="MathJax_Preview">x_2 = B - p_1 x_1</span><script type="math/tex">x_2 = B - p_1 x_1</script></span>. Then maximize in <span><span class="MathJax_Preview">x_1</span><script type="math/tex">x_1</script></span>, <span><span class="MathJax_Preview">U(x_1, B - p_1 x_1)</span><script type="math/tex">U(x_1, B - p_1 x_1)</script></span> using the first order conditions.</p>
+</li>
+<li>
+<p>It works but:</p>
+<ul>
+<li>breaks symmetry between the two goods</li>
+<li>what if there are other constraints: <span><span class="MathJax_Preview">x_1\geq \underline{x}</span><script type="math/tex">x_1\geq \underline{x}</script></span>?</li>
+<li>what if constraints are not binding?</li>
+<li>is there a better way to solve this problem?</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="consumption-optimization-2">Consumption optimization (2)</h3>
+<ul>
+<li>Another method, which keeps the symmetry. Constraint is binding, trying to minimize along the budget line yields an implicit relation between <span><span class="MathJax_Preview">d x_1</span><script type="math/tex">d x_1</script></span> and <span><span class="MathJax_Preview">d x_2</span><script type="math/tex">d x_2</script></span></li>
+</ul>
+<div>
+<div class="MathJax_Preview">p_1 d {x_1} + p_2 d {x_2} = 0</div>
+<script type="math/tex; mode=display">p_1 d {x_1} + p_2 d {x_2} = 0</script>
+</div>
+<ul>
+<li>At the optimal:
+<span><span class="MathJax_Preview">U^{\prime}\_{x_1}(x_1, x_2)d {x_1} + U^{\prime}\_{x_2}(x_1, x_2)d {x_2} = 0</span><script type="math/tex">U^{\prime}\_{x_1}(x_1, x_2)d {x_1} + U^{\prime}\_{x_2}(x_1, x_2)d {x_2} = 0</script></span></li>
+<li>Eliminate <span><span class="MathJax_Preview">d {x_1}</span><script type="math/tex">d {x_1}</script></span> and <span><span class="MathJax_Preview">d {x_2}</span><script type="math/tex">d {x_2}</script></span> to get <em>one</em> condition which characterizes optimal choices for all possible budgets.
+Combine with the budget constraint to get a <em>second</em> condition.</li>
+</ul>
+<hr />
+<h3 id="penalty-function">Penalty function</h3>
+<ul>
+<li>Take a penalty function <span><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span> such that <span><span class="MathJax_Preview">p(x)=K&gt;0</span><script type="math/tex">p(x)=K>0</script></span> if <span><span class="MathJax_Preview">x&gt;0</span><script type="math/tex">x>0</script></span> and <span><span class="MathJax_Preview">p(x)=0</span><script type="math/tex">p(x)=0</script></span> if <span><span class="MathJax_Preview">x \leq 0</span><script type="math/tex">x \leq 0</script></span>. Maximize: <span><span class="MathJax_Preview">V(x_1, x_2) = U(x_1, x_2) - p( p_1 x_1 + p_2 x_2 - B)</span><script type="math/tex">V(x_1, x_2) = U(x_1, x_2) - p( p_1 x_1 + p_2 x_2 - B)</script></span></li>
+<li>Clearly, <span><span class="MathJax_Preview">\min U \iff \min V</span><script type="math/tex">\min U \iff \min V</script></span></li>
+<li>Problem: <span><span class="MathJax_Preview">\nabla V</span><script type="math/tex">\nabla V</script></span> is always equal to <span><span class="MathJax_Preview">\nabla U</span><script type="math/tex">\nabla U</script></span>.<ul>
+<li>Solution: use a smooth solution function like <span><span class="MathJax_Preview">p(x) = x^2</span><script type="math/tex">p(x) = x^2</script></span></li>
+</ul>
+</li>
+<li>Problem: distorts optimizationt<ul>
+<li>Solution: adjust weight of barrier and minimize <span><span class="MathJax_Preview">U(x_1, x_2) - \kappa p(x)</span><script type="math/tex">U(x_1, x_2) - \kappa p(x)</script></span></li>
+</ul>
+</li>
+<li>Possible but hard to choose the weights/constraints.</li>
+</ul>
+<hr />
+<h3 id="penalty-function_1">Penalty function</h3>
+<p>Another idea: is there a canonical way to choose <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> such that at the minimum it is equivalent to minimize the original problem under constraint or to minimize</p>
+<div>
+<div class="MathJax_Preview">V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)</div>
+<script type="math/tex; mode=display">V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)</script>
+</div>
+<p>Clearly, when the constraint is not binding we must have <span><span class="MathJax_Preview">\lambda=0</span><script type="math/tex">\lambda=0</script></span>. What should be the value of <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> when the constraint is binding ?</p>
+<hr />
+<h3 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker conditions</h3>
+<ul>
+<li>If <span><span class="MathJax_Preview">(x^{\star},y^{\star})</span><script type="math/tex">(x^{\star},y^{\star})</script></span> is optimal there exists <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> such that:<ul>
+<li><span><span class="MathJax_Preview">(x^{\star},y^{\star})</span><script type="math/tex">(x^{\star},y^{\star})</script></span> maximizes <span><span class="MathJax_Preview">U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)</span><script type="math/tex">U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)</script></span></li>
+<li><span><span class="MathJax_Preview">\lambda \geq 0</span><script type="math/tex">\lambda \geq 0</script></span></li>
+<li><span><span class="MathJax_Preview">\lambda  (p_1 x_1 + p_2 x_2 - B) = 0</span><script type="math/tex">\lambda  (p_1 x_1 + p_2 x_2 - B) = 0</script></span></li>
+</ul>
+</li>
+<li>The two latest conditions are called "complementarity" or "slackness" conditions<ul>
+<li>they are equivalent to <span><span class="MathJax_Preview">\min(\lambda, p_1 x_1 + p_2 x_2 - B)=0</span><script type="math/tex">\min(\lambda, p_1 x_1 + p_2 x_2 - B)=0</script></span></li>
+<li>we denote <span><span class="MathJax_Preview">\lambda \geq 0 \perp p_1 x_1 + p_2 x_2 - B \geq 0</span><script type="math/tex">\lambda \geq 0 \perp p_1 x_1 + p_2 x_2 - B \geq 0</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> can be interpreted as the welfare gain of relaxing the constraint.</li>
+</ul>
+<hr />
+<h3 id="karush-kuhn-tucker-conditions_1">Karush-Kuhn-Tucker conditions</h3>
+<ul>
+<li>We can get first order conditions that factor in the constraints:<ul>
+<li><span><span class="MathJax_Preview">U^{\prime}_x - \lambda p_1 = 0</span><script type="math/tex">U^{\prime}_x - \lambda p_1 = 0</script></span></li>
+<li><span><span class="MathJax_Preview">U^{\prime}_y - \lambda p_2 = 0</span><script type="math/tex">U^{\prime}_y - \lambda p_2 = 0</script></span></li>
+<li><span><span class="MathJax_Preview">\lambda \perp p_1 x_1 + p_2 x_2 - B</span><script type="math/tex">\lambda \perp p_1 x_1 + p_2 x_2 - B</script></span></li>
+</ul>
+</li>
+<li>It is now a nonlinear system of equations with complementarities (NCP)<ul>
+<li>there are specific solution methods to deal with it</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="solution-strategies-for-ncp-problems">Solution strategies for NCP problems</h3>
+<ul>
+<li>General formulation for vector-valued functions <span><span class="MathJax_Preview">f(x)\geq 0 \perp g(x)\geq 0</span><script type="math/tex">f(x)\geq 0 \perp g(x)\geq 0</script></span> means <span><span class="MathJax_Preview">\forall i, f_i(x)\geq 0 \perp g_i(x)\geq 0</span><script type="math/tex">\forall i, f_i(x)\geq 0 \perp g_i(x)\geq 0</script></span>  </li>
+<li>
+<p>NCP do not necessarily arise from a single optimization problem</p>
+</li>
+<li>
+<p>There are robust (commercial) solvers for NCP problems (PATH, Knitro) fo that</p>
+</li>
+<li>
+<p>How do we solve it numerically?</p>
+<ul>
+<li>assume constraint is binding then non-binding then check which one is good<ul>
+<li>OK if not too many constraints</li>
+</ul>
+</li>
+<li>reformulate it as a smooth problem</li>
+<li>approximate the system by a series of linear complementarities problems (LCP)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="smooth-method">Smooth method</h3>
+<ul>
+<li>Consider the <em>Fisher-Burmeister</em> function <span><span class="MathJax_Preview">\phi(a,b) = a+b-\sqrt(a^2+b^2)</span><script type="math/tex">\phi(a,b) = a+b-\sqrt(a^2+b^2)</script></span>. It is infinitely differentiable, except at <span><span class="MathJax_Preview">(0,0)</span><script type="math/tex">(0,0)</script></span></li>
+<li>Show that <span><span class="MathJax_Preview">\phi(a,b) = 0 \iff \min(a,b)=0</span><script type="math/tex">\phi(a,b) = 0 \iff \min(a,b)=0</script></span></li>
+<li>After substitution in the original system one can a regular non-linear solver</li>
+<li>fun fact: the formulation with a <span><span class="MathJax_Preview">\min</span><script type="math/tex">\min</script></span> is nonsmooth but also works quite often</li>
+</ul>
+<hr />
+<h3 id="pervasiveness-of-complementarity-problems">Pervasiveness of complementarity problems</h3>
+<ul>
+<li>We've seen NCP problems arise naturally from constrained optimization</li>
+<li>Some NCP problems don't come from a single optimization</li>
+</ul>
+<hr />
+<h3 id="trade-in-an-endowment-economy">Trade in an endowment economy</h3>
+<ul>
+<li>Agent 1 (resp 2) is endowed with quantity <span><span class="MathJax_Preview">y_A</span><script type="math/tex">y_A</script></span> of good <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and quantity <span><span class="MathJax_Preview">y_B</span><script type="math/tex">y_B</script></span> of good <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span></li>
+<li>both agents have the same preferences <span><span class="MathJax_Preview">U(x_B, y_B)</span><script type="math/tex">U(x_B, y_B)</script></span> over the two goods</li>
+<li>they can trade good <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> at price 1 and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> at price <span><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span></li>
+<li>write the equations characterizing the equilibrium prices and quantities such that the market clear and budget constraints are satisfied</li>
+</ul>
+<hr />
+<h2 id="practicalities">Practicalities</h2>
+<hr />
+<h3 id="optimisation-libraries">Optimisation libraries</h3>
+<ul>
+<li>Robust optimization code is contained in the following libraries:<ul>
+<li>Roots.jl: one-dimensional root finding</li>
+<li>NLSolve.jl: multidimensional root finding (+complementarities)</li>
+<li>Optim.jl: minimization</li>
+</ul>
+</li>
+<li>The two latter libraries have a somewhat peculiar API, but it's worth absorbing it.</li>
+</ul>
+<hr />
+<h3 id="how-do-you-compute-derivatives">How do you compute derivatives?</h3>
+<p>Several methods to to compute derivatives:</p>
+<ul>
+<li>by hand<ul>
+<li>++ full control</li>
+<li>-- error prone</li>
+</ul>
+</li>
+<li>finite differences (<code>FiniteDifferences.jl</code>, <code>FiniteDiff.jl</code>)<ul>
+<li>++ works for any function</li>
+<li>-- possibly inacurate</li>
+</ul>
+</li>
+<li>symbolic differentiation (<code>Calculus.jl</code>,  <code>SymEngine.jl</code>)<ul>
+<li>++ only for mathematical expression</li>
+<li>-- can produce instable formulas</li>
+</ul>
+</li>
+<li>automatic differentiation (<code>JuliaDiff.jl</code>, <code>Zygote.jl</code>)<ul>
+<li>++ differentiate any code (even loops or conditional)</li>
+<li>-- can generate inefficient code</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="finite-differences">Finite differences</h3>
+<ul>
+<li>
+<p>Basic: take <span><span class="MathJax_Preview">\epsilon&gt;0</span><script type="math/tex">\epsilon>0</script></span> compute <span><span class="MathJax_Preview">\frac{f(x+\epsilon)-f(x)}{\epsilon}</span><script type="math/tex">\frac{f(x+\epsilon)-f(x)}{\epsilon}</script></span></p>
+</li>
+<li>
+<p>For <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> small enough it produces an approximation of <span><span class="MathJax_Preview">f^{\prime}</span><script type="math/tex">f^{\prime}</script></span></p>
+</li>
+<li>
+<p>Typically choose <span><span class="MathJax_Preview">\epsilon=sqrt(eps)</span><script type="math/tex">\epsilon=sqrt(eps)</script></span> where epsilon is machine precision</p>
+<ul>
+<li>in Julia: <code>sqrt(eps()) -&gt; 1.4901161193847656e-8</code></li>
+</ul>
+</li>
+<li>
+<p>Precision: second order accuracy in <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span></p>
+</li>
+<li>
+<p>There are much better methods. (stay tuned)</p>
+</li>
+</ul>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../linux_and_git/" title="System" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                System
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../discrete_dynamic_programming/" title="Dynamic Programming" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Dynamic Programming
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

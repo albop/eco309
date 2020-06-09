@@ -1,0 +1,924 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>Homework (2) - ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#homework-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Homework (2)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../linux_and_git/" title="System" class="md-nav__link">
+      System
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../optim_slides/" title="Optimization" class="md-nav__link">
+      Optimization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../discrete_dynamic_programming/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../differentiation/" title="Differentiation" class="md-nav__link">
+      Differentiation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10" checked>
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Homework (2)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Homework (2)" class="md-nav__link md-nav__link--active">
+      Homework (2)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mc-call-job-search-model-with-separation" class="md-nav__link">
+    Mc-Call Job Search Model with Separation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neoclassical-growth-model-2" class="md-nav__link">
+    Neoclassical growth model (2)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mc-call-job-search-model-with-separation" class="md-nav__link">
+    Mc-Call Job Search Model with Separation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neoclassical-growth-model-2" class="md-nav__link">
+    Neoclassical growth model (2)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h1 id="homework-2">Homework 2</h1>
+<p></div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="mc-call-job-search-model-with-separation">Mc-Call Job Search Model with Separation</h2>
+<p>We consider here a very simple job-search model, with separation. Our goal consists in solving this model using a policy iteration algorithm. Some background on the McCall and numerical ideas are discussed on the <a href="https://julia.quantecon.org/mccall_model.html">QuantEcon</a> website.</p>
+<p>There is a single worker who can be either employed ("e") or unemployed ("u") in any period.</p>
+<p>When unemployed, the jobless worker receives unemployment benefits <span><span class="MathJax_Preview">c_t=\alpha&gt;0</span><script type="math/tex">c_t=\alpha>0</script></span> in every period as long as he stays unemployed. He also receives a salary offer <span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> which is drawn from a discrete i.i.d. distribution and takes values <span><span class="MathJax_Preview">w_1, ..., w_K</span><script type="math/tex">w_1, ..., w_K</script></span> with probabilities <span><span class="MathJax_Preview">p_1, ... p_K</span><script type="math/tex">p_1, ... p_K</script></span> respectively.</p>
+<p>When an unemployed worker accepts an offer in period <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>, he gets the salary <span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> and becomes employed. He then keeps his salary <span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> as long as he stays employed (for <span><span class="MathJax_Preview">s\geq t</span><script type="math/tex">s\geq t</script></span>, <span><span class="MathJax_Preview">c_s=w_t</span><script type="math/tex">c_s=w_t</script></span> if <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> is the date at which worker got the current job); in each period he has a probability <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> of becoming unemployed in the next period and remains employed otherwise.</p>
+<p>When a worker receives a given amount <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> his perceived utility is <span><span class="MathJax_Preview">U(x)=\frac{x^{1-\gamma}}{1-\gamma}</span><script type="math/tex">U(x)=\frac{x^{1-\gamma}}{1-\gamma}</script></span> with <span><span class="MathJax_Preview">\gamma&gt;1.0</span><script type="math/tex">\gamma>1.0</script></span>. A worker discounts the future at a rate <span><span class="MathJax_Preview">\beta \in [0,1[</span><script type="math/tex">\beta \in [0,1[</script></span>. As a result, in any period <span><span class="MathJax_Preview">t_0</span><script type="math/tex">t_0</script></span> workers seek to maximize <span><span class="MathJax_Preview">\sum_{t\geq t_0}^{\infty} U(c_t)</span><script type="math/tex">\sum_{t\geq t_0}^{\infty} U(c_t)</script></span>.</p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Define a parameter type <code>Parameter</code>, with fields <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>, <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span>, <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>, <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>, <span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span>, <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>. Create a parameter variable <span><span class="MathJax_Preview">\omega</span><script type="math/tex">\omega</script></span> with <span><span class="MathJax_Preview">\alpha=0.5</span><script type="math/tex">\alpha=0.5</script></span>, <span><span class="MathJax_Preview">\beta=0.96</span><script type="math/tex">\beta=0.96</script></span>, <span><span class="MathJax_Preview">\gamma=4</span><script type="math/tex">\gamma=4</script></span>, <span><span class="MathJax_Preview">K=10</span><script type="math/tex">K=10</script></span>, <span><span class="MathJax_Preview">\sigma=0.6</span><script type="math/tex">\sigma=0.6</script></span>, <span><span class="MathJax_Preview">\lambda=0.015</span><script type="math/tex">\lambda=0.015</script></span></strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>What is the uniform distribution, whose mean is 1 and standard deviation is <span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span>? Write a function <code>discrete_uniform(σ::Float64, K::Int64)::Tuple{Vector{Float64} Vector{Float64}}</code> to discretize it, using <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> points. The function should return two vectors <code>w</code> and <code>p</code> of floats of the same size <code>K</code>. Check the results satisfy the right conditions (uniformity, standard deviation).</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<p>The optimal decision of a worker is characterized by two value functions: <span><span class="MathJax_Preview">V^E(w)</span><script type="math/tex">V^E(w)</script></span> is the value of being employed at wage <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> and <span><span class="MathJax_Preview">V^U(w)</span><script type="math/tex">V^U(w)</script></span> the value of being unemployed, while receiving job offer <span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span>. In Julia, both <span><span class="MathJax_Preview">V^U</span><script type="math/tex">V^U</script></span> and <span><span class="MathJax_Preview">V^E</span><script type="math/tex">V^E</script></span> will be represented by arrays <code>V_U</code> and <code>V_E</code> of size <code>K</code>.</p>
+<p>A policy <code>g(w)</code> is a binary choice in the unemployed state: accept or reject an offer <span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span>. It will then naturally be represented by a boolean array (type <code>zeros(Bool, K)</code> to initialize one).
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Given a policy <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>, write down the recursive equations which defines the corresponding value functions <span><span class="MathJax_Preview">V^{U,g}(w)</span><script type="math/tex">V^{U,g}(w)</script></span> and <span><span class="MathJax_Preview">V^{E,g}(w)</span><script type="math/tex">V^{E,g}(w)</script></span>.</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Write a function which takes a guess <span><span class="MathJax_Preview">V^{U,g}(w)</span><script type="math/tex">V^{U,g}(w)</script></span> and <span><span class="MathJax_Preview">V^{E,g}(w)</span><script type="math/tex">V^{E,g}(w)</script></span> and a policy function <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> as arguments (and other model parameters) and updates the values, according to the updating equations. This function could have signature <code>value_update(V_U::Vector{Float64}, V_E::Vector{Float64}, g::Vector{Bool}, ω::Parameter, w::Vector{Float64}, p::Vector{Float64})::Vector{Float64}</code> where the returned vector has the same size as the supplied ones.</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<p><strong>Write a function <code>eval_policy(g::Vector{Bool}, ω::Parameter, w::Vector{Float64}, p::Vector{Float64}, η::Float64)::Tuple{Vector{Float64}, Vector{Float64}}</code> which iterates on <code>value_update</code> find the values that satisfy the evaluation equations for policy <code>g</code>.</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<p><strong>Write a function <code>improve_policy(g::Vector{Bool}, V_U::Vector{Bool}, V_E::Vector{Bool}, ω::Parameter, w::Vector{Float64}, p::Vector{Float64}, η::Float64)::Vector{Float64}</code> which returns the improved policy given guesses for the value function(s) at for <span><span class="MathJax_Preview">t+1</span><script type="math/tex">t+1</script></span>.</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Implement the policy function algorithm. Print the successive approximation errors and comment on the convergence speed.</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<h2 id="neoclassical-growth-model-2">Neoclassical growth model (2)</h2>
+<p>We consider here, another deterministic version of the neoclassical growth model, but propose a slightly different solution method.</p>
+<p>A representative agent uses capital <span><span class="MathJax_Preview">k_t</span><script type="math/tex">k_t</script></span> to produce <span><span class="MathJax_Preview">y_t</span><script type="math/tex">y_t</script></span> using the following production function:</p>
+<div>
+<div class="MathJax_Preview">y_t = k_t^{\alpha}</div>
+<script type="math/tex; mode=display">y_t = k_t^{\alpha}</script>
+</div>
+<p>He chooses to consume an amount <span><span class="MathJax_Preview">c_t \in ]0, y_t]</span><script type="math/tex">c_t \in ]0, y_t]</script></span> and invests what remains:</p>
+<p><span><span class="MathJax_Preview"><span><span class="MathJax_Preview">i_t = y_t - c_t</span><script type="math/tex">i_t = y_t - c_t</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">i_t = y_t - c_t</span><script type="math/tex">i_t = y_t - c_t</script></span></script></span>.</p>
+<p>He accumulates capital <span><span class="MathJax_Preview">k_t</span><script type="math/tex">k_t</script></span> according to:</p>
+<div>
+<div class="MathJax_Preview">k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}</div>
+<script type="math/tex; mode=display">k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}</script>
+</div>
+<p>where <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> is the depreciation rate and <span><span class="MathJax_Preview">i_t</span><script type="math/tex">i_t</script></span> is the amount invested.</p>
+<p>The goal of the representative agent is to maximize:</p>
+<div>
+<div class="MathJax_Preview">\sum_{t\geq 0} \beta^t U(c_t)</div>
+<script type="math/tex; mode=display">\sum_{t\geq 0} \beta^t U(c_t)</script>
+</div>
+<p>where <span><span class="MathJax_Preview">U(x)=\frac{x^{1-\gamma}}{1-\gamma}</span><script type="math/tex">U(x)=\frac{x^{1-\gamma}}{1-\gamma}</script></span> and <span><span class="MathJax_Preview">\beta&lt;1</span><script type="math/tex">\beta<1</script></span> is the discount factor.</p>
+<p>Since the problem is time homogenous, the value function depends on available capital only and satisfies the following Bellman equation:</p>
+<div>
+<div class="MathJax_Preview">V\left(\underbrace{k}_{k_t}\right) = \max_{c\in[0,1[} U(c) + \beta V\left(\underbrace{(1-\delta)k + \underbrace{(k^{\alpha}-c)}_{y_{t+1}}}_{k_{t+1}}\right)</div>
+<script type="math/tex; mode=display">V\left(\underbrace{k}_{k_t}\right) = \max_{c\in[0,1[} U(c) + \beta V\left(\underbrace{(1-\delta)k + \underbrace{(k^{\alpha}-c)}_{y_{t+1}}}_{k_{t+1}}\right)</script>
+</div>
+<p>Our goal is to obtain a smooth approximation of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> by using interpolations techniques.</p>
+<p>For this model, using the dynamic first-order conditions, one can show the deterministic steady-state of the model satisfies <span><span class="MathJax_Preview">1=\beta \left( (1-\delta) + \alpha k^{\alpha -1} \right)</span><script type="math/tex">1=\beta \left( (1-\delta) + \alpha k^{\alpha -1} \right)</script></span>. 
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Create a suitable Parameter type to hold the parameters. Write a function <code>steady_state(p::Parameter)</code> to compute the steady-state capital <code>kbar</code> and the corresponding steady-state consumption <code>cbar</code></strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Set <span><span class="MathJax_Preview">N=10</span><script type="math/tex">N=10</script></span> and define a reasonable grid <code>kgrid=range(kmin, kmax; length=N)</code> to approximate capital <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>The unknown value function is represented as a <code>N</code> elements arrays. Define <code>Vi(k,p)=U(δ * k^α)/(1-𝛽)</code> and compute the initial guess <code>V0 = [Vi(k,p) for k in kgrid]</code>. Define a finer grid <code>ktest=range(kmin, kmax;length=1000)</code> and find the values of <code>Vi</code> on it by  using <code>Interpolations.jl</code> library to interpolate <code>V0</code> between the points of <code>kgrid</code>.</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<p><strong>Compute a Bellman improvement function <code>bellman(V0::Vector{Float64}, p::Parameter, kgrid)::Tuple{Vector{Float64}, Vector{Float64}}</code> which does the following steps:</strong></p>
+<ul>
+<li>
+<p>take an initial guess <code>V0</code> for the value function</p>
+</li>
+<li>
+<p>at each grid point from kvec, optimize nonlinearly, the function <span><span class="MathJax_Preview">c \rightarrow U(c) + \beta V\left((1-\delta)k + (k^{\alpha}-c)\right)</span><script type="math/tex">c \rightarrow U(c) + \beta V\left((1-\delta)k + (k^{\alpha}-c)\right)</script></span> for each capital level in the grid <code>kvec</code>. In this expression the function <code>V()</code> interpolates <code>V0</code> defined on <code>kvec</code> on any point <code>k</code> so that the resulting function is continuous. </p>
+</li>
+<li>
+<p>return the updated value and investment rules
+</div>
+</div></p>
+</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1"></p>
+<p><strong>Write a value interation function <code>vfi(N, p)</code> which solves the model defined by parameter <code>p</code> using the value function algorithm. The function should return the value function and the policy rule.</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Plot the solution. Comment.</strong>
+</div>
+</div></p>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Bonus 1: plot a graph showing the convergence back to the steady-state</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<p><div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+<strong>Bonus 2: implement the policy iteration algorithm by adding an evaluation step in the <code>vfi</code> function.</strong></p>
+</div>
+</div>
+
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+</div>
+
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Monte-Carlo and Interpolation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                FOCS and RBC
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,955 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>Differentiation - ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#differentiation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Differentiation
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../linux_and_git/" title="System" class="md-nav__link">
+      System
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optim_slides/" title="Optimization" class="md-nav__link">
+      Optimization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discrete_dynamic_programming/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Differentiation
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Differentiation" class="md-nav__link md-nav__link--active">
+      Differentiation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-approaches" class="md-nav__link">
+    Main approaches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-differentiation" class="md-nav__link">
+    Manual Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-differences" class="md-nav__link">
+    Finite Differences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-differences-higher-order" class="md-nav__link">
+    Finite Differences: Higher order
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolic-differentiation" class="md-nav__link">
+    Symbolic Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#julia-packages" class="md-nav__link">
+    Julia Packages:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-differentiation" class="md-nav__link">
+    Automatic Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-example" class="md-nav__link">
+    Simple example:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-rewrite-source-code-transform" class="md-nav__link">
+    Automatic rewrite: source code transform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-numbers-operator-overloading" class="md-nav__link">
+    Dual numbers: operator overloading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatible-with-control-flow" class="md-nav__link">
+    Compatible with control flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forward-accumulation-mode" class="md-nav__link">
+    Forward Accumulation Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-accumulation-mode" class="md-nav__link">
+    Reverse Accumulation Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries-for-autodiff" class="md-nav__link">
+    Libraries for AutoDiff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries-for-autodiff_1" class="md-nav__link">
+    Libraries for AutoDiff
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/9_Homework_2/" title="Homework (2)" class="md-nav__link">
+      Homework (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-approaches" class="md-nav__link">
+    Main approaches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-differentiation" class="md-nav__link">
+    Manual Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-differences" class="md-nav__link">
+    Finite Differences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-differences-higher-order" class="md-nav__link">
+    Finite Differences: Higher order
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolic-differentiation" class="md-nav__link">
+    Symbolic Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#julia-packages" class="md-nav__link">
+    Julia Packages:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-differentiation" class="md-nav__link">
+    Automatic Differentiation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-example" class="md-nav__link">
+    Simple example:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automatic-rewrite-source-code-transform" class="md-nav__link">
+    Automatic rewrite: source code transform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-numbers-operator-overloading" class="md-nav__link">
+    Dual numbers: operator overloading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatible-with-control-flow" class="md-nav__link">
+    Compatible with control flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forward-accumulation-mode" class="md-nav__link">
+    Forward Accumulation Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-accumulation-mode" class="md-nav__link">
+    Reverse Accumulation Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries-for-autodiff" class="md-nav__link">
+    Libraries for AutoDiff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries-for-autodiff_1" class="md-nav__link">
+    Libraries for AutoDiff
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="differentiation">Differentiation</h1>
+<hr />
+<h2 id="main-approaches">Main approaches</h2>
+<ol>
+<li>Manual</li>
+<li>Finite Differences</li>
+<li>Symbolic Differentiation</li>
+<li>Automatic Differentiation</li>
+</ol>
+<hr />
+<h2 id="manual-differentiation">Manual Differentiation</h2>
+<ul>
+<li>Trick:<ul>
+<li>never use <span><span class="MathJax_Preview">\frac{d}{dx} \frac{u(x)}{v(x)} = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}</span><script type="math/tex">\frac{d}{dx} \frac{u(x)}{v(x)} = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}</script></span></li>
+<li>use instead <script type="math/tex; mode=display">\frac{d}{dx} {u(x)v(x)} = {u'(x)v(x)+u(x)v'(x)}</script> and <script type="math/tex; mode=display">\frac{d}{dx} u(x) = -\frac{u^{\prime}}{u(x)^2}</script>
+</li>
+</ul>
+</li>
+<li>Just kidding.</li>
+</ul>
+<hr />
+<!-- pandoc -t beamer differentiation.md --pdf-engine=xelatex -s -o differentiation.pdf -->
+
+<h2 id="finite-differences">Finite Differences</h2>
+<ul>
+<li>
+<p>Choose small <span><span class="MathJax_Preview">\epsilon&gt;0</span><script type="math/tex">\epsilon>0</script></span>, typically <span><span class="MathJax_Preview">\sqrt{ \textit{machine eps}}</span><script type="math/tex">\sqrt{ \textit{machine eps}}</script></span></p>
+</li>
+<li>
+<p>Forward Difference scheme:</p>
+<ul>
+<li><span><span class="MathJax_Preview">f'(x) \approx \frac{f(x+\epsilon) - f(x)}{\epsilon}</span><script type="math/tex">f'(x) \approx \frac{f(x+\epsilon) - f(x)}{\epsilon}</script></span></li>
+<li>precision: <span><span class="MathJax_Preview">o(\epsilon)</span><script type="math/tex">o(\epsilon)</script></span></li>
+<li>bonus: if <span><span class="MathJax_Preview">f(x+\epsilon)</span><script type="math/tex">f(x+\epsilon)</script></span> can compute <span><span class="MathJax_Preview">f(x)-f(x-\epsilon)</span><script type="math/tex">f(x)-f(x-\epsilon)</script></span> instead (Backward)</li>
+</ul>
+</li>
+<li>
+<p>Central Difference scheme:</p>
+<ul>
+<li><span><span class="MathJax_Preview">f'(x) \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}</span><script type="math/tex">f'(x) \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}</script></span></li>
+<li>average of forward and backward</li>
+<li>precision: <span><span class="MathJax_Preview">o(\epsilon^2)</span><script type="math/tex">o(\epsilon^2)</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="finite-differences-higher-order">Finite Differences: Higher order</h2>
+<ul>
+<li>Central formula:
+<script type="math/tex; mode=display">\begin{aligned}
+f''(x) & \approx & \frac{f'(x)-f'(x-\epsilon)}{\epsilon} \approx \frac{(f(x+\epsilon))-f(x))-(f(x)-f(x-\epsilon))}{\epsilon^2}  \\ & = & \frac{f(x+\epsilon)-2f(x)+f(x-\epsilon)}{\epsilon^2}
+\end{aligned}</script>
+<ul>
+<li>precision: <span><span class="MathJax_Preview">o(\epsilon)</span><script type="math/tex">o(\epsilon)</script></span></li>
+</ul>
+</li>
+<li>Generalizes to higher order but becomes more and more innacurate</li>
+</ul>
+<hr />
+<h2 id="symbolic-differentiation">Symbolic Differentiation</h2>
+<ul>
+<li>manipulate the tree of algebraic expressions<ul>
+<li>implements various simplification rules</li>
+</ul>
+</li>
+<li>requires mathematical expression</li>
+<li>can produce mathematical insights</li>
+<li>sometimes inaccurate:</li>
+<li>cf: <span><span class="MathJax_Preview">\left(\frac{1+u(x)}{1+v(x)}\right)^{100}</span><script type="math/tex">\left(\frac{1+u(x)}{1+v(x)}\right)^{100}</script></span></li>
+</ul>
+<hr />
+<h2 id="julia-packages">Julia Packages:</h2>
+<ul>
+<li><em>Calculus.jl</em>:<ul>
+<li>pure julia</li>
+<li>finite difference</li>
+<li>symbolic calculation</li>
+</ul>
+</li>
+<li><em>FiniteDiff.jl</em>, <em>FiniteDifferences.jl</em>, <em>SparseDiffTools.jl</em><ul>
+<li>careful implementation of finite diff</li>
+</ul>
+</li>
+<li><em>SymEngine.jl</em><ul>
+<li>fast symbolic calculation</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="automatic-differentiation">Automatic Differentiation</h2>
+<ul>
+<li>
+<p>does not provide mathematical insights but solves the other problems</p>
+</li>
+<li>
+<p>can differentiate any piece of code</p>
+</li>
+<li>two flavours<ul>
+<li>forward accumulation</li>
+<li>reverse accumulation</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="simple-example">Simple example:</h2>
+<div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">Float64</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">y</span><span class="o">^</span><span class="mi">2</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<hr />
+<h2 id="automatic-rewrite-source-code-transform">Automatic rewrite: source code transform</h2>
+<div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Float64</span><span class="p">)</span>
+
+    <span class="c"># x is an argument</span>
+    <span class="n">x_dx</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">a_dx</span> <span class="o">=</span> <span class="n">x_dx</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span>
+    <span class="n">b_dx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x_dx</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">t_x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">a_dx</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">c_x</span> <span class="o">=</span> <span class="n">t_dx</span> <span class="o">+</span> <span class="n">b_dx</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c_x</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<hr />
+<h2 id="dual-numbers-operator-overloading">Dual numbers: operator overloading</h2>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">DN</span>
+    <span class="n">x</span><span class="o">::</span><span class="kt">Float64</span>
+    <span class="n">dx</span><span class="o">::</span><span class="kt">Float64</span>
+<span class="k">end</span>
+
+<span class="o">+</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">DN</span><span class="p">,</span><span class="n">b</span><span class="o">::</span><span class="n">DN</span><span class="p">)</span> <span class="o">=</span> <span class="n">DN</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dx</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
+<span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">DN</span><span class="p">,</span><span class="n">b</span><span class="o">::</span><span class="n">DN</span><span class="p">)</span> <span class="o">=</span> <span class="n">DN</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dx</span><span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
+<span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">DN</span><span class="p">,</span><span class="n">b</span><span class="o">::</span><span class="n">DN</span><span class="p">)</span> <span class="o">=</span> <span class="n">DN</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="n">dx</span><span class="o">+</span><span class="n">a</span><span class="o">.</span><span class="n">dx</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">DN</span><span class="p">,</span><span class="n">b</span><span class="o">::</span><span class="n">DN</span><span class="p">)</span> <span class="o">=</span> <span class="n">DN</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">/</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dx</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">x</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="o">.</span><span class="n">dx</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="o">...</span>
+</code></pre></div>
+
+<hr />
+<h2 id="compatible-with-control-flow">Compatible with control flow</h2>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="n">ForwardDiff</span><span class="o">:</span> <span class="n">Dual</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="o">/</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">5000</span><span class="p">])</span>
+<span class="c"># compare with log(1+x)</span>
+</code></pre></div>
+  - generalizes nicely to gradient computations</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Dual</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="forward-accumulation-mode">Forward Accumulation Mode</h2>
+<ul>
+<li>Forward Accumulation mode: isomorphic to dual number calculation</li>
+<li>compute tree with values and derivatives at the same time</li>
+<li>efficient for <span><span class="MathJax_Preview">f: R^n\rightarrow R^m</span><script type="math/tex">f: R^n\rightarrow R^m</script></span>, with <span><span class="MathJax_Preview">n&lt;&lt;m</span><script type="math/tex">n<<m</script></span><ul>
+<li>(keeps lots of empty gradients when <span><span class="MathJax_Preview">n&gt;&gt;m</span><script type="math/tex">n>>m</script></span>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="reverse-accumulation-mode">Reverse Accumulation Mode</h2>
+<ul>
+<li>
+<p>Reverse Accumulation / Back Propagation</p>
+<ul>
+<li>efficient for <span><span class="MathJax_Preview">f: R^n\rightarrow R^m</span><script type="math/tex">f: R^n\rightarrow R^m</script></span>, with <span><span class="MathJax_Preview">m&lt;&lt;n</span><script type="math/tex">m<<n</script></span></li>
+<li>requires data storage (to keep intermediate values)</li>
+<li>graph / example</li>
+</ul>
+</li>
+<li>
+<p>Very good for machine learning:</p>
+</li>
+<li><span><span class="MathJax_Preview">\nabla_{\theta} F(x;\theta)</span><script type="math/tex">\nabla_{\theta} F(x;\theta)</script></span> where <span><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> can be an objective</li>
+</ul>
+<hr />
+<h2 id="libraries-for-autodiff">Libraries for AutoDiff</h2>
+<ul>
+<li>See JuliaDiff: http://www.juliadiff.org/<ul>
+<li><em>ForwardDiff.jl</em></li>
+<li><em>ReverseDiff.jl</em></li>
+<li><em>Zygote.jl</em></li>
+</ul>
+</li>
+<li>Deep learning framework:<ul>
+<li>higher order diff w.r.t. any vector -&gt; tensor operations</li>
+<li>Flux.jl, MXNet.jl, Tensorflow.jl</li>
+</ul>
+</li>
+</ul>
+<h2 id="libraries-for-autodiff_1">Libraries for AutoDiff</h2>
+<ul>
+<li>Other libraries like <em>NLsolve</em> or <em>Optim.jl</em> rely on on the former libraries to perform automatic differentiation automatically.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">NLSolve</span>
+<span class="k">function</span> <span class="n">fun!</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">3</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span><span class="o">+</span><span class="mi">18</span>
+    <span class="n">F</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">nlsolve</span><span class="p">(</span><span class="n">fun!</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">autodiff</span> <span class="o">=</span> <span class="o">:</span><span class="n">forward</span><span class="p">)</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../discretization/" title="Discretization" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Discretization
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../cake/" title="Cake Eating" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Cake Eating
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

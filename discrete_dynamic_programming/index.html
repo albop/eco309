@@ -1,0 +1,1942 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>Dynamic Programming - ECO309</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dynamic-programming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="ECO309" class="md-header-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            ECO309
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Dynamic Programming
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ECO309" class="md-nav__button md-logo" aria-label="ECO309">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    ECO309
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/0_General_Introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../linux_and_git/" title="System" class="md-nav__link">
+      System
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../optim_slides/" title="Optimization" class="md-nav__link">
+      Optimization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Dynamic Programming
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Dynamic Programming" class="md-nav__link md-nav__link--active">
+      Dynamic Programming
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markov-chain-and-markov-process" class="md-nav__link">
+    Markov chain and Markov process
+  </a>
+  
+    <nav class="md-nav" aria-label="Markov chain and Markov process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-matrices" class="md-nav__link">
+    Stochastic matrices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation" class="md-nav__link">
+    Simulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-interpretation" class="md-nav__link">
+    Probabilistic interpretation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-about-longer-horizons" class="md-nav__link">
+    What about longer horizons?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity" class="md-nav__link">
+    Connectivity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity-and-irreducibility-example-from-qe" class="md-nav__link">
+    Connectivity and irreducibility (example from QE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity-and-irreducibility-example-from-qe_1" class="md-nav__link">
+    Connectivity and irreducibility (example from QE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aperiodicity" class="md-nav__link">
+    Aperiodicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aperiodicity_1" class="md-nav__link">
+    Aperiodicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution" class="md-nav__link">
+    Stationary distribution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution-proof" class="md-nav__link">
+    Stationary distribution (proof)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution_1" class="md-nav__link">
+    Stationary distribution?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulating-a-markov-chain" class="md-nav__link">
+    Simulating a Markov Chain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-linear-algebra" class="md-nav__link">
+    Using Linear Algebra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-comments" class="md-nav__link">
+    Further comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-programing-notations" class="md-nav__link">
+    Dynamic Programing: notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Programing: notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-formulation" class="md-nav__link">
+    General Formulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objective-finite-horizon" class="md-nav__link">
+    Objective (finite horizon)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-of-dynamic-optimization" class="md-nav__link">
+    Classes of Dynamic Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-vs-infinite-horizon" class="md-nav__link">
+    Finite horizon vs infinite horizon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-vs-discrete" class="md-nav__link">
+    Continuous vs discrete
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-time-separable" class="md-nav__link">
+    Non time separable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-homogenous-preference" class="md-nav__link">
+    Non homogenous preference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-problems" class="md-nav__link">
+    Learning problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-problems-2" class="md-nav__link">
+    Learning problems (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-2" class="md-nav__link">
+    Examples (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Finite horizon DMDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp_1" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp_2" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    Remarks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp" class="md-nav__link">
+    Infinite horizon DMDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Infinite horizon DMDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp_1" class="md-nav__link">
+    Infinite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp-2" class="md-nav__link">
+    Infinite horizon DMDP (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation" class="md-nav__link">
+    Successive Approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation-2" class="md-nav__link">
+    Successive Approximation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-equation" class="md-nav__link">
+    Bellman equation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-operator" class="md-nav__link">
+    Bellman operator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blackwells-theorem" class="md-nav__link">
+    Blackwell's theorem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation_1" class="md-nav__link">
+    Successive Approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation-2_1" class="md-nav__link">
+    Successive Approximation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy-iteration-for-dmdp" class="md-nav__link">
+    Policy iteration for DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-we-compute-the-value-of-a-policy" class="md-nav__link">
+    How do we compute the value of a policy?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../discretization/" title="Discretization" class="md-nav__link">
+      Discretization
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../differentiation/" title="Differentiation" class="md-nav__link">
+      Differentiation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cake/" title="Cake Eating" class="md-nav__link">
+      Cake Eating
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../rbc/" title="RBC" class="md-nav__link">
+      RBC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Notebooks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notebooks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/1_Julia_Basics_tutorial/" title="Julia Basics" class="md-nav__link">
+      Julia Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/2_Epidemiology_tutorial/" title="Epidemiology" class="md-nav__link">
+      Epidemiology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6_Optimization_tutorial/" title="Optimization (1)" class="md-nav__link">
+      Optimization (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/6a_Optimization_pushups/" title="Optimization (2)" class="md-nav__link">
+      Optimization (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7_Discrete_Markov_Programs_tutorial/" title="DMP (1)" class="md-nav__link">
+      DMP (1)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/7a_Discrete_Markov_Programs_tutorial/" title="DMP (2)" class="md-nav__link">
+      DMP (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/8_Monte_Carlo_Interpolation/" title="Monte-Carlo and Interpolation" class="md-nav__link">
+      Monte-Carlo and Interpolation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/9_Homework_2/" title="Homework (2)" class="md-nav__link">
+      Homework (2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../notebooks/10_FOCs_and_RBC_model/" title="FOCS and RBC" class="md-nav__link">
+      FOCS and RBC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markov-chain-and-markov-process" class="md-nav__link">
+    Markov chain and Markov process
+  </a>
+  
+    <nav class="md-nav" aria-label="Markov chain and Markov process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-matrices" class="md-nav__link">
+    Stochastic matrices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation" class="md-nav__link">
+    Simulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-interpretation" class="md-nav__link">
+    Probabilistic interpretation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-about-longer-horizons" class="md-nav__link">
+    What about longer horizons?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity" class="md-nav__link">
+    Connectivity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity-and-irreducibility-example-from-qe" class="md-nav__link">
+    Connectivity and irreducibility (example from QE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectivity-and-irreducibility-example-from-qe_1" class="md-nav__link">
+    Connectivity and irreducibility (example from QE)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aperiodicity" class="md-nav__link">
+    Aperiodicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aperiodicity_1" class="md-nav__link">
+    Aperiodicity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution" class="md-nav__link">
+    Stationary distribution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution-proof" class="md-nav__link">
+    Stationary distribution (proof)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stationary-distribution_1" class="md-nav__link">
+    Stationary distribution?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulating-a-markov-chain" class="md-nav__link">
+    Simulating a Markov Chain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-linear-algebra" class="md-nav__link">
+    Using Linear Algebra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-comments" class="md-nav__link">
+    Further comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-programing-notations" class="md-nav__link">
+    Dynamic Programing: notations
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Programing: notations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-formulation" class="md-nav__link">
+    General Formulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objective-finite-horizon" class="md-nav__link">
+    Objective (finite horizon)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-of-dynamic-optimization" class="md-nav__link">
+    Classes of Dynamic Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-vs-infinite-horizon" class="md-nav__link">
+    Finite horizon vs infinite horizon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-vs-discrete" class="md-nav__link">
+    Continuous vs discrete
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-time-separable" class="md-nav__link">
+    Non time separable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-homogenous-preference" class="md-nav__link">
+    Non homogenous preference
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-problems" class="md-nav__link">
+    Learning problems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-problems-2" class="md-nav__link">
+    Learning problems (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-2" class="md-nav__link">
+    Examples (2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Finite horizon DMDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp_1" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finite-horizon-dmdp_2" class="md-nav__link">
+    Finite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remarks" class="md-nav__link">
+    Remarks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp" class="md-nav__link">
+    Infinite horizon DMDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Infinite horizon DMDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp_1" class="md-nav__link">
+    Infinite horizon DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinite-horizon-dmdp-2" class="md-nav__link">
+    Infinite horizon DMDP (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation" class="md-nav__link">
+    Successive Approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation-2" class="md-nav__link">
+    Successive Approximation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-equation" class="md-nav__link">
+    Bellman equation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-operator" class="md-nav__link">
+    Bellman operator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blackwells-theorem" class="md-nav__link">
+    Blackwell's theorem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation_1" class="md-nav__link">
+    Successive Approximation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successive-approximation-2_1" class="md-nav__link">
+    Successive Approximation (2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy-iteration-for-dmdp" class="md-nav__link">
+    Policy iteration for DMDP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-we-compute-the-value-of-a-policy" class="md-nav__link">
+    How do we compute the value of a policy?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="dynamic-programming">Dynamic Programming</h1>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>The imperialism of Dynamic Programming (Ljunqvist &amp; Sargent)</li>
+</ul>
+<hr />
+<h2 id="markov-chain-and-markov-process">Markov chain and Markov process</h2>
+<ul>
+<li>Stochastic process: family of random variables indexed by time</li>
+<li>A stochastic process has the Markov property if its future evolution depends only on its current state.</li>
+<li>Special cases:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Discrete States</th>
+<th>Continuous States</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discrete Time</td>
+<td>Discrete Markov Chain</td>
+<td>Continuous Markov Chain</td>
+</tr>
+<tr>
+<td>Continuous Time</td>
+<td>Markov Jump Process</td>
+<td>Markov Process</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="stochastic-matrices">Stochastic matrices</h3>
+<ul>
+<li>
+<p>a <span><span class="MathJax_Preview">n\times n</span><script type="math/tex">n\times n</script></span> matrix is said to be <strong>stochastic</strong> if all the lines lines sum to 1</p>
+</li>
+<li>
+<p>let's a vector <span><span class="MathJax_Preview">\mu_t \in R^n</span><script type="math/tex">\mu_t \in R^n</script></span> with positive components  denote a distribution of mass between <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> different states</p>
+</li>
+<li>
+<p>if <span><span class="MathJax_Preview">\sum_{i=1}^n \mu_{i,t} = 1</span><script type="math/tex">\sum_{i=1}^n \mu_{i,t} = 1</script></span> then <span><span class="MathJax_Preview">\mu_t</span><script type="math/tex">\mu_t</script></span> is a probability density</p>
+</li>
+</ul>
+<hr />
+<h3 id="simulation">Simulation</h3>
+<ul>
+<li>
+<p>Consider: <span><span class="MathJax_Preview">\mu_{i,t+1}' =\mu_t' P</span><script type="math/tex">\mu_{i,t+1}' =\mu_t' P</script></span></p>
+</li>
+<li>
+<p>We have <span><span class="MathJax_Preview">\mu_{i,t+1} = \sum_{k=1}^n  \mu_{k,t}  P_{k, i}</span><script type="math/tex">\mu_{i,t+1} = \sum_{k=1}^n  \mu_{k,t}  P_{k, i}</script></span></p>
+</li>
+<li>
+<p>And: <span><span class="MathJax_Preview">\sum_i\mu_{i,t+1} = \sum_i \mu_{i,t}</span><script type="math/tex">\sum_i\mu_{i,t+1} = \sum_i \mu_{i,t}</script></span></p>
+</li>
+<li>
+<p>Postmultiplication by a stochastic matrix preserves the mass.</p>
+</li>
+<li>
+<p>Interpretation: <span><span class="MathJax_Preview">P_{ij}</span><script type="math/tex">P_{ij}</script></span> is the fraction of the mass initially in state <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> which ends up in <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span></p>
+</li>
+</ul>
+<hr />
+<h3 id="example">Example</h3>
+<div>
+<div class="MathJax_Preview">\underbrace{
+\begin{pmatrix}
+? &amp; ? &amp; ?
+\end{pmatrix}
+}_{\mu_{t+1}'} = \underbrace{
+\begin{pmatrix}
+0.5 &amp; 0.3 &amp; 0.2
+\end{pmatrix}
+}_{\mu_t'} \begin{pmatrix}
+0.4 &amp; 0.6 &amp; 0.0 \\
+0.2 &amp; 0.5 &amp; 0.3 \\
+0 &amp; 0 &amp; 1.0
+\end{pmatrix}</div>
+<script type="math/tex; mode=display">\underbrace{
+\begin{pmatrix}
+? & ? & ?
+\end{pmatrix}
+}_{\mu_{t+1}'} = \underbrace{
+\begin{pmatrix}
+0.5 & 0.3 & 0.2
+\end{pmatrix}
+}_{\mu_t'} \begin{pmatrix}
+0.4 & 0.6 & 0.0 \\
+0.2 & 0.5 & 0.3 \\
+0 & 0 & 1.0
+\end{pmatrix}</script>
+</div>
+<hr />
+<!-- 
+### Representation as a graph
+
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.42.3 (20191010.1750)
+ -->
+
+<!-- Title: G Pages: 1 -->
+
+<p><svg width="278pt" height="112pt"
+ viewBox="0.00 0.00 278.00 112.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 108)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-108 274,-108 274,4 -4,4"/>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-35" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-31.3" font-family="Times,serif" font-size="14.00">A</text>
+</g>
+<!-- B -->
+<g id="node2" class="node">
+<title>B</title>
+<ellipse fill="none" stroke="black" cx="135" cy="-53" rx="27" ry="18"/>
+<text text-anchor="middle" x="135" y="-49.3" font-family="Times,serif" font-size="14.00">B</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="black" d="M50,-44.54C56.91,-47.12 64.66,-49.58 72,-51 80.27,-52.59 89.27,-53.4 97.79,-53.75"/>
+<polygon fill="black" stroke="black" points="97.78,-57.25 107.85,-53.98 97.94,-50.26 97.78,-57.25"/>
+<text text-anchor="middle" x="81" y="-56.8" font-family="Times,serif" font-size="14.00">0.4</text>
+</g>
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">C</text>
+</g>
+<!-- A&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>A&#45;&gt;C</title>
+<path fill="none" stroke="black" d="M50.7,-26.26C66.5,-20.65 88.2,-13.91 108,-11 141.17,-6.13 179.39,-8.95 206.5,-12.35"/>
+<polygon fill="black" stroke="black" points="206.29,-15.85 216.67,-13.72 207.23,-8.91 206.29,-15.85"/>
+<text text-anchor="middle" x="135" y="-14.8" font-family="Times,serif" font-size="14.00">0.6</text>
+</g>
+<!-- B&#45;&gt;A -->
+<g id="edge4" class="edge">
+<title>B&#45;&gt;A</title>
+<path fill="none" stroke="black" d="M114.09,-41.19C106.78,-37.48 98.26,-33.87 90,-32 81.46,-30.07 72.1,-29.66 63.3,-30.01"/>
+<polygon fill="black" stroke="black" points="63.03,-26.52 53.31,-30.72 63.53,-33.5 63.03,-26.52"/>
+<text text-anchor="middle" x="81" y="-35.8" font-family="Times,serif" font-size="14.00">0.2</text>
+</g>
+<!-- B&#45;&gt;B -->
+<g id="edge5" class="edge">
+<title>B&#45;&gt;B</title>
+<path fill="none" stroke="black" d="M125.43,-70.04C123.48,-79.86 126.67,-89 135,-89 140.21,-89 143.41,-85.43 144.6,-80.35"/>
+<polygon fill="black" stroke="black" points="148.1,-80.03 144.57,-70.04 141.1,-80.05 148.1,-80.03"/>
+<text text-anchor="middle" x="135" y="-92.8" font-family="Times,serif" font-size="14.00">0.5</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge6" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="black" d="M159.52,-45.23C174.07,-40.43 192.96,-34.19 208.99,-28.9"/>
+<polygon fill="black" stroke="black" points="210.14,-32.2 218.54,-25.75 207.95,-25.56 210.14,-32.2"/>
+<text text-anchor="middle" x="189" y="-40.8" font-family="Times,serif" font-size="14.00">0.5</text>
+</g>
+<!-- C&#45;&gt;C -->
+<g id="edge3" class="edge">
+<title>C&#45;&gt;C</title>
+<path fill="none" stroke="black" d="M233.43,-35.04C231.48,-44.86 234.67,-54 243,-54 248.21,-54 251.41,-50.43 252.6,-45.35"/>
+<polygon fill="black" stroke="black" points="256.1,-45.03 252.57,-35.04 249.1,-45.05 256.1,-45.03"/>
+<text text-anchor="middle" x="243" y="-57.8" font-family="Times,serif" font-size="14.00">1.0</text>
+</g>
+</g>
+</svg></p>
+<p>--- --&gt;</p>
+<h3 id="probabilistic-interpretation">Probabilistic interpretation</h3>
+<ul>
+<li>
+<p>Denote by <span><span class="MathJax_Preview">S=(s_1,...s_n)</span><script type="math/tex">S=(s_1,...s_n)</script></span> a finite set with <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> elements (<span><span class="MathJax_Preview">|S|=n</span><script type="math/tex">|S|=n</script></span>). </p>
+</li>
+<li>
+<p>A <strong>Markov Chain</strong> with values in <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> and with transitions given by a stochastic matrix <span><span class="MathJax_Preview">P\in R^n\times R^n</span><script type="math/tex">P\in R^n\times R^n</script></span> is a <em>stochastic process</em> <span><span class="MathJax_Preview">(X_t)_{t\geq 0}</span><script type="math/tex">(X_t)_{t\geq 0}</script></span> such that</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">P_{ij} = Prob(X_{t+1}=s_j|X_t=s_i)</div>
+<script type="math/tex; mode=display">P_{ij} = Prob(X_{t+1}=s_j|X_t=s_i)</script>
+</div>
+<ul>
+<li>In words, line <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> describes the conditional distribution of <span><span class="MathJax_Preview">X_{t+1}</span><script type="math/tex">X_{t+1}</script></span> conditional on <span><span class="MathJax_Preview">X_t=s_i</span><script type="math/tex">X_t=s_i</script></span>.</li>
+</ul>
+<hr />
+<h3 id="what-about-longer-horizons">What about longer horizons?</h3>
+<ul>
+<li>
+<p>It is easy to show that for any <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>,  <span><span class="MathJax_Preview">P^k</span><script type="math/tex">P^k</script></span> is a stochastic matrix.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">P^k_{ij}</span><script type="math/tex">P^k_{ij}</script></span> denotes the probability of ending in <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, after <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> periods, starting from <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></p>
+</li>
+<li>
+<p>Given an initial distribution <span><span class="MathJax_Preview">\mu_0\in R^n</span><script type="math/tex">\mu_0\in R^n</script></span></p>
+<ul>
+<li>Which states will visited with positive probability between t=0 and t=k?</li>
+<li>What happens in the very long run?</li>
+</ul>
+</li>
+<li>
+<p>We need to study a little bit the properties of Markov Chains</p>
+</li>
+</ul>
+<hr />
+<h3 id="connectivity">Connectivity</h3>
+<ul>
+<li>Two states <span><span class="MathJax_Preview">s_i</span><script type="math/tex">s_i</script></span> and <span><span class="MathJax_Preview">s_j</span><script type="math/tex">s_j</script></span> are connected if <span><span class="MathJax_Preview">P_{ij}&gt;0</span><script type="math/tex">P_{ij}>0</script></span></li>
+<li>
+<p>We call incidence matrix: <span><span class="MathJax_Preview">\mathcal{I}(P)=(\delta_{P_{ij}&gt;0})_{ij}</span><script type="math/tex">\mathcal{I}(P)=(\delta_{P_{ij}>0})_{ij}</script></span></p>
+</li>
+<li>
+<p>Two states <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> communicate with each other if there are <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> such that:
+<span><span class="MathJax_Preview">(P^k)_ {i,j}&gt;0</span><script type="math/tex">(P^k)_ {i,j}>0</script></span> and <span><span class="MathJax_Preview">(P^l)_ {j,i}&gt;0</span><script type="math/tex">(P^l)_ {j,i}>0</script></span></p>
+<ul>
+<li>it is an equivalence relation</li>
+<li>we can define equivalence classes</li>
+</ul>
+</li>
+<li>
+<p>A stochastic matrix <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> is irreducible if all states communicate</p>
+<ul>
+<li>there is a unique communication class</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="connectivity-and-irreducibility-example-from-qe">Connectivity and irreducibility (example from QE)</h3>
+<hr />
+<h3 id="connectivity-and-irreducibility-example-from-qe_1">Connectivity and irreducibility (example from QE)</h3>
+<hr />
+<h3 id="aperiodicity">Aperiodicity</h3>
+<ul>
+<li>
+<p>Are there cycles? Starting from a state <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, how long does it take to return to <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>?</p>
+</li>
+<li>
+<p>The <strong>period</strong> of a state is defined as</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">gcd( {k\geq 1 | (P^k)_{i,i}&gt;0} )</div>
+<script type="math/tex; mode=display">gcd( {k\geq 1 | (P^k)_{i,i}>0} )</script>
+</div>
+<ul>
+<li>If a state has a period d&gt;1  the chain returns to the state only at dates multiple of d.</li>
+</ul>
+<hr />
+<h3 id="aperiodicity_1">Aperiodicity</h3>
+<p>example</p>
+<hr />
+<h3 id="stationary-distribution">Stationary distribution</h3>
+<ul>
+<li>
+<p><span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> is a <strong>stationary</strong> distribution if <span><span class="MathJax_Preview">\mu' = \mu' P</span><script type="math/tex">\mu' = \mu' P</script></span></p>
+</li>
+<li>
+<p>Theorem: there always exists such a distribution</p>
+<ul>
+<li>proof: Brouwer theorem</li>
+<li><span><span class="MathJax_Preview">f: \mu\rightarrow (\mu'P)'</span><script type="math/tex">f: \mu\rightarrow (\mu'P)'</script></span></li>
+</ul>
+</li>
+<li>
+<p>Theorem:</p>
+<ol>
+<li>if P is irreducible the fixed point <span><span class="MathJax_Preview">\mu^{\star}</span><script type="math/tex">\mu^{\star}</script></span> is unique</li>
+<li>if P is irreducible and aperiodic <span><span class="MathJax_Preview">|\mu_0' P^k - \mu^{\star}| \underset{k\to+\infty}{\longrightarrow} 0</span><script type="math/tex">|\mu_0' P^k - \mu^{\star}| \underset{k\to+\infty}{\longrightarrow} 0</script></span> for any initial distribution <span><span class="MathJax_Preview">\mu_0</span><script type="math/tex">\mu_0</script></span></li>
+</ol>
+</li>
+<li>
+<p>We then say the Markov chain is <strong>ergodic</strong>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="stationary-distribution-proof">Stationary distribution (proof)</h3>
+<ul>
+<li><strong>Brower's theorem</strong>: Let <span><span class="MathJax_Preview">\mathcal{C}</span><script type="math/tex">\mathcal{C}</script></span> be a compact convex subset of <span><span class="MathJax_Preview">R^n</span><script type="math/tex">R^n</script></span> and <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> a continuous mapping <span><span class="MathJax_Preview">\mathcal{C}\rightarrow \mathcal{C}</span><script type="math/tex">\mathcal{C}\rightarrow \mathcal{C}</script></span>. Then there exists a fixed point <span><span class="MathJax_Preview">x_0\in \mathcal{C}</span><script type="math/tex">x_0\in \mathcal{C}</script></span> such that <span><span class="MathJax_Preview">f(x_0)=x_0</span><script type="math/tex">f(x_0)=x_0</script></span></li>
+</ul>
+<hr />
+<h3 id="stationary-distribution_1">Stationary distribution?</h3>
+<p>How do we compute the stationary distribution?</p>
+<ul>
+<li>Simulation</li>
+<li>Linear algebra</li>
+<li>Decomposition</li>
+</ul>
+<hr />
+<h3 id="simulating-a-markov-chain">Simulating a Markov Chain</h3>
+<ul>
+<li>
+<p>Very simple idea: start with <span><span class="MathJax_Preview">\mu_0</span><script type="math/tex">\mu_0</script></span> and compute the iterates recursively</p>
+<ul>
+<li><span><span class="MathJax_Preview">\mu_{n+1}' = \mu_n' P</span><script type="math/tex">\mu_{n+1}' = \mu_n' P</script></span></li>
+<li>convergence is linear</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="using-linear-algebra">Using Linear Algebra</h3>
+<ul>
+<li>Find the solution of <span><span class="MathJax_Preview">\mu'(P-I) = 0</span><script type="math/tex">\mu'(P-I) = 0</script></span> ?<ul>
+<li>not well defined, 0 is a solution</li>
+<li>we need to incorporate the constraint <span><span class="MathJax_Preview">sum(\mu_i)=1</span><script type="math/tex">sum(\mu_i)=1</script></span></li>
+</ul>
+</li>
+<li>Define <span><span class="MathJax_Preview">M_{ij} = (P-I)_{ij}</span><script type="math/tex">M_{ij} = (P-I)_{ij}</script></span> if <span><span class="MathJax_Preview">j&gt;1</span><script type="math/tex">j>1</script></span>, <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> if <span><span class="MathJax_Preview">j=1</span><script type="math/tex">j=1</script></span></li>
+<li>Look for a solution <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> of <span><span class="MathJax_Preview">\mu' M = (\delta_{i=1})</span><script type="math/tex">\mu' M = (\delta_{i=1})</script></span> with a linear algebra solver<ul>
+<li>if the solution completes, there is a unique solution</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="further-comments">Further comments</h3>
+<ul>
+<li>Knowledge about the structure of the Markov Chain can help speedup the calculations</li>
+<li>There are methods for potentially very-large linear system<ul>
+<li>Newton-Krylov based methods, GMRES</li>
+</ul>
+</li>
+<li>Basic algorithms are easy to implement by hand</li>
+<li>QuantEcon toolbox has very good methods to study markov chains</li>
+</ul>
+<hr />
+<h2 id="dynamic-programing-notations">Dynamic Programing: notations</h2>
+<hr />
+<h3 id="general-formulation">General Formulation</h3>
+<p>Markov Decision Problem</p>
+<ul>
+<li>states: <span><span class="MathJax_Preview">s \in S</span><script type="math/tex">s \in S</script></span></li>
+<li>actions: <span><span class="MathJax_Preview">x \in X(s)</span><script type="math/tex">x \in X(s)</script></span></li>
+<li>transitions: <span><span class="MathJax_Preview">\pi(s'| s, x)</span><script type="math/tex">\pi(s'| s, x)</script></span><ul>
+<li>probability of going to <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> in state <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>, given action <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="objective-finite-horizon">Objective (finite horizon)</h3>
+<ul>
+<li>
+<p>policy: <span><span class="MathJax_Preview">x(): s \rightarrow x\in S(x)</span><script type="math/tex">x(): s \rightarrow x\in S(x)</script></span></p>
+<ul>
+<li>deterministic policy</li>
+<li>given <span><span class="MathJax_Preview">x()</span><script type="math/tex">x()</script></span>, the evolution of <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> is a Markov process.</li>
+</ul>
+</li>
+<li>
+<p>reward: <span><span class="MathJax_Preview">r(s,x)</span><script type="math/tex">r(s,x)</script></span></p>
+<ul>
+<li>felicity, intratemporal utility</li>
+</ul>
+</li>
+<li>
+<p>expected lifetime reward: starting from <span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span></p>
+<ul>
+<li><span><span class="MathJax_Preview">R(s; x()) =  E_0 \sum_t^T \delta^t \left[ r_t\right]</span><script type="math/tex">R(s; x()) =  E_0 \sum_t^T \delta^t \left[ r_t\right]</script></span></li>
+<li><span><span class="MathJax_Preview">\delta \in [0,1[</span><script type="math/tex">\delta \in [0,1[</script></span>: discount factor, <span><span class="MathJax_Preview">T \in \{N, \infty\}</span><script type="math/tex">T \in \{N, \infty\}</script></span>: horizon</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="classes-of-dynamic-optimization">Classes of Dynamic Optimization</h3>
+<p>The formulation so far is very general. It encompasses several variants of the problem:</p>
+<ul>
+<li>finite horizon vs infinite horizon</li>
+<li>discrete-space problem vs continuous-state space problem</li>
+</ul>
+<p>There are also variants not included:
+- non time-separable problems
+- non time homogenous problem
+- learning problems (bayesian updating, reinforcement learning)</p>
+<hr />
+<h3 id="finite-horizon-vs-infinite-horizon">Finite horizon vs infinite horizon</h3>
+<ul>
+<li>Recall objective: <span><span class="MathJax_Preview">V(s; x()) =  \max E_0\sum_{t=0}^T \delta^t \left[ r(s_t, x_t) \right]</span><script type="math/tex">V(s; x()) =  \max E_0\sum_{t=0}^T \delta^t \left[ r(s_t, x_t) \right]</script></span></li>
+<li>If <span><span class="MathJax_Preview">T&lt;\infty</span><script type="math/tex">T<\infty</script></span>, the decision in the last periods, will be different from before<ul>
+<li>one must find a decision rule <span><span class="MathJax_Preview">\pi_t()</span><script type="math/tex">\pi_t()</script></span> per period</li>
+<li>or add <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> to the state space: <span><span class="MathJax_Preview">\tilde{S}=S\times[0,T]</span><script type="math/tex">\tilde{S}=S\times[0,T]</script></span></li>
+</ul>
+</li>
+<li>If <span><span class="MathJax_Preview">T=\infty</span><script type="math/tex">T=\infty</script></span>, the continuation value of being in state <span><span class="MathJax_Preview">s_t</span><script type="math/tex">s_t</script></span> is independent from <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span></li>
+</ul>
+<div>
+<div class="MathJax_Preview">V(s; x()) = E_0 \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] + \delta^{T_0} E_0  \sum_ {t=T_0}^{\infty} \delta^t \left[ r(s_t, x_t) \right]</div>
+<script type="math/tex; mode=display">V(s; x()) = E_0 \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] + \delta^{T_0} E_0  \sum_ {t=T_0}^{\infty} \delta^t \left[ r(s_t, x_t) \right]</script>
+</div>
+<div>
+<div class="MathJax_Preview"> = E_0 \left[ \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] +  \delta^{T_0} V(s_ {T_0}; x()) \right]</div>
+<script type="math/tex; mode=display"> = E_0 \left[ \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] +  \delta^{T_0} V(s_ {T_0}; x()) \right]</script>
+</div>
+<hr />
+<h3 id="continuous-vs-discrete">Continuous vs discrete</h3>
+<ul>
+<li>
+<p>State space <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span>:</p>
+<ul>
+<li>continuous: <span><span class="MathJax_Preview">\subset R^n</span><script type="math/tex">\subset R^n</script></span></li>
+<li>discrete: <span><span class="MathJax_Preview">S=(s_1, ... s_n)</span><script type="math/tex">S=(s_1, ... s_n)</script></span> (today)</li>
+</ul>
+</li>
+<li>
+<p>General approach is the same but implementation is different:</p>
+</li>
+<li>
+<p>Continous problem:</p>
+<ul>
+<li><span><span class="MathJax_Preview">x(s)</span><script type="math/tex">x(s)</script></span>, <span><span class="MathJax_Preview">V(s; \pi)</span><script type="math/tex">V(s; \pi)</script></span> require an infinite number of coefficients</li>
+<li>one must discretize the initial problem and solve an approximate version</li>
+</ul>
+</li>
+<li>Discrete problem:<ul>
+<li>there is a finite number of policies, the can be represented exactly</li>
+<li>unless <span><span class="MathJax_Preview">|S|</span><script type="math/tex">|S|</script></span> is very large (cf go game)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="non-time-separable">Non time separable</h3>
+<ul>
+<li>For instance Epstein-Zin preferences:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">\max V(;c())</div>
+<script type="math/tex; mode=display">\max V(;c())</script>
+</div>
+<p>where <span><span class="MathJax_Preview">V_t = (1-\delta) \frac{c_t^{1-\sigma}}{1-\sigma} + \delta \left[ E_t V_{t+1}^{\alpha} \right]^{\frac{1}{\alpha}}</span><script type="math/tex">V_t = (1-\delta) \frac{c_t^{1-\sigma}}{1-\sigma} + \delta \left[ E_t V_{t+1}^{\alpha} \right]^{\frac{1}{\alpha}}</script></span></p>
+<ul>
+<li>
+<p>Why would you do that?</p>
+<ul>
+<li>to disentangle risk aversion and elasticity of intertemporal substitution</li>
+<li>robust control</li>
+</ul>
+</li>
+<li>
+<p>You can still use ideas from Dynamic Programming.</p>
+</li>
+</ul>
+<hr />
+<h3 id="non-homogenous-preference">Non homogenous preference</h3>
+<ul>
+<li>Look at the <span><span class="MathJax_Preview">\alpha-\beta</span><script type="math/tex">\alpha-\beta</script></span> model.</li>
+</ul>
+<div>
+<div class="MathJax_Preview">V_t = \max \sum_t^{\infty} \beta_t U(c_t)</div>
+<script type="math/tex; mode=display">V_t = \max \sum_t^{\infty} \beta_t U(c_t)</script>
+</div>
+<p>where 
+    <span><span class="MathJax_Preview">\delta_0 = 1</span><script type="math/tex">\delta_0 = 1</script></span>, <span><span class="MathJax_Preview">\delta_1=\alpha</span><script type="math/tex">\delta_1=\alpha</script></span>, <span><span class="MathJax_Preview">\delta_k=\alpha\beta^{k-1}</span><script type="math/tex">\delta_k=\alpha\beta^{k-1}</script></span></p>
+<ul>
+<li>Makes the problem time-inconsistent: the optimal policy you would choose for the continuation value after <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> is not the same if you maximize it in expectation from <span><span class="MathJax_Preview">0</span><script type="math/tex">0</script></span> or at <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>.</li>
+</ul>
+<hr />
+<h3 id="learning-problems">Learning problems</h3>
+<ul>
+<li>Bayesian learning: Uncertainty about some model parameters<ul>
+<li>ex: variance and return of a stock market</li>
+<li>agent models this uncertainty as a distribution</li>
+<li>agent updates his priors after observing the result of his actions</li>
+<li>actions are taken optimally taken into account the revelation power of some actions</li>
+</ul>
+</li>
+<li>Is it good?<ul>
+<li>clean: the <em>rational</em> thing to do with uncertainty</li>
+<li>super hard: the state-space should contain all possible priors</li>
+<li>mathematical cleanness comes with many assumptions</li>
+</ul>
+</li>
+<li>Used to estimate rather big (mostly linear) models</li>
+</ul>
+<hr />
+<h3 id="learning-problems-2">Learning problems (2)</h3>
+<ul>
+<li>Reinforcement learning<ul>
+<li>model can be partially or totally unknown</li>
+<li>decision rule is updated by observing the reward from actions<ul>
+<li>no priors</li>
+</ul>
+</li>
+<li>solution does not derive directly from model<ul>
+<li>can be used to solve dynamic programming problems</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Good solutions maximize a criterion similar to lifetime reward but are usually not optimal:<ul>
+<li>usually evaluated by replaying the game many times</li>
+<li>tradeoff exploration / exploitations</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="examples">Examples</h3>
+<hr />
+<h3 id="examples-2">Examples (2)</h3>
+<hr />
+<h2 id="finite-horizon-dmdp">Finite horizon DMDP</h2>
+<hr />
+<h3 id="finite-horizon-dmdp_1">Finite horizon DMDP</h3>
+<p>When <span><span class="MathJax_Preview">T&lt;\infty</span><script type="math/tex">T<\infty</script></span>. With discrete action the problem can be represented by a tree.</p>
+<p>[ Graph ]</p>
+<hr />
+<h3 id="finite-horizon-dmdp_2">Finite horizon DMDP</h3>
+<ul>
+<li>Intuition: backward induction.<ul>
+<li>Find optimal policy <span><span class="MathJax_Preview">x_T(s_T)</span><script type="math/tex">x_T(s_T)</script></span> in all terminal states <span><span class="MathJax_Preview">s_T</span><script type="math/tex">s_T</script></span>. Set <span><span class="MathJax_Preview">V_T(s_T)</span><script type="math/tex">V_T(s_T)</script></span> equal to <span><span class="MathJax_Preview">r(s_T, \pi_T)</span><script type="math/tex">r(s_T, \pi_T)</script></span></li>
+<li>For each state <span><span class="MathJax_Preview">s_{k-1}\in S</span><script type="math/tex">s_{k-1}\in S</script></span> find <span><span class="MathJax_Preview">x_{k-1}\in X(s_{k-1})</span><script type="math/tex">x_{k-1}\in X(s_{k-1})</script></span> which maximizes </li>
+</ul>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">V_{k-1}(s_{k-1}) = \max_{x_{k-1}(s_{k-1})\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \delta \underbrace{ \sum_{s_k\in S} p(s_k | s_{k-1}, x_{k-1} ) V_k(s_k)} _{ \textit{expected continuation value} }</div>
+<script type="math/tex; mode=display">V_{k-1}(s_{k-1}) = \max_{x_{k-1}(s_{k-1})\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \delta \underbrace{ \sum_{s_k\in S} p(s_k | s_{k-1}, x_{k-1} ) V_k(s_k)} _{ \textit{expected continuation value} }</script>
+</div>
+<ul>
+<li>Policies <span><span class="MathJax_Preview">x_0(), ... x_T()</span><script type="math/tex">x_0(), ... x_T()</script></span> are "Markov-perfect": they maximize utility on all subsets of the "game"<ul>
+<li>also from t=0</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li>Can we do better than this naive algorithm?<ul>
+<li>not really</li>
+<li>but we can try to limit <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> to make the maximization step faster</li>
+<li>exclude a priori some branches in the tree using knowledge of the problem</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="infinite-horizon-dmdp">Infinite horizon DMDP</h2>
+<hr />
+<h3 id="infinite-horizon-dmdp_1">Infinite horizon DMDP</h3>
+<ul>
+<li>Horizon is infinite:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) </div>
+<script type="math/tex; mode=display">V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) </script>
+</div>
+<ul>
+<li>Intuition:<ul>
+<li>let's consider the finite horizon version <span><span class="MathJax_Preview">T&lt;\infty</span><script type="math/tex">T<\infty</script></span> and <span><span class="MathJax_Preview">T &gt;&gt; 1</span><script type="math/tex">T >> 1</script></span></li>
+<li>compute the solution, increase <span><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> until the solution doesn't change</li>
+<li>in practice: take an initial guess for <span><span class="MathJax_Preview">V_{T}</span><script type="math/tex">V_{T}</script></span> then compute optimal <span><span class="MathJax_Preview">V_{T-1}</span><script type="math/tex">V_{T-1}</script></span>, <span><span class="MathJax_Preview">V_{T_2}</span><script type="math/tex">V_{T_2}</script></span> and so on, until convergence of the <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span>s</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="infinite-horizon-dmdp-2">Infinite horizon DMDP (2)</h3>
+<ul>
+<li>This is possible, it's called <em>Successive Approximation</em> or <em>Value Function Iteration</em><ul>
+<li>how fast does it converge? <em>linearly</em></li>
+<li>can we do better? yes, <em>quadratically</em></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="successive-approximation">Successive Approximation</h3>
+<ul>
+<li>Consider the decomposition:</li>
+</ul>
+<div>
+<div class="MathJax_Preview">V(s; x()) = E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) = E_0 \left[ r(s, x(s)) + \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) \right]</div>
+<script type="math/tex; mode=display">V(s; x()) = E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) = E_0 \left[ r(s, x(s)) + \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) \right]</script>
+</div>
+<p>or </p>
+<div>
+<div class="MathJax_Preview">V(s; x()) =  r(s, x(s)) + \delta \sum_{s'} p(s'|s,x(s)) V(s'; x()) </div>
+<script type="math/tex; mode=display">V(s; x()) =  r(s, x(s)) + \delta \sum_{s'} p(s'|s,x(s)) V(s'; x()) </script>
+</div>
+<hr />
+<h3 id="successive-approximation-2">Successive Approximation (2)</h3>
+<ul>
+<li>Taking continuation value as given we can certainly improve the value in every state <span><span class="MathJax_Preview">\tilde{V}</span><script type="math/tex">\tilde{V}</script></span> by choosing <span><span class="MathJax_Preview">\tilde{x}()</span><script type="math/tex">\tilde{x}()</script></span> so as to maximze</li>
+</ul>
+<div>
+<div class="MathJax_Preview">\tilde{V}(s; x(), \tilde{x}()) =  r(s, \tilde{x}(s)) + \delta \sum_{s'} \pi(s'|s,\tilde{x}(s) )V(s'; x()) </div>
+<script type="math/tex; mode=display">\tilde{V}(s; x(), \tilde{x}()) =  r(s, \tilde{x}(s)) + \delta \sum_{s'} \pi(s'|s,\tilde{x}(s) )V(s'; x()) </script>
+</div>
+<ul>
+<li>By construction: <span><span class="MathJax_Preview">\forall s, \tilde{V}(s, \tilde{x}(), x()) &gt; {V}(s, x())</span><script type="math/tex">\forall s, \tilde{V}(s, \tilde{x}(), x()) > {V}(s, x())</script></span><ul>
+<li>it is an "improvement step"</li>
+</ul>
+</li>
+<li>Can <span><span class="MathJax_Preview">{V}(s, \tilde{x}())</span><script type="math/tex">{V}(s, \tilde{x}())</script></span> be worse for some states than <span><span class="MathJax_Preview">{V}(s, \tilde{x}())</span><script type="math/tex">{V}(s, \tilde{x}())</script></span> ?<ul>
+<li>actually no</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="bellman-equation">Bellman equation</h3>
+<p>Idea: it should not be possible to improve upon the optimal solution. Hence the optimal value <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> and policy <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span> should satisfy:</p>
+<div>
+<div class="MathJax_Preview">\forall s\in S, V(s) = \max_{y(s)} r(s, y(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})</div>
+<script type="math/tex; mode=display">\forall s\in S, V(s) = \max_{y(s)} r(s, y(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})</script>
+</div>
+<p>with the maximum attained at <span><span class="MathJax_Preview">x(s)</span><script type="math/tex">x(s)</script></span>. This is referred to as the <strong>Bellman equation</strong>.</p>
+<p>Conversely, it is possible to show that a solution to the Bellman equation is also an optimal solution to the initial problem.</p>
+<hr />
+<h3 id="bellman-operator">Bellman operator</h3>
+<ul>
+<li>
+<p>The function <span><span class="MathJax_Preview">G: V \rightarrow \max_{y(s)} r(s, y(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})</span><script type="math/tex">G: V \rightarrow \max_{y(s)} r(s, y(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})</script></span> is known as the <strong>Bellman operator</strong>.</p>
+</li>
+<li>
+<p>Optimal value if a fixed point of G</p>
+</li>
+<li>
+<p>Can we show it's a contraction mapping ?</p>
+</li>
+</ul>
+<hr />
+<h3 id="blackwells-theorem">Blackwell's theorem</h3>
+<ul>
+<li>
+<p>Let <span><span class="MathJax_Preview">X\subset R^n</span><script type="math/tex">X\subset R^n</script></span> and let <span><span class="MathJax_Preview">\mathcal{C}(X)</span><script type="math/tex">\mathcal{C}(X)</script></span> be a space of bounded functions <span><span class="MathJax_Preview">f: X\rightarrow  R</span><script type="math/tex">f: X\rightarrow  R</script></span>, with the sup-metric. <span><span class="MathJax_Preview">B: \mathcal{C}(X)\rightarrow \mathcal{C}(X)</span><script type="math/tex">B: \mathcal{C}(X)\rightarrow \mathcal{C}(X)</script></span> be an operator satisfying two conditions:</p>
+<ol>
+<li>(monotonicity) if <span><span class="MathJax_Preview">f,g \in \mathcal{C}(X)</span><script type="math/tex">f,g \in \mathcal{C}(X)</script></span> and <span><span class="MathJax_Preview">\forall x\in X, f(x)\leq g(x)</span><script type="math/tex">\forall x\in X, f(x)\leq g(x)</script></span> then </li>
+</ol>
+<p><span><span class="MathJax_Preview">\forall x \in X (Bf)(x)\leq(Bg)(x)</span><script type="math/tex">\forall x \in X (Bf)(x)\leq(Bg)(x)</script></span>
+2. (discounting) there exists some <span><span class="MathJax_Preview">\delta\in]0,1[</span><script type="math/tex">\delta\in]0,1[</script></span> such that:
+<span><span class="MathJax_Preview">B.(f+a)(x)\leq (B.f)(x) + \delta a, \forall f \in \mathcal{C}(X), a\geq 0, x\in X</span><script type="math/tex">B.(f+a)(x)\leq (B.f)(x) + \delta a, \forall f \in \mathcal{C}(X), a\geq 0, x\in X</script></span></p>
+</li>
+<li>
+<p>Then <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> is a contraction mapping with modulus <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="successive-approximation_1">Successive Approximation</h3>
+<ul>
+<li>
+<p>Using the Blackwell's theorem, we can prove the Bellman operator is a contraction mapping (do it).</p>
+</li>
+<li>
+<p>This justifies the Value Function Iteration algorithm:</p>
+<ul>
+<li>choose an initial <span><span class="MathJax_Preview">V_0</span><script type="math/tex">V_0</script></span></li>
+<li>given <span><span class="MathJax_Preview">V_n</span><script type="math/tex">V_n</script></span> compute <span><span class="MathJax_Preview">V_{n+1} = G(V_n)</span><script type="math/tex">V_{n+1} = G(V_n)</script></span></li>
+<li>iterate until <span><span class="MathJax_Preview">|V_{n+1}- V_n|\leq \eta</span><script type="math/tex">|V_{n+1}- V_n|\leq \eta</script></span></li>
+</ul>
+</li>
+<li>Policy rule is deduced from <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> as the maximand in the Bellman step</li>
+</ul>
+<hr />
+<h3 id="successive-approximation-2_1">Successive Approximation (2)</h3>
+<ul>
+<li>Not that convergence of <span><span class="MathJax_Preview">V_n</span><script type="math/tex">V_n</script></span> is geometric</li>
+<li>But <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span> converges in finite time (<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> is finite)<ul>
+<li>surely the latest iterations are suboptimal</li>
+<li>they serve only to evaluate the value of <span><span class="MathJax_Preview">x^{\star}</span><script type="math/tex">x^{\star}</script></span></li>
+</ul>
+</li>
+<li>In fact:<ul>
+<li><span><span class="MathJax_Preview">V_n</span><script type="math/tex">V_n</script></span> is never the value of <span><span class="MathJax_Preview">x_n()</span><script type="math/tex">x_n()</script></span></li>
+<li>should we try to keep both in sync?</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="policy-iteration-for-dmdp">Policy iteration for DMDP</h3>
+<ul>
+<li>Choose initial policy <span><span class="MathJax_Preview">x_0()</span><script type="math/tex">x_0()</script></span></li>
+<li>
+<p>Given initial guess <span><span class="MathJax_Preview">x_n()</span><script type="math/tex">x_n()</script></span></p>
+<ul>
+<li>
+<p>compute the value function <span><span class="MathJax_Preview">V_n=V( ;x_n)</span><script type="math/tex">V_n=V( ;x_n)</script></span> which satisfies <br />
+<span><span class="MathJax_Preview">\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')</span><script type="math/tex">\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')</script></span></p>
+</li>
+<li>
+<p>improve policy by maximizing in <span><span class="MathJax_Preview">x_n()</span><script type="math/tex">x_n()</script></span></p>
+</li>
+</ul>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">\max_{x_n()} r(s, x_n(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, x_n(s)) V_{n-1}(s^{\prime})</div>
+<script type="math/tex; mode=display">\max_{x_n()} r(s, x_n(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, x_n(s)) V_{n-1}(s^{\prime})</script>
+</div>
+<ul>
+<li>
+<p>Repeat until convergence, i.e. <span><span class="MathJax_Preview">x_n=x_{n+1}</span><script type="math/tex">x_n=x_{n+1}</script></span></p>
+</li>
+<li>
+<p>One can show the speed of convergence (for <span><span class="MathJax_Preview">V_n</span><script type="math/tex">V_n</script></span>) is <em>quadratic</em></p>
+<ul>
+<li>it corresponds the the Newton-Raphson steps applied to <span><span class="MathJax_Preview">V\rightarrow G(V)-V</span><script type="math/tex">V\rightarrow G(V)-V</script></span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="how-do-we-compute-the-value-of-a-policy">How do we compute the value of a policy?</h3>
+<ul>
+<li>
+<p>Given <span><span class="MathJax_Preview">x_n</span><script type="math/tex">x_n</script></span>, goal is to find <span><span class="MathJax_Preview">V_n(s)</span><script type="math/tex">V_n(s)</script></span> in <span><span class="MathJax_Preview">\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')</span><script type="math/tex">\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')</script></span></p>
+</li>
+<li>
+<p>Two(three) approaches:</p>
+<ol>
+<li>simulate the policy rule and compute <span><span class="MathJax_Preview">E\left[ \sum_t \delta^t r(s_t, x_t) \right]</span><script type="math/tex">E\left[ \sum_t \delta^t r(s_t, x_t) \right]</script></span> with Monte-Carlo draws</li>
+<li>successive approximation:</li>
+<li>put <span><span class="MathJax_Preview">V_k</span><script type="math/tex">V_k</script></span> in the rhs and recompute the lhs <span><span class="MathJax_Preview">V_{k+1}</span><script type="math/tex">V_{k+1}</script></span>, replace <span><span class="MathJax_Preview">V_k</span><script type="math/tex">V_k</script></span> by <span><span class="MathJax_Preview">V_{k+1}</span><script type="math/tex">V_{k+1}</script></span> and iterate until convergence</li>
+<li>solve a linear system in <span><span class="MathJax_Preview">V_n</span><script type="math/tex">V_n</script></span></li>
+</ol>
+</li>
+<li>
+<p>For 2 and 3 it helps representing a linear operator <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> such that <span><span class="MathJax_Preview">V_{n+1} = R_n + \delta M_n .  V_n</span><script type="math/tex">V_{n+1} = R_n + \delta M_n .  V_n</script></span></p>
+</li>
+</ul>
+<p>Another approach consist: compute <span><span class="MathJax_Preview">(\sum_{t\geq 0} \delta^t M_n^t)</span><script type="math/tex">(\sum_{t\geq 0} \delta^t M_n^t)</script></span></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../optim_slides/" title="Optimization" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Optimization
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../discretization/" title="Discretization" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Discretization
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
