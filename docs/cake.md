@@ -179,7 +179,7 @@ where $\xi_t\in]0,1]$ is an i.i.d random process
 
 - Then we have: (check)
 
-$$\xi_t {U^{\prime} ( c_t )} = \beta E_t \left[ \xi_{t+1 }U^{\prime} (c_{t+1}) \right]$$
+$${U^{\prime} ( c_t )} = \beta \xi_t E_t \left[ U^{\prime} (c_{t+1}) \right]$$
 
 
 
