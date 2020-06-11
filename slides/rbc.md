@@ -295,3 +295,20 @@ Compute many draws.
 Plot average
 
 Add standard deviations
+
+Compute moments
+
+---
+
+### Compare moments with the data
+
+Contrary to model, data $(x_t)$ is not stationary. Decompose $x_t$ between trend and cycle: $x_t = \tau_t + c_t$.
+Cyclical component is the one that should be compared with the model.
+
+HP filter:
+
+\[\min_{\tau_1, ...\tau_T} \left( \sum_{t=1}^T \left( x_t - \tau_t\right)^2) + \lambda \sum_{t=2}^{T-1} \left[ (\tau_{t+1} - \tau_t) - (\tau_t - \tau_{t-1}) \right] ^2 \right)\]
+
+Choose $\lambda$:
+  - higher $\lambda$, smoother cycle
+  - in practice: $\lambda=6.25$ for annual data, $\lambda=1600$ for quarterly data
