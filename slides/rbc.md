@@ -237,3 +237,78 @@ $$k_t = (1-\delta) k_{t-1} + i_{t-1}$$
 Then it doesn't change anything if all equations are surrounded by $E_t \left[ \right]$
 
 ---
+
+### What to do with the solution:
+
+Solution is a __decision rule__ $\varphi$, such that $(i_t,l_t)=\varphi(k_t, a_t)$
+What can we do with it ?
+
+- plot decision rule
+- simulate
+    - measure moments
+    - make forecasts
+- compute response to shocks
+
+---
+
+### Simulations
+
+Given decision rule $\varphi$, such that $(i_t,l_t)=\varphi(k_t, a_t)$) one can simulate the economy 
+
+
+Simulate: 
+- Start from any initial state $(k_0, z_0)$.
+- Given state $k_t, z_t$
+    - Compute controls:
+  \[(i_t,l_t)=\varphi(k_t, a_t)\]
+    - Compute random innovations  $\epsilon_{t+1}$ and use transition equations:
+  \[k_{t+1} = (1-\delta) k_t + i_t\]
+  \[a_{t+1} = \rho a_t + \epsilon_{t+1}\]
+- Compute all other variables afterwards $y_t, w_t, r_t, ...$
+
+Variants:
+    - __deterministic__ simulation, keep $\epsilon_t=0$
+    - __impulse response funtion__: start from steady state, then $\epsilon_1>0$ and $\epsilon_2 = ... = \epsilon_n = ... = 0$
+
+
+---
+
+### Deterministic simulation:
+
+
+
+<!-- Show graph, with risky steady-state -->
+
+---
+
+### Impulse Response Function
+
+
+<!-- Show graph, with risky steady-state -->
+
+---
+
+### Stochastic Simulations
+
+Compute many draws.
+
+Plot average
+
+Add standard deviations
+
+Compute moments
+
+---
+
+### Compare moments with the data
+
+Contrary to model, data $(x_t)$ is not stationary. Decompose $x_t$ between trend and cycle: $x_t = \tau_t + c_t$.
+Cyclical component is the one that should be compared with the model.
+
+HP filter:
+
+\[\min_{\tau_1, ...\tau_T} \left( \sum_{t=1}^T \left( x_t - \tau_t\right)^2) + \lambda \sum_{t=2}^{T-1} \left[ (\tau_{t+1} - \tau_t) - (\tau_t - \tau_{t-1}) \right] ^2 \right)\]
+
+Choose $\lambda$:
+  - higher $\lambda$, smoother cycle
+  - in practice: $\lambda=6.25$ for annual data, $\lambda=1600$ for quarterly data
