@@ -44,7 +44,7 @@ Conclusion: interpolate only if $f$ is known precisely on $X$
 
 ### Example (2)
 
-![](faces.png)
+![](graphs/faces.png)
 
 
 ---

@@ -12,8 +12,6 @@ During the course, each student will be asked to choose and present one Julia li
 The tutorial in the last session will be the final exam.
 
 
-
-
 ## Git Workflow
 
 Instructions to follow the course:

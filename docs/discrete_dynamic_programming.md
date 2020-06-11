@@ -66,7 +66,7 @@ $$\underbrace{
 
 ---
 
-
+<!-- 
 ### Representation as a graph
 
 
@@ -85,7 +85,7 @@ $$\underbrace{
     }
 %}
 
----
+--- -->
 
 
 ### Probabilistic interpretation

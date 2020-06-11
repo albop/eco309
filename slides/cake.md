@@ -98,7 +98,7 @@ $\forall t, \beta^t U^{\prime}(c_t) = \lambda$ vs $\forall t, \beta^t U^{\prime}
 
 So $K$ was the lagrangian ?
 
-![](cat.jpg)
+![](graphs/cat.jpg)
 
 
 ---
