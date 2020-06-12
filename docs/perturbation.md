@@ -13,7 +13,7 @@ General model formulation:
 - Controls/actions:  $x_t \in R^{n_x}$
 - Transitions: $g$ such that
 
-$$s_t = g(s_{t-1}, x_{t-1}, \epsilon_t)\in R^{n_s}$$
+$$\require{color}s_t = g(s_{t-1}, x_{t-1}, \epsilon_t)\in R^{n_s}$$
 
 - Optimality conditions (Euler): 
 
@@ -114,9 +114,11 @@ A solution must satisfy:
 $$\Phi(\varphi, \varphi)= 0$$
 
 Time-iteration operator: $T(\varphi)$ such that \[\Phi(T(\varphi), \varphi)= 0\]
+
 - Computing $T(\varphi)$ implies finding the zero of $u \rightarrow \Phi(u,\varphi)$
 
 Time-iteration algorithm:
+
 - initial guess $\varphi_0$
 - iterate on $\varphi_{n+1} = T(\varphi_{n})$ until convergence (i.e. $|\varphi_{n+1} - \varphi_{n}| <\eta$)
 - converges linearly in general
@@ -156,7 +158,7 @@ with \[k^{\prime} = (1-\delta) k + (k^\alpha-{\color{red}\varphi}(k))\]
 ### Bonus: Improved Time Iterations
 
 Consider Newton-Kantarovitch iterations (Newton applied to $u \rightarrow \Phi(u) - u$)
-$$\varphi_{n+1} = \varphi_n - \underbrace{\left(I- T^{\prime}(\varphi) \right)^{-1}.\left(\overbrace{\varphi_n-T(\varphi_{n})}^{-\delta_n}\right)}_{-\Delta_n}$$
+\[\varphi_{n+1} = \varphi_n - \underbrace{\left(I- T^{\prime}(\varphi) \right)^{-1}.\left(\overbrace{\varphi_n-T(\varphi_{n})}^{-\delta_n}\right)}_{-\Delta_n}\]
 
 In this expression, denoting by $\mathcal{D}$ the space of decision rules:
 - $I$ is the identity operator: $I(\varphi) = \varphi$
@@ -180,10 +182,12 @@ $$\varphi_{n+1} = \varphi_n + \underbrace{\left(T(\varphi_{n})-\varphi_n\right)}
 ### Bonus 2: Backward Stability
 
 Application $T^{\prime}$ should be a contraction mapping: small deviations in the future decision rules should not affect decision rules today.
+
 - It is a desirable feature of a well-specified economic model: expectations are stable.
 - How do you measure *operator norm* $\sup_{|x|=1 } | T^{\prime}(x)|$ ?
 
 Use the *power iteration* method.  For a given linear application $L.u\rightarrow u$
+
 - Start with *random* $v_0$ and compute $u_0=\frac{v_0}{|v_0|}$
 - Given $u_n$, compute 
     - $v_{n+1} = L.u_n$
@@ -320,6 +324,7 @@ Define:
 ### Perturbation: linear time iteration (2)
 
 Linear Time Iteration algorithm
+
 - choose random $X_0$
 - given $X_n$ find $X_{n+1}$ such that $F(X_{n+1}, X_n)=0$
     - implicitly defined $T$ such that $F(T(X),X)=0$ is *time iteration* operator
@@ -336,6 +341,7 @@ By construction the limit X satisfies $F(X,X)=0$
 So we have a solution $X$. How do we know it is stable? Can we know whether it is unique?
 
 Blanchard-Kahn condition is exactly equivalent to:
+
 - $P(X) = g_s + g_x X$ is stable (i.e. $sup_{|u|=1} |P.u| \leq 1$)
 - time-iteration is a strict contraction, that is $sup_{|u|=1} |T^{\prime}(X).u| < 1$
 
@@ -359,12 +365,13 @@ You get $\lambda_n \rightarrow \sup_{|x|=1} |L.x|$
 ### Perturbation: linear time iteration (4)
 
 How do we measure numerical radius:  $sup_{|u|=1} |P.u| \leq 1$ and $sup_{|u|=1} |T^{\prime}(X).u| < 1$ ?
+
 - using power iterations method
 - $P.u$ is simple a simple matrix multiplication but $T^{\prime}(X).u$ looks hairy...
     - not at all
 
 Differentiate: $F(T(X), X) = 0$
-$$F^{\prime}_X T^{\prime} (X) . u+ F^{\prime}_Y.u = 0$$
+\[F^{\prime}_X T^{\prime} (X) . u+ F^{\prime}_Y.u = 0\]
 
 Note that $F$ is actually linear in X and Y so: 
 - $F^{\prime}_X: u\rightarrow + f^{\prime}_x  u +  f^{\prime}_S  Y g_x u +  f^{\prime}_X  X g_x u = \left( f^{\prime}_x  +  f^{\prime}_S  Y g_x  +  f^{\prime}_X  X g_x\right).u$
