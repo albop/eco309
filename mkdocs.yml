@@ -10,6 +10,7 @@ nav:
 - Differentiation: differentiation.md
 - Cake Eating: cake.md
 - RBC: rbc.md
+- perturbation: perturbation.md
 - Notebooks:
     - Julia Basics: notebooks/1_Julia_Basics_tutorial.ipynb
     - Epidemiology: notebooks/2_Epidemiology_tutorial.ipynb
