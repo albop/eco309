@@ -29,7 +29,7 @@ General model formulation:
 - Controls/actions:  $x_t = \varphi(s_t)$ with $\varphi$ to be determined
 - Transitions: $g$ such that
 
-$$s_t = g(s_{t-1}, x_{t-1}, \epsilon_t)$$
+$$s_t = g(s_{t-1}, x_{t-1}, 0)$$
 
 - Optimality conditions (Euler): 
 
@@ -77,7 +77,7 @@ One single functional equation:
 
 \[\Phi(\varphi)(k) = - U^{\prime}({\color{red}\varphi}(k_t)) + U^{\prime}\left( {\color{green}\varphi}\left( (1-\delta) k_t + (k_{t}^\alpha-{\color{red}\varphi}(k_t))\right) \right) \left( \alpha \left((1-\delta) k_t + (k_{t}^\alpha-{\color{red}\varphi}(k_t))\right)^{\alpha-1} + (1-\delta) \right) \]
 
-\[\forall k, \Phi(\varphi)(k)\]
+\[\forall k, \Phi(\varphi)(k) = 0\]
 
 - Note the composition of $\varphi$ "by itself".
 
@@ -133,10 +133,10 @@ Time-iteration algorithm:
     - find the risk neutral price: $p_t = E_t \left[ \sum_{s\geq t} \beta^{s-t} d_{s} \right]$
     - what is the functional equation satisfied by $p()$?
 
-\[\forall z, p(z) = d(z) + E_{\epsilon} p \left( \rho z + \epsilon \right)\]
+\[\forall z, p(z) = d(z) + \beta E_{\epsilon} p \left( \rho z + \epsilon \right)\]
 - time iteration operator $T: p\rightarrow T(p)$ such that: 
 
-\[\forall z, \space T(p)(z) = d(z) + E_{\epsilon} p \left( \rho z + \epsilon \right)\]
+\[\forall z, \space T(p)(z) = d(z) + \beta E_{\epsilon} p \left( \rho z + \epsilon \right)\]
 
 ---
 
@@ -237,7 +237,7 @@ Recover actual solution:
 
 ### Perturbation: deterministic model
 
-$$s_{t+1} = g(s_t, x_t, \sigma \epsilon_t)$$
+$$s_{t+1} = g(s_t, x_t, 0)$$
 
 $$f(s_t, x_t, s_{t+1}, x_{t+1})$$
 
@@ -258,7 +258,7 @@ What pins down $X\in R^{n_x} \times R^{n_s}$ ?
 
 - perturb transition equation:
 
-$$x_t-\overline{x} = X(s_t-\overline{s})$$
+$$x_t-\overline{x} = X(s_t-\overline{s}) + o(s_t-\overline{s})$$
 
 $$s_{t+1}-\overline{s} = g^{\prime}_s(s_t - \overline{s}) + g^{\prime}_x X(s_t - \overline{s}) + o(s_t-\overline{s})$$
 
@@ -309,10 +309,10 @@ There is a simple numerical procedure to solve the system: *linear time iteratio
 
 Define:
 
-\[F(X,Y) = f^{\prime}_s  + f^{\prime}_x  X +  f^{\prime}_S  (g_s + g_s X) +  f^{\prime}_X  X (g_s + g_x X)\]
+\[F(X,Y) = f^{\prime}_s  + f^{\prime}_x  X +  f^{\prime}_S  (g_s + g_s X) +  f^{\prime}_X  Y (g_s + g_x X)\]
 
 - Matrix $Y$ corresponds to future decision rule
-- Solution $X$ must satisfy $F(X,Y) = 0$
+- Solution $X$ must satisfy $F(X,X) = 0$
 
 
 ---
@@ -340,7 +340,21 @@ Blanchard-Kahn condition is exactly equivalent to:
 - time-iteration is a strict contraction, that is $sup_{|u|=1} |T^{\prime}(X).u| < 1$
 
 ---
+### Power iterations method
 
+Given linear operation $L$. You want to compute $\sup_{|x|=1} |L.x|=\sup_{|x|\neq 0} \frac{|L.x|}{|x|}$.
+
+Start with *random* $v_0$, compute $u_0 = \frac{v_0}{|v_0|}$
+
+Given $u_n$ (of norm 1):
+- $v_{n+1} = L.u_n$
+- $\lambda_{n+1} = |v_{n+1}|$
+- $u_{n+1} = \frac{v_{n+1}}{|v_{n+1}|}$
+
+You get $\lambda_n \rightarrow \sup_{|x|=1} |L.x|$
+
+
+---
 
 ### Perturbation: linear time iteration (4)
 
@@ -393,6 +407,9 @@ $$\pi_t = \beta E_t \left[ \pi_{t+1} \right] + \kappa y_t $$
 
 IS Curve:
 
+- closed economy: $c_t=y_t$
+- euler equation ${c_t}^{-\sigma} = \beta c_{t+1}^{-\sigma} (i_{t} - \pi_{t+1})$
+
 $$y_t = y_{t+1} + \frac{1}{\sigma}(i_t - E_t\left[ \pi_{t+1}\right] ) + \nu_t$$
 
 Taylor Rule:
@@ -411,7 +428,7 @@ Variables:
 
 Meaning of the parameters:
 
-- $\beta=0.01$: discount rate
+- $\beta=1.01$: discount rate
 - targeted values (all 0 here): $r^{\star}_t$, $\pi^{\star}_t$, $y_t^{\star}$
 - $\kappa$: response of inflation to output (depends on price adjustment)
     - $\kappa = \frac{h(1-(1-h)\beta)}{1-h}$
