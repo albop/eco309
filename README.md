@@ -5,7 +5,7 @@
 ## General
 
 All the course material is written inside notebooks `notebooks/*` and markdown files (usually in `slides/`). Those ending with `_tutorial` are meant to be run and filled by students.
-The content of the course can be browsed [online](http://www.mosphere.fr/eco309/). (PRs are welcome)
+Slides are available [online](http://www.mosphere.fr/eco309/slides). (PRs are welcome)
 
 Each student is expected to have a clone of the course repository and update it at the beginning of each session. It is suggested to work on a copy of each file.
 
