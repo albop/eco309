@@ -1,6 +1,6 @@
 # Computational Economics
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/albop/eco309.git/master?urlpath=lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/albop/eco309.git/main?urlpath=lab)
 
 ## General
 
