@@ -29,7 +29,7 @@ Each session is 4 hours, and is expected to be evenly but not contiguously divid
 | Date  | Content                                          | Homework                     |
 | ----- | ------------------------------------------------ | ---------------------------- |
 | 04/01 | Introduction, Julia Basics 1, Contagion Tutorial | Finish Epidemiology Tutorial |
-| 04/08 | Series Convergence, Forward/Backward models      |                              |
+| 04/08 | Sequence Convergence, Solow growth Model         |   Finish growth tutorial     |
 | 04/15 | Optimization                                     |                              |
 | 04/22 |                                                  |                              |
 | 04/29 |                                                  |                              |
