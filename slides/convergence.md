@@ -1,4 +1,4 @@
-# Convergence of recursive series
+# Convergence of recursive sequences
 
 ## Computational Economics  2021 (ECO309)
 
@@ -40,8 +40,9 @@ We want to compute a fixed point of $f$ and study its properties.
 - Solow growth model:
   - production:
       $$y_t = k_t^\alpha$$
+      - $\alpha$ smaller than 1: decreasing returns to capital
   - constant saving rate:
-    ${\color{red}s_t}$ \in [0,1]
+    ${\color{red}s_t}=s \in [0,1]$
   - consumption:
       $$c_t = (1-{\color{red}s_t})y_t$$
   - capital accumulation:
@@ -96,7 +97,7 @@ $$p\_t = d\_t + \frac{1}{r} \mathbb{E}\_t p\_{t+1}$$
 ---
 
 
-### Recursive series (2)
+### Recursive sequences (2)
 
 
 
@@ -114,7 +115,7 @@ $$p\_t = d\_t + \frac{1}{r} \mathbb{E}\_t p\_{t+1}$$
 - As for unicity it depends on the applicaitions:
   - in some particular cases, we can prove it
   - we'll be happy with local conditions (existence, uniqueness) *around* a solution
-- 
+ 
 </div>
 
 <div class="col">
@@ -136,7 +137,7 @@ for a nonconvex/nonmonotonic one, we can get multiple fixed points.
 ### Local Stability
 
 - How do we characterize behaviour of sequence $x_n = f(x_{n-1})$ around $x$ such that $f(x)=x$?
-    - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|>1$: series is unstable and will not converge to $x$ except by chance
+    - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|>1$: sequence is unstable and will not converge to $x$ except by chance
     - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|<1$: $x$ is a stable fixed point
     - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|=1$: ??? (look at higher order terms)
 - <!-- .element class="fragment" data-fragment-index=2 -->This is true for real valued sequences
@@ -156,7 +157,7 @@ $$\begin{eqnarray}|x_t - x_{t-1}| & = &  | f(x_{t-1}) - f(x_{t-2})| \\\\
 |x_t - x_{t-1}| & \sim & |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}|\end{eqnarray}$$
 - Ratio of successive approximation errors
 $$\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}$$
-$$\lambda_t \rightarrow f^{\prime}(\overline{x})$$
+$$\lambda_t \rightarrow | f^{\prime}(\overline{x})| $$
 - Successive approximation errors decrease geometrically
 
 ---
@@ -217,7 +218,8 @@ $$g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}$$
 
 ### Aitken's extrapolation
 
-- Consider a convergent recursive sequence $x_t = f(f_{t-1})$
+- Consider a convergent recursive sequence $x_t = f(x_{t-1})$
+   - assume it is converging geometrically
 - Note that
 $$\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}$$
 - Take $x_{t-1}, x_t$ and $x_{t+1}$ as given and solve for $x$:
@@ -228,7 +230,7 @@ $$x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}$$
 
 ---
 
-### Aitken's Steffensen's Method:
+### Aitken/Steffensen's Method:
 
 
 - Aitken-Steffensen method to compute the limit of a sequence:
