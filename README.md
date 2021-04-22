@@ -6,6 +6,9 @@
 
 All the course material is written inside notebooks and markdown files (usually in `slides/`). Tutorial files (in `tutorial/`) are meant to be run and filled by students.
 Slides are available [online](http://www.mosphere.fr/eco309/slides/). (PRs are welcome)
+- [introduction](http://www.mosphere.fr/eco309/slides/)
+- [convergence](http://www.mosphere.fr/eco309/slides/convergence/)
+- [optimization](http://www.mosphere.fr/eco309/slides/optimization/)
 
 Each student is expected to have a clone of the course repository and update it at the beginning of each session. It is suggested to work on a copy of each file.
 
