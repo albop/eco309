@@ -1,6 +1,6 @@
 # Introduction
 
-## Computational Economics,  2021 (MIE37)
+## Computational Economics,  2021 (ECO309)
 
 Pablo Winant
 
