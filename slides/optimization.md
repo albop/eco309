@@ -259,7 +259,7 @@ $x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$
 - This is guaranteed to converge to a local minimum
 - In each step, the size of the interval is reduced by a factor $\Phi$
 - By choosing $\Phi=\frac{\sqrt{5}-1}{2}$ one can save one evaluation by iteration.
-  - TODO
+  - you can check that either $c_{n+1} = d_n$ or $d_{n+1} = c_n$
 - Remark that bisection is not enough
 
 ----
