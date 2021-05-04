@@ -95,7 +95,7 @@ f''(x) & \approx & \frac{f'(x)-f'(x-\epsilon)}{\epsilon} \approx \frac{(f(x+\eps
 ```julia
 function f(x::Float64)
     a = x + 1
-    b = y^2
+    b = x^2
     c = sin(a) + a + b
 end
 ```

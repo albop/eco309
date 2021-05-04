@@ -341,7 +341,7 @@ Function $f: R^p \rightarrow R^q$
 
 - *Jacobian*: $J(x)$ or $f^{\prime}\_x(x)$, $p\times q$ matrix such that:
   $$J(x)\_{ij} = \frac{\partial f(x)\_i}{\partial x_j}$$
-- *Gradient*: $\nabla J(x)$, gradient when $q=1$
+- *Gradient*: $\nabla f(x) = J(x)$, gradient when $q=1$
 - *Hessian*: denoted by $H(x)$ or $f^{\prime\prime}\_{xx}(x)$ when $q=1$:
 $$H(x)\_{jk} = \frac{\partial f(x)}{\partial x_j\partial x_k}$$
 
@@ -365,13 +365,14 @@ following explanations also work with other norms.
 
 ----
 
-### Multidimensional Newton Minimization (2)
+### Multidimensional Newton root-finding (2)
 
 - what matters is the computation of the step $\Delta_n = {\color{\red}{J(x_{n})^{-1}}} f(x_n)$
 - don't compute $J(x_n)^{-1}$
   - it takes less operations to compute $X$ in $AX=Y$ than $A^{-1}$ then $A^{-1}Y$
+  - in Julia: `X = A \ Y`
 - strategies to improve convergence:
-  - *dampening*: $x_n = (1-\lambda)x^{n-1} - \lambda \Delta_n$
+  - *dampening*: $x_n = (1-\lambda)x_{n-1} - \lambda \Delta_n$
   - *backtracking*: choose $k$ such that $|f(x_n-2^{-k}\Delta_n)|$<$|f(x_{n-1})|$
   - *linesearch*: choose $\lambda\in[0,1]$ so that $|f(x_n-\lambda\Delta_n)|$ is minimal
 
@@ -526,7 +527,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 ### Karush-Kuhn-Tucker conditions
 
 - If $(x^{\star},y^{\star})$ is optimal there exists $\lambda$ such that:
-  - $(x^{\star},y^{\star})$ maximizes $U(x_1, x_2) + \lambda (B- p_1 x_1 - p_2 x_2)$
+  - $(x^{\star},y^{\star})$ maximizes lagrangian $\mathcal{L} = U(x_1, x_2) + \lambda (B- p_1 x_1 - p_2 x_2)$
   - $\lambda \geq 0$
   - $B- p_1 x_1 - p_2 x_2 \geq 0$
   - $\lambda  (B - p_1 x_1 - p_2 x_2 ) = 0$
@@ -584,7 +585,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
   - NLSolve.jl: multidimensional root finding (+complementarities)
   - Optim.jl: minimization
 - The two latter libraries have a somewhat peculiar API, but it's worth absorbing it.
-  - in particular they provide non-alocating algorithms for functions that modify arguments in place
+  - in particular they provide non-allocating algorithms for functions that modify arguments in place
   - they are compatible with automatic differentiation
 
 ```
