@@ -29,16 +29,16 @@ The tutorial in the last session will be the final exam.
 
 Each session is 4 hours, and is expected to be evenly but not contiguously divided between lectures and hands-on tutorials.
 
-| Date  | Content                                          | Homework                     |
-| ----- | ------------------------------------------------ | ---------------------------- |
-| 04/01 | Introduction, Julia Basics 1, Contagion Tutorial | Finish Epidemiology Tutorial |
-| 04/08 | Sequence Convergence, Solow growth Model         | Finish growth tutorial       |
-| 04/15 | Optimization                                     | Finish optimization tutorial |
-| 04/22 |                                                  |                              |
-| 04/29 |                                                  |                              |
-| 05/06 |                                                  |                              |
-| 05/13 |                                                  |                              |
-| 05/19 |                                                  |                              |
-| 05/26 |                                                  |                              |
+| Date  | Content                                           | Homework                     |
+| ----- | ------------------------------------------------- | ---------------------------- |
+| 04/01 | Introduction, Julia Basics 1, Contagion Tutorial  | Finish Epidemiology Tutorial |
+| 04/15 | Sequence Convergence, Solow growth Model          | Finish growth tutorial       |
+| 04/22 | Optimization                                      | Finish optimization tutorial |
+| 04/29 | Optimization (2), Julia Basics 2, Differentiation | First Homework               |
+| 05/06 | Discrete Dynamic Programming                      |                              |
+| 05/20 |                                                   |                              |
+| 05/27 | First Order Conditions, Perturbation Analysis     |                              |
+| 06/03 |                                                   |                              |
+| 06/10 | Exam                                             |                              |
 
 Roadmap will be adjusted.
