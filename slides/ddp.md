@@ -1,12 +1,15 @@
 # Discrete Dynamic Programming
 
-## Advanced Macro: Numerical Methods,  2021 (MIE37)
+## Advanced Macro: Numerical Methods,  2021 (ECO309)
 
 ---
 
 ## Introduction
 
 
+----
+
+Say something about dynamic optimization...
 
 ----
 
@@ -69,16 +72,14 @@ I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for
 
 - Interpretation: $P_{ij}$ is the fraction of the mass initially in state $i$ which ends up in $j$
 
-
 ----
 
 ### Example
 
-$$\underbrace{
-\begin{pmatrix}
-? & ? & ?
-\end{pmatrix}
-}\_{\mu_{t+1}'} = \underbrace{
+
+$$
+\begin{eqnarray}
+\underbrace{
 \begin{pmatrix}
 0.5 & 0.3 & 0.2
 \end{pmatrix}
@@ -86,24 +87,27 @@ $$\underbrace{
 0.4 & 0.6 & 0.0 \\\\
 0.2 & 0.5 & 0.3 \\\\
 0 & 0 & 1.0
-\end{pmatrix}$$
+\end{pmatrix} && \\\\
+\underbrace{
+\begin{pmatrix}
+0.5\times0.4+0.3\times 0.2 & 0.5\times0.6+0.3\times 0.5 & 0.3\times 0.3 + 0.2\times 1.0
+\end{pmatrix}
+}\_{\mu_{t+1}'}&&
+\end{eqnarray}
+$$
+
+
+
+<img src=attack_plan.svg width=50%>
 
 ----
-
-
-### Representation as a graph
-
-![](attack_plan.svg)
-
-----
-
 
 ### Probabilistic interpretation
 
 - Denote by $S=(s_1,...s_n)$ a finite set with $n$ elements ($|S|=n$). 
-- A __Markov Chain__ with values in $S$ and with transitions given by a stochastic matrix $P\in R^n\times R^n$ identfies a __stochastic process__ $(X\_t)\_{t\geq 0}$ such that $$P\_{ij} = Prob(X\_{t+1}=s\_j|X\_t=s_i)$$
+- A __Markov Chain__ with values in $S$ and with transitions given by a stochastic matrix $P\in R^n\times R^n$ corresponds to a __stochastic process__ $(X\_t)\_{t\geq 0}$ such that $$P\_{ij} = Prob(X\_{t+1}=s\_j|X\_t=s_i)$$
 - In words, line $i$ describes the conditional distribution of $X_{t+1}$ conditional on $X_t=s_i$.
-[TODO: illustration]
+
 
 ----
 
@@ -114,7 +118,7 @@ $$\underbrace{
 - $P^k_{ij}$ denotes the probability of ending in $j$, after $k$ periods, starting from $i$
 
 - Given an initial distribution $\mu_0\in R^{+ n}$
-    - Which states will visited with positive probability between t=0 and t=k?
+    - Which states will be visited with positive probability between t=0 and t=k?
     - What happens in the very long run?
 
 - We need to study a little bit the properties of Markov Chains
@@ -144,7 +148,7 @@ $(P^k)_ {i,j}>0$ and $(P^l)_ {j,i}>0$
 
 ##### Irreducible
 
-![](mc_irreducibility1.png)
+<img src=mc_irreducibility1.png height=300>
 
 - All states can be reached with positive probably from any other initial state.
 
@@ -155,7 +159,7 @@ $(P^k)_ {i,j}>0$ and $(P^l)_ {j,i}>0$
 ##### Not irreducible
 
 
-![](mc_irreducibility2.png)
+<img src=mc_irreducibility2.png height=300>
 
 - There is a subset of states (poor), which absorbs all the mass coming in.
 
@@ -187,7 +191,7 @@ $$gcd( {k\geq 1 | (P^k)_{i,i}>0} )$$
 
 ##### Periodic
 
-![](mc_aperiodicity1.png)
+<img src=mc_aperiodicity1.png height=100>
 
 - If you start from some states, you return to it, but not before two periods.
 
@@ -197,7 +201,7 @@ $$gcd( {k\geq 1 | (P^k)_{i,i}>0} )$$
 
 ##### Aperiodic
 
-![](mc_aperiodicity2.png)
+<img src=mc_aperiodicity2.png height=100>
 
 - If some mass leaves a state, some of it returns to the state in the next period.
 
@@ -211,7 +215,7 @@ $$gcd( {k\geq 1 | (P^k)_{i,i}>0} )$$
 
 - $\mu$ is a __stationary__ distribution if $\mu' = \mu' P$
 
-- Theorem: there always exists such a distribution
+- Theorem: there always exists such a distribution that is not $\mu=0$
     - proof: Brouwer theorem (fixed-point result for compact-convex set)
     - $f: \mu\rightarrow (\mu'P)'$
 
@@ -230,10 +234,10 @@ $$gcd( {k\geq 1 | (P^k)_{i,i}>0} )$$
 - __Brouwer's theorem__: Let $\mathcal{C}$ be a compact convex subset of $R^n$ and $f$ a continuous mapping $\mathcal{C}\rightarrow \mathcal{C}$. Then there exists a fixed point $x_0\in \mathcal{C}$ such that $f(x_0)=x_0$
 - Result hinges on:
   - continuity of $f: \mu \mapsto \mu P$
-  - convexity of $\\{x \in R^n | |x|=1 \\}$ (easy to check)
-  - compactness of $\\{x \in R^n | |x|=1 \\}$
+  - convexity of $\\{x \in R^{+,n} ,\\; |x|_1=1 \\}$ (easy to check)
+  - compactness of $\\{x \in R^{+,n} ,\\;  |x|_1=1 \\}$
     - it is bounded
-    - and closed (the inverse image of 1 for $u\mapsto |u|$ which is continuous)
+    - and closed (the inverse image of 1 for $u\mapsto |u|_1$ which is continuous)
 
 ----
 
@@ -262,13 +266,14 @@ How do we compute the stationary distribution?
 - Find the solution of $\mu'(P-I) = 0$ ?
   - not well defined, 0 is a solution
   - we need to incorporate the constraint $\sum_i(\mu_i)=1$
+  - since P-I is at most of rank $n-1$ we can replace one line by this condition
 - Method:
   - Define $M_{ij} =  \begin{cases} 1  &\text{if} & j =0 \\\\ (P-I)_{ij}  & \text{if} & j> 1  \end{cases}$
   - Define $D_i = \begin{cases} 1 & \text{if} & j = 0 \\\\0 & \text{if} & j>0 \end{cases}$
   - With a linear algebra solver
     - look for a solution $\mu$ of $\mu' M = D$ 
     - or $M^{\prime} \mu = D\prime$
-    - if you find a solution, it is unique (theorem)
+    - if you find a solution, it is unique! (theorem)
 - Alternative: 
   - minimize residual squares of overidentified system
 
@@ -361,7 +366,7 @@ R[end] = 1
     - horizon: $T \in \\{N, \infty\\}$
 
 - value of a state $s$
-  - value of following the optimal policy starting from $s$
+  - value of following the *optimal* policy starting from $s$
       $$V(s) = \max_{ x()} R(s, x())$$
   - $V()$ is the value function (t.b.d.)
 
@@ -398,18 +403,30 @@ $$ = E_0 \left[ \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] +  \d
 
 ### Continuous vs discrete
 
+<div class="container">
+
+<div class="col">
+
 - __Discrete Dynamic Programming__ (today)
-  - discrete states: $s \in {s_1, \cdots, s_N}$
-  - discrete controls: $|X(s)|<\infty$
-  - there is a finite number of policies, the can be represented exactly
-  - unless $|S|$ is very large (cf go game)
-- __Continuous problem__:
-  - $x(s)$, $V(s; \pi)$ require an infinite number of coefficients
-  - same general approach but different implementation
-  - two main variants:
+  - <!-- .element class="fragment" data-fragment-index="1" --> discrete states: $s \in {s_1, \cdots, s_N}$
+  - <!-- .element class="fragment" data-fragment-index="2" --> discrete controls: $|X(s)|<\infty$
+  - <!-- .element class="fragment" data-fragment-index="3" --> there is a finite number of policies, that  can be represented exactly
+  - <!-- .element class="fragment" data-fragment-index="4" --> unless $|S|$ is very large (cf go/chess game)
+- <!-- .element class="fragment" data-fragment-index="6" --> <strong>Continuous problem</strong>:
+  - <!-- .element class="fragment" data-fragment-index="7" --> $x(s)$, $V(s; \pi)$ require an infinite number of coefficients
+  - <!-- .element class="fragment" data-fragment-index="8" --> same general approach but different implementation
+  - <!-- .element class="fragment" data-fragment-index="9" --> two main variants:
     - __discretize__ the initial problem: back to DDP
     - use __approximation__ techniques (i.e. interpolation)
 
+</div>
+
+<div class="col">
+
+![Very implausible situation](bongcloud.jpg)<!-- .element class="fragment current-visible" data-fragment-index="5" --> 
+
+</div>
+</div>
 
 ----
 
@@ -464,6 +481,10 @@ where
     - usually evaluated by replaying the game many times
     - tradeoff exploration / exploitations
 
+----
+
+<iframe width="800" height="500" src="https://www.youtube.com/embed/V1eYniJ0Rnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ---
 
 ## Finite horizon DMDP
@@ -482,7 +503,7 @@ When $T<\infty$. With discrete action the problem can be represented by a tree.
 
 - Intuition: backward induction.
     - Find optimal policy $x_T(s_T)$ in all terminal states $s_T$. Set $V_T(s_T)$ equal to $r(s_T, \pi_T)$
-    - For each state $s_{k-1}\in S$ find $x_{k-1}\in X(s_{k-1})$ which maximizes 
+    - Given $V_k(s_k)$, for each state $s_{k-1}\in S$ find $x_{k-1}\in X(s_{k-1})$ which maximizes 
 $$V_{k-1}(s_{k-1}) = \max_{x_{k-1}(s_{k-1})\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \delta \underbrace{ \sum_{s_k\in S} \pi(s_k | s_{k-1}, x_{k-1} ) V_k(s_k)} _{ \textit{expected continuation value} }$$
 - Policies $x_0(), ... x_T()$ are __Markov-perfect__:
   - they maximize utility on all subsets of the "game"
@@ -510,6 +531,7 @@ $$V_{k-1}(s_{k-1}) = \max_{x_{k-1}(s_{k-1})\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \
 
 - Horizon is infinite:
 $$V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) $$
+  - we focus on time-consistent case where optimal choices are given by a time-invariant optimal *rule* $x(s)$
 - Intuition:
     - let's consider the finite horizon version $T<\infty$ and $T >> 1$
     - compute the solution, increase $T$ until the solution doesn't change
@@ -533,7 +555,9 @@ $$V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) $$
 - Consider the decomposition:
 $$V(s; x()) = E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) = E_0 \left[ r(s, x(s)) + \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) \right]$$
 
-or 
+$$V(s; x()) = r(s, x(s)) + \delta  E_0  \left[ \underbrace{  \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) }\_{V(s_{t+1}; x())} \right]$$
+
+or with different notations
 
 $$V(s; x()) =  r(s, x(s)) + \delta \sum_{s'} p(s'|s,x(s)) V(s'; x()) $$
 
@@ -547,7 +571,7 @@ $$V(s; x()) =  r(s, x(s)) + \delta \sum_{s'} p(s'|s,x(s)) V(s'; x()) $$
 $$\tilde{V}(s; x(), \tilde{x}()) =  r(s, \tilde{x}(s)) + \delta \sum_{s'} \pi(s'|s,\tilde{x}(s) )V(s'; x()) $$
 - By construction: $\forall s, \tilde{V}(s, \tilde{x}(), x()) > {V}(s, x())$
     - it is an __improvement step__
-- Can ${V}(s, \tilde{x}())$ be worse for some states than ${V}(s, \tilde{x}())$ ?
+- Can ${V}(s, \tilde{x}())$ be worse for some states than ${V}(s, {x}())$ ?
     - actually no
 
 ----
@@ -623,8 +647,7 @@ $\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')
 $$\max_{x_n()} r(s, x_n(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, x_n(s)) V_{n-1}(s^{\prime})$$
 - Repeat until convergence, i.e. $x_n=x_{n+1}$
 - One can show the speed of convergence (for $V_n$) is *quadratic*
-    - it corresponds the Newton-Raphson steps applied to $V\rightarrow G(V)-V$
-    - we'll see Newton-Raphson in the next session (on optimization)
+    - it "corresponds" the Newton-Raphson steps applied to $V\rightarrow G(V)-V$
 
 
 ----
