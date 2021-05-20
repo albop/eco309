@@ -555,7 +555,7 @@ $$V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) $$
 - Consider the decomposition:
 $$V(s; x()) = E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) = E_0 \left[ r(s, x(s)) + \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) \right]$$
 
-$$V(s; x()) = r(s, x(s)) + \delta  E_0  \left[ \underbrace{  \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) }\_{V(s_{t+1}; x())} \right]$$
+$$V(s; x()) = r(s, x(s)) +  E_0  \left[ \underbrace{ \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) }\_{ \delta  V(s_{t+1}; x())} \right]$$
 
 or with different notations
 
@@ -731,9 +731,9 @@ $\newcommand{\E}{\mathbb{E}}$
 
 - What is the value of being in a given state?
 - If Unemployed, facing current offer $w$:  
-$$V^U(w) = U(\underline{c}) + \max_{a} \begin{cases} \beta V^E(w) & \text{if $a(w)$ is true} \\\\ \beta  \\E_{a'}\left[ V^U(a^{\prime}) \right]  & \text{if $a(w)$ is false} \end{cases}$$
+$$V^U(w) = U(\underline{c}) + \max_{a} \begin{cases} \beta V^E(w) & \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ V^U(w^{\prime}) \right]  & \text{if $a(w)$ is false} \end{cases}$$
 - If Employed, at rate $w$
-$$V^E(w) = U(w) +  (1-\lambda) \beta V^E(w) +  \lambda \beta \\E_{a'}\left[ V^U(a^{\prime}) \right] $$
+$$V^E(w) = U(w) +  (1-\lambda) \beta V^E(w) +  \lambda \beta \\E_{w'}\left[ V^U(w^{\prime}) \right] $$
 
 - We can represent value as two functions $V^U$ and $V^E$ of the states as
   - two vectors of Floats, with three elements (recall: value-function is real valued)
@@ -745,8 +745,8 @@ $$V^E(w) = U(w) +  (1-\lambda) \beta V^E(w) +  \lambda \beta \\E_{a'}\left[ V^U(
 
 - Take a guess for value function $\tilde{V^E}$, $\tilde{V^U}$, *tomorrow*
 - Use it to compute value function *today*:
-$$V^U(w) = U(\underline{c}) + \max_{a(w)} \begin{cases} \beta \tilde{V}^E(w) & \text{if $a(w)$ is true} \\\\ \beta  \\E_{a'}\left[ \tilde{V}^U(a^{\prime}) \right]  & \text{if $a(w)$ is false} \end{cases}$$
-$$V^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E(w) +  \lambda \beta \\E_{a'}\left[\tilde{V}^U(a^{\prime}) \right] $$
+$$V^U(w) = U(\underline{c}) + \max_{a(w)} \begin{cases} \beta \tilde{V}^E(w) & \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ \tilde{V}^U(w^{\prime}) \right]  & \text{if $a(w)$ is false} \end{cases}$$
+$$V^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U(w^{\prime}) \right] $$
 - $(\tilde{V}^E, \tilde{V}^U)\mapsto (V^E, V^U)$ is one *value iteration* step
 - Note that we don't have to keep track of policies tomorrow
   - all information about future decisions is contained in $\tilde{V}^E, \tilde{V}^U$

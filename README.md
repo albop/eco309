@@ -36,10 +36,10 @@ Each session is 4 hours, and is expected to be evenly but not contiguously divid
 | 04/15 | Sequence Convergence, Solow growth Model          | Finish growth tutorial       |
 | 04/22 | Optimization                                      | Finish optimization tutorial |
 | 04/29 | Optimization (2), Julia Basics 2, Differentiation | First Homework               |
-| 05/06 | Discrete Dynamic Programming                      |                              |
-| 05/20 |                                                   |                              |
+| 05/06 | Markov Chains, Discrete Dynamic Programming (1)   |                              |
+| 05/20 | Discrete Dynamic Programming (2), Discretization  |                              |
 | 05/27 | First Order Conditions, Perturbation Analysis     |                              |
-| 06/03 |                                                   |                              |
-| 06/10 | Exam                                             |                              |
+| 06/03 | Interpolation, Time Iteration                     |                              |
+| 06/10 | Exam                                              |                              |
 
-Roadmap will be adjusted.
+Roadmap will be adjusted as we go.
