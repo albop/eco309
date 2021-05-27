@@ -1,4 +1,4 @@
-# Discrete Dynamic Programming
+# Perturbation Analysis
 
 ## Computational Economics  2021 (ECO309)
 
