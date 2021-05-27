@@ -1,6 +1,6 @@
 # Discrete Dynamic Programming
 
-## Advanced Macro: Numerical Methods,  2021 (ECO309)
+## Computational Economics  2021 (ECO309)
 
 ---
 
@@ -759,7 +759,7 @@ $$V^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E(w) +  \lambda \beta \\E_{w'}\le
 - Suppose we take a policy $a(w)$ as given. What is the value of following this policy forever?
 - The value function $V_a^E$, $V_a^U$ satisfies
 $$V_a^U(w) = U(\underline{c}) + \begin{cases} \beta \tilde{V}^E_a(w) & \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ \tilde{V}^U_a(w^{\prime}) \right]  & \text{if $a(w)$ is false} \end{cases}$$
-$$V_a^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E_a(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U_a(w^{\prime}) \right] $$
+$$V_a^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E_a(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U_a(w^{\prime}) \right]$$
 - Note the absence of the max function: we don't reoptimize
 
 ----
