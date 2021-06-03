@@ -10,7 +10,7 @@ Slides are available [online](http://www.mosphere.fr/eco309/slides/). (PRs are w
 - [convergence](http://www.mosphere.fr/eco309/slides/convergence.html)
 - [optimization](http://www.mosphere.fr/eco309/slides/optimization.html)
 - [discrete dynamic programming](http://www.mosphere.fr/eco309/slides/ddp.html)
-- [perturbation](http://www.mosphere.fr/eco309/slides/perturbation.html)
+- [perturbation](http://www.mosphere.fr/eco309/slides/perturbationg.html)
 
 Each student is expected to have a clone of the course repository and update it at the beginning of each session. It is suggested to work on a copy of each file.
 

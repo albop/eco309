@@ -93,7 +93,7 @@ $$\max_{c_0, ,... c_t, ...} \sum_{t=0}^{\infty} \beta^t \log(c_t)$$
 $$\sum_{t=0}^{\infty} c_t = C$$
 - This problem is known as a *cake-eating* problem (usually there is also $c_t\geq0$)
 - Write the lagrangian to the infinite (and beyond ??)
-$$\mathcal{L}(c_1, c_2, ..., c_t, ...) =  \sum_{t=0}^{\infty} \beta^t \log(c_t) - \lambda \left( \sum_t c_t  - C \right)$$
+$$\mathcal{L}(c_0, c_1, ..., c_t, ...) =  \sum_{t=0}^{\infty} \beta^t \log(c_t) - \lambda \left( \sum_t c_t  - C \right)$$
 - First order conditions:
 $$ \beta^t \frac{1}{c_t}  = \lambda$$
 
@@ -108,8 +108,8 @@ $$\forall t, \\; C_{t+1} = C_t - c_t$$
 - This time the maximum is taken over $c_0, c_1, ...$, $C_1, C_2, ...$
   - pay attention to the timing: $C_0$ is *predetermined*
 - Set a different lagrange multplier $\lambda_t$ for each date. You should get:
-$$\forall t, \\; U^{\prime}(c_t) = \lambda_t$$
-$$\lambda_t = \beta \lambda_{t+1}$$
+$$\forall t, \\; \beta^t U^{\prime}(c_t) = \lambda_t$$
+$$\lambda_t = \lambda_{t+1}$$
 - It can be reformulated as $U^{\prime}(c_t) = \beta U^{\prime}(c_{t+1})$ (Euler equation)
 - Note that we are missing one condition to close the model (for instance $C_t\geq 0$)
 
@@ -119,7 +119,7 @@ $$\lambda_t = \beta \lambda_{t+1}$$
 
 - The approach outlined, works in the same way when there are several constraints.
 - Next steps:
-  - stochastic problem $$\max \mathbb{E} \left[ U(c_t) \right]$$
+  - stochastic problem $$\max \mathbb{E}  \left[\sum_t\beta^t U(c_t) \right]$$
   - ineqality constraints
     - not very different but multipliers can be 0 (binding) or positive (nonbinding)
     - theory due to Karush-Kuhn-Tucker rather than Lagrange
@@ -218,7 +218,7 @@ $$\begin{eqnarray}
 ### First order model
 
 - Optimality Condition:
-$$\beta  \left[ \frac{\left(c_{t+1}\right)^{-\gamma}}{\left(c_t\right)^{-\gamma}} \left( (1-\delta + \alpha k_t^{\alpha -1}) \right)\right] = 1$$
+$$\beta  \left[ \frac{\left(c_{t+1}\right)^{-\gamma}}{\left(c_t\right)^{-\gamma}} \left( (1-\delta + \alpha \exp(z_t) k_t^{\alpha -1}) \right)\right] = 1$$
   - Takes into account the fact that optimally $c_t>0$ and $i_t>0$.
 - Budget Constraint:
 $$c_t = k_t^\alpha - i_t$$
@@ -284,7 +284,7 @@ $$\begin{eqnarray}
   - define model $ \forall t \\; x_t = f(x_{t-1})$
 - <!-- .element: class="fragment" -->Find steady-state $\overline{x}$ s.t. $f(\overline{x})=\overline{x}$
 - <!-- .element: class="fragment" -->Taylor expansion:
-  $$ \overline{x} + (x_{t-1} - \overline{x}) \approx f(\overline{x}) + f^{\prime}(\overline{x})(x_{t}-\overline{x})$$
+  $$ \overline{x} + (x_{t} - \overline{x}) \approx f(\overline{x}) + f^{\prime}(\overline{x})(x_{t-1}-\overline{x})$$
 - <!-- .element: class="fragment" -->First order model: 
 $$ \lambda (x_{t-1} - \overline{x}) = (x_{t}-\overline{x}) $$
 - <!-- .element: class="fragment" -->Easy to solve: 
@@ -312,7 +312,7 @@ $$x_t-\overline{x} = \lambda^t (x_0 - \overline{x})$$
 
 - In practice, we use the undetermined coefficient method
 - Approximate model close to $\overline{x}$ by: 
-$$\underbrace{f^{\prime}\_{x\_{t-1}}}\_{A} (x\_{t-1}-\overline{x}) + \underbrace{f^{\prime}\_{x\_t}}\_{B} (x_{t}-\overline{x})$$
+$$\underbrace{f^{\prime}\_{x\_{t-1}}}\_{A} (x\_{t-1}-\overline{x}) + \underbrace{f^{\prime}\_{x\_t}}\_{B} (x_{t}-\overline{x}) = 0$$
 - Look for $(x_t-\overline{x})=\lambda (x_{t-1}-\overline{x})$ with unknown $\lambda$.
 - $\lambda$ satisfies $\lambda = -\frac{A}{B}$
 
