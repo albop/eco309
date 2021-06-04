@@ -40,7 +40,7 @@ Each session is 4 hours, and is expected to be evenly but not contiguously divid
 | 05/06 | Markov Chains, Discrete Dynamic Programming (1)   |                              |
 | 05/20 | Discrete Dynamic Programming (2), Discretization  |                              |
 | 05/27 | First Order Conditions, Perturbation Analysis     |                              |
-| 06/03 | Interpolation, Time Iteration                     |                              |
+| 06/03 | Perturbation Analysis (2)                         | Second Homework              |
 | 06/10 | Exam                                              |                              |
 
 Roadmap will be adjusted as we go.
