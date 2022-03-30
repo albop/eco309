@@ -1,65 +1,42 @@
 # Introduction
 
-## Computational Economics,  2021 (ECO309)
+## Computational Economics,  2022 (ECO309)
 
 Pablo Winant
 
 ---
 
-### Communication for this Course
-
-- github repository for the course: https://github.com/albop/eco309
-- enroll by:
-    - creating a github account if needed
-    - cloning the repository
-    - making a PR on students.md
-- join on [Zulip](econforge.zulipchat.org) : we'll communicate in the `eco309` room
-    - you're welcome to ask questions and answer other's questions (nicely)
-    - outside of the course hours, I'll answer when I can
-- formal or infrequent communication: `pwinant@escp.eu` with subject starting with `[eco309]`
-
----
-
-### Assignments and Final Exam
-
--  Hands-on tutorial started in class must be (reasonably) completed by Wednesday night.
-   - Optional: send them to me
-   - Preferably: commit the work in your clone.
-- There will be two special assignments with 14 days to complete each of them.
-- Groupwork is OK.
-- Final Exam will take place in the latest session.
-    - It will consists of a few simple programming questions and a small model to solve yourself.
-- Final Grade will weight everything.
-
----
-
-### Other sources of information
-
-- Course is mostly self-contained for its Math and Econ aspects.
-- Books:
-
-    - *Economic Dynamics: Theory and Computation* by John Stahurski
-    - *Computational Economics* by Miranda & Fackler
-    - *Recursive macreconomic theory* by Lars Ljungqvist & Tom Sargent
-    
-- Online:
-
-    - [QuantEcon lectures](https://quantecon.org/lectures/)
-- ... and all the Julia material
-
----
-
 ### About me
+
+<!-- .slide: class="center" -->
+
+
+<div class="container">
+
+<div class="col">
+
+<img src=pablo_winant.png width=60%>
+
+</div>
+
+<div class="col">
+
 
 - A computational economist
 - Formerly Worked in institutions (IMF, BOE)
 - Now at ESCP and CREST/Polytechnique
 - Research on models about:
+
     - Inequality (heterogeneity)
     - International Finance
     - Monetary Policy
     - Artificial Intelligence
 - Involved in several opensource projects (Dolo, QuantEcon, ARK)
+
+
+</div>
+
+</div>
 
 ---
 
@@ -107,11 +84,13 @@ Pablo Winant
 
 ### Models (2)
 
-- random exemples of questions we can analyse numerically:
-    - which sectors should receive more help during the coronavirus?  (computational general equilibrium)
-    - when is it time to replace a machine? how much water should be extracted? how much should be stored? (dynamic programming)
-    - what kind of shock drives the business cycles? (DSGE models)
-    - is a Central Bank *able* to commit to intervene in the markets? (time inconsistency)
+Here are a few examples of queestions we can analyse numerically
+
+- which sectors should receive more help during the coronavirus?  (computational general 
+equilibrium)
+- what will be the economic cost of sanctions against russia?
+- when is it time to replace a machine? how much water should be extracted? how much should be stored? (dynamic programming)
+- what kind of shock drives the business cycles? (DSGE models)
 
 ---
 
@@ -170,7 +149,7 @@ Pablo Winant
 - A lot of demand everywhere for skilled programmers.
 
 - Many faculties are introducing formal programming courses (for economists)
-    - NYU, Penn, MIT (see [thinking computationnally](https://computationalthinking.mit.edu/Spring21/)
+    - NYU, Penn, MIT (see [thinking computationnally](https://computationalthinking.mit.edu/Spring21/))
     - Summer Bootcamps
     
 - New applications are even more code-intensive than before:
@@ -197,11 +176,12 @@ Pablo Winant
 
 ---
 
-### Setup
 
-- Plan A: use your own laptop. You will need:
-    - visual studio code
-    - Julia 1.5.3
-    - git
+### General sources of information
 
-- Plan B: use the mybinder links from the courses repository.
+- Course is mostly self-contained for its Math and Econ aspects.
+- Books:
+
+    - *Economic Dynamics: Theory and Computation* by John Stachurski
+    - *Computational Economics* by Miranda & Fackler
+    - *Recursive macreconomic theory* by Lars Ljungqvist & Tom Sargent
