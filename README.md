@@ -1,6 +1,6 @@
 # Computational Economics
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/albop/eco309.git/main?urlpath=lab)
+---
 
 ## General
 
@@ -18,14 +18,7 @@ During the course, each student will be asked to choose and present one Julia li
 
 The tutorial in the last session will be the final exam.
 
-## Setup requirement
-
-- To make the most of the course, it is recommended to install
-  - Julia 1.5
-  - A good text editor (strongly advised: Visual Studio Code)
-  - Git
-- As a plan B, it is possible to use the mybinder link above
-  - be sure to save your work locally
+---
 
 ## Roadmap
 
@@ -44,3 +37,14 @@ Each session is 4 hours, and is expected to be evenly but not contiguously divid
 | 06/10 | Exam                                              |                              |
 
 Roadmap will be adjusted as we go.
+
+---
+
+## Setup requirement
+
+- To make the most of the course, it is recommended to install
+  - Julia 1.7
+  - A good text editor (strongly advised: Visual Studio Code)
+  - Git
+- As a plan B, it is possible to use the mybinder link [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/albop/eco309.git/main?urlpath=lab)
+  - be sure to save your work locally
