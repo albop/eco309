@@ -1,19 +1,21 @@
 # Convergence of recursive sequences
 
-## Computational Economics  2021 (ECO309)
+## Advanced Macro: Numerical Methods,  2022 (ECO309)
 
 Pablo Winant
 
 ---
 
+
 ### Life of a computational economist
 
-<div class="r-stack">
+![](impossible.jpg)
 
-<img src="computational_economist.png" class="fragment current-visible">
-<video class="fragment" data-autoplay src="waiting_for_convergence.mp4" height=600></video>
+---
 
-</div>
+### Life of a computational economist
+
+<video data-autoplay src="waiting_for_convergence.mp4" height=600></video>
 
 - <!-- .element: class="fragment" --> We spend <strong>a lot</strong> of time waiting for algorithms to converge!
     - <!-- .element: class="fragment" -->solution 1: program better
@@ -25,7 +27,7 @@ Pablo Winant
 
 ### Recursive sequence
 
-Consider a function $f: R^n\rightarrow R^n$ and a recursive sequence $(x_n)$ defined by $x_0$ and $x_n = f(x_{n-1})$.
+Consider a function $f: R\rightarrow R$ and a recursive sequence $(x_n)$ defined by $x_0$ and $x_n = f(x_{n-1})$.
 
 We want to compute a fixed point of $f$ and study its properties.
 
@@ -38,35 +40,27 @@ We want to compute a fixed point of $f$ and study its properties.
 <div class="col">
 
 - Solow growth model:
+  - capital accumulation:
+      $$k_t = (1-\delta)k_{t-1} + i_{t-1}$$
   - production:
       $$y_t = k_t^\alpha$$
-      - $\alpha$ smaller than 1: decreasing returns to capital
-  - constant saving rate:
-    ${\color{red}s_t}=s \in [0,1]$
   - consumption:
-      $$c_t = (1-{\color{red}s_t})y_t$$
-  - capital accumulation:
-      $$k_t = {\color{red}s} y_{t-1}$$
+      $$c_t = (1-{\color{red}s})y_t$$
+      $$i_t = s y_t$$
 
+<div class="r-stack">
 
-<div class="fragment" data-fragment-index="3">
+<div class="fragment current-visible" data-fragment-index="2">
 
-- Solow hypothesis: saving rate is invariant (${\color{red}{s_t}}={\color{red}s}$)
-  $$k_t = f(k_{t-1}, {\color{red}s} )$$
-- __backward-looking__ iterations
-
-</div>
-
+- For a given value of ${\color{red} s}\in\mathbb{R}^{+}$ ( ${\color{red} s}$ is a __decision rule__) $$k_{t+1} = f(k_t, {\color{red} s})$$ 
+  - __backward-looking__ iterations
+  - Solow hypothesis: saving rate is invariant
 
 </div>
-
-<div class="col">
-
-<img class="fragment" src="solow.png" width=60% data-fragment-index=2>
 
 <div class="fragment">
 
-- Economic Questions: 
+- Questions: 
   - What is the steady-state?
   - Can we characterize the transition back the steady-state?
   - Characterize the dynamics close to the steady-state?
@@ -74,6 +68,13 @@ We want to compute a fixed point of $f$ and study its properties.
   - what is the optimal $s$ ?
 
 </div>
+</div>
+
+</div>
+
+<div class="col">
+
+<img class="fragment" src="solow.png" width=100% data-fragment-index=2>
 
 </div>
 
@@ -81,51 +82,68 @@ We want to compute a fixed point of $f$ and study its properties.
 
 ---
 
-### Another example: asset pricing
+### Another example: linear new keynesian model
 
-- Consider an asset yielding dividends $d_0, ... , d_n, ...$
-- With discount rate $\frac{1}{r}$, the value of holding this asset is:
-  $$p_0 = \mathbb{E}\_{0} \sum\_{t \geq 0} \frac{1}{r^t} d_t$$
-- We can rewrite for any $t$
-$$p\_t = d\_t + \frac{1}{r} \mathbb{E}\_t p\_{t+1}$$
-  - price of an asset depends on its immediate divident and its resell value
-- The price today depends on the price tomorrow $p_t = \mathcal{T}(p_{t+1})$
-  - $\mathcal{T}$ is the __time iteration operator__ a.k.a. __Coleman iterator__
-  - we will iterate back-in-time $p_{n+1} = f(p_n) = \mathcal{T}(p_n)$
+<div class="container">
 
+<div class="col">
+
+<div class="fragment">
+
+-  Basic New Keynesian model ([full derivation](https://www.crei.cat/wp-content/uploads/users/pages/ch3_slides_june2015(1).pdf) if curious )
+    - new philips curve (PC):$$\pi_t = \beta \mathbb{E}\_t \pi_{t+1} + \kappa y_t$$
+    - dynamic investment-saving equation (IS):$$y_t = \beta \mathbb{E}\_t y_{t+1} - \frac{1}{\sigma}(i_t - \mathbb{E}\_t(\pi_{t+1}) ) - {\color{green} z_t}$$
+    - interest rate setting (taylor rule): $$i_t = \alpha_{\pi} \pi_t + \alpha_{y} y_t$$
+- <!-- .element class="fragment" --> Solving the system:
+  - solution: $\begin{bmatrix}\pi_t \\\\ y_t \end{bmatrix} = {\color{red} c} z_t$
+  
+  </div>
+  </div>
+
+ <div class="col">
+
+
+- <!-- .element class="fragment" --> <em>forward looking</em>:
+  - take $\begin{bmatrix}\pi_{t+1} \\\\ y_{t+1} \end{bmatrix} = {\color{red} {c_n}} z_{t+1}$
+  - deduce $\begin{bmatrix}\pi_{t} \\\\ y_{t} \end{bmatrix} = {\color{red} {c_{n+1}}} z_{t}$
+  - $\mathcal{T}: \underbrace{c_{n}}\_{t+1: \; \text{tomorrow}} \rightarrow \underbrace{c_{n+1}}\_{t: \text{today}}$ is the __time-iteration__ operator (a.k.a. __Coleman__ operator)
+- <!-- .element class="fragment" --> Questions:
+  - What is the limit to $c_{t+1} = \mathcal{T} c_n$ ?
+  - Under wich conditions (on $\alpha_{\pi}, \alpha_y$) is it convergent ?
+    - determinacy conditions
+    - interpretation: does the central bank manage to control inflation expectations?
+
+</div>
+</div>
 
 ---
 
+### Recursive series (2)
 
-### Recursive sequences (2)
+- Wait: does a fixed point exist?
+    - we're not very concerned by the existence problem here
+    - we'll be happy with local conditions (existence, uniqueness) around a solution
 
+- We can assume there is an interval such that $f([a,b])\subset[a,b]$. Then we know there exists $x$ in $[a,b]$ such that $f(x)=x$. But there can be many such points.
+
+---
+
+### Example: growth model with multiple fixed points
 
 
 <div class= "container">
 
 <div class="col">
 
-<!-- TODO: rephrase -->
-- Wait: does a fixed point exist?
-    - we're not very concerned by the existence problem here
-    - if the algorithm converges, we'll take it as a "computational proof" of existence
-- In theory, we can assume there is an interval such that $f([a,b])\subset[a,b]$. Then we know there exists $x$ in $[a,b]$ such that $f(x)=x$. 
-    - for advanced applications the trick is to find the right fixed-point theorem...
-- But there can be many such points.
-- As for unicity it depends on the applicaitions:
-  - in some particular cases, we can prove it
-  - we'll be happy with local conditions (existence, uniqueness) *around* a solution
- 
-</div>
-
-<div class="col">
-
-
 - In the growth model, if we change the production function: $y=k^{\alpha}$
 for a nonconvex/nonmonotonic one, we can get multiple fixed points.
 
 
-![](growth_multiple_equilibria.jpg)
+</div>
+
+<div class="col">
+
+<img src=growth_multiple_equilibria.jpg width=100%>
 
 </div>
 
@@ -133,61 +151,147 @@ for a nonconvex/nonmonotonic one, we can get multiple fixed points.
 
 ---
 
+### Convergence
 
-### Local Stability
+- How do we characterize behaviour around $x$ such that $f(x)=x$?
+    - if $|f^{\prime}(x)|>1$: series is unstable and will not converge to $x$ except by chance
+    - if $|f^{\prime}(x)|<1$: $x$ is a stable fixed point
+    - if $|f^{\prime}(x)|=1$: ??? (look at higher order terms, details  ↓)
 
-- How do we characterize behaviour of sequence $x_n = f(x_{n-1})$ around $x$ such that $f(x)=x$?
-    - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|>1$: sequence is unstable and will not converge to $x$ except by chance
-    - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|<1$: $x$ is a stable fixed point
-    - <!-- .element class="fragment" data-fragment-index="2" --> if $|f^{\prime}(x)|=1$: ??? (look at higher order terms)
-- <!-- .element class="fragment" data-fragment-index=2 -->This is true for real valued sequences
-- <!-- .element class="fragment" data-fragment-index=2 -->Also for vector valued sequences
-  - if $|f^{\prime}(x)|$ is replaced by $\rho(f^{\prime}(x))$ ...
-  - ... where $\rho(x)$ is the spectral radius of x (or the biggest eigenvalue)
+----
 
+To get the intution about local convergence assume, you have an initial point $x_n$ close to the steady state and consider the following expresion:
+
+$x_{n+1} - x = f(x_n) - f(x) = f^{\prime}(x) (x_n-x) + o( (x_n-x) )$
+
+If one sets aside the error term (which one can do with full mathematical rigour), the dynamics for very small perturbations are given by:
+
+$|x_{n+1} - x| = |f^{\prime}(x)| |x_n-x|$
+
+When $|f^{\prime}(x)|<1$, the distance to the target decreases at each iteration and we have convergence. When $|f^{\prime}(x)|>1$ there is local divergence.
+
+----
+
+<div class="container">
+<div class="col">
+What about the case  $|f^{\prime}(x)=1|$?  Many cases are possible. To distinguish between them, one need to inspect higher order derivatives.
+
+- when $|f^{\prime}(x)=1|$, $|f^{\prime\prime}(x)|\neq 0$ the series will convergence, only if $(x_0-x)f^{\prime\prime}(x)<0$, i.e. starting from one side of the fixed point. The steady-state is not stable.
+- When $|f^{\prime}(x)=1|$, $|f^{\prime\prime}(x)| = 0$, $|f^{\prime \prime\prime}(x)|\neq 0$ the series will converge, only if $f^{\prime}(x)(f^{\prime\prime\prime}(x))<1$
+
+In general, there is stability only if the function $f$ is crossing the 45 degrees line (when $f^ {\prime}(x)=1)$, or the -45 degrees line (when $f^ {\prime}(x)=1$)
+
+Mathematically, this involves, that:
+- the first non-zero coefficient $f^{k}(x)$ with $k>1$ has odd order ($k$ odd)
+- it has the right sign
+
+</div>
+<div class="col">
+[TODO: add graph]
+</div>
+</div>
 
 ---
 
+### Change the problem
 
+- Sometimes, we are interested in tweaking the convergence speed:
+
+$$x_{n+1} = (1-\lambda) x_n + \lambda f(x_n)$$
+
+- $\lambda$ is the learning rate:
+    - $\lambda>1$: acceleration
+    - $\lambda<1$: dampening
+
+- We can also replace the function by another one $g$ such that $g(x)=x\iff f(x)=x$, for instance:
+
+$$g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}$$
+
+---
 
 ### Dynamics around a stable point
 
 - We can write successive approximation errors:
-$$\begin{eqnarray}|x_t - x_{t-1}| & = &  | f(x_{t-1}) - f(x_{t-2})| \\\\
-|x_t - x_{t-1}| & \sim & |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}|\end{eqnarray}$$
+
+$$|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| $$
+
+$$|x_t - x_{t-1}| \sim |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| $$
+
 - Ratio of successive approximation errors
 $$\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}$$
-$$\lambda_t \rightarrow | f^{\prime}(\overline{x})| $$
-- Successive approximation errors decrease geometrically
+
+- $\lambda_t \rightarrow | f^{\prime}(\overline{x}) |$
 
 ---
 
 ### Dynamics around a stable point (2)
 
-- How quickly do we approach the target?
-- Can we derive an error bound?
-- Suppose that we have $\overline{\lambda}>|f^{\prime}(x_k)|$ for all $k\geq k_0$:
-$$\begin{eqnarray}
-|x_t - x| & \leq & |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... \\\\
-|x_t - x| & \leq & |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... \\\\
-|x_t - x| & \leq & |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... \\\\
-|x_t - x| & \leq & \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |
-\end{eqnarray}$$
-- Convergence is geometric
+How do we derive an error bound? Suppose that we have $\overline{\lambda}>|f^{\prime}(x_k)|$ for all $k\geq k_0$:
+
+$$|x_t - x| \leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... $$
+
+$$|x_t - x| \leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... $$
+
+
+
+$$|x_t - x| \leq |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... $$
+
+
+$$|x_t - x| \leq \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |$$
+
+---
+
+###  How do we improve convergence ?
+
+$$\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \sim |f^{\prime}(x_{t-1})|  $$
+
+corresponds to the case of __linear__ convergence (kind of slow).
+
+---
+
+### Aitken's extrapolation
+
+note that
+
+$$\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}$$
+
+Take $x_{t-1}, x_t$ and $x_{t+1}$ as given and solve for $x$:
+
+$$x = \frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}$$
+
+---
+
+### Aitken's extrapolation (2)
+
+or after some reordering
+
+$$x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}$$
+
+---
+
+### Steffensen's Method:
+
+1. start with a guess $x_0$, compute $x_1=f(x_0)$ and $x_2=f(x_1)$
+2. use Aitken's guess for $x^{\star}$.
+  If required tolerance is met, stop.
+3. otherwise, set $x_0 = x^{\star}$ and go back to step 1.
+
+It can be shown that the sequence generated from Steffensen's method converges __quadratically__, that is
+
+$\lim_{t\rightarrow\infty} \frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \leq M$
 
 ---
 
 ### Convergence speed
 
-- Rate of convergence of series $x_t$ towards $x^{\star}$ is said to be:
-    - __linear__ (aka geometric) if
-    $${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = \mu \in R^+$$
-    - __superlinear__ if
-    $${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = 0$$
-    - __quadratic__ if
-    $${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^{\color{red}2}} = \mu \in R^+$$
+Rate of convergence of series $x_t$ towards $x^{\star}$ is:
 
-- In practice: linear is *slow*, while quadratic is *fast*
+- linear:
+$${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = \mu \in R^+$$
+- superlinear:
+$${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = 0$$
+- quadratic:
+$${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^{\color{red}2}} = \mu \in R^+$$
 
 ---
 
@@ -196,49 +300,3 @@ $$\begin{eqnarray}
 Remark: in the case of linear convergence:
 
 $${\lim}\_{t\rightarrow\infty} \frac{|x\_{t+1}-x\_t|}{|x\_{t}-x\_{t-1}|} = \mu \in R^+ \iff {\lim}\_{t\rightarrow\infty} \frac{|x\_{t+1}-x^{\star}|}{|x\_{t}-x^{\star}|}=\frac{1}{1-\mu}$$
-
-
----
-
-### Change the problem
-
-- Sometimes, we are interested in tweaking the convergence speed:
-$$x_{n+1} = (1-\lambda) x_n + \lambda f(x_n)$$
-  - $\lambda$ is the learning rate:
-      - $\lambda>1$: acceleration
-      - $\lambda<1$: dampening
-- We can also replace the function by another one $g$ such that $g(x)=x\iff f(x)=x$, for instance:
-$$g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}$$
-- These transformation 
-  - can improve / slow-down convergence
-  - or change convergence properties (here $g$ is the Newton-Raphson step)
-- There are some other specialized methods for the 1d case
-
----
-
-### Aitken's extrapolation
-
-- Consider a convergent recursive sequence $x_t = f(x_{t-1})$
-   - assume it is converging geometrically
-- Note that
-$$\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}$$
-- Take $x_{t-1}, x_t$ and $x_{t+1}$ as given and solve for $x$:
-$$x = \frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}$$
-- or after some reordering
-
-$$x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}$$
-
----
-
-### Aitken/Steffensen's Method:
-
-
-- Aitken-Steffensen method to compute the limit of a sequence:
-  1. start with a guess $x_0$, compute $x_1=f(x_0)$ and $x_2=f(x_1)$
-  2. use Aitken's guess for $x^{\star}$.
-    If required tolerance is met, stop.
-  3. otherwise, set $x_0 = x^{\star}$ and go back to step 1.
-- It can be shown that, if $x_n$ converges *geometrically* the sequence generated from Steffensen's method converges *quadratically*, that is
-$$\lim_{t\rightarrow\infty} \frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \leq M$$
-
----
