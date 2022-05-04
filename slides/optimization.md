@@ -1,6 +1,6 @@
 # Math topic: Optimization
 
-## Computational Econommics,  2021 (ECO309)
+## Computational Economics,  2021 (ECO309)
 
 ---
 
@@ -70,7 +70,9 @@ Optimization is everywhere in economics:
 
 ### Continuous versus discrete optimization (2)
 
-- Discrete optimization requires a lot of combinatorial thinking. We don't cover it.
+- Discrete optimization requires a lot of combinatorial thinking
+  - We don't cover it today.
+  - ...if needed, we just test all choices until we find the best one
 - Sometimes a discrete choice can be approximated by a mixed strategy (i.e. a random strategy).
   - Instead of $\delta\in{0,1}$ we choose $x$ in $prob(\delta=1)=\sigma(x)$ 
   - with $\sigma(x)=\frac{2}{1+\exp(-x)}$
@@ -102,7 +104,7 @@ $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
 
 - In principle, there can be many roots (resp maxima) within the optimization set.
 
-- Alorithma that find them all are called "global". For instance:
+- Algorithms that find them all are called "global". For instance:
   - grid search
   - simulated annealing
 
@@ -117,7 +119,7 @@ $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
 - The full mathematical treatment will typically assume that $f$ is smooth ($\mathcal{C}_1$ or $\mathcal{C}_2$ depending on the algorithm).
 
 - In practice we often don't know about these properties
-  - we still try and check we have a local optimal
+  - we still try and check thqt we have a local optimal
 
 - So: fingers crossed
 
@@ -154,9 +156,9 @@ And yet, neural networks do great things!
 - Algorithm
   1. Start with $a_n, b_n$. Set $c_n=(a_n+b_n)/2$
   2. Compute $f(c_n)$
-    - if $f(c_n)f(a_n)>0$ then set $(a_{n+1},b_{n+1})=(a_n,c_n)$
+    - if $f(c_n)f(a_n)<0$ then set $(a_{n+1},b_{n+1})=(a_n,c_n)$
     - else set $(a_{n+1},b_{n+1})=(c_n,b_n)$
-  3. If $f(c_n)<\epsilon$ and/or $\frac{b-a}/2^n<\delta$ stop. Otherwise go back to 1.
+  3. If $|f(c_n)|<\epsilon$ and/or $\frac{b-a}{2^n}<\delta$ stop. Otherwise go back to 1.
 
 ----
 
@@ -185,7 +187,7 @@ And yet, neural networks do great things!
 
 - Algorithm:
   - start with $x_n$
-  - compute $x_{n+1} = x_n- \frac{f(x_n}{f^{\prime}(x_n)}=f^{\text{newton}}(x_n)$
+  - compute $x_{n+1} = x_n- \frac{f(x_n)}{f^{\prime}(x_n)}=f^{\text{newton}}(x_n)$
   - stop if $|x_{n+1}-x_n|<\eta$ or $|f(x_n)| < \epsilon$
 
 - Convergence: __quadratic__
@@ -202,10 +204,8 @@ Proof that convergence is quadratic
 
 - What if we can't compute $f^{\prime}$ or it is expensive to do so?
   - Idea: try to approximate $f^{\prime}(x_n)$ from the last iterates
-
-
-- secant method: $f^{\prime}(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}$
-$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$
+- __Secant method__: $$f^{\prime}(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{x_n-x_{n-1}}$$
+$$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
   - requires two initial guesses: $x_1$ and $x_0$
   - superlinear convergence: $\lim \frac{x_t-x^{\star}}{x_{t-1}-x^{\star}}\rightarrow 0$
 
@@ -220,11 +220,11 @@ $x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$
     - -> dampen the update (problem: much slower)
     - -> backtrack
   - stationary point  
-    - -> if root of multiplicity $m$ try  $x_{n+1} = x_n- m f(x_n)/f^{\prime}(x_n)$ (FIX)
+    - -> if root of multiplicity $m$ try  $x_{n+1} = x_n- m \frac{f(x_n)}{f^{\prime}(x_n)}$
 
 ----
 
-(TODO: some graphs of failed Newton convergence)
+(some graphs of failed Newton convergence)
 
 ----
 
@@ -276,7 +276,6 @@ $x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$
 
 ## Gradient Descent (2)
 
-[TODO: add graph, comment intersection with the x axis]
 - Uses local information
   - one needs to compute the gradient
   - note that gradient at $x_n$ does not provide a better guess for the minimum than $x_n$ itself

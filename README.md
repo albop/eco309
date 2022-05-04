@@ -10,8 +10,8 @@ Each session is 4 hours, and is expected to be evenly but not contiguously divid
 | Date  | Content                                                        | Homework                     |
 | ----- | -------------------------------------------------------------- | ---------------------------- |
 | 31/03 | Introduction, Julia Basics 1, Contagion Tutorial  | Finish Epidemiology Tutorial |
-| <mark>14/04</mark> | Sequence Convergence, Solow growth Model                       | Finish growth tutorial       |
-| 05/05 | Optimization                                                   | Finish optimization tutorial |
+| 14/04 | Sequence Convergence, Solow growth Model                       | Finish growth tutorial       |
+|  <mark>05/05</mark> | Optimization                                                   | Finish optimization tutorial |
 | 12/05 | Optimization (2), Julia Basics 2, Differentiation              | First Homework               |
 | 19/05 | Markov Chains, Discrete Dynamic Programming (1)                |                              |
 | 31/05 | Discrete Dynamic Programming (2), Discretization               |                              |
