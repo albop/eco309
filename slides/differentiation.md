@@ -1,6 +1,6 @@
 # Math topic: Differentiation
 
-## Computational Econommics,  2021 (ECO309)
+## Computational Econommics,  2022 (ECO309)
 
 ---
 

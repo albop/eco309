@@ -1,6 +1,6 @@
 # Math topic: Optimization
 
-## Computational Economics,  2021 (ECO309)
+## Computational Economics,  2022 (ECO309)
 
 ---
 
