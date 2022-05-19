@@ -6,13 +6,14 @@
 
 ### Introduction
 
-- Last session:
-  - discrete dynamic programming
-  - McCall model
-- Many models have continuous values/states
-  - other approximation challenges...
+- Many models with continuous values/states
+  - don't have a closed form solution...
+  - are subject to the curse of dimensionality...
+  - and other approximation challenges...
   - ...unless we can solve them around a steady-state
 - Perturbation analysis
+  - assume a model has a steady-state
+  - considers small deviations around the steady-state
   - relatively easy to implement
   - scales well (-> DSGE modelling in Central Banks)
 
