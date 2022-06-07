@@ -13,7 +13,7 @@
   - ...unless we can solve them around a steady-state
 - Perturbation analysis
   - assume a model has a steady-state
-  - considers small deviations around the steady-state
+  - considers small deviations around the steady-state  
   - relatively easy to implement
   - scales well (-> DSGE modelling in Central Banks)
 
@@ -219,10 +219,10 @@ $$\begin{eqnarray}
 ### First order model
 
 - Optimality Condition:
-$$\beta  \left[ \frac{\left(c_{t+1}\right)^{-\gamma}}{\left(c_t\right)^{-\gamma}} \left( (1-\delta + \alpha \exp(z_t) k_t^{\alpha -1}) \right)\right] = 1$$
+$$\beta  \left[ \frac{\left(c_{t+1}\right)^{-\gamma}}{\left(c_t\right)^{-\gamma}} \left( (1-\delta + \alpha \exp(z_{t+1}) k_{t+1}^{\alpha -1}) \right)\right] = 1$$
   - Takes into account the fact that optimally $c_t>0$ and $i_t>0$.
 - Budget Constraint:
-$$c_t = k_t^\alpha - i_t$$
+$$c_t = exp(z_t) k_t^\alpha - i_t$$
 - Transition:
 $$k_t = (1-\delta) k_{t-1} + i_{t-1}$$
 $$z_t = \rho z_{t-1}$$
@@ -679,8 +679,8 @@ $$T^{\prime}(\overline{X}).u = ((B + (C+D \overline{X})F)^{-1})D u (E+F \overlin
 $$X_{n+1} = (B + (C + D X_n) F)^{-1} (A + (C+DX_n)E)$$
 3. We compute the spectral radius of two operators to ensure the model is well defined and that the solution is the right one.
   1. backward stability: derivative of simulation operator
-$$\rho(F + H \overline{X} )$$
+$$\rho(E + F \overline{X} )<1$$
   2. forward stability: derivative of time iteration operator
-$$\rho \left( u\mapsto ((B + (C+D \overline{X})F)^{-1})D u (E+F \overline{X}) \right)$$
+$$\rho \left( u\mapsto ((B + (C+D \overline{X})F)^{-1})D u (E+F \overline{X}) \right) <1$$
 
 This is equivalent to the so-called __Blanchard-Kahn conditions__.
