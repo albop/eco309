@@ -4,7 +4,6 @@
 
 ----
 
-
 - Real Business Cycle
   - Like the neo-classical growth model
   - With shocks
@@ -12,7 +11,6 @@
   - With a decentralized interpretation
 - Explains *short term* fluctuations
   - without demand shocks / money
-
 
 ---
 

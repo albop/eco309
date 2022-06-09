@@ -266,10 +266,10 @@ How do we compute the stationary distribution?
 - Find the solution of $\mu'(P-I) = 0$ ?
   - not well defined, 0 is a solution
   - we need to incorporate the constraint $\sum_i(\mu_i)=1$
-  - since P-I is at most of rank $n-1$ we can replace one line by this condition
+  - since P-I is at most of rank $n-1$ we can replace one column by this condition
 - Method:
-  - Define $M_{ij} =  \begin{cases} 1  &\text{if} & j =0 \\\\ (P-I)_{ij}  & \text{if} & j> 1  \end{cases}$
-  - Define $D_i = \begin{cases} 1 & \text{if} & j = 0 \\\\0 & \text{if} & j>0 \end{cases}$
+  - Define $M_{ij} =  \begin{cases} 1  &\text{if} & j =1  \\\\ (P-I)_{ij}  & \text{if} & j> 1  \end{cases}$
+  - Define $D_i = \begin{cases} 1 & \text{if} & j = 1 \\\\0 & \text{if} & j>0 \end{cases}$
   - With a linear algebra solver
     - look for a solution $\mu$ of $\mu' M = D$ 
     - or $M^{\prime} \mu = D\prime$
@@ -699,7 +699,7 @@ $$\max_{x_n()} r(s, x_n(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, x
   - with small probability $\lambda>0$ looses his job:
     - starts next period unemployed
   - otherwise stays employed at same rate
-- Objective: $\max E_0 \left\\{ \sum \beta^t \log(w_t) \right\\}$
+- Objective: $\max E_0 \left\\{ \sum \beta^t \log(c_t) \right\\}$
 
 ----
 

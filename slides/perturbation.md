@@ -265,7 +265,7 @@ $$\begin{eqnarray}
 </div>
 </div>
 
-----
+---
 
 ## Perturbation Analysis
 
@@ -336,7 +336,7 @@ $$A \Delta x_{t-1} + B \Delta x_t + C x_{t+1} \\equiv 0$$
 - $\lambda$ is one of two roots $\lambda_1, \lambda_2$ of $A + B X + C X^2$
 - There is a __unique__,  __stable__ solution iff $\lambda_1 \leq 1 < \lambda_2$
 
----
+----
 
 ### Perturb the neoclassical model
 
