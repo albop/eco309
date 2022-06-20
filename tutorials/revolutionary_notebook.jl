@@ -4,28 +4,9 @@
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ 6aa3d43c-7e24-49a0-a6d9-245ec1f56d49
-using LabelledArrays
 
-# ╔═╡ b7247c10-1a46-471b-97f3-79a10cac344e
-using ForwardDiff
-
-# ╔═╡ 24fee0fa-400c-48e4-bc44-a65bd790c010
-using Plots
 
 # ╔═╡ 635b8a1e-e0b8-11ec-2b8b-fbf8fe06f1f9
-p, s, x = let
-	α = 0.3
-	β = 0.96
-	γ = 4.0
-	δ = 0.1
-	ρ = 0.9
-	k = ((1/β-(1-δ))/α)^(1/(α-1))
-	i = δ*k
-	c = k^α - i
-	z = 0
-	SLVector((;α, β, γ, δ, ρ)), SLVector((;k,z)), SLVector((;c, i))
-end
 
 # ╔═╡ ddbd1864-a983-4eb9-9400-7b462468d884
 function transition(s,x,p)
@@ -41,12 +22,7 @@ s
 transition(s, x, p)
 
 # ╔═╡ 1a899e26-777f-4650-97ea-34677a847833
-function arbitrage(s,x,S,X,p)
-	# upper case for variables tomorrow
-	r1 = p.β*(X.c/x.c)^(-p.γ)*( (1-p.δ) + p.α*exp(S.z)*S.k^(p.α-1) ) - 1
-	r2 = x.c + x.i - exp(S.z)*S.k^p.α
-	SLVector((;r1, r2))
-end
+
 
 # ╔═╡ 4d1ffdaf-fc8e-40da-b35f-b6cbfcaefb2f
 arbitrage(s,x,s,x,p)
@@ -116,7 +92,6 @@ F(X, J)
 md"How do you simulate?"
 
 # ╔═╡ 5b2ded6f-8232-49e9-bd2a-4b9fc3d48555
-Δs = SLVector(k=0.0, z=0.01)
 
 # ╔═╡ 8bf14030-54ed-4ca4-bd3b-d359828f5b59
 TT = 100
