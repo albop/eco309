@@ -1,14 +1,22 @@
-# Math topic: Optimization
-
-## Computational Economics,  2022 (ECO309)
+---
+title: Optimization
+subtitle:  "Computational Economics"
+author: Year 2022-2023 (ECO309)
+format:
+  revealjs:
+    html-math-method: mathjax
+    width: 1920
+    height: 1080
+logo: logo.png
+---
 
 ---
 
-## Introduction
+# Introduction
 
 ----
 
-### Introduction
+## Introduction
 
 Optimization is everywhere in economics:
 
@@ -20,7 +28,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Two kinds of optimization problem:
+# Two kinds of optimization problem:
 
 - root finding: $\text{find  $x$ in $X$ such that $f(x)=0$}$
 
@@ -32,7 +40,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Plan
+## Plan
 
 - general consideration about optimization problems
 - one-dimensional root-finding
@@ -45,11 +53,11 @@ Optimization is everywhere in economics:
 ---
 
 
-## General considerations
+# General considerationsre
 
 ----
 
-### Optimization tasks come in many flavours
+## Optimization tasks come in many flavours
 
   - continuous versus discrete optimization
   - constrained and unconstrained optimization
@@ -59,7 +67,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Continuous versus discrete optimization
+## Continuous versus discrete optimization
 
 - Choice is picked from a given set ($x\in X$) which can be:
   - continuous: choose amount of debt $b_t \in [0,\overline{b}]$, of capital $k_t \in R^{+}$
@@ -68,7 +76,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Continuous versus discrete optimization (2)
+## Continuous versus discrete optimization (2)
 
 - Discrete optimization requires a lot of combinatorial thinking
   - We don't cover it today.
@@ -79,7 +87,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Constrained and Unconstrained optimization
+## Constrained and Unconstrained optimization
 
 - Unconstrained optimization: $x\in R$ 
 - Constrained optimization: $x\in X$
@@ -90,7 +98,7 @@ Optimization is everywhere in economics:
 
 ----
 
-### Stochastic vs Determinstic
+## Stochastic vs Determinstic
 
 - Common case, especially in machine learning
 $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
@@ -100,7 +108,7 @@ $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
 
 ----
 
-### Local vs global Algorithms
+## Local vs global Algorithms
 
 - In principle, there can be many roots (resp maxima) within the optimization set.
 
@@ -114,7 +122,7 @@ $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
 
 ----
 
-### Math vs practice
+## Math vs practice
 
 - The full mathematical treatment will typically assume that $f$ is smooth ($\mathcal{C}_1$ or $\mathcal{C}_2$ depending on the algorithm).
 
@@ -125,7 +133,7 @@ $$f(x) = E_{\epsilon}[ \xi (\epsilon, x)]$$
 
 ----
 
-### Math vs practice
+## Math vs practice
 
 Here is the surface representing the objective that a deep neural network training algorithm tries to minimize.
 
@@ -135,7 +143,7 @@ And yet, neural networks do great things!
 
 ----
 
-### What do you need to know?
+## What do you need to know?
 
 - be able to handcode simple algos (Newton, Gradient Descent)
 - understand the general principle of the various algorithms to compare them in terms of
@@ -146,11 +154,11 @@ And yet, neural networks do great things!
 
 ---
 
-## One-dimensional root-finding
+# One-dimensional root-finding
 
 ----
 
-### Bisection
+## Bisection
 
 - Find $x \in [a,b]$ such that $f(x) = 0$. Assume $f(a)f(b) <0$.
 - Algorithm
@@ -162,7 +170,7 @@ And yet, neural networks do great things!
 
 ----
 
-### Bisection (2)
+## Bisection (2)
 
 - No need for initial guess: *globally convergent algorithm*
   - not a *global* algorithm...
@@ -173,7 +181,7 @@ And yet, neural networks do great things!
 
 ----
 
-### Newton algorithm
+## Newton algorithm
 
 - Find $x$ such that $f(x) = 0$. Use $x_0$ as initial guess.
 - $f$ must be $\mathcal{C_1}$ and we assume we can compute its derivative $f^{\prime}$
@@ -181,9 +189,9 @@ And yet, neural networks do great things!
     - observe that the zero $x^{\star}$ must satisfy $$f(x^{\star})=0=f(x_0)+f^{\prime}(x_0)(x^{\star}-x_0) + o(x-x_0)$$
     - Hence a good approximation should be $$x^{\star}\approx = x_0- f(x_0)/f^{\prime}(x_0)$$
     - Check it is good. otherwise, replace $x_0$ by $x^{\star}$
-----
 
-### Newton algorithm (2)
+
+## Newton algorithm (2)
 
 - Algorithm:
   - start with $x_n$
@@ -194,13 +202,13 @@ And yet, neural networks do great things!
 
 ----
 
-<!-- ### Newton algorithm (3)
+<!-- ## Newton algorithm (3)
 
 Proof that convergence is quadratic
 
 --- -->
 
-### Quasi-Newton
+## Quasi-Newton
 
 - What if we can't compute $f^{\prime}$ or it is expensive to do so?
   - Idea: try to approximate $f^{\prime}(x_n)$ from the last iterates
@@ -211,7 +219,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-### Limits of Newton's method
+## Limits of Newton's method
 
 - How could Newton method fail?
   - bad guess
@@ -228,7 +236,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-### Backtracking
+## Backtracking
 
 - Simple idea:
   - at stage $n$ given $f(x_n)$ compute Newton step $\Delta_n=-\frac{f(x_n)}{f^{\prime}(x_n)}$
@@ -237,11 +245,11 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ---
 
-## One dimensional minimization
+# One dimensional minimization
 
 ----
 
-### Golden section search
+## Golden section search
 
 - Minimize $f(x)$ for  $x \in [a,b]$
 - Choose $\Phi \in [0,0.5]$
@@ -254,7 +262,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-### Golden section search (2)
+## Golden section search (2)
 
 - This is guaranteed to converge to a local minimum
 - In each step, the size of the interval is reduced by a factor $\Phi$
@@ -264,7 +272,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-## Gradient Descent
+# Gradient Descent
 
 - Minimize $f(x)$ for  $x \in R$ given initial guess $x_0$
 - Algorithm:
@@ -274,7 +282,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-## Gradient Descent (2)
+# Gradient Descent (2)
 
 - Uses local information
   - one needs to compute the gradient
@@ -286,7 +294,7 @@ $$x_{n+1} = x_n- f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}$$
 
 ----
 
-## Newton-Raphson method
+# Newton-Raphson method
 
 - Minimize $f(x)$ for  $x \in R$ given initial guess $x_0$
 - Build a local model of $f$ around $x_0$
@@ -299,7 +307,7 @@ which yields: $x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
 
 ----
 
-### Newton-Raphson Algorithm (2)
+## Newton-Raphson Algorithm (2)
 
 - Algorithm:
   - start with $x_n$
@@ -309,18 +317,18 @@ which yields: $x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
 
 ---
 
-<!-- ### Newton-Raphson Algorithm (3)
+<!-- ## Newton-Raphson Algorithm (3)
 
 [proof of quadratic speed ?]
 
 --- -->
 
 
-## Unconstrained Multidimensional Optimization
+# Unconstrained Multidimensional Optimization
 
 ----
 
-### Unconstrained problems
+## Unconstrained problems
 
 
 - Minimize $f(x)$ for  $x \in R^n$ given initial guess $x_0 \in R^n$
@@ -334,7 +342,7 @@ which yields: $x^{\star} = x_0 - \frac{f^{\prime}(x_0)}{f^{\prime\prime}(x_0)}$
 
 ----
 
-### Quick terminology
+## Quick terminology
 
 Function $f: R^p \rightarrow R^q$
 
@@ -349,11 +357,11 @@ following explanations also work with other norms.
 
 ---
 
-## Unconstrained Multidimensional Root-Finding
+# Unconstrained Multidimensional Root-Finding
 
 ----
 
-### Multidimensional Newton-Raphson
+## Multidimensional Newton-Raphson
 
 - Algorithm:
   - start with $x_n$
@@ -364,7 +372,7 @@ following explanations also work with other norms.
 
 ----
 
-### Multidimensional Newton root-finding (2)
+## Multidimensional Newton root-finding (2)
 
 - what matters is the computation of the step $\Delta_n = {\color{\red}{J(x_{n})^{-1}}} f(x_n)$
 - don't compute $J(x_n)^{-1}$
@@ -379,11 +387,11 @@ following explanations also work with other norms.
 
 
 
-## Unconstrained Multidimensional Minimization
+# Unconstrained Multidimensional Minimization
 
 ----
 
-### Multidimensional Gradient Descent
+## Multidimensional Gradient Descent
 
 - Minimize $f(x) \in R$ for  $x \in R^n$ given  $x_0 \in R^n$
 - Algorithm
@@ -397,13 +405,13 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ----
 
-### Gradient descent variants
+## Gradient descent variants
 
 <img src=contours_evaluation_optimizers.gif width=60%>
 
 ----
 
-### Multidimensional Newton Minimization
+## Multidimensional Newton Minimization
 
 
 - Algorithm:
@@ -417,7 +425,7 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ----
 
-### Quasi-Newton method for multidimensional minimization
+## Quasi-Newton method for multidimensional minimization
 
 - Recall the secant method: 
   - $f(x_{n-1})$ and $f(x_{n-2})$ are used to approximate $f^{\prime}(x_{n-2})$.
@@ -427,7 +435,7 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ----
 
-### Quasi-Newton method for multidimensional minimization
+## Quasi-Newton method for multidimensional minimization
 
 - Consider the approximation: $$f(x_n)-f(x_{n-1}) \approx J(x_n) (x_n - x_{n-1})$$
   - $J(x_n)$ is unknown and cannot be determined directly as in the secant method.
@@ -437,7 +445,7 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ----
 
-### Gauss-Newton Minimization
+## Gauss-Newton Minimization
 
 - Restrict to least-square minimization: $min_x \sum_i f(x)\_i^2 \in R $
 - Then up to first order, $H(x_n)\approx J(x_n)^{\prime}J(x_n)$
@@ -448,7 +456,7 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ----
 
-### Levenberg-Marquardt
+## Levenberg-Marquardt
 
 - Least-square minimization: $min_x \sum_i f(x)\_i^2 \in R $
 
@@ -461,11 +469,11 @@ $$x_{n+1} = (1-\lambda) x_n - \lambda \nabla f(x_n)$$
 
 ---
 
-## Constrained optimization and complementarity conditions
+# Constrained optimization and complementarity conditions
 
 ----
 
-### Consumption optimization
+## Consumption optimization
 
 Consider the optimization problem:
 $$\max U(x_1, x_2)$$
@@ -478,7 +486,7 @@ How do you find a solution by hand?
 
 -----
 
-### Consumption optimization (1)
+## Consumption optimization (1)
 
 - Compute by hand
 - Easy: 
@@ -493,7 +501,7 @@ How do you find a solution by hand?
 
 ----
 
-### Consumption optimization (2)
+## Consumption optimization (2)
 
 - Another method, which keeps the symmetry. Constraint is binding, trying to minimize along the budget line yields an implicit relation between $d x_1$ and $d x_2$ $$p_1 d {x_1} + p_2 d {x_2} = 0$$
 - At the optimal:
@@ -503,7 +511,7 @@ Combine with the budget constraint to get a *second* condition.
 
 ----
 
-### Penalty function
+## Penalty function
 
 - Take a penalty function $p(x)$ such that $p(x)=K>0$ if $x>0$ and $p(x)=0$ if $x \leq 0$. Maximize: $V(x_1, x_2) = U(x_1, x_2) - p( p_1 x_1 + p_2 x_2 - B)$
 - Clearly, $\min U \iff \min V$
@@ -515,7 +523,7 @@ Combine with the budget constraint to get a *second* condition.
 
 ----
 
-### Penalty function
+## Penalty function
 
 - Another idea: is there a canonical way to choose $\lambda$ such that at the minimum it is equivalent to minimize the original problem under constraint or to minimize
 $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
@@ -523,7 +531,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 
 ----
 
-### Karush-Kuhn-Tucker conditions
+## Karush-Kuhn-Tucker conditions
 
 - If $(x^{\star},y^{\star})$ is optimal there exists $\lambda$ such that:
   - $(x^{\star},y^{\star})$ maximizes lagrangian $\mathcal{L} = U(x_1, x_2) + \lambda (B- p_1 x_1 - p_2 x_2)$
@@ -537,7 +545,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 
 ----
 
-### Karush-Kuhn-Tucker conditions
+## Karush-Kuhn-Tucker conditions
 
 - We can get first order conditions that factor in the constraints:
   - $U^{\prime}_x - \lambda p_1 = 0$
@@ -548,7 +556,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 
 ----
 
-### Solution strategies for NCP problems
+## Solution strategies for NCP problems
 
 - General formulation for vector-valued functions $$f(x)\geq 0 \perp g(x)\geq 0$$ means $$\forall i, f_i(x)\geq 0 \perp g_i(x)\geq 0$$
   - NCP do not necessarily arise from a single optimization problem
@@ -563,7 +571,7 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 
 ----
 
-## Smooth method
+# Smooth method
 
 - Consider the *Fisher-Burmeister* function $$\phi(a,b) = a+b-\sqrt{a^2+b^2}$$
 - It is infinitely differentiable, except at $(0,0)$
@@ -573,11 +581,11 @@ $$V(x_1, x_2) = U(x_1, x_2) - \lambda (p_1 x_1 + p_2 x_2 - B)$$
 
 ---
 
-## Practicalities
+# Practicalities
 
 ----
 
-### Optimization libraries
+## Optimization libraries
 
 - Robust optimization code is contained in the following libraries:
   - Roots.jl: one-dimensional root finding
