@@ -312,7 +312,7 @@ $${\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^{\co
 
 Remark: in the case of linear convergence:
 
-$${\lim}\_{t\rightarrow\infty} \frac{|x\_{t+1}-x\_t|}{|x\_{t}-x\_{t-1}|} = \mu \in R^+ \iff {\lim}\_{t\rightarrow\infty} \frac{|x\_{t+1}-x^{\star}|}{|x\_{t}-x^{\star}|}=\frac{1}{1-\mu}$$
+$${\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \mu \in R^+ \iff {\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|}=\frac{1}{1-\mu}$$
 
 
 

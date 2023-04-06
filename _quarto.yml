@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+exectute:
+  echo: true
+website:
+  title: "Introduction to Computational Economics"
+  sidebar:
+      style: "docked"
+      search: true
+      contents:
+        - section: "Slides"
+          contents:
+            - slides/introduction.qmd
+            - slides/convergence.qmd
+            - slides/optimization.qmd
+        - section: "Tutorials"
+          contents:
+            - notebooks/2_solow_correction.ipynb
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+
+
+

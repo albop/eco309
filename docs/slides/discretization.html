@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Computational Economics – discretization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction to Computational Economics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Introduction to Computational Economics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Slides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">Convergence of sequences</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/optimization.html" class="sidebar-item-text sidebar-link">Optimization</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  notebooks/2_solow_correction.ipynb
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#math-topic-discretization" id="toc-math-topic-discretization" class="nav-link active" data-scroll-target="#math-topic-discretization">Math topic: discretization</a>
+  <ul class="collapse">
+  <li><a href="#computational-econommics-2021-eco309" id="toc-computational-econommics-2021-eco309" class="nav-link" data-scroll-target="#computational-econommics-2021-eco309">Computational Econommics, 2021 (ECO309)</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#several-kinds-of-discretization" id="toc-several-kinds-of-discretization" class="nav-link" data-scroll-target="#several-kinds-of-discretization">Several kinds of Discretization</a></li>
+  </ul></li>
+  <li><a href="#discretizing-an-ar1" id="toc-discretizing-an-ar1" class="nav-link" data-scroll-target="#discretizing-an-ar1">Discretizing an AR1</a>
+  <ul class="collapse">
+  <li><a href="#discretizing-an-ar1-1" id="toc-discretizing-an-ar1-1" class="nav-link" data-scroll-target="#discretizing-an-ar1-1">Discretizing an AR1</a></li>
+  <li><a href="#ar1-tauchen" id="toc-ar1-tauchen" class="nav-link" data-scroll-target="#ar1-tauchen">AR1: Tauchen</a></li>
+  <li><a href="#ar1-tauchen-2" id="toc-ar1-tauchen-2" class="nav-link" data-scroll-target="#ar1-tauchen-2">AR1: Tauchen (2)</a></li>
+  <li><a href="#how-to-assess-the-quality-of-approximation" id="toc-how-to-assess-the-quality-of-approximation" class="nav-link" data-scroll-target="#how-to-assess-the-quality-of-approximation">How to assess the quality of approximation ?</a></li>
+  <li><a href="#rouvenhorst-method-1" id="toc-rouvenhorst-method-1" class="nav-link" data-scroll-target="#rouvenhorst-method-1">Rouvenhorst method (1)</a></li>
+  <li><a href="#rouvenhorst-method-2" id="toc-rouvenhorst-method-2" class="nav-link" data-scroll-target="#rouvenhorst-method-2">Rouvenhorst method (2)</a></li>
+  <li><a href="#rouvenhorst-method-3" id="toc-rouvenhorst-method-3" class="nav-link" data-scroll-target="#rouvenhorst-method-3">Rouvenhorst method (3)</a></li>
+  </ul></li>
+  <li><a href="#discretizing-an-iid-law" id="toc-discretizing-an-iid-law" class="nav-link" data-scroll-target="#discretizing-an-iid-law">Discretizing an iid law</a>
+  <ul class="collapse">
+  <li><a href="#common-problem" id="toc-common-problem" class="nav-link" data-scroll-target="#common-problem">Common problem:</a></li>
+  <li><a href="#whats-wrong-with-monte-carlo-simulations" id="toc-whats-wrong-with-monte-carlo-simulations" class="nav-link" data-scroll-target="#whats-wrong-with-monte-carlo-simulations">What’s wrong with Monte-Carlo Simulations?</a></li>
+  <li><a href="#whats-wrong-with-monte-carlo-simulations-1" id="toc-whats-wrong-with-monte-carlo-simulations-1" class="nav-link" data-scroll-target="#whats-wrong-with-monte-carlo-simulations-1">What’s wrong with Monte-Carlo Simulations?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#define-the-model" id="toc-define-the-model" class="nav-link" data-scroll-target="#define-the-model">define the model</a></li>
+  <li><a href="#create-distributions" id="toc-create-distributions" class="nav-link" data-scroll-target="#create-distributions">create distributions</a>
+  <ul class="collapse">
+  <li><a href="#quick-theory-1" id="toc-quick-theory-1" class="nav-link" data-scroll-target="#quick-theory-1">Quick theory (1)</a></li>
+  <li><a href="#quick-theory-2" id="toc-quick-theory-2" class="nav-link" data-scroll-target="#quick-theory-2">Quick theory (2)</a></li>
+  <li><a href="#quantization-using-quantiles" id="toc-quantization-using-quantiles" class="nav-link" data-scroll-target="#quantization-using-quantiles">Quantization using quantiles</a></li>
+  <li><a href="#quadrature-rule" id="toc-quadrature-rule" class="nav-link" data-scroll-target="#quadrature-rule">Quadrature rule</a></li>
+  <li><a href="#gauss-hermite" id="toc-gauss-hermite" class="nav-link" data-scroll-target="#gauss-hermite">Gauss-Hermite</a></li>
+  <li><a href="#gauss-hermite-1" id="toc-gauss-hermite-1" class="nav-link" data-scroll-target="#gauss-hermite-1">Gauss-Hermite</a></li>
+  <li><a href="#gauss-" id="toc-gauss-" class="nav-link" data-scroll-target="#gauss-">Gauss-*</a></li>
+  <li><a href="#in-practice" id="toc-in-practice" class="nav-link" data-scroll-target="#in-practice">In practice</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="math-topic-discretization" class="level1">
+<h1>Math topic: discretization</h1>
+<section id="computational-econommics-2021-eco309" class="level2">
+<h2 class="anchored" data-anchor-id="computational-econommics-2021-eco309">Computational Econommics, 2021 (ECO309)</h2>
+<hr>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<hr>
+<section id="several-kinds-of-discretization" class="level3">
+<h3 class="anchored" data-anchor-id="several-kinds-of-discretization">Several kinds of Discretization</h3>
+<ul>
+<li>approximate operator with a finite number of iterations:
+<ul>
+<li>compute <span class="math inline">\(\int_a^b f(x) dx\)</span></li>
+<li>compute <span class="math inline">\(E_\omega f(\omega)\)</span></li>
+</ul></li>
+<li>represent an infinite dimensional object with a finite set of parameters:
+<ul>
+<li><span class="math inline">\(f \equiv (f(x_i))_{i=1:N}\)</span> with <span class="math inline">\(x_i=a+\frac{i-1}{N-1}(b-a)\)</span>
+<ul>
+<li>discretize arguments</li>
+</ul></li>
+<li><span class="math inline">\(\omega \equiv (\mu_i, \omega_i)_{i=1:N}\)</span> such that <span class="math inline">\(E_\omega f(\omega) \approx \sum_i \mu_i f(\omega_i)\)</span> (quantization)</li>
+</ul></li>
+<li>discretize continous process by a discrete one:
+<ul>
+<li>continuous markov chain to discrete markov Chain</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="discretizing-an-ar1" class="level2">
+<h2 class="anchored" data-anchor-id="discretizing-an-ar1">Discretizing an AR1</h2>
+<hr>
+<section id="discretizing-an-ar1-1" class="level3">
+<h3 class="anchored" data-anchor-id="discretizing-an-ar1-1">Discretizing an AR1</h3>
+<ul>
+<li>Take <span class="math inline">\(AR1\)</span> process <span class="math display">\[x_t = \rho x_{t-1} + \epsilon_t\]</span>
+<ul>
+<li>with <span class="math inline">\(|\rho| &lt;1\)</span> and <span class="math inline">\(\epsilon \sim N(0,\sigma)\)</span></li>
+</ul></li>
+<li>Can we replace <span class="math inline">\((x_t)\)</span> by a discrete markov chain?
+<ul>
+<li>approximate version:
+<ul>
+<li>good time <span class="math inline">\(x^g\)</span> and bad time <span class="math inline">\(x^b\)</span>. Probability <span class="math inline">\(\pi\)</span> of staying in the same, <span class="math inline">\(1-\pi\)</span> of switching.</li>
+</ul></li>
+<li>two systematic methods (available in <em>QuantEcon.jl</em>)
+<ul>
+<li>Tauchen</li>
+<li>Rouwenhorst</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="ar1-tauchen" class="level3">
+<h3 class="anchored" data-anchor-id="ar1-tauchen">AR1: Tauchen</h3>
+<ul>
+<li><p>The unconditional distribution of an AR1 is a normal law <span class="math inline">\(\mathcal{N}(0,\frac{\sigma}{\sqrt{1-\rho^2}})\)</span></p></li>
+<li><p>Choose <span class="math inline">\(m&gt;0\)</span>, typically <span class="math inline">\(m=3\)</span></p></li>
+<li><p>Bound the process: <span class="math inline">\(\underline{x} = -m \frac{\sigma}{\sqrt{1-\rho^2}}\)</span> and <span class="math inline">\(\overline{x} = m \frac{\sigma}{\sqrt{1-\rho^2}}\)</span></p></li>
+<li><p>Define the <span class="math inline">\(N\)</span> discretized points (<span class="math inline">\(i\in[1,n]\)</span>): <span class="math inline">\(y_i = \underline{x} + \frac{i-1}{N-1}(\overline{x}-\underline{x})\)</span></p></li>
+<li><p>Define the transitions:</p></li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray}
+\pi_{ij} &amp; = &amp; prob \\left( y_{t+1}=y_j|y_t=y_i\\right)\\\\
+         &amp; = &amp; prob \\left( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_k| \left| y_t=y_i \right. \right)
+\end{eqnarray}\]</span></p>
+<hr>
+</section>
+<section id="ar1-tauchen-2" class="level3">
+<h3 class="anchored" data-anchor-id="ar1-tauchen-2">AR1: Tauchen (2)</h3>
+<ul>
+<li><p>Formulas <span class="math inline">\(\delta=\frac{\overline{x}-\underline{x}}{N}\)</span>:</p>
+<ul>
+<li><p>if <span class="math inline">\(1&lt;k&lt;N-1\)</span></p>
+<p><span class="math display">\[\pi_{jk} = F(\frac{y_k + \delta/2-\rho y_j}{\sigma_{\epsilon}}) - F(y_k + \delta/2-\rho y_j)\]</span></p></li>
+<li><p>if <span class="math inline">\(k=1\)</span></p>
+<p><span class="math display">\[\pi_{j} = F(\frac{y_k + \delta/2-\rho y_j}{\sigma_{\epsilon}}) \]</span></p></li>
+<li><p>if <span class="math inline">\(k=N\)</span></p>
+<p><span class="math display">\[\pi_{j} = 1- F(\frac{y_k - \delta/2-\rho y_j}{\sigma_{\epsilon}}) \]</span></p></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="how-to-assess-the-quality-of-approximation" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-assess-the-quality-of-approximation">How to assess the quality of approximation ?</h3>
+<ul>
+<li><p>compare generated stationary moments between discretized process and true AR1:</p>
+<ul>
+<li>E(), Var(), ACor()</li>
+</ul></li>
+<li><p>by looking at the exact ergodic distribution or by doing some simulations</p></li>
+<li><p>not very precise when then process is very persistent <span class="math inline">\(\rho\approx 1\)</span></p></li>
+</ul>
+<hr>
+</section>
+<section id="rouvenhorst-method-1" class="level3">
+<h3 class="anchored" data-anchor-id="rouvenhorst-method-1">Rouvenhorst method (1)</h3>
+<ul>
+<li>N = 2
+<ul>
+<li>choose <span class="math inline">\(y_1=-\psi\)</span>, <span class="math inline">\(y_2=\psi\)</span></li>
+<li>define transition matrix: <span class="math display">\[\Theta_2 = \begin{bmatrix}
+p &amp; 1-p\\\\
+1-q &amp; q
+\end{bmatrix}\]</span></li>
+<li>choose <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> and <span class="math inline">\(\psi\)</span> to match some moments: <span class="math inline">\(E()\)</span>, <span class="math inline">\(Var()\)</span>, <span class="math inline">\(ACor()\)</span>
+<ul>
+<li>they can be computed analytically for AR1 and for discretized version.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="rouvenhorst-method-2" class="level3">
+<h3 class="anchored" data-anchor-id="rouvenhorst-method-2">Rouvenhorst method (2)</h3>
+<ul>
+<li>N &gt;2 <span class="math display">\[\Theta_N =
+p \begin{bmatrix}  
+\Theta_{N-1}  &amp; 0\\\\
+0 &amp; 0
+\end{bmatrix} +
+(1-p) \begin{bmatrix}  
+0 &amp; \Theta_{N-1} \\\\
+0 &amp; 0
+\end{bmatrix} +
+(1-q) \begin{bmatrix}  
+0 &amp; 0\\\\
+\Theta_{N-1} &amp; 0
+\end{bmatrix} +
+q \begin{bmatrix}  
+0 &amp; 0\\\\
+0 &amp; \Theta_{N-1}
+\end{bmatrix}
+\]</span></li>
+<li>Normalize all lines</li>
+</ul>
+<hr>
+</section>
+<section id="rouvenhorst-method-3" class="level3">
+<h3 class="anchored" data-anchor-id="rouvenhorst-method-3">Rouvenhorst method (3)</h3>
+<ul>
+<li><p>Procedure converges to Bernouilli distribution.</p></li>
+<li><p>Moments can be computed in closed form:</p>
+<ul>
+<li><span class="math inline">\(E() = \frac{(q-p)\psi}{2-(p+q)}\)</span></li>
+<li><span class="math inline">\(Var() = \psi^2 \left[ 1-4 s (1-s) + \frac{4s(1-s)}{N-1}\right]\)</span></li>
+<li><span class="math inline">\(Acor()= p+q-1\)</span></li>
+</ul></li>
+<li><p>Rouwenhorst method performs better for highly correlated processes</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="discretizing-an-iid-law" class="level2">
+<h2 class="anchored" data-anchor-id="discretizing-an-iid-law">Discretizing an iid law</h2>
+<hr>
+<section id="common-problem" class="level3">
+<h3 class="anchored" data-anchor-id="common-problem">Common problem:</h3>
+<ul>
+<li><p>Given <span class="math inline">\(f\)</span>, and an iid process <span class="math inline">\(\epsilon \sim N(0,\sigma^2)\)</span>, how to approximate <span class="math inline">\(E_{\epsilon} f(\epsilon)\)</span> ?</p></li>
+<li><p>Ideas:</p>
+<ul>
+<li>draw <em>lots</em> of random <span class="math inline">\((\epsilon\_n)\_{n=1:N}\)</span> and compute <span class="math display">\[\frac{1}{N}\sum_{n=1}^N f(\epsilon_n)\]</span>
+<ul>
+<li>aka Monte-Carlo simulations</li>
+</ul></li>
+<li>given a method to approximate integrals, compute <span class="math display">\[\int_{u=-\infty}^{\infty} f(u) \mu(u) du\]</span> with <span class="math inline">\(\mu(u)=\frac{1}{\sigma\sqrt{2 \pi}}e^{-\frac{u^2}{2\sigma^2}}\)</span></li>
+<li><em>discretize</em> (or <em>quantize</em>) the signal <span class="math inline">\(\epsilon\)</span> as <span class="math inline">\((w_i, \epsilon_i)_{i=1:N}\)</span> and compute:</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[\frac{1}{N} \sum_n w_n f(\epsilon_n)\]</span></p>
+<hr>
+</section>
+<section id="whats-wrong-with-monte-carlo-simulations" class="level3">
+<h3 class="anchored" data-anchor-id="whats-wrong-with-monte-carlo-simulations">What’s wrong with Monte-Carlo Simulations?</h3>
+<ul>
+<li><p>Let’s take an exemple:</p>
+<ul>
+<li>consumption is <span class="math inline">\(C(\epsilon)=U(e^{\epsilon})\)</span></li>
+<li>with <span class="math inline">\({\sigma}\_{\epsilon}=0.05\)</span> and <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\gamma=40\)</span>.</li>
+</ul></li>
+<li><p>Let’s compute <span class="math inline">\(E_{\epsilon}(C(\epsilon))\)</span> precisely.</p></li>
+<li><p>Discuss value of <span class="math inline">\(\gamma\)</span>: is it crazy? (risk return)</p></li>
+</ul>
+<hr>
+</section>
+<section id="whats-wrong-with-monte-carlo-simulations-1" class="level3">
+<h3 class="anchored" data-anchor-id="whats-wrong-with-monte-carlo-simulations-1">What’s wrong with Monte-Carlo Simulations?</h3>
+<p>Compute expectation</p>
+<p>```julia [1-3|4-7|9-10|14] # imports: using Distributions: Normal</p>
+</section>
+</section>
+</section>
+<section id="define-the-model" class="level1">
+<h1>define the model</h1>
+<p>σ = 0.05; γ = 40 U(x)=(x^(-γ))/(-γ) C(e) = U(exp(e))</p>
+</section>
+<section id="create-distributions" class="level1">
+<h1>create distributions</h1>
+<p>dis = Normal(0,σ)<br>
+E_ϵ(f;N=1000) = sum(f(rand(dis)) for i=1:N)/N</p>
+<p>NVec = [1000, 5000, 10000, 15000, 20000] vals = [E_ϵ(C; N=i) for i=NVec]</p>
+<pre><code></code></pre>
+<p>julia&gt; vals = [E_ϵ(C; N=i) for i=NVec 5-element Array{Float64,1}: -0.17546927855215824 -0.2906119630309043 -0.17924501776041424 -0.1826805612086024 -0.181184208323609</p>
+<pre><code>&lt;!-- .element class="fragment" --&gt;
+
+----
+
+### What's wrong with Monte-Carlo Simulations?
+
+```julia [1-2|3-7]
+using Statistics: std
+
+#computes estimates for various N
+stdev(f; N=100, K=100) = std(E_ϵ(f; N=N) for k=1:K)
+sdvals = [stdev(C; N=n, K=10000) for n=NVec]</code></pre>
+<pre><code>julia&gt; @time sdvals = [stdev(C; N=n, K=10000) for n=NVec]      
+ 99.558940 seconds (2.55 G allocations: 38.011 GiB, 0.81% gc time)
+5-element Array{Float64,1}:                                       
+ 0.04106466473642666                                              
+ 0.018296399941889575                                             
+ 0.013174287295527257                                             
+ 0.01086721462174894                                              
+ 0.009383218078206898 </code></pre>
+<!-- .element class="fragment" -->
+<hr>
+<section id="quick-theory-1" class="level3">
+<h3 class="anchored" data-anchor-id="quick-theory-1">Quick theory (1)</h3>
+<ul>
+<li>Fact: the sum of several independent gaussian variables is a gaussian variable</li>
+<li>So <span class="math inline">\(T_N =\frac{1}{N}\sum_{n=1}^N \epsilon_n\)</span> is gaussian variable. Its mean is 0 (unbiased). Let’s compute its variance: <span class="math display">\[E(T_N^2) = \frac{1}{N^2} \sum_{n=1}^N E\left[ \epsilon_n^2 \right]\]</span></li>
+<li>The standard deviation is: <span class="math display">\[s_N = \sigma(T_N^2) = \frac{1}{\sqrt{\color{red} N}} \sigma_{\epsilon}\]</span></li>
+<li>Conclusion: the precision of (basic) Monte-Carlo decreases only as a square root of the number of experiments.</li>
+</ul>
+<hr>
+</section>
+<section id="quick-theory-2" class="level3">
+<h3 class="anchored" data-anchor-id="quick-theory-2">Quick theory (2)</h3>
+<ul>
+<li>In the general case, the Monte-Carlo estimator is: <span class="math display">\[T^{MC}\_N =\frac{1}{N}\sum\_{n=1}^N f(\epsilon_n)\]</span></li>
+<li>It is unbiased: <span class="math display">\[E(T_N^{MC}) = E\left[f(\epsilon) \right]\]</span></li>
+<li>It’s variance is <span class="math display">\[E(T_N^{MC}) \propto \frac{1}{\sqrt{N}}\]</span>
+<ul>
+<li>slow</li>
+<li>on the plus side: rate independent of the dimension of <span class="math inline">\(\epsilon\)</span></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="quantization-using-quantiles" class="level3">
+<h3 class="anchored" data-anchor-id="quantization-using-quantiles">Quantization using quantiles</h3>
+<div class="container">
+<div class="col">
+<ul>
+<li><em>Equiprobable</em> discretization</li>
+<li>Works for any distribution with pdf and cdf</li>
+<li>Split the space into equal <span class="math inline">\(N\)</span> quantiles: <span class="math display">\[(I_i=[a_i,a_{i+1}])_{i=1:N}\]</span> such that <span class="math display">\[prob(\epsilon \in I_i)=\frac{1}{N}\]</span></li>
+<li>Choose the <em>nodes</em> as the median of each interval: <span class="math display">\[prob(\epsilon\in[a_i,x_i]) = prob(\epsilon\in[x_i,a_{i+1}])\]</span></li>
+<li>The quantization is <span class="math inline">\((1/N, x_i)_{i=1:N}\)</span></li>
+</ul>
+</div>
+<div class="col">
+<p>[graph]</p>
+</div>
+</div>
+</section>
+<section id="quadrature-rule" class="level3">
+<h3 class="anchored" data-anchor-id="quadrature-rule">Quadrature rule</h3>
+<p>Idea: - <span class="math inline">\(f\in \mathcal{F}\)</span> a Banach space - <span class="math inline">\(I: f\rightarrow E_{\epsilon} f(\epsilon)\)</span> is a linear application - suppose there is a dense family of polynomials <span class="math inline">\(P_n\)</span>, spanning <span class="math inline">\(\mathcal{F}_n\)</span> - <span class="math inline">\(I\)</span> restricted to <span class="math inline">\(\mathcal{F}_N\)</span> is a <span class="math inline">\(N\)</span>-dimensional linear form - take <span class="math inline">\(N\)</span> points <span class="math inline">\((a_n)_{n\in[1,N]}\)</span>. The set <span class="math inline">\(\{f\rightarrow\sum_{n=1}^N w_n f(a_n) | w_1, ... w_N\}\)</span> is a vectorial space. - one element matches exactly <span class="math inline">\(\left.I\right|_{\mathcal{F}}\)</span> - so the quadrature rule <span class="math inline">\((w_n, a_n)\)</span> is exactly accurate for polynomials of order <span class="math inline">\(n&lt;N\)</span>. - how to choose the points <span class="math inline">\(a_n\)</span>?</p>
+<hr>
+<hr>
+</section>
+<section id="gauss-hermite" class="level3">
+<h3 class="anchored" data-anchor-id="gauss-hermite">Gauss-Hermite</h3>
+<ul>
+<li><span class="math inline">\(f\in \mathcal{F}\)</span> a Banach space (or <span class="math inline">\(\mathbb{R}^n\)</span>), <span class="math inline">\(\epsilon\)</span> a gaussian variable
+<ul>
+<li><span class="math inline">\(I: f\rightarrow E_{\epsilon} f(\epsilon)\)</span> is a linear application</li>
+</ul></li>
+<li>suppose there is a dense family of polynomials <span class="math inline">\(P_n\)</span>, spanning <span class="math inline">\(\mathcal{F}_n\)</span>
+<ul>
+<li><span class="math inline">\(I\)</span> restricted to <span class="math inline">\(\mathcal{F}_N\)</span> is a <span class="math inline">\(N\)</span>-dimensional linear form</li>
+</ul></li>
+<li>Gauss quadrature magic
+<ul>
+<li>a way to choose <span class="math inline">\(\\epsilon_i\)</span> <strong>and</strong> <span class="math inline">\(w_i\)</span> such that <span class="math display">\[\left(f\rightarrow\sum\_{n=1}^N w_n f(\epsilon_i) \right)= \left.I\right|\_{\mathcal{F}_{2N}}\]</span></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="gauss-hermite-1" class="level3">
+<h3 class="anchored" data-anchor-id="gauss-hermite-1">Gauss-Hermite</h3>
+<ul>
+<li>Very accurate if a function can be approximated by polynomials</li>
+<li>Bad:
+<ul>
+<li>imprecise if function <span class="math inline">\(f\)</span> has kinks or non local behaviour
+<ul>
+<li>points <span class="math inline">\(\epsilon_n\)</span> can be very far from the origin (TODO: graph)</li>
+</ul></li>
+<li>not super easy to commute weights and nodes (but there are good libraries)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="gauss-" class="level3">
+<h3 class="anchored" data-anchor-id="gauss-">Gauss-*</h3>
+<ul>
+<li><p>Same logic can be applied to compute integration with weight function <span class="math inline">\(w(x)\)</span>: <span class="math display">\[\int_a^b f(x) w(x)\]</span></p></li>
+<li><p>Gauss-Hermite:</p>
+<ul>
+<li><span class="math inline">\(w(x) = e^{-x^2}\)</span>, <span class="math inline">\([a,b] = [-\infty, \infty]\)</span></li>
+</ul></li>
+<li><p>Gauss-Legendre:</p>
+<ul>
+<li><span class="math inline">\(w(x) = 1\)</span></li>
+</ul></li>
+<li><p>Gauss-Chebychev:</p>
+<ul>
+<li><span class="math inline">\(w(x)=\sqrt{1-x^2}\)</span>, <span class="math inline">\([a,b] = [-1, 1]\)</span></li>
+<li>for periodic functions</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="in-practice">In practice</h3>
+<p>Beware that weight is not the density of the normal law:</p>
+<p><span class="math display">\[\frac{1}{\sqrt{2 \pi \sigma^2}}\int f(x) e^{-\frac{x^2}{2\sigma^2}}dx = \color{red}{\frac{1}{\sqrt{\pi}}}\int f(u \color{\red}{\sigma \sqrt{2}}) e^{-{u^2}}du \]</span> <span class="math display">\[\color{\red}{\frac{1}{\sqrt{\pi}}}\sum_n w_n f(\epsilon_n \color{\red}{\sigma \sqrt{2}})\]</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">FastGaussQuadrature</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x, w <span class="op">=</span> <span class="fu">gausslegendre</span>( <span class="fl">10</span> );</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x<span class="op">.*</span><span class="fu">\sigma*sqrt</span>(<span class="fl">2</span>) <span class="co"># renormalize nodes</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="fu">sum</span>( <span class="fu">w_*U</span>(<span class="fu">exp</span>(x_)) <span class="cf">for</span> (w_,x_) <span class="kw">in</span> <span class="fu">zip</span>(x,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>w))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>s <span class="op">/=</span> <span class="fu">sqrt</span>(<span class="op">\</span><span class="cn">pi</span>) <span class="co"># renormalize output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

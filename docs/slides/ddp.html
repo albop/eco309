@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Computational Economics – ddp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction to Computational Economics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Introduction to Computational Economics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Slides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">Convergence of sequences</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/optimization.html" class="sidebar-item-text sidebar-link">Optimization</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  notebooks/2_solow_correction.ipynb
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#discrete-dynamic-programming" id="toc-discrete-dynamic-programming" class="nav-link active" data-scroll-target="#discrete-dynamic-programming">Discrete Dynamic Programming</a>
+  <ul class="collapse">
+  <li><a href="#computational-economics-2022-eco309" id="toc-computational-economics-2022-eco309" class="nav-link" data-scroll-target="#computational-economics-2022-eco309">Computational Economics 2022 (ECO309)</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#markov-chain-and-markov-process" id="toc-markov-chain-and-markov-process" class="nav-link" data-scroll-target="#markov-chain-and-markov-process">Markov chain and Markov process</a></li>
+  <li><a href="#markov-chain-and-markov-process-1" id="toc-markov-chain-and-markov-process-1" class="nav-link" data-scroll-target="#markov-chain-and-markov-process-1">Markov chain and Markov process</a>
+  <ul class="collapse">
+  <li><a href="#stochastic-matrices" id="toc-stochastic-matrices" class="nav-link" data-scroll-target="#stochastic-matrices">Stochastic matrices</a></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#probabilistic-interpretation" id="toc-probabilistic-interpretation" class="nav-link" data-scroll-target="#probabilistic-interpretation">Probabilistic interpretation</a></li>
+  <li><a href="#what-about-longer-horizons" id="toc-what-about-longer-horizons" class="nav-link" data-scroll-target="#what-about-longer-horizons">What about longer horizons?</a></li>
+  <li><a href="#connectivity" id="toc-connectivity" class="nav-link" data-scroll-target="#connectivity">Connectivity</a></li>
+  <li><a href="#connectivity-and-irreducibility-example-from-qe" id="toc-connectivity-and-irreducibility-example-from-qe" class="nav-link" data-scroll-target="#connectivity-and-irreducibility-example-from-qe">Connectivity and irreducibility (example from QE)</a></li>
+  <li><a href="#aperiodicity" id="toc-aperiodicity" class="nav-link" data-scroll-target="#aperiodicity">Aperiodicity</a></li>
+  <li><a href="#aperiodicity-example-from-qe" id="toc-aperiodicity-example-from-qe" class="nav-link" data-scroll-target="#aperiodicity-example-from-qe">Aperiodicity (example from QE)</a></li>
+  <li><a href="#stationary-distribution" id="toc-stationary-distribution" class="nav-link" data-scroll-target="#stationary-distribution">Stationary distribution</a></li>
+  <li><a href="#stationary-distribution-proof" id="toc-stationary-distribution-proof" class="nav-link" data-scroll-target="#stationary-distribution-proof">Stationary distribution (proof)</a></li>
+  <li><a href="#stationary-distribution-1" id="toc-stationary-distribution-1" class="nav-link" data-scroll-target="#stationary-distribution-1">Stationary distribution?</a></li>
+  <li><a href="#simulating-a-markov-chain" id="toc-simulating-a-markov-chain" class="nav-link" data-scroll-target="#simulating-a-markov-chain">Simulating a Markov Chain</a></li>
+  <li><a href="#using-linear-algebra" id="toc-using-linear-algebra" class="nav-link" data-scroll-target="#using-linear-algebra">Using Linear Algebra</a></li>
+  <li><a href="#code-example" id="toc-code-example" class="nav-link" data-scroll-target="#code-example">Code example</a></li>
+  <li><a href="#further-comments" id="toc-further-comments" class="nav-link" data-scroll-target="#further-comments">Further comments</a></li>
+  </ul></li>
+  <li><a href="#dynamic-programing-notations" id="toc-dynamic-programing-notations" class="nav-link" data-scroll-target="#dynamic-programing-notations">Dynamic Programing: notations</a>
+  <ul class="collapse">
+  <li><a href="#general-formulation" id="toc-general-formulation" class="nav-link" data-scroll-target="#general-formulation">General Formulation</a></li>
+  <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#classes-of-dynamic-optimization" id="toc-classes-of-dynamic-optimization" class="nav-link" data-scroll-target="#classes-of-dynamic-optimization">Classes of Dynamic Optimization</a></li>
+  <li><a href="#finite-horizon-vs-infinite-horizon" id="toc-finite-horizon-vs-infinite-horizon" class="nav-link" data-scroll-target="#finite-horizon-vs-infinite-horizon">Finite horizon vs infinite horizon</a></li>
+  <li><a href="#continuous-vs-discrete" id="toc-continuous-vs-discrete" class="nav-link" data-scroll-target="#continuous-vs-discrete">Continuous vs discrete</a></li>
+  <li><a href="#non-time-separable-example" id="toc-non-time-separable-example" class="nav-link" data-scroll-target="#non-time-separable-example">Non time separable example</a></li>
+  <li><a href="#non-homogenous-preference" id="toc-non-homogenous-preference" class="nav-link" data-scroll-target="#non-homogenous-preference">Non homogenous preference</a></li>
+  <li><a href="#learning-problems" id="toc-learning-problems" class="nav-link" data-scroll-target="#learning-problems">Learning problems</a></li>
+  <li><a href="#learning-problems-2" id="toc-learning-problems-2" class="nav-link" data-scroll-target="#learning-problems-2">Learning problems (2)</a></li>
+  </ul></li>
+  <li><a href="#finite-horizon-dmdp" id="toc-finite-horizon-dmdp" class="nav-link" data-scroll-target="#finite-horizon-dmdp">Finite horizon DMDP</a>
+  <ul class="collapse">
+  <li><a href="#finite-horizon-dmdp-1" id="toc-finite-horizon-dmdp-1" class="nav-link" data-scroll-target="#finite-horizon-dmdp-1">Finite horizon DMDP</a></li>
+  <li><a href="#finite-horizon-dmdp-2" id="toc-finite-horizon-dmdp-2" class="nav-link" data-scroll-target="#finite-horizon-dmdp-2">Finite horizon DMDP</a></li>
+  <li><a href="#remarks" id="toc-remarks" class="nav-link" data-scroll-target="#remarks">Remarks</a></li>
+  </ul></li>
+  <li><a href="#infinite-horizon-dmdp" id="toc-infinite-horizon-dmdp" class="nav-link" data-scroll-target="#infinite-horizon-dmdp">Infinite horizon DMDP</a>
+  <ul class="collapse">
+  <li><a href="#infinite-horizon-dmdp-1" id="toc-infinite-horizon-dmdp-1" class="nav-link" data-scroll-target="#infinite-horizon-dmdp-1">Infinite horizon DMDP</a></li>
+  <li><a href="#infinite-horizon-dmdp-2" id="toc-infinite-horizon-dmdp-2" class="nav-link" data-scroll-target="#infinite-horizon-dmdp-2">Infinite horizon DMDP (2)</a></li>
+  <li><a href="#successive-approximation" id="toc-successive-approximation" class="nav-link" data-scroll-target="#successive-approximation">Successive Approximation</a></li>
+  <li><a href="#successive-approximation-2" id="toc-successive-approximation-2" class="nav-link" data-scroll-target="#successive-approximation-2">Successive Approximation (2)</a></li>
+  <li><a href="#bellman-equation" id="toc-bellman-equation" class="nav-link" data-scroll-target="#bellman-equation">Bellman equation</a></li>
+  <li><a href="#bellman-operator" id="toc-bellman-operator" class="nav-link" data-scroll-target="#bellman-operator">Bellman operator</a></li>
+  <li><a href="#blackwells-theorem" id="toc-blackwells-theorem" class="nav-link" data-scroll-target="#blackwells-theorem">Blackwell’s theorem</a></li>
+  <li><a href="#successive-approximation-1" id="toc-successive-approximation-1" class="nav-link" data-scroll-target="#successive-approximation-1">Successive Approximation</a></li>
+  <li><a href="#successive-approximation-2-1" id="toc-successive-approximation-2-1" class="nav-link" data-scroll-target="#successive-approximation-2-1">Successive Approximation (2)</a></li>
+  <li><a href="#policy-iteration-for-dmdp" id="toc-policy-iteration-for-dmdp" class="nav-link" data-scroll-target="#policy-iteration-for-dmdp">Policy iteration for DMDP</a></li>
+  <li><a href="#how-do-we-compute-the-value-of-a-policy" id="toc-how-do-we-compute-the-value-of-a-policy" class="nav-link" data-scroll-target="#how-do-we-compute-the-value-of-a-policy">How do we compute the value of a policy?</a></li>
+  </ul></li>
+  <li><a href="#example-the-mccall-model" id="toc-example-the-mccall-model" class="nav-link" data-scroll-target="#example-the-mccall-model">Example : the McCall Model</a>
+  <ul class="collapse">
+  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea">Idea</a></li>
+  <li><a href="#formalization" id="toc-formalization" class="nav-link" data-scroll-target="#formalization">Formalization</a></li>
+  <li><a href="#states-reward" id="toc-states-reward" class="nav-link" data-scroll-target="#states-reward">States / reward</a></li>
+  <li><a href="#value-function" id="toc-value-function" class="nav-link" data-scroll-target="#value-function">Value function</a></li>
+  <li><a href="#value-function-iteration" id="toc-value-function-iteration" class="nav-link" data-scroll-target="#value-function-iteration">Value function iteration</a></li>
+  <li><a href="#value-evaluation" id="toc-value-evaluation" class="nav-link" data-scroll-target="#value-evaluation">Value evaluation</a></li>
+  <li><a href="#value-evaluation-2" id="toc-value-evaluation-2" class="nav-link" data-scroll-target="#value-evaluation-2">Value evaluation (2)</a></li>
+  <li><a href="#policy-iteration" id="toc-policy-iteration" class="nav-link" data-scroll-target="#policy-iteration">Policy iteration</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="discrete-dynamic-programming" class="level1">
+<h1>Discrete Dynamic Programming</h1>
+<section id="computational-economics-2022-eco309" class="level2">
+<h2 class="anchored" data-anchor-id="computational-economics-2022-eco309">Computational Economics 2022 (ECO309)</h2>
+<hr>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<hr>
+<p>Say something about dynamic optimization…</p>
+<hr>
+<p>The imperialism of Dynamic Programming</p>
+<p>— Recursive Macroeconomic Theory (Ljunqvist &amp; Sargent)</p>
+<hr>
+<div style="text-align:justify">
+<p>I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for multistage decision processes. An interesting question is, “Where did the name, dynamic programming, come from?” The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word “research”. I’m not using the term lightly; I’m using it precisely. His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let’s kill two birds with one stone. Let’s take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. It also has a very interesting property as an adjective, and that is it’s impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It’s impossible. Thus, I thought <mark>dynamic programming</mark> was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities.</p>
+</div>
+<p>— Richard Bellman, Eye of the Hurricane: An Autobiography (1984, page 159)</p>
+<hr>
+</section>
+<section id="markov-chain-and-markov-process" class="level2">
+<h2 class="anchored" data-anchor-id="markov-chain-and-markov-process">Markov chain and Markov process</h2>
+<hr>
+</section>
+<section id="markov-chain-and-markov-process-1" class="level2">
+<h2 class="anchored" data-anchor-id="markov-chain-and-markov-process-1">Markov chain and Markov process</h2>
+<ul>
+<li>Stochastic process: family of random variables indexed by time</li>
+<li>A stochastic process has the Markov property if its future evolution depends only on its current state.</li>
+<li>Special cases:</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Discrete States</th>
+<th>Continuous States</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Discrete Time</td>
+<td>Discrete Markov Chain</td>
+<td>Continuous Markov Chain</td>
+</tr>
+<tr class="even">
+<td>Continuous Time</td>
+<td>Markov Jump Process</td>
+<td>Markov Process</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="stochastic-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="stochastic-matrices">Stochastic matrices</h3>
+<ul>
+<li>a matrix <span class="math inline">\(M \in R^n\times R^n\)</span> matrix is said to be <strong>stochastic</strong> if
+<ul>
+<li>all coefficents are non-negative</li>
+<li>all the lines lines sum to 1 (<span class="math inline">\(\forall i, \sum_j M_{ij} = 1\)</span>)</li>
+</ul></li>
+<li>a <strong>probability density</strong> is a vector <span class="math inline">\(\mu \in R^n\)</span> such that :
+<ul>
+<li>all components are non-negative</li>
+<li>all coefficients sum to 1 (<span class="math inline">\(\sum_{i=1}^n \mu_{i} = 1\)</span>)</li>
+</ul></li>
+<li>a <strong>distribution</strong> is a vector with such that:
+<ul>
+<li>all components are non-negative</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="simulation" class="level3">
+<h3 class="anchored" data-anchor-id="simulation">Simulation</h3>
+<ul>
+<li><p>Consider: <span class="math inline">\(\mu_{i,t+1}' =\mu_t' P\)</span></p></li>
+<li><p>We have <span class="math inline">\(\mu_{i,t+1} = \sum_{k=1}^n \mu_{k,t} P_{k, i}\)</span></p></li>
+<li><p>And: <span class="math inline">\(\sum_i\mu_{i,t+1} = \sum_i \mu_{i,t}\)</span></p></li>
+<li><p>Postmultiplication by a stochastic matrix preserves the mass.</p></li>
+<li><p>Interpretation: <span class="math inline">\(P_{ij}\)</span> is the fraction of the mass initially in state <span class="math inline">\(i\)</span> which ends up in <span class="math inline">\(j\)</span></p></li>
+</ul>
+<hr>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p><span class="math display">\[
+\begin{eqnarray}
+\underbrace{
+\begin{pmatrix}
+0.5 &amp; 0.3 &amp; 0.2
+\end{pmatrix}
+}\_{\mu_t'} \begin{pmatrix}
+0.4 &amp; 0.6 &amp; 0.0 \\\\
+0.2 &amp; 0.5 &amp; 0.3 \\\\
+0 &amp; 0 &amp; 1.0
+\end{pmatrix} &amp;&amp; \\\\
+\underbrace{
+\begin{pmatrix}
+0.5\times0.4+0.3\times 0.2 &amp; 0.5\times0.6+0.3\times 0.5 &amp; 0.3\times 0.3 + 0.2\times 1.0
+\end{pmatrix}
+}\_{\mu_{t+1}'}&amp;&amp;
+\end{eqnarray}
+\]</span></p>
+<p><img src="attack_plan.svg" width="50%"></p>
+<hr>
+</section>
+<section id="probabilistic-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic-interpretation">Probabilistic interpretation</h3>
+<ul>
+<li>Denote by <span class="math inline">\(S=(s_1,...s_n)\)</span> a finite set with <span class="math inline">\(n\)</span> elements (<span class="math inline">\(|S|=n\)</span>).</li>
+<li>A <strong>Markov Chain</strong> with values in <span class="math inline">\(S\)</span> and with transitions given by a stochastic matrix <span class="math inline">\(P\in R^n\times R^n\)</span> corresponds to a <strong>stochastic process</strong> <span class="math inline">\((X\_t)\_{t\geq 0}\)</span> such that <span class="math display">\[P\_{ij} = Prob(X\_{t+1}=s\_j|X\_t=s_i)\]</span></li>
+<li>In words, line <span class="math inline">\(i\)</span> describes the conditional distribution of <span class="math inline">\(X_{t+1}\)</span> conditional on <span class="math inline">\(X_t=s_i\)</span>.</li>
+</ul>
+<hr>
+</section>
+<section id="what-about-longer-horizons" class="level3">
+<h3 class="anchored" data-anchor-id="what-about-longer-horizons">What about longer horizons?</h3>
+<ul>
+<li><p>It is easy to show that for any <span class="math inline">\(k\)</span>, <span class="math inline">\(P^k\)</span> is a stochastic matrix.</p></li>
+<li><p><span class="math inline">\(P^k_{ij}\)</span> denotes the probability of ending in <span class="math inline">\(j\)</span>, after <span class="math inline">\(k\)</span> periods, starting from <span class="math inline">\(i\)</span></p></li>
+<li><p>Given an initial distribution <span class="math inline">\(\mu_0\in R^{+ n}\)</span></p>
+<ul>
+<li>Which states will be visited with positive probability between t=0 and t=k?</li>
+<li>What happens in the very long run?</li>
+</ul></li>
+<li><p>We need to study a little bit the properties of Markov Chains</p></li>
+</ul>
+<hr>
+</section>
+<section id="connectivity" class="level3">
+<h3 class="anchored" data-anchor-id="connectivity">Connectivity</h3>
+<ul>
+<li><p>Two states <span class="math inline">\(s_i\)</span> and <span class="math inline">\(s_j\)</span> are connected if <span class="math inline">\(P_{ij}&gt;0\)</span></p></li>
+<li><p>We call incidence matrix: <span class="math inline">\(\mathcal{I}(P)=(\delta_{P_{ij}&gt;0})_{ij}\)</span></p></li>
+<li><p>Two states <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> communicate with each other if there are <span class="math inline">\(k\)</span> and <span class="math inline">\(l\)</span> such that: <span class="math inline">\((P^k)_ {i,j}&gt;0\)</span> and <span class="math inline">\((P^l)_ {j,i}&gt;0\)</span></p>
+<ul>
+<li>it is an equivalence relation</li>
+<li>we can define equivalence classes</li>
+</ul></li>
+<li><p>A stochastic matrix <span class="math inline">\(P\)</span> is irreducible if all states communicate</p>
+<ul>
+<li>there is a unique communication class</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="connectivity-and-irreducibility-example-from-qe" class="level3">
+<h3 class="anchored" data-anchor-id="connectivity-and-irreducibility-example-from-qe">Connectivity and irreducibility (example from QE)</h3>
+<div class="container">
+<section id="irreducible" class="level5 col">
+<h5 class="anchored" data-anchor-id="irreducible">Irreducible</h5>
+<p><img src="mc_irreducibility1.png" height="300"></p>
+<ul>
+<li>All states can be reached with positive probably from any other initial state.</li>
+</ul>
+</section>
+<section id="not-irreducible" class="level5 col">
+<h5 class="anchored" data-anchor-id="not-irreducible">Not irreducible</h5>
+<p><img src="mc_irreducibility2.png" height="300"></p>
+<ul>
+<li>There is a subset of states (poor), which absorbs all the mass coming in.</li>
+</ul>
+</section>
+</div>
+<hr>
+</section>
+<section id="aperiodicity" class="level3">
+<h3 class="anchored" data-anchor-id="aperiodicity">Aperiodicity</h3>
+<ul>
+<li>Are there cycles? Starting from a state <span class="math inline">\(i\)</span>, how long does it take to return to <span class="math inline">\(i\)</span>?</li>
+<li>The <strong>period</strong> of a state is defined as <span class="math display">\[gcd( {k\geq 1 | (P^k)_{i,i}&gt;0} )\]</span></li>
+<li>If a state has a period d&gt;1 the chain returns to the state only at dates multiple of d.</li>
+</ul>
+<hr>
+</section>
+<section id="aperiodicity-example-from-qe" class="level3">
+<h3 class="anchored" data-anchor-id="aperiodicity-example-from-qe">Aperiodicity (example from QE)</h3>
+<div class="container">
+<section id="periodic" class="level5 col">
+<h5 class="anchored" data-anchor-id="periodic">Periodic</h5>
+<p><img src="mc_aperiodicity1.png" height="100"></p>
+<ul>
+<li>If you start from some states, you return to it, but not before two periods.</li>
+</ul>
+</section>
+<section id="aperiodic" class="level5 col">
+<h5 class="anchored" data-anchor-id="aperiodic">Aperiodic</h5>
+<p><img src="mc_aperiodicity2.png" height="100"></p>
+<ul>
+<li>If some mass leaves a state, some of it returns to the state in the next period.</li>
+</ul>
+</section>
+</div>
+<hr>
+</section>
+<section id="stationary-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="stationary-distribution">Stationary distribution</h3>
+<ul>
+<li><p><span class="math inline">\(\mu\)</span> is a <strong>stationary</strong> distribution if <span class="math inline">\(\mu' = \mu' P\)</span></p></li>
+<li><p>Theorem: there always exists such a distribution that is not <span class="math inline">\(\mu=0\)</span></p>
+<ul>
+<li>proof: Brouwer theorem (fixed-point result for compact-convex set)</li>
+<li><span class="math inline">\(f: \mu\rightarrow (\mu'P)'\)</span></li>
+</ul></li>
+<li><p>Theorem:</p>
+<ol type="1">
+<li>if P is irreducible the fixed point <span class="math inline">\(\mu^{\star}\)</span> is unique</li>
+<li>if P is irreducible and aperiodic <span class="math inline">\(|\mu_0' P^k - \mu^{\star}| \underset{k\to+\infty}{\longrightarrow} 0\)</span> for any initial distribution <span class="math inline">\(\mu_0\)</span></li>
+</ol></li>
+<li><p>We then say the Markov chain is <strong>ergodic</strong></p></li>
+<li><p><span class="math inline">\(\mu^{\star}\)</span> is the <strong>ergodic distribution</strong></p>
+<ul>
+<li>it is the best guess, one can do for the state of the chain in the very far future</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="stationary-distribution-proof" class="level3">
+<h3 class="anchored" data-anchor-id="stationary-distribution-proof">Stationary distribution (proof)</h3>
+<ul>
+<li><strong>Brouwer’s theorem</strong>: Let <span class="math inline">\(\mathcal{C}\)</span> be a compact convex subset of <span class="math inline">\(R^n\)</span> and <span class="math inline">\(f\)</span> a continuous mapping <span class="math inline">\(\mathcal{C}\rightarrow \mathcal{C}\)</span>. Then there exists a fixed point <span class="math inline">\(x_0\in \mathcal{C}\)</span> such that <span class="math inline">\(f(x_0)=x_0\)</span></li>
+<li>Result hinges on:
+<ul>
+<li>continuity of <span class="math inline">\(f: \mu \mapsto \mu P\)</span></li>
+<li>convexity of <span class="math inline">\(\\{x \in R^{+,n} ,\\; |x|_1=1 \\}\)</span> (easy to check)</li>
+<li>compactness of <span class="math inline">\(\\{x \in R^{+,n} ,\\; |x|_1=1 \\}\)</span>
+<ul>
+<li>it is bounded</li>
+<li>and closed (the inverse image of 1 for <span class="math inline">\(u\mapsto |u|_1\)</span> which is continuous)</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="stationary-distribution-1" class="level3">
+<h3 class="anchored" data-anchor-id="stationary-distribution-1">Stationary distribution?</h3>
+<p>How do we compute the stationary distribution?</p>
+<ul>
+<li>Simulation</li>
+<li>Linear algebra</li>
+<li>Decomposition</li>
+</ul>
+<hr>
+</section>
+<section id="simulating-a-markov-chain" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-a-markov-chain">Simulating a Markov Chain</h3>
+<ul>
+<li>Very simple idea:
+<ul>
+<li>start with any <span class="math inline">\(\mu_0\)</span> and compute the iterates recursively</li>
+<li><span class="math inline">\(\mu_{n+1}' = \mu_n' P\)</span></li>
+<li>convergence is linear:
+<ul>
+<li><span class="math inline">\(|\mu_{n+1} - \mu_n| \leq |P| |\mu_n - \mu_{n-1}|\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="using-linear-algebra" class="level3">
+<h3 class="anchored" data-anchor-id="using-linear-algebra">Using Linear Algebra</h3>
+<ul>
+<li>Find the solution of <span class="math inline">\(\mu'(P-I) = 0\)</span> ?
+<ul>
+<li>not well defined, 0 is a solution</li>
+<li>we need to incorporate the constraint <span class="math inline">\(\sum_i(\mu_i)=1\)</span></li>
+<li>since P-I is at most of rank <span class="math inline">\(n-1\)</span> we can replace one column by this condition</li>
+</ul></li>
+<li>Method:
+<ul>
+<li>Define <span class="math inline">\(M_{ij} = \begin{cases} 1 &amp;\text{if} &amp; j =1 \\\\ (P-I)_{ij} &amp; \text{if} &amp; j&gt; 1 \end{cases}\)</span></li>
+<li>Define <span class="math inline">\(D_i = \begin{cases} 1 &amp; \text{if} &amp; j = 1 \\\\0 &amp; \text{if} &amp; j&gt;0 \end{cases}\)</span></li>
+<li>With a linear algebra solver
+<ul>
+<li>look for a solution <span class="math inline">\(\mu\)</span> of <span class="math inline">\(\mu' M = D\)</span></li>
+<li>or <span class="math inline">\(M^{\prime} \mu = D\prime\)</span></li>
+<li>if you find a solution, it is unique! (theorem)</li>
+</ul></li>
+</ul></li>
+<li>Alternative:
+<ul>
+<li>minimize residual squares of overidentified system</li>
+</ul></li>
+</ul>
+<!-- TODO add an example matrix -->
+<hr>
+</section>
+<section id="code-example" class="level3">
+<h3 class="anchored" data-anchor-id="code-example">Code example</h3>
+<p><code>julia [1-2|3-6|7-9|10-12|13-14|15-17] # we use the identity matrix and the \ operator using LinearAlgebra: I, \ # define a stochastic matrix (lines sum to 1) P = [  0.9  0.1 0.0  ;        0.05 0.9 0.05 ;        0.0  0.9 0.1  ] # define an auxiliary matrix M = P' - I M[end,:] .= 1.0 # define rhs R = zeros(3) R[end] = 1 # solve the system μ = M\R # check that you have a solution: @assert sum(μ) == 1 @assert all(abs.(μ'P - μ').&lt;1e-10)</code></p>
+<hr>
+</section>
+<section id="further-comments" class="level3">
+<h3 class="anchored" data-anchor-id="further-comments">Further comments</h3>
+<ul>
+<li>Knowledge about the structure of the Markov Chain can help speedup the calculations</li>
+<li>There are methods for potentially very-large linear system
+<ul>
+<li>Newton-Krylov based methods, GMRES</li>
+</ul></li>
+<li>Basic algorithms are easy to implement by hand</li>
+<li>QuantEcon toolbox has very good methods to study markov chains</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="dynamic-programing-notations" class="level2">
+<h2 class="anchored" data-anchor-id="dynamic-programing-notations">Dynamic Programing: notations</h2>
+<hr>
+<section id="general-formulation" class="level3">
+<h3 class="anchored" data-anchor-id="general-formulation">General Formulation</h3>
+<div class="container">
+<div class="col">
+<ul>
+<li><!-- .element class="fragment" -->
+<b>Markov Decision Problem</b>
+<ul>
+<li>states: <span class="math inline">\(s \in S\)</span></li>
+<li>actions: <span class="math inline">\(x \in X(s)\)</span></li>
+<li>transitions: <span class="math inline">\(\pi(s'| s, x) \in S\)</span>
+<ul>
+<li><span class="math inline">\(probability\)</span> of going to <span class="math inline">\(s'\)</span> in state <span class="math inline">\(s\)</span>…</li>
+<li>… given action <span class="math inline">\(x\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<ul>
+<li><!-- .element class="fragment" -->
+<b>Reward</b>: <span class="math inline">\(r(s,x) \in R\)</span>
+<ul>
+<li>aka felicity, intratemporal utility</li>
+</ul></li>
+<li><!-- .element class="fragment" -->
+<b>Policy</b>: <span class="math inline">\(x(): s \rightarrow x\in X(s)\)</span>
+<ul>
+<li>a.k.a. decision rule</li>
+<li>we consider <em>deterministic</em> policy</li>
+<li>given <span class="math inline">\(x()\)</span>, the evolution of <span class="math inline">\(s\)</span> is a Markov process
+<ul>
+<li><span class="math inline">\(\pi(. |s, x())\)</span> is a distribution for <span class="math inline">\(s'\)</span> over <span class="math inline">\(S\)</span></li>
+<li>it depends only on <span class="math inline">\(s\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section></section></section></main></div>
+<hr>
+
+<section id="objective" class="level3">
+<h3 data-anchor-id="objective">Objective</h3>
+<ul>
+<li>expected <strong>lifetime reward</strong>:
+<ul>
+<li>value of following policy <span class="math inline">\(x()\)</span> starting from <span class="math inline">\(s\)</span>: <span class="math display">\[R(s; x()) =  E_0 \sum_t^T \delta^t \left[ r_t\right]\]</span></li>
+<li><span class="math inline">\(\delta \in [0,1[\)</span>: discount factor</li>
+<li>horizon: <span class="math inline">\(T \in \\{N, \infty\\}\)</span></li>
+</ul></li>
+<li>value of a state <span class="math inline">\(s\)</span>
+<ul>
+<li>value of following the <em>optimal</em> policy starting from <span class="math inline">\(s\)</span> <span class="math display">\[V(s) = \max_{ x()} R(s, x())\]</span></li>
+<li><span class="math inline">\(V()\)</span> is the value function (t.b.d.)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="classes-of-dynamic-optimization" class="level3">
+<h3 data-anchor-id="classes-of-dynamic-optimization">Classes of Dynamic Optimization</h3>
+<ul>
+<li>The formulation so far is very general. It encompasses several variants of the problem:
+<ul>
+<li>finite horizon vs infinite horizon</li>
+<li>discrete-space problem vs continuous-state space problem</li>
+<li>some learning problems (reinforcement learning…)</li>
+</ul></li>
+<li>There are also variants not included:
+<ul>
+<li>non time-separable problems</li>
+<li>non time-homogenous problems</li>
+<li>some learning problems (bayesian updating, …)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="finite-horizon-vs-infinite-horizon" class="level3">
+<h3 data-anchor-id="finite-horizon-vs-infinite-horizon">Finite horizon vs infinite horizon</h3>
+<ul>
+<li>Recall objective: <span class="math inline">\(V(s; x()) = \max E_0\sum_{t=0}^T \delta^t \left[ r(s_t, x_t) \right]\)</span></li>
+<li>If <span class="math inline">\(T&lt;\infty\)</span>, the decision in the last periods, will be different from the periods before
+<ul>
+<li>one must find a decision rule <span class="math inline">\(\pi_t()\)</span> per period</li>
+<li>or, equivalently, add <span class="math inline">\(t\)</span> to the state space: <span class="math inline">\(\tilde{S}=S\times[0,T]\)</span></li>
+</ul></li>
+<li>If <span class="math inline">\(T=\infty\)</span>, the continuation value of being in state <span class="math inline">\(s_t\)</span> is independent from <span class="math inline">\(t\)</span></li>
+</ul>
+<p><span class="math display">\[V(s; x()) = E_0 \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] + \delta^{T_0} E_0  \sum_ {t=T_0}^{\infty} \delta^t \left[ r(s_t, x_t) \right]\]</span></p>
+<p><span class="math display">\[ = E_0 \left[ \max \sum_ {t=0}^{T_0} \delta^t \left[ r(s_t, x_t) \right] +  \delta^{T_0} V(s_ {T_0}; x()) \right]\]</span></p>
+<hr>
+</section>
+<section id="continuous-vs-discrete" class="level3">
+<h3 data-anchor-id="continuous-vs-discrete">Continuous vs discrete</h3>
+<div class="container">
+<div class="col">
+<ul>
+<li><strong>Discrete Dynamic Programming</strong> (today)
+<ul>
+<li><!-- .element class="fragment" data-fragment-index="1" -->
+discrete states: <span class="math inline">\(s \in {s_1, \cdots, s_N}\)</span></li>
+<li><!-- .element class="fragment" data-fragment-index="2" -->
+discrete controls: <span class="math inline">\(|X(s)|&lt;\infty\)</span></li>
+<li><!-- .element class="fragment" data-fragment-index="3" -->
+there is a finite number of policies, that can be represented exactly</li>
+<li><!-- .element class="fragment" data-fragment-index="4" -->
+unless <span class="math inline">\(|S|\)</span> is very large (cf go/chess game)</li>
+</ul></li>
+<li><!-- .element class="fragment" data-fragment-index="6" -->
+<strong>Continuous problem</strong>:
+<ul>
+<li><!-- .element class="fragment" data-fragment-index="7" -->
+<span class="math inline">\(x(s)\)</span>, <span class="math inline">\(V(s; \pi)\)</span> require an infinite number of coefficients</li>
+<li><!-- .element class="fragment" data-fragment-index="8" -->
+same general approach but different implementation</li>
+<li><!-- .element class="fragment" data-fragment-index="9" -->
+two main variants:
+<ul>
+<li><strong>discretize</strong> the initial problem: back to DDP</li>
+<li>use <strong>approximation</strong> techniques (i.e.&nbsp;interpolation)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img src="bongcloud.jpg" class="img-fluid" alt="Very implausible situation"><!-- .element class="fragment current-visible" data-fragment-index="5" --></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="non-time-separable-example" class="level3">
+<h3 data-anchor-id="non-time-separable-example">Non time separable example</h3>
+<ul>
+<li>For instance Epstein-Zin preferences: <span class="math display">\[\max V(;c())\]</span> where <span class="math display">\[V_t = (1-\delta) \frac{c_t^{1-\sigma}}{1-\sigma} + \delta \left[ E_t V_{t+1}^{\alpha} \right]^{\frac{1}{\alpha}}\]</span></li>
+<li>Why would you do that?
+<ul>
+<li>to disentangle risk aversion and elasticity of intertemporal substitution</li>
+<li>robust control</li>
+</ul></li>
+<li>You can still use ideas from Dynamic Programming.</li>
+</ul>
+<hr>
+</section>
+<section id="non-homogenous-preference" class="level3">
+<h3 data-anchor-id="non-homogenous-preference">Non homogenous preference</h3>
+<ul>
+<li><p>Look at the <span class="math inline">\(\alpha-\beta\)</span> model. <span class="math display">\[V_t = \max \sum_t^{\infty} \beta_t U(c_t)\]</span> where <span class="math inline">\(\delta_0 = 1\)</span>, <span class="math inline">\(\delta_1=\alpha\)</span>, <span class="math inline">\(\delta_k=\alpha\beta^{k-1}\)</span></p></li>
+<li><p>Makes the problem time-inconsistent:</p>
+<ul>
+<li>the optimal policy you would choose for the continuation value after <span class="math inline">\(T\)</span> is not the same if you maximize it in expectation from <span class="math inline">\(0\)</span> or at <span class="math inline">\(T\)</span>.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="learning-problems" class="level3">
+<h3 data-anchor-id="learning-problems">Learning problems</h3>
+<ul>
+<li>Bayesian learning: Uncertainty about some model parameters
+<ul>
+<li>ex: variance and return of a stock market</li>
+<li>agent models this uncertainty as a distribution</li>
+<li>agent updates his priors after observing the result of his actions</li>
+<li>actions are taken optimally taken into account the revelation power of some actions</li>
+</ul></li>
+<li>Is it good?
+<ul>
+<li>clean: the <em>rational</em> thing to do with uncertainty</li>
+<li>super hard: the state-space should contain all possible priors</li>
+<li>mathematical cleanness comes with many assumptions</li>
+</ul></li>
+<li>Used to estimate rather big (mostly linear) models</li>
+</ul>
+<hr>
+</section>
+<section id="learning-problems-2" class="level3">
+<h3 data-anchor-id="learning-problems-2">Learning problems (2)</h3>
+<ul>
+<li>Reinforcement learning
+<ul>
+<li>model can be partially or totally unknown</li>
+<li>decision rule is updated by observing the reward from actions
+<ul>
+<li>no priors</li>
+</ul></li>
+<li>solution does not derive directly from model
+<ul>
+<li>can be used to solve dynamic programming problems</li>
+</ul></li>
+</ul></li>
+<li>Good solutions maximize a criterion similar to lifetime reward but are usually not optimal:
+<ul>
+<li>usually evaluated by replaying the game many times</li>
+<li>tradeoff exploration / exploitations</li>
+</ul></li>
+</ul>
+<hr>
+<iframe width="800" height="500" src="https://www.youtube.com/embed/V1eYniJ0Rnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<hr>
+</section>
+
+<section id="finite-horizon-dmdp" class="level2">
+<h2 data-anchor-id="finite-horizon-dmdp">Finite horizon DMDP</h2>
+<hr>
+<section id="finite-horizon-dmdp-1" class="level3">
+<h3 data-anchor-id="finite-horizon-dmdp-1">Finite horizon DMDP</h3>
+<p>When <span class="math inline">\(T&lt;\infty\)</span>. With discrete action the problem can be represented by a tree.</p>
+<p>[GRAPH]</p>
+<hr>
+</section>
+<section id="finite-horizon-dmdp-2" class="level3">
+<h3 data-anchor-id="finite-horizon-dmdp-2">Finite horizon DMDP</h3>
+<ul>
+<li>Intuition: backward induction.
+<ul>
+<li>Find optimal policy <span class="math inline">\(x_T(s_T)\)</span> in all terminal states <span class="math inline">\(s_T\)</span>. Set <span class="math inline">\(V_T(s_T)\)</span> equal to <span class="math inline">\(r(s_T, \pi_T)\)</span></li>
+<li>Given <span class="math inline">\(V_k(s_k)\)</span>, for each state <span class="math inline">\(s_{k-1}\in S\)</span> find <span class="math inline">\(x_{k-1}\in X(s_{k-1})\)</span> which maximizes <span class="math display">\[V_{k-1}(s_{k-1}) = \max_{x_{k-1}(s_{k-1})\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \delta \underbrace{ \sum_{s_k\in S} \pi(s_k | s_{k-1}, x_{k-1} ) V_k(s_k)} _{ \textit{expected continuation value} }\]</span></li>
+</ul></li>
+<li>Policies <span class="math inline">\(x_0(), ... x_T()\)</span> are <strong>Markov-perfect</strong>:
+<ul>
+<li>they maximize utility on all subsets of the “game”</li>
+<li>also from t=0</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="remarks" class="level3">
+<h3 data-anchor-id="remarks">Remarks</h3>
+<ul>
+<li>Can we do better than this naive algorithm?
+<ul>
+<li>not really</li>
+<li>but we can try to limit <span class="math inline">\(S\)</span> to make the maximization step faster</li>
+<li>exclude a priori some branches in the tree using knowledge of the problem</li>
+</ul></li>
+</ul>
+<!-- [TODO: chess: bongcloud attack] -->
+<hr>
+</section>
+</section>
+<section id="infinite-horizon-dmdp" class="level2">
+<h2 data-anchor-id="infinite-horizon-dmdp">Infinite horizon DMDP</h2>
+<hr>
+<section id="infinite-horizon-dmdp-1" class="level3">
+<h3 data-anchor-id="infinite-horizon-dmdp-1">Infinite horizon DMDP</h3>
+<ul>
+<li>Horizon is infinite: <span class="math display">\[V(s; x()) =  \max E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) \]</span>
+<ul>
+<li>we focus on time-consistent case where optimal choices are given by a time-invariant optimal <em>rule</em> <span class="math inline">\(x(s)\)</span></li>
+</ul></li>
+<li>Intuition:
+<ul>
+<li>let’s consider the finite horizon version <span class="math inline">\(T&lt;\infty\)</span> and <span class="math inline">\(T &gt;&gt; 1\)</span></li>
+<li>compute the solution, increase <span class="math inline">\(T\)</span> until the solution doesn’t change</li>
+<li>in practice: take an initial guess for <span class="math inline">\(V_{T}\)</span> then compute optimal <span class="math inline">\(V_{T-1}\)</span>, <span class="math inline">\(V_{T_2}\)</span> and so on, until convergence of the <span class="math inline">\(V\)</span>s</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="infinite-horizon-dmdp-2" class="level3">
+<h3 data-anchor-id="infinite-horizon-dmdp-2">Infinite horizon DMDP (2)</h3>
+<ul>
+<li>This is possible, it’s called <strong>Successive Approximation</strong> or <strong>Value Function Iteration</strong>
+<ul>
+<li>how fast does it converge? <em>linearly</em></li>
+<li>can we do better? yes, <em>quadratically</em>
+<ul>
+<li>with <strong>howard improvement</strong> steps</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="successive-approximation" class="level3">
+<h3 data-anchor-id="successive-approximation">Successive Approximation</h3>
+<ul>
+<li>Consider the decomposition: <span class="math display">\[V(s; x()) = E_0 \sum_{t=0}^{\infty} \delta^t r(s_t, x_t) = E_0 \left[ r(s, x(s)) + \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) \right]\]</span></li>
+</ul>
+<p><span class="math display">\[V(s; x()) = r(s, x(s)) +  E_0  \left[ \underbrace{ \sum_{t=1}^{\infty} \delta^t r(s_t, x_t) }\_{ \delta  V(s_{t+1}; x())} \right]\]</span></p>
+<p>or with different notations</p>
+<p><span class="math display">\[V(s; x()) =  r(s, x(s)) + \delta \sum_{s'} p(s'|s,x(s)) V(s'; x()) \]</span></p>
+<hr>
+</section>
+<section id="successive-approximation-2" class="level3">
+<h3 data-anchor-id="successive-approximation-2">Successive Approximation (2)</h3>
+<ul>
+<li>Taking continuation value as given we can certainly improve the value in every state <span class="math inline">\(\tilde{V}\)</span> by choosing <span class="math inline">\(\tilde{x}()\)</span> so as to maximze <span class="math display">\[\tilde{V}(s; x(), \tilde{x}()) =  r(s, \tilde{x}(s)) + \delta \sum_{s'} \pi(s'|s,\tilde{x}(s) )V(s'; x()) \]</span></li>
+<li>By construction: <span class="math inline">\(\forall s, \tilde{V}(s, \tilde{x}(), x()) &gt; {V}(s, x())\)</span>
+<ul>
+<li>it is an <strong>improvement step</strong></li>
+</ul></li>
+<li>Can <span class="math inline">\({V}(s, \tilde{x}())\)</span> be worse for some states than <span class="math inline">\({V}(s, {x}())\)</span> ?
+<ul>
+<li>actually no</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="bellman-equation" class="level3">
+<h3 data-anchor-id="bellman-equation">Bellman equation</h3>
+<ul>
+<li>Idea:
+<ul>
+<li>it should not be possible to improve upon the optimal solution.</li>
+<li>Hence the optimal value <span class="math inline">\(V\)</span> and policy <span class="math inline">\(x^{\star}\)</span> should satisfy: <span class="math display">\[\forall s\in S, V(s) = \max_{y(s)} r(s, y(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})\]</span> with the maximum attained at <span class="math inline">\(x(s)\)</span>.</li>
+</ul></li>
+<li>This is referred to as the <strong>Bellman equation</strong>.</li>
+<li>Conversely, it is possible to show that a solution to the Bellman equation is also an optimal solution to the initial problem.</li>
+</ul>
+<hr>
+</section>
+<section id="bellman-operator" class="level3">
+<h3 data-anchor-id="bellman-operator">Bellman operator</h3>
+<ul>
+<li>The function <span class="math inline">\(G\)</span> is known as the <strong>Bellman operator</strong>: <span class="math display">\[G: V \rightarrow \max\_{y(s)} r(s, y(s)) + \delta \sum\_{s^{\prime}\in S} \pi(s^{\prime}| s, y(s)) V(s^{\prime})\]</span></li>
+<li>Define sequence <span class="math inline">\(V_n = G(V_{n-1})\)</span>
+<ul>
+<li>it goes back in time</li>
+<li>but is <em>not</em> the time-iteration operator</li>
+</ul></li>
+<li>Optimal value is a fixed point of G</li>
+<li>Does <span class="math inline">\(G\)</span> converges to it ? Yes, if <span class="math inline">\(G\)</span> is a contraction mapping.</li>
+</ul>
+<hr>
+</section>
+<section id="blackwells-theorem" class="level3">
+<h3 data-anchor-id="blackwells-theorem">Blackwell’s theorem</h3>
+<ul>
+<li>Let <span class="math inline">\(X\subset R^n\)</span> and let <span class="math inline">\(\mathcal{C}(X)\)</span> be a space of bounded functions <span class="math inline">\(f: X\rightarrow R\)</span>, with the sup-metric. <span class="math inline">\(B: \mathcal{C}(X)\rightarrow \mathcal{C}(X)\)</span> be an operator satisfying two conditions:
+<ol type="1">
+<li>(monotonicity) if <span class="math inline">\(f,g \in \mathcal{C}(X)\)</span> and <span class="math inline">\(\forall x\in X, f(x)\leq g(x)\)</span> then</li>
+</ol>
+<span class="math inline">\(\forall x \in X (Bf)(x)\leq(Bg)(x)\)</span>
+<ol start="2" type="1">
+<li>(discounting) there exists some <span class="math inline">\(\delta\in]0,1[\)</span> such that: <span class="math inline">\(B.(f+a)(x)\leq (B.f)(x) + \delta a, \forall f \in \mathcal{C}(X), a\geq 0, x\in X\)</span></li>
+</ol></li>
+<li>Then <span class="math inline">\(B\)</span> is a contraction mapping with modulus <span class="math inline">\(\delta\)</span>.</li>
+</ul>
+<hr>
+</section>
+<section id="successive-approximation-1" class="level3">
+<h3 data-anchor-id="successive-approximation-1">Successive Approximation</h3>
+<ul>
+<li><p>Using the Blackwell’s theorem, we can prove the Bellman operator is a contraction mapping (do it).</p></li>
+<li><p>This justifies the Value Function Iteration algorithm:</p>
+<ul>
+<li>choose an initial <span class="math inline">\(V_0\)</span></li>
+<li>given <span class="math inline">\(V_n\)</span> compute <span class="math inline">\(V_{n+1} = G(V_n)\)</span></li>
+<li>iterate until <span class="math inline">\(|V_{n+1}- V_n|\leq \eta\)</span></li>
+</ul></li>
+<li><p>Policy rule is deduced from <span class="math inline">\(V\)</span> as the maximand in the Bellman step</p></li>
+</ul>
+<hr>
+</section>
+<section id="successive-approximation-2-1" class="level3">
+<h3 data-anchor-id="successive-approximation-2-1">Successive Approximation (2)</h3>
+<ul>
+<li>Note that convergence of <span class="math inline">\(V_n\)</span> is geometric</li>
+<li>But <span class="math inline">\(x_n\)</span> converges after a finite number of iterations (<span class="math inline">\(X\)</span> is finite)
+<ul>
+<li>surely the latest iterations are suboptimal</li>
+<li>they serve only to evaluate the value of <span class="math inline">\(x^{\star}\)</span></li>
+</ul></li>
+<li>In fact:
+<ul>
+<li><span class="math inline">\(V_n\)</span> is never the value of <span class="math inline">\(x_n()\)</span></li>
+<li>should we try to keep both in sync?</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="policy-iteration-for-dmdp" class="level3">
+<h3 data-anchor-id="policy-iteration-for-dmdp">Policy iteration for DMDP</h3>
+<ul>
+<li>Choose initial policy <span class="math inline">\(x_0()\)</span></li>
+<li>Given initial guess <span class="math inline">\(x_n()\)</span>
+<ul>
+<li>compute the value function <span class="math inline">\(V_n=V( ;x_n)\)</span> which satisfies<br>
+<span class="math inline">\(\forall s, V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')\)</span></li>
+<li>improve policy by maximizing in <span class="math inline">\(x_n()\)</span> <span class="math display">\[\max_{x_n()} r(s, x_n(s)) + \delta \sum_{s^{\prime}\in S} \pi(s^{\prime}| s, x_n(s)) V_{n-1}(s^{\prime})\]</span></li>
+</ul></li>
+<li>Repeat until convergence, i.e.&nbsp;<span class="math inline">\(x_n=x_{n+1}\)</span></li>
+<li>One can show the speed of convergence (for <span class="math inline">\(V_n\)</span>) is <em>quadratic</em>
+<ul>
+<li>it “corresponds” the Newton-Raphson steps applied to <span class="math inline">\(V\rightarrow G(V)-V\)</span></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="how-do-we-compute-the-value-of-a-policy" class="level3">
+<h3 data-anchor-id="how-do-we-compute-the-value-of-a-policy">How do we compute the value of a policy?</h3>
+<ul>
+<li><p>Given <span class="math inline">\(x_n\)</span>, goal is to find <span class="math inline">\(V_n(s)\)</span> in <span class="math display">\[\forall s,  V_n(s) = r(s, x_n(s)) + \delta \sum_{s'} \pi(s'| s, x_n(s)) V_n(s')\]</span></p></li>
+<li><p>Two(three) approaches:</p>
+<ol type="1">
+<li>simulate the policy rule and compute <span class="math inline">\(E\left[ \sum_t \delta^t r(s_t, x_t) \right]\)</span> with Monte-Carlo draws</li>
+<li>successive approximation:
+<ul>
+<li>put <span class="math inline">\(V_k\)</span> in the rhs and recompute the lhs <span class="math inline">\(V_{k+1}\)</span>, replace <span class="math inline">\(V_k\)</span> by <span class="math inline">\(V_{k+1}\)</span> and iterate until convergence</li>
+</ul></li>
+<li>solve a <em>linear</em> system in <span class="math inline">\(V_n\)</span></li>
+</ol></li>
+<li><p>For 2 and 3 it helps representing a linear operator <span class="math inline">\(M\)</span> such that <span class="math inline">\(V_{n+1} = R_n + \delta M_n . V_n\)</span></p></li>
+</ul>
+<!-- Another approach consist: compute $(\sum_{t\geq 0} \delta^t M_n^t)$ -->
+<hr>
+</section>
+</section>
+<section id="example-the-mccall-model" class="level2">
+<h2 data-anchor-id="example-the-mccall-model">Example : the McCall Model</h2>
+<hr>
+<section id="idea" class="level3">
+<h3 data-anchor-id="idea">Idea</h3>
+<ul>
+<li>McCall model:
+<ul>
+<li>when should an unemployed person accept a job offer?</li>
+<li>choice between:
+<ul>
+<li>wait for a better offer (and receive low unemp. benefits)</li>
+<li>accept a suboptimal job offer</li>
+</ul></li>
+</ul></li>
+<li>We present a variant of it, with a small probability of loosing a job.</li>
+</ul>
+<hr>
+</section>
+<section id="formalization" class="level3">
+<h3 data-anchor-id="formalization">Formalization</h3>
+<ul>
+<li>When <mark>unemployed</mark> in date, a job-seeker
+<ul>
+<li>consumes unemployment benefit <span class="math inline">\(c_t = \underline{c}\)</span></li>
+<li>receives in every date <span class="math inline">\(t\)</span> a job offer <span class="math inline">\(w_t\)</span>
+<ul>
+<li><span class="math inline">\(w_t\)</span> is i.i.d.,</li>
+<li>takes values <span class="math inline">\(w_1, w_2, w_3\)</span> with probabilities <span class="math inline">\(p_1, p_2, p_3\)</span></li>
+</ul></li>
+<li>if job-seeker accepts, becomes employed at rate <span class="math inline">\(w_t\)</span> in the next period</li>
+<li>else he stays unemployed</li>
+</ul></li>
+<li>When <mark>employed</mark> at rate <span class="math inline">\(w\)</span>
+<ul>
+<li>worker consumes salary <span class="math inline">\(c_t = w\)</span></li>
+<li>with small probability <span class="math inline">\(\lambda&gt;0\)</span> looses his job:
+<ul>
+<li>starts next period unemployed</li>
+</ul></li>
+<li>otherwise stays employed at same rate</li>
+</ul></li>
+<li>Objective: <span class="math inline">\(\max E_0 \left\\{ \sum \beta^t \log(c_t) \right\\}\)</span></li>
+</ul>
+<hr>
+</section>
+<section id="states-reward" class="level3">
+<h3 data-anchor-id="states-reward">States / reward</h3>
+<ul>
+<li>What are the states?
+<ul>
+<li>employement status: Unemployed / Employed</li>
+<li>if Unemployed:
+<ul>
+<li>the level <span class="math inline">\(w\in {w_1, w_2, w_3}\)</span> of the salary that is currently proposed</li>
+</ul></li>
+<li>if Employed:
+<ul>
+<li>the level <span class="math inline">\(w\in {w_1, w_2, w_3}\)</span> at which worker was hired</li>
+</ul></li>
+<li>current state, can be represented by a 2x3 index</li>
+</ul></li>
+<li>What are the actions?
+<ul>
+<li>if Unemployed:
+<ul>
+<li>reject (false) / accept (true)</li>
+</ul></li>
+<li>if Employed: None</li>
+<li>actions (when unemployed) are represented by a 3 elements binary vector</li>
+</ul></li>
+<li>What is the (intratemporal) reward?
+<ul>
+<li>if Unemployed: <span class="math inline">\(U(c)\)</span></li>
+<li>if Employed at rate w: <span class="math inline">\(U(w)\)</span></li>
+<li>here it doesn’t depend on the action</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="value-function" class="level3">
+<h3 data-anchor-id="value-function">Value function</h3>
+<p><span class="math inline">\(\newcommand{\E}{\mathbb{E}}\)</span></p>
+<ul>
+<li><p>What is the value of being in a given state?</p></li>
+<li><p>If Unemployed, facing current offer <span class="math inline">\(w\)</span>:<br>
+<span class="math display">\[V^U(w) = U(\underline{c}) + \max_{a} \begin{cases} \beta V^E(w) &amp; \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ V^U(w^{\prime}) \right]  &amp; \text{if $a(w)$ is false} \end{cases}\]</span></p></li>
+<li><p>If Employed, at rate <span class="math inline">\(w\)</span> <span class="math display">\[V^E(w) = U(w) +  (1-\lambda) \beta V^E(w) +  \lambda \beta \\E_{w'}\left[ V^U(w^{\prime}) \right] \]</span></p></li>
+<li><p>We can represent value as two functions <span class="math inline">\(V^U\)</span> and <span class="math inline">\(V^E\)</span> of the states as</p>
+<ul>
+<li>two vectors of Floats, with three elements (recall: value-function is real valued)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="value-function-iteration" class="level3">
+<h3 data-anchor-id="value-function-iteration">Value function iteration</h3>
+<ul>
+<li>Take a guess for value function <span class="math inline">\(\tilde{V^E}\)</span>, <span class="math inline">\(\tilde{V^U}\)</span>, <em>tomorrow</em></li>
+<li>Use it to compute value function <em>today</em>: <span class="math display">\[V^U(w) = U(\underline{c}) + \max_{a(w)} \begin{cases} \beta \tilde{V}^E(w) &amp; \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ \tilde{V}^U(w^{\prime}) \right]  &amp; \text{if $a(w)$ is false} \end{cases}\]</span> <span class="math display">\[V^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U(w^{\prime}) \right] \]</span></li>
+<li><span class="math inline">\((\tilde{V}^E, \tilde{V}^U)\mapsto (V^E, V^U)\)</span> is one <em>value iteration</em> step</li>
+<li>Note that we don’t have to keep track of policies tomorrow
+<ul>
+<li>all information about future decisions is contained in <span class="math inline">\(\tilde{V}^E, \tilde{V}^U\)</span></li>
+<li>but we can keep track of current policy: <span class="math inline">\(a(w): \arg\max \cdots\)</span></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="value-evaluation" class="level3">
+<h3 data-anchor-id="value-evaluation">Value evaluation</h3>
+<ul>
+<li>Suppose we take a policy <span class="math inline">\(a(w)\)</span> as given. What is the value of following this policy forever?</li>
+<li>The value function <span class="math inline">\(V_a^E\)</span>, <span class="math inline">\(V_a^U\)</span> satisfies <span class="math display">\[V_a^U(w) = U(\underline{c}) + \begin{cases} \beta \tilde{V}^E_a(w) &amp; \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ \tilde{V}^U_a(w^{\prime}) \right]  &amp; \text{if $a(w)$ is false} \end{cases}\]</span> <span class="math display">\[V_a^E(w) = U(w) +  (1-\lambda) \beta \tilde{V}^E_a(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U_a(w^{\prime}) \right]\]</span></li>
+<li>Note the absence of the max function: we don’t reoptimize</li>
+</ul>
+<hr>
+</section>
+<section id="value-evaluation-2" class="level3">
+<h3 data-anchor-id="value-evaluation-2">Value evaluation (2)</h3>
+<ul>
+<li>How do you compute value of policy <span class="math inline">\(a(w)\)</span> recursively?</li>
+<li>Iterate: <span class="math inline">\((\tilde{V}^E_a, \tilde{V}^U)\mapsto (V^E_a, V^U_a)\)</span> <span class="math display">\[V_a^U(w) \leftarrow U(\underline{c}) + \begin{cases} \beta \tilde{V}^E_a(w) &amp; \text{if $a(w)$ is true} \\\\ \beta  \\E_{w'}\left[ \tilde{V}^U_a(w^{\prime}) \right]  &amp; \text{if $a(w)$ is false} \end{cases}\]</span> <span class="math display">\[V_a^E(w) \leftarrow U(w) +  (1-\lambda) \beta \tilde{V}^E_a(w) +  \lambda \beta \\E_{w'}\left[\tilde{V}^U_a(w^{\prime}) \right] \]</span></li>
+<li>Note the absence of the max function:
+<ul>
+<li>we don’t reoptimize</li>
+<li>we we keep the same policy all along</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="policy-iteration" class="level3">
+<h3 data-anchor-id="policy-iteration">Policy iteration</h3>
+<ul>
+<li>start with policy <span class="math inline">\(a(w)\)</span></li>
+<li>evaluate the value of this policy <span class="math inline">\(V^E_a, V^U_a\)</span>
+<ul>
+<li>compute the optimal policy in the Bellman iteration</li>
+<li>keep the improved policy <span class="math inline">\(a(w)\)</span>
+<ul>
+<li>here: <span class="math inline">\(a(w) = \arg\max_{a(w)} \begin{cases} \beta \tilde{V}^E(w)\\\\ \beta \\E_{a'}\left[ \tilde{V}^U(a^{\prime}) \right] \end{cases}\)</span></li>
+</ul></li>
+</ul></li>
+<li>iterate until <span class="math inline">\(a(w)\)</span> converges</li>
+</ul>
+<hr>
+
+
+</section>
+</section>
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+ <!-- /content -->
+
+
+
+</body></html>
