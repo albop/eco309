@@ -14,6 +14,8 @@ website:
             - slides/introduction.qmd
             - slides/convergence.qmd
             - slides/optimization.qmd
+            - slides/differentiation.qmd
+
         - section: "Tutorials"
           contents:
             - notebooks/2_solow_correction.ipynb

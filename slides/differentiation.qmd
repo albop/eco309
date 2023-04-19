@@ -1,7 +1,13 @@
-# Math topic: Differentiation
-
-## Computational Econommics,  2022 (ECO309)
-
+---
+title: Differentiation
+subtitle:  "Computational Economics"
+author: Year 2022-2023 (ECO309)
+format:
+  revealjs:
+    html-math-method: mathjax
+    width: 1920
+    height: 1080
+logo: logo.png
 ---
 
 ## Main approaches
@@ -11,16 +17,12 @@
 2. Symbolic Differentiation
 3. Automatic Differentiation
 
----
-
 ## Manual Differentiation
 
 - Trick:
     - never use $\frac{d}{dx} \frac{u(x)}{v(x)} = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}$
     - use instead $$\frac{d}{dx} {u(x)v(x)} = {u'(x)v(x)+u(x)v'(x)}$$ and $$\frac{d}{dx} u(x) = -\frac{u^{\prime}}{u(x)^2}$$
-- Just kidding.
-
----
+- Just kidding...
 
 
 ## Finite Differences
@@ -28,16 +30,16 @@
 - Choose small $\epsilon>0$, typically $\sqrt{ \textit{machine eps}}$
 
 - Forward Difference scheme:
+
     -  $f'(x) \approx \frac{f(x+\epsilon) - f(x)}{\epsilon}$
     - precision: $o(\epsilon)$
     - bonus: if $f(x+\epsilon)$ can compute $f(x)-f(x-\epsilon)$ instead (Backward)
 
 - Central Difference scheme:
+
     -  $f'(x) \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}$
     - average of forward and backward
     - precision: $o(\epsilon^2)$
-
----
 
 ## Finite Differences: Higher order
 
@@ -172,13 +174,13 @@ exp(x) + log(y)
 - this relies on Julia duck-typing ability
   - so don't specify type arguments for functions you want to autodiff
 - This works:
-```
+```julia
 using ForwardDiff
 f(x) = [x[1] + x[2], x[1]*x[2]]
 ForwardDiff.jacobian(f, [0.4, 0.1])
 ```
 - This doesn't:
-```
+```julia
 using ForwardDiff
 g(x::Vector{Float64}) = [x[1] + x[2], x[1]*x[2]]
 ForwardDiff.jacobian(g, [0.4, 0.1])
@@ -216,10 +218,6 @@ ForwardDiff.jacobian(g, [0.4, 0.1])
 - Deep learning framework:
   - higher order diff w.r.t. any vector -> tensor operations
   - Flux.jl, MXNet.jl, Tensorflow.jl
-
----
-
-## Libraries for AutoDiff
 
 - Other libraries like *NLsolve* or *Optim.jl* rely on on the former libraries to perform automatic differentiation automatically.
 
