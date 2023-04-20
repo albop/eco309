@@ -1,14 +1,20 @@
-# Math topic: discretization
-
-## Computational Econommics,  2021 (ECO309)
-
+---
+title: Discretization
+subtitle:  "Computational Econommics,  2023 (ECO309)"
+author: Year 2022-2023 (MIE37)
+format:
+  revealjs:
+    html-math-method: mathjax
+    navigation-mode: grid
+    width: 1920
+    height: 1080
 ---
 
-## Introduction
+# Introduction
 
 ----
 
-### Several kinds of Discretization
+## Several kinds of Discretization
 
 
 - approximate operator with a finite number of iterations:
@@ -23,11 +29,11 @@
 
 ---
 
-## Discretizing an AR1
+# Discretizing an AR1
 
 ----
 
-### Discretizing an AR1
+## Discretizing an AR1
 
 - Take $AR1$ process $$x_t = \rho x_{t-1} + \epsilon_t$$
     - with $|\rho| <1$ and $\epsilon \sim N(0,\sigma)$
@@ -40,7 +46,7 @@
 
 ----
 
-### AR1: Tauchen
+## AR1: Tauchen
 
 - The unconditional distribution of an AR1 is a normal law $\mathcal{N}(0,\frac{\sigma}{\sqrt{1-\rho^2}})$
 
@@ -50,14 +56,14 @@
 - Define the transitions:
 
 $$\begin{eqnarray}
-\pi_{ij} & = & prob \\left( y_{t+1}=y_j|y_t=y_i\\right)\\\\
-         & = & prob \\left( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_k| \left| y_t=y_i \right. \right)
+\pi_{ij} & = & prob \left( y_{t+1}=y_j|y_t=y_i\right)\\
+         & = & prob \left( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_k| \left| y_t=y_i \right. \right)
 \end{eqnarray}$$
 
 
 ----
 
-### AR1: Tauchen (2)
+## AR1: Tauchen (2)
 
 - Formulas $\delta=\frac{\overline{x}-\underline{x}}{N}$:
 
@@ -75,7 +81,7 @@ $$\begin{eqnarray}
 
 ----
 
-### How to assess the quality of approximation ?
+## How to assess the quality of approximation ?
 
 - compare generated stationary moments between discretized process and true AR1:
   - E(), Var(), ACor()
@@ -86,7 +92,7 @@ $$\begin{eqnarray}
 
 ----
 
-### Rouvenhorst method (1)
+## Rouvenhorst method (1)
 
 - N = 2
   - choose $y_1=-\psi$, $y_2=\psi$
@@ -100,7 +106,7 @@ p & 1-p\\\\
 
 ----
 
-### Rouvenhorst method (2)
+## Rouvenhorst method (2)
 
 - N >2
 $$\Theta_N =
@@ -125,7 +131,7 @@ $$
 
 ----
 
-### Rouvenhorst method (3)
+## Rouvenhorst method (3)
 
 - Procedure converges to Bernouilli distribution.
 
@@ -140,11 +146,11 @@ $$
 
 ---
 
-## Discretizing an iid law
+# Discretizing an iid law
 
 ----
 
-### Common problem:
+## Common problem:
 
 - Given $f$, and an iid process $\epsilon \sim N(0,\sigma^2)$, how to approximate
  $E_{\epsilon} f(\epsilon)$ ?
@@ -160,7 +166,7 @@ $$\frac{1}{N} \sum_n w_n f(\epsilon_n)$$
 
 ----
 
-### What's wrong with Monte-Carlo Simulations?
+## What's wrong with Monte-Carlo Simulations?
 
 - Let's take an exemple:
   - consumption is $C(\epsilon)=U(e^{\epsilon})$ 
@@ -172,11 +178,11 @@ $$\frac{1}{N} \sum_n w_n f(\epsilon_n)$$
 ----
 
 
-### What's wrong with Monte-Carlo Simulations?
+## What's wrong with Monte-Carlo Simulations?
 
 Compute expectation
 
-```julia [1-3|4-7|9-10|14]
+```julia
 # imports:
 using Distributions: Normal
 
@@ -193,7 +199,7 @@ NVec = [1000, 5000, 10000, 15000, 20000]
 vals = [E_ϵ(C; N=i) for i=NVec]
 ```
 
-```
+```julia
 julia> vals = [E_ϵ(C; N=i) for i=NVec
 5-element Array{Float64,1}:
  -0.17546927855215824
@@ -206,9 +212,9 @@ julia> vals = [E_ϵ(C; N=i) for i=NVec
 
 ----
 
-### What's wrong with Monte-Carlo Simulations?
+## What's wrong with Monte-Carlo Simulations?
 
-```julia [1-2|3-7]
+```julia
 using Statistics: std
 
 #computes estimates for various N
@@ -216,7 +222,7 @@ stdev(f; N=100, K=100) = std(E_ϵ(f; N=N) for k=1:K)
 sdvals = [stdev(C; N=n, K=10000) for n=NVec]
 ```
 
-```
+```julia
 julia> @time sdvals = [stdev(C; N=n, K=10000) for n=NVec]      
  99.558940 seconds (2.55 G allocations: 38.011 GiB, 0.81% gc time)
 5-element Array{Float64,1}:                                       
@@ -226,13 +232,10 @@ julia> @time sdvals = [stdev(C; N=n, K=10000) for n=NVec]
  0.01086721462174894                                              
  0.009383218078206898 
 ```
-<!-- .element class="fragment" -->
-
 
 ----
 
-
-### Quick theory (1)
+## Quick theory (1)
 
 - Fact: the sum of several independent gaussian variables is a gaussian  variable
 - So $T_N =\frac{1}{N}\sum_{n=1}^N \epsilon_n$ is  gaussian variable. Its mean is 0 (unbiased).  Let's compute its variance:
@@ -243,7 +246,7 @@ $$s_N = \sigma(T_N^2) = \frac{1}{\sqrt{\color{red} N}} \sigma_{\epsilon}$$
 
 ----
 
-### Quick theory (2)
+## Quick theory (2)
 
 - In the general case, the Monte-Carlo estimator is:
 $$T^{MC}\_N =\frac{1}{N}\sum\_{n=1}^N f(\epsilon_n)$$
@@ -256,7 +259,7 @@ $$E(T_N^{MC}) \propto \frac{1}{\sqrt{N}}$$
 
 ----
 
-### Quantization using quantiles
+## Quantization using quantiles
 
 
 <div class="container">
@@ -280,7 +283,7 @@ $$E(T_N^{MC}) \propto \frac{1}{\sqrt{N}}$$
 </div>
 
 
-### Quadrature rule
+<!-- ### Quadrature rule
 
 Idea:
 - $f\in \mathcal{F}$ a Banach space
@@ -292,11 +295,11 @@ Idea:
 - so the quadrature rule $(w_n, a_n)$ is exactly accurate for polynomials of order $n<N$.
   - how to choose the points $a_n$?
 
----
+--- -->
 
 ----
 
-### Gauss-Hermite
+## Gauss-Hermite
 
 - $f\in \mathcal{F}$ a Banach space (or $\mathbb{R}^n$), $\epsilon$ a gaussian variable
   - $I: f\rightarrow E_{\epsilon} f(\epsilon)$ is a linear application
@@ -308,7 +311,7 @@ Idea:
 
 ----
 
-### Gauss-Hermite
+## Gauss-Hermite
 
 - Very accurate if a function can be approximated by polynomials
 - Bad:
@@ -318,7 +321,7 @@ Idea:
 
 ----
 
-### Gauss-*
+## Gauss-*
 
 - Same logic can be applied to compute integration with weight function $w(x)$: 
   $$\int_a^b f(x) w(x)$$
@@ -335,20 +338,20 @@ Idea:
 
 ----
 
-### In practice
+## In practice
 
 Beware that weight is not the density of the normal law:
 
-$$\frac{1}{\sqrt{2 \pi \sigma^2}}\int f(x) e^{-\frac{x^2}{2\sigma^2}}dx = \color{red}{\frac{1}{\sqrt{\pi}}}\int f(u \color{\red}{\sigma \sqrt{2}}) e^{-{u^2}}du $$
-$$\color{\red}{\frac{1}{\sqrt{\pi}}}\sum_n w_n f(\epsilon_n \color{\red}{\sigma \sqrt{2}})$$
+$$\frac{1}{\sqrt{2 \pi \sigma^2}}\int f(x) e^{-\frac{x^2}{2\sigma^2}}dx = {\frac{1}{\sqrt{\pi}}}\int f(u {\sigma \sqrt{2}}) e^{-{u^2}}du $$
+$${\frac{1}{\sqrt{\pi}}}\sum_n w_n f(\epsilon_n {\sigma \sqrt{2}})$$
+
 
 ```julia
 using FastGaussQuadrature
 
 x, w = gausslegendre( 10 );
-x = x.*\sigma*sqrt(2) # renormalize nodes
-s = sum( w_*U(exp(x_)) for (w_,x_) in zip(x,
-w))
+x = x.*σ*sqrt(2) # renormalize nodes
+s = sum( w_*U(exp(x_)) for (w_,x_) in zip(x,w))
 s /= sqrt(\pi) # renormalize output
 ```
 
