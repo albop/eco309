@@ -18,7 +18,9 @@ website:
 
         - section: "Tutorials"
           contents:
-            - notebooks/2_solow_correction.ipynb
+            - tutorials/2_solow_correction.ipynb
+            - tutorials/3_Optimization_correction.ipynb
+            - tutorials/5_automatic_differentiation_correction.ipynb
 
 format:
   html:
