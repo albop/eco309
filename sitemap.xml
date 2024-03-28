@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/3_Optimization_correction.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/1_2_Epidemiology.html</loc>
-    <lastmod>2024-03-28T08:50:57.554Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/3a_Optimization_pushups.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/1_2_Epidemiology_correction.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/5_automatic_differentiation_correction.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/2_solow.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/1_1_Julia_Basics.html</loc>
-    <lastmod>2024-03-28T08:50:57.554Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/introduction.html</loc>
-    <lastmod>2024-03-28T08:50:57.498Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/7_ddp_mccall.html</loc>
-    <lastmod>2024-03-28T08:50:57.466Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/ddp.html</loc>
-    <lastmod>2024-03-28T08:50:57.494Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/differentiation.html</loc>
-    <lastmod>2024-03-28T08:50:57.494Z</lastmod>
-  </url>
-  <url>
     <loc>https://albop.github.io/eco309/pushups/2_Optimization_pushups.html</loc>
     <lastmod>2024-03-28T08:52:48.094Z</lastmod>
   </url>
@@ -123,49 +79,5 @@
   <url>
     <loc>https://albop.github.io/eco309/pushups/1_epidemiology.html</loc>
     <lastmod>2024-03-28T09:05:52.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/discretization.html</loc>
-    <lastmod>2024-03-28T08:50:57.494Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/convergence.html</loc>
-    <lastmod>2024-03-28T08:50:57.474Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/optimization.html</loc>
-    <lastmod>2024-03-28T08:50:57.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/perturbation.html</loc>
-    <lastmod>2024-03-28T08:50:57.534Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_slides/rbc.html</loc>
-    <lastmod>2024-03-28T08:50:57.534Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/3_Optimization.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/6_discrete_dynamic_programming.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/5_automatic_differentiation.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/6_discrete_dynamic_programming_mccall.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/2_solow_correction.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/eco309/old_tutorials/coursework.html</loc>
-    <lastmod>2024-03-28T08:50:57.558Z</lastmod>
   </url>
 </urlset>
