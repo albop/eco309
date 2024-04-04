@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Economics - 309 - ECO309 - 2023 : Coursework</title>
+<title>Introduction to Computational Economics - Tutorial: Epidemiology Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -144,7 +110,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Computational Economics - 309
+      Introduction to Computational Economics
       </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
@@ -160,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computational Economics - 309</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -181,14 +147,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of sequences</span></a>
   </div>
 </li>
       </ul>
@@ -204,14 +170,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia Basics</span></a>
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+ <span class="menu-text">Tutorial: Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -243,15 +209,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#eco309---2023-coursework" id="toc-eco309---2023-coursework" class="nav-link active" data-scroll-target="#eco309---2023-coursework">ECO309 - 2023 : Coursework</a>
+  <li><a href="#tutorial-epidemiology-models" id="toc-tutorial-epidemiology-models" class="nav-link active" data-scroll-target="#tutorial-epidemiology-models">Tutorial: Epidemiology Models</a>
   <ul class="collapse">
-  <li><a href="#part-i---linear-regression" id="toc-part-i---linear-regression" class="nav-link" data-scroll-target="#part-i---linear-regression">Part I - Linear Regression</a></li>
-  <li><a href="#part-ii---dividend-pricing" id="toc-part-ii---dividend-pricing" class="nav-link" data-scroll-target="#part-ii---dividend-pricing">Part II - Dividend Pricing</a></li>
-  <li><a href="#part-iii---neoclassical-model-and-damage-function" id="toc-part-iii---neoclassical-model-and-damage-function" class="nav-link" data-scroll-target="#part-iii---neoclassical-model-and-damage-function">Part III - Neoclassical model and damage function</a>
+  <li><a href="#computational-economics-eco309" id="toc-computational-economics-eco309" class="nav-link" data-scroll-target="#computational-economics-eco309">Computational Economics (ECO309)</a>
   <ul class="collapse">
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link" data-scroll-target="#solow-model">Solow model</a></li>
-  <li><a href="#social-planner" id="toc-social-planner" class="nav-link" data-scroll-target="#social-planner">Social planner</a></li>
-  <li><a href="#damage-function" id="toc-damage-function" class="nav-link" data-scroll-target="#damage-function">Damage function</a></li>
+  <li><a href="#simple-sir-model" id="toc-simple-sir-model" class="nav-link" data-scroll-target="#simple-sir-model">Simple SIR model</a></li>
+  <li><a href="#a-spatial-sir-model" id="toc-a-spatial-sir-model" class="nav-link" data-scroll-target="#a-spatial-sir-model">A Spatial SIR model</a></li>
+  <li><a href="#additional-questions" id="toc-additional-questions" class="nav-link" data-scroll-target="#additional-questions">Additional questions</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -262,7 +226,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ECO309 - 2023 : Coursework</h1>
+<h1 class="title">Tutorial: Epidemiology Models</h1>
 </div>
 
 
@@ -279,103 +243,52 @@ window.Quarto = {
 </header>
 
 
-<section id="eco309---2023-coursework" class="level1">
-<h1>ECO309 - 2023 : Coursework</h1>
+<section id="tutorial-epidemiology-models" class="level1">
+<h1>Tutorial: Epidemiology Models</h1>
+<section id="computational-economics-eco309" class="level2">
+<h2 class="anchored" data-anchor-id="computational-economics-eco309">Computational Economics (ECO309)</h2>
+<p>H.W. Heathcote: epidemiologic models are <em>deterministic models for infectious diseases which are spread by direct person-to-person contact in a population</em>.</p>
+<p>This kind of models has been used since by a few decades by economist, for matters that have nothing to do with health.</p>
 <ul>
-<li>Name(s):</li>
+<li>diffusion of information, or opinions on social medias</li>
+<li>asset prices and fads</li>
+<li>expectation formation for macroeconomic outcomes (ex: <em>The Epidemiology of Macroeconomic Expectations</em> by Chris Carroll)</li>
 </ul>
-<section id="part-i---linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="part-i---linear-regression">Part I - Linear Regression</h2>
-<ol type="1">
-<li><p><strong>For <span class="math inline">\(N=100\)</span>, compute a sample <span class="math inline">\((x_i, y_i)_{i=[1:N]}\)</span> satisfying <span class="math display">\[y_i=0.4+2.5 x_i + \epsilon_i\]</span> where <span class="math inline">\(x_i\)</span> uniformly distributed between 0 and 1 and <span class="math inline">\(\epsilon_i\)</span> is drawn from a normal distribution with standard deviation 0.5.</strong></p></li>
-<li><p><strong>Define the model <span class="math inline">\(f(x;a,b)=a+b x\)</span>. Find the parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> which minimize the objective <span class="math inline">\(\xi(a,b)=\sum_i (f(x_i;a,b)-y_i)^2\)</span> by using a numerical optimization algorithm (not the formula for the regression). Plot.</strong></p></li>
-</ol>
-</section>
-<section id="part-ii---dividend-pricing" class="level2">
-<h2 class="anchored" data-anchor-id="part-ii---dividend-pricing">Part II - Dividend Pricing</h2>
-<p>A dividend process is described by <span class="math inline">\(d_t=\exp(\epsilon) (d_{t-1})^\rho\)</span> with <span class="math inline">\(\rho=0.9\)</span> and <span class="math inline">\(\epsilon\)</span> a normal i.i.d. process with mean 0 and standard deviation 0.05. Given discount rate <span class="math inline">\(\beta=0.95\)</span> our ultimate goal is to evaluate the price of a right to the dividend, which satisfies:</p>
-<p><span class="math display">\[p_t=d_t + \beta E_t \left[ p_{t+1} \right]\]</span></p>
-<p>In functional form, we look for a function <span class="math inline">\(p()\)</span> such that</p>
-<p><span class="math display">\[\forall d, {\color{blue}{p}}(d)=d+\beta E_{\epsilon} \left[ {\color{red}{p}}\left( \exp(\epsilon) (d)^\rho \right)\right]\]</span></p>
-<p>In this context, the time-iteration algorithm consists in updating the price function on the left as a function of the price function on the right. It raises two challenges: - integrate the term within the square brackets (we’ll use quadrature) - interpolate the price function so that it can be evaluated at any realisation of <span class="math inline">\(\exp(\epsilon) (d)^\rho\)</span></p>
-<ol type="1">
-<li><p><strong>Integration: discretize random shock <span class="math inline">\(\epsilon_t\)</span> with <span class="math inline">\(K=5\)</span> nodes and weights <span class="math inline">\((w_i, \epsilon_i)\)</span> by using a gauss-hermite quadrature. As an example, use this discretization to evaluate <span class="math inline">\(\mathbb{E}\left(\epsilon^2\right)\)</span> and <span class="math inline">\(\mathbb{E}\left[ \exp(\epsilon)\right]\)</span>.</strong></p></li>
-<li><p><strong>Interpolation: for <span class="math inline">\(N=20\)</span>, propose a regular grid <span class="math inline">\((d_1, ... d_N)\)</span> for <span class="math inline">\(d\)</span> that is large enough to contain a large fraction of of the realizations of <span class="math inline">\(d_t\)</span>. Function <span class="math inline">\(p()\)</span> will be represented by an <span class="math inline">\(N\)</span>-components vector <code>p</code>. Linear interpolation will be used to evaluate <code>p</code> outside of the grid points (you can use <code>Interpolations.jl</code>). Choose an initial guess for <span class="math inline">\(p\)</span>, for instance <span class="math inline">\(p(d)=d^2\)</span> and plot the interpolating function with the interpolated points.</strong></p></li>
-</ol>
-<p><mark>Hint</mark>: given a vector of points <code>x</code> and matching vector of values <code>y</code>, you can use <code>itp = LinearInterpolation(x, y, extrapolation_bc = Line())</code> to construct a smooth function, which equals <code>y</code> on <code>x</code>. You can then interpolate at any point or vector of points <code>z</code> with <code>itp(z)</code>.</p>
-<ol start="3" type="1">
-<li><p><strong>Assuming vector <code>p0</code> represents the <span class="math inline">\(p()\)</span> function on the right, compute <code>p1</code> vector which represents the <span class="math inline">\(p()\)</span> function on the left. Call <code>T()</code> the function which map <code>p0</code> to <code>p1</code>.</strong></p></li>
-<li><p><strong>Find the equilibrium price <code>p</code> by iterating on <code>T()</code>. Plot.</strong></p></li>
-</ol>
-</section>
-<section id="part-iii---neoclassical-model-and-damage-function" class="level2">
-<h2 class="anchored" data-anchor-id="part-iii---neoclassical-model-and-damage-function">Part III - Neoclassical model and damage function</h2>
-<p>The goal of this exercise is to compute the optimal transition for a neoclassical growth model, augmented with a climate damage function. This approach is (loosely) inspired by the work from William Nordhaus on the <a href="https://en.wikipedia.org/wiki/DICE_model">DICE model</a>.</p>
-<p>We start with a model characterized by the following equations:</p>
+<p>Epidemiologic models have two features that depart from standard economic models:</p>
 <ul>
-<li>transition of capital: <span class="math display">\[k_t = (1-\delta) k_{t-1} + i_{t-1}\]</span></li>
-<li>production: <span class="math display">\[y_t = e^{a_t}(1-\omega_t)k_t^{\alpha}\]</span></li>
-<li>budget constraint: <span class="math display">\[c_t = y_t - i_t\]</span></li>
+<li>Agent’s behaviour does not take the full system into account, an is irrational in the sense that it isn’t forwards looking. Instead, an agent is given a behavioural heuristic.</li>
+<li>The transitions of the whole system can be determined without solving for complex interactions first.</li>
 </ul>
-<p>where: - <span class="math inline">\(k_t\)</span> is aggregate capital - <span class="math inline">\(a_t\)</span> is the exogenous productivity process - <span class="math inline">\(\omega_t\)</span> is the damage from climate warming (to be endogenized)</p>
-<p>We define the saving rate as <span class="math inline">\(s_t = \frac{i_t}{y_t}\)</span></p>
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow model</h3>
-<p>Initially, we assume that <span class="math inline">\(\omega_t\)</span> is zero.</p>
-<p><strong>1. Create a nameduple <code>m</code> to hold the parameters of the model.</strong></p>
-<div id="cell-18" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> (;α<span class="op">=</span><span class="fl">0.3</span>, β<span class="op">=</span><span class="fl">0.96</span>, γ<span class="op">=</span><span class="fl">0.5</span>, δ<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>(α = 0.3, β = 0.96, γ = 0.5, δ = 0.1)</code></pre>
-</div>
-</div>
-<p><strong>2. Write <code>steady_state_residual(model, a::Number, s::Number, v::AbstractVector)::AbstractVector</code> function to compute the steady-state residuals of the model for any productivity level <span class="math inline">\(a\)</span> and saving rate <span class="math inline">\(s\)</span> where <span class="math inline">\(v\)</span> is a guess for <span class="math inline">\((k,y,c)\)</span>.</strong></p>
-<p><strong>3. Write a function <code>steady_state(model, a::Number, s)</code> to <em>numerically</em> compute the steady-state using a nonlinear solver. Compute (and check) the steady-states for <span class="math inline">\(a=0.0\)</span> and <span class="math inline">\(a=0.1\)</span>.</strong></p>
-<p><strong>4. We now assume the productivity process follows the exogenous evolution <span class="math inline">\(a_t=\begin{cases} 0 \; \text{if} \; t=&lt;10 \\ 0.1 \;  \text{if} \; t\geq 10 \end{cases}\)</span>. Define vector <code>a</code></strong></p>
-<p><strong>5. Write a function <code>solow(model, a::Vector, s::Number)</code> to compute the transition of all economic variables <span class="math inline">\((v_1, ... v_T)\)</span> over <code>T</code> periods starting from the steady-state, given exogenous productivity process (<code>length(a)=T</code>). Choose the return type wisely to make it easy to manipulate. The initial (predetermined) capital should be equal to the steady-state for <span class="math inline">\(a=0\)</span> and you can check that final values should all correspond to the steady-state values for <span class="math inline">\(a=0.1\)</span>.</strong></p>
-<p><strong>6. Plot the results from the solow function and comment.</strong></p>
+<p>Understanding why these two assumptions are very costly for economists will keep us busy during a big part of the course. Here we just consider two simple models as small programming exercises.</p>
+<section id="simple-sir-model" class="level3">
+<h3 class="anchored" data-anchor-id="simple-sir-model">Simple SIR model</h3>
+<p>There is a continuum of agents of mass <span class="math inline">\(1\)</span>. Each agent can be either “Susceptible” (S), “Infected” (I) or “Recovered” (R). In each period, one agent meets another agent drawn randomly. During a meeting Susceptible agents who meet an infected agent, will always catch the disease (or the fad) but are not contagious. Infected agents, have a probability <span class="math inline">\(\pi\)</span> of being recovered. Nothing happens to Recovered agents who meet other people. No distinction is made between recovering as a healthy or a dead person.</p>
+<p>We’re interested in the evolution in the number infected persons, both the speed of infection and the total amount of infected people in every period.</p>
+<p><strong>Write down the transition equations for <span class="math inline">\(n_I\)</span>, the number of infected people, for <span class="math inline">\(n_R\)</span> the number of recovered people and <span class="math inline">\(n_S\)</span> the number of susceptible people.</strong></p>
+<p><strong>Compute the transition function <code>f</code> for the vector state <span class="math inline">\(s_t\)</span> returning <span class="math inline">\(s_{t+1}\)</span>.</strong></p>
+<p><strong>Compute the transitions over <span class="math inline">\(T\)</span> periods. Plot the result using Plots.jl. (bonus: check against closed form solution)</strong></p>
+<p><strong>We now assume a Susceptible person who meets an infected one has a probability <span class="math inline">\(\mu\)</span> of catching the disease. Update the transition function. Update function <span class="math inline">\(f\)</span> and write a function of <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span> which returns the simulation. Compare different values of the parameters. How would you interpret “social distancing”? How would you choose parameters <span class="math inline">\(\Pi\)</span> and <span class="math inline">\(\mu\)</span>?</strong></p>
 </section>
-<section id="social-planner" class="level3">
-<h3 class="anchored" data-anchor-id="social-planner">Social planner</h3>
-<p>With the exact same parameterization we now try to solve the ramsey planner problem. We seek to find the optimal sequence of saving rates <span class="math inline">\((s_1, ..., s_T)\)</span> so as to maximize the intertemporal value:</p>
-<p><span class="math display">\[\max_{s_1, ..., s_T} V(s_1, ..., s_T) = \sum_{t=1}^{T} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span></p>
-<p>(note that in the formula above the periods start at 1 to simplify the coding but this bears no consequence).</p>
-<p>The optimality condition from private savings is:</p>
-<p>$$E_t = 1</p>
-<p><strong>7. Write a function <code>steady_state(model, a)</code> to compute the steady-state for a given productivity level.</strong></p>
-<p><strong>8. Write a function <code>ramsey_simul(model, a::Vector, s::AbstractVector)</code> to simulate the evolution of all variables given a choice of saving rates (with <code>length(a)=length(s)=T</code>). Simulate and plot starting from the initial steady-state.</strong></p>
-<p><strong>9. Write a function <code>lifetime_reward(model, a::Vector, s::AbstractVector)::Number</code> which computes the lifetime value of a given choice of saving rates.</strong></p>
-<p><strong>10. Using your preferred method, compute the gradient of function <code>u-&gt;lifetime_reward(model, a, u,; T=100)</code></strong></p>
-<p><strong>11. Using an algorithm from Optim.jl compute the sequence of saving rates, maximizing utility function. Plot the optimal sequence of saving rates. What happens?</strong></p>
-<p>(hint: despite the fact that the solution is interior, boxed algorithms work better here, for instance with the constraints <code>0.001&lt;=s&lt;=0.999</code> ; check documentation to get the api)</p>
-<p><strong>12. Modify the reward function so that the function to maximize is now:</strong></p>
-<p><span class="math display">\[\max_{s_1, ..., s_T} V(s_1, ..., s_T) = \sum_{t=1}^{T} \beta^t U(c_t) + \kappa (k_T - \overline{k})^2\]</span></p>
-<p><strong>where <span class="math inline">\(\kappa\)</span> is a weight (for instance 1000) and <span class="math inline">\(\overline{k}\)</span> the <em>final</em> steady-state (i.e.&nbsp;computed for last value of a)</strong></p>
-<p><strong>Find the optimal sequence of saving rates using numerical optimization.</strong></p>
-<p><strong>13. Plot the result and comment</strong></p>
+<section id="a-spatial-sir-model" class="level3">
+<h3 class="anchored" data-anchor-id="a-spatial-sir-model">A Spatial SIR model</h3>
+<p>We now consider another version of the model where agents evolve in the space <span class="math inline">\(\mathcal{S}=[0,1]\times[0,1]\)</span>. There are <span class="math inline">\(N\in\mathbb{N}\)</span> agent. At any date, each agent <span class="math inline">\(n \in [0,1]\)</span> is located at <span class="math inline">\((x_n,y_n)\in \mathcal{S}\)</span>.</p>
+<p>Each agent moves follows a random walk bounded by <span class="math inline">\(\mathcal{S}\)</span>: <span class="math display">\[x_t = \min(\max( x_{t-1} + \epsilon_t, 0), 1)\]</span> <span class="math display">\[y_t = \min(\max( y_{t-1} + \eta_t, 0), 1)\]</span> where <span class="math inline">\(\epsilon_t\)</span> and <span class="math inline">\(\eta_t\)</span> are both normally distributed with standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p>At any date, the individual state of an agent is <span class="math inline">\(s_t=(x_t, y_t, h_t)\)</span> where <span class="math inline">\(h_t\)</span> is either “S”, “I” or “R”. <span class="math inline">\(v_t\)</span> denotes the states of all agents (for instance <span class="math inline">\(v_t=(s_{n,t})_n\)</span>. The health status of each agent is updated in the following way:</p>
+<ul>
+<li>Agents <span class="math inline">\(R\)</span> stay <span class="math inline">\(R\)</span>.</li>
+<li>Agents <span class="math inline">\(I\)</span> have probability <span class="math inline">\(\pi\)</span> to become <span class="math inline">\(R\)</span>. They stay <span class="math inline">\(I\)</span> otherwise.</li>
+<li>An agent of type <span class="math inline">\(S\)</span> in position <span class="math inline">\((x,y)\)</span> has a probability <span class="math inline">\(prob(x,y,S)\)</span> to be infected that is <span class="math inline">\(\mu\)</span> if there is another infected agent within a radius <span class="math inline">\(r&gt;0\)</span>.</li>
+</ul>
+<p><strong>Define a type <code>Agent</code>, which holds the type of an agent. The state of the whole system will be held in a <code>Vector[Agent]</code> type.</strong></p>
+<p><strong>Write a function <code>spatial_transition(S::Vector{Agent})::Vector{Agent}</code> to compute the transition of the positions. Write another function <code>random_guess(T=100)</code> which simulates for <span class="math inline">\(T\)</span> periods in order to find a good initial guess.</strong></p>
+<p><strong>Write a function <code>show_population</code> to plot all agents with different colors for different health status.</strong></p>
+<p><strong>Write a function <code>evolve(S::Vector[Agent])::Vector[Agent]</code> which takes the population in a given state and returns the same population with updated health status.</strong></p>
+<p><strong>Write a function <code>simulate(S0::Vector[Agent], k=1)</code> to simulate the economy starting from an initially random position with <code>k</code> infected individuals. The returned object should be of type <code>Vector[Vector[Agent]]</code>.</strong></p>
+<p><strong>Compute statistics along a simulated path for <span class="math inline">\(n_I\)</span>, <span class="math inline">\(n_S\)</span>, <span class="math inline">\(n_R\)</span>. Plot and compare with the basic SIR model</strong></p>
 </section>
-<section id="damage-function" class="level3">
-<h3 class="anchored" data-anchor-id="damage-function">Damage function</h3>
-<p>In this section the productivity process is identically zero but we add an energy sector and a damage function.</p>
-<p>The production is now:</p>
-<p><span class="math display">\[y_t = e^{a_t}(1-\omega_t) k_{g,t}^{\alpha} e_t^{\alpha_e}\]</span></p>
-<p>where <span class="math inline">\(k^g_t\)</span> is the share of current capital allocated to the production of final goods. Energy <span class="math inline">\(e_t\)</span> is produced using production function</p>
-<p><span class="math display">\[e_t = (k_{e,t})^\alpha\]</span></p>
-<p>and capital available <span class="math inline">\(k_t\)</span> (predetermined) must be allocated between the two sectors so that:</p>
-<p><span class="math display">\[k_t = k_{g,t} + k_{e,t}\]</span></p>
-<p>Damage function is:</p>
-<p><span class="math display">\[\omega_t = \lambda θ_t\]</span></p>
-<p>with <span class="math inline">\(\lambda=0.01\)</span>.</p>
-<p>Temperature <span class="math inline">\(\theta_t\)</span> follows:</p>
-<p><span class="math display">\[θ_t = ρ θ_{t-1} + e_t\]</span></p>
-<p>with <span class="math inline">\(\rho=0.9\)</span> (it should be very autocorrelated but we set it smaller than 1 in order to have a unique steady-state)</p>
-<p><strong>14. Write a new model structure to hold all the old and new parameters</strong></p>
-<p><strong>15. Assuming market for capital and for energy are perfectly competitive, justify that the fraction of capital allocated to the final sector is <span class="math inline">\(\frac{k_{g,t}}{k_t}=\frac{1}{1+\alpha_e}\)</span>.</strong></p>
-<p><strong>16. Write the new steady-state equations.</strong></p>
-<p><strong>17. Rewrite a function to compute the steady-state variables for any productivity level, taking climate damage into account.</strong></p>
-<p><strong>18. Rewrite the <code>ramsey_simul</code> and <code>lifetime_reward</code> functions taking climate damage into account.</strong></p>
-<p><strong>19. Solve for the new optimal transition. Plot and comment (compare to the no-damage case)</strong></p>
+<section id="additional-questions" class="level3">
+<h3 class="anchored" data-anchor-id="additional-questions">Additional questions</h3>
+<p>Have fun by trying to answer one of these questions: - change probability of infection so that it depends on the number of infected people in the vincinity (with some suitable functional formulation for) - compute an animation of the transition - compute an interactive visualisation (with <code>Interact.jl</code> if available)</p>
 
 
 </section>

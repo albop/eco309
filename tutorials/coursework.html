@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Economics - 309</title>
+<title>Introduction to Computational Economics - ECO309 - 2023 : Coursework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -110,7 +144,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Computational Economics - 309
+      Introduction to Computational Economics
       </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
@@ -126,7 +160,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computational Economics - 309</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,14 +181,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of sequences</span></a>
   </div>
 </li>
       </ul>
@@ -170,14 +204,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia Basics</span></a>
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+ <span class="menu-text">Tutorial: Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -209,27 +243,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#real-business-cycles" id="toc-real-business-cycles" class="nav-link active" data-scroll-target="#real-business-cycles">Real Business Cycles</a>
+  <li><a href="#eco309---2023-coursework" id="toc-eco309---2023-coursework" class="nav-link active" data-scroll-target="#eco309---2023-coursework">ECO309 - 2023 : Coursework</a>
   <ul class="collapse">
-  <li><a href="#computational-economics-2022-eco-309" id="toc-computational-economics-2022-eco-309" class="nav-link" data-scroll-target="#computational-economics-2022-eco-309">Computational Economics 2022 (ECO 309)</a>
+  <li><a href="#part-i---linear-regression" id="toc-part-i---linear-regression" class="nav-link" data-scroll-target="#part-i---linear-regression">Part I - Linear Regression</a></li>
+  <li><a href="#part-ii---dividend-pricing" id="toc-part-ii---dividend-pricing" class="nav-link" data-scroll-target="#part-ii---dividend-pricing">Part II - Dividend Pricing</a></li>
+  <li><a href="#part-iii---neoclassical-model-and-damage-function" id="toc-part-iii---neoclassical-model-and-damage-function" class="nav-link" data-scroll-target="#part-iii---neoclassical-model-and-damage-function">Part III - Neoclassical model and damage function</a>
   <ul class="collapse">
-  <li><a href="#the-rbc-model-planner-version" id="toc-the-rbc-model-planner-version" class="nav-link" data-scroll-target="#the-rbc-model-planner-version">The RBC Model: planner version</a></li>
-  <li><a href="#lagrangian" id="toc-lagrangian" class="nav-link" data-scroll-target="#lagrangian">Lagrangian</a></li>
-  <li><a href="#lagrangian-stochastic" id="toc-lagrangian-stochastic" class="nav-link" data-scroll-target="#lagrangian-stochastic">Lagrangian (stochastic)</a></li>
-  <li><a href="#lagrangian-stochastic-2" id="toc-lagrangian-stochastic-2" class="nav-link" data-scroll-target="#lagrangian-stochastic-2">Lagrangian (stochastic 2)</a></li>
-  <li><a href="#back-to-rbc" id="toc-back-to-rbc" class="nav-link" data-scroll-target="#back-to-rbc">Back to RBC</a></li>
-  <li><a href="#back-to-rbc-2" id="toc-back-to-rbc-2" class="nav-link" data-scroll-target="#back-to-rbc-2">Back to RBC (2)</a></li>
-  <li><a href="#back-to-rbc-3" id="toc-back-to-rbc-3" class="nav-link" data-scroll-target="#back-to-rbc-3">Back to RBC (3)</a></li>
-  <li><a href="#rbc-first-order-conditions" id="toc-rbc-first-order-conditions" class="nav-link" data-scroll-target="#rbc-first-order-conditions">RBC first order conditions:</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise:</a></li>
-  </ul></li>
-  <li><a href="#the-decentralized-story" id="toc-the-decentralized-story" class="nav-link" data-scroll-target="#the-decentralized-story">The decentralized story</a>
-  <ul class="collapse">
-  <li><a href="#planner-vs-decentralized" id="toc-planner-vs-decentralized" class="nav-link" data-scroll-target="#planner-vs-decentralized">Planner vs decentralized</a></li>
-  <li><a href="#the-firms" id="toc-the-firms" class="nav-link" data-scroll-target="#the-firms">The firms</a></li>
-  <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">Aggregation</a></li>
-  <li><a href="#representative-agent" id="toc-representative-agent" class="nav-link" data-scroll-target="#representative-agent">Representative agent</a></li>
-  <li><a href="#labour-tax" id="toc-labour-tax" class="nav-link" data-scroll-target="#labour-tax">Labour tax</a></li>
+  <li><a href="#solow-model" id="toc-solow-model" class="nav-link" data-scroll-target="#solow-model">Solow model</a></li>
+  <li><a href="#social-planner" id="toc-social-planner" class="nav-link" data-scroll-target="#social-planner">Social planner</a></li>
+  <li><a href="#damage-function" id="toc-damage-function" class="nav-link" data-scroll-target="#damage-function">Damage function</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -238,296 +260,122 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECO309 - 2023 : Coursework</h1>
+</div>
 
 
 
-<section id="real-business-cycles" class="level1">
-<h1>Real Business Cycles</h1>
-<section id="computational-economics-2022-eco-309" class="level2">
-<h2 class="anchored" data-anchor-id="computational-economics-2022-eco-309">Computational Economics 2022 (ECO 309)</h2>
-<hr>
-<ul>
-<li>Real Business Cycle
-<ul>
-<li>Like the neo-classical growth model</li>
-<li>With shocks</li>
-<li>With labour</li>
-<li>With a decentralized interpretation</li>
-</ul></li>
-<li>Explains <em>short term</em> fluctuations
-<ul>
-<li>without demand shocks / money</li>
-</ul></li>
-</ul>
-<hr>
-<section id="the-rbc-model-planner-version" class="level3">
-<h3 class="anchored" data-anchor-id="the-rbc-model-planner-version">The RBC Model: planner version</h3>
-<div class="container">
+<div class="quarto-title-meta">
 
-<div class="col">
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="eco309---2023-coursework" class="level1">
+<h1>ECO309 - 2023 : Coursework</h1>
 <ul>
-<li><p>states:</p>
-<ul>
-<li>productivity: <span class="math inline">\(z_t\)</span></li>
-<li>capital: <span class="math inline">\(k_t\)</span></li>
-</ul></li>
-<li><p>two independent control variables:</p>
-<ul>
-<li>consumption: <span class="math inline">\(c_t \in [0,y_t], c_t\geq 0, c_t\leq y_t\)</span></li>
-<li>labor: <span class="math inline">\(n_t\)</span></li>
-</ul></li>
-<li><p>shock:</p>
-<ul>
-<li>tfp shock: <span class="math inline">\(\epsilon_t \sim \mathcal{N}(0,\sigma)\)</span></li>
-</ul></li>
-<li><p>objective: <span class="math display">\[\max_{\begin{matrix}c_t, n_t\\\\c_t \geq 0, y_t \geq c_t, n_t \geq 0, 1 \geq n_t\end{matrix}} \mathbb{E}_0 \left[ \sum \beta^t \left( U(c_t) + \chi V(1-n_t) \right) \right]\]</span></p></li>
-<li><p>U and V satisfy Inada conditions, ie <span class="math inline">\(U^{\prime}&gt;0, U^{\prime \prime}&lt;0, U^{\prime}(0)=\infty\)</span></p></li>
+<li>Name(s):</li>
 </ul>
-</div>
-<div class="col">
-<ul>
-<li>definitions:
-<ul>
-<li>production: <span class="math display">\[y_t  = \exp(z_t) k_t^{\alpha} n^{1-\alpha} + i_t\]</span></li>
-<li>investment: <span class="math display">\[i_t = y_t - c_t\]</span></li>
-</ul></li>
-<li>transitions: <span class="math display">\[\begin{eqnarray}
-z_t = (1-\rho) z_{t-1} + \epsilon_t\\\\
-k_t = (1-\delta) k_{t-1} + i_{t-1}
-\end{eqnarray}\]</span></li>
-</ul>
-</div>
-<hr>
-</div></section>
-<section id="lagrangian" class="level3">
-<h3 class="anchored" data-anchor-id="lagrangian">Lagrangian</h3>
-<ul>
-<li>Two variables optimization: <span class="math display">\[\max_{\begin{matrix}c_1, c_2\\\\p_1 c_1 + p_2 c_t \leq B\end{matrix}} U(c_1, c_2)\]</span></li>
-<li>Deterministic opimization (finite horizon) <span class="math display">\[\max_{\begin{matrix}c_0, c_1, c_2, ... c_T \\\\ c_0 + c_1 + \cdots + c_T \leq B\\\\c_0\geq0, \cdots c_T \geq 0 \end{matrix}} \sum_{i=1}^{T} \beta^i U(c_i)\]</span></li>
-<li>Deterministic opimization (infinite horizon) <span class="math display">\[\max_{\begin{matrix}c_0, c_1, ... \\\\ c_0 + c_1 + \cdots \leq B\\\\c_0\geq0, c_1\geq 0, \cdots \end{matrix}} \sum_{i=1}^{\infty} \beta^i U(c_i)\]</span></li>
-</ul>
-<hr>
+<section id="part-i---linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="part-i---linear-regression">Part I - Linear Regression</h2>
+<ol type="1">
+<li><p><strong>For <span class="math inline">\(N=100\)</span>, compute a sample <span class="math inline">\((x_i, y_i)_{i=[1:N]}\)</span> satisfying <span class="math display">\[y_i=0.4+2.5 x_i + \epsilon_i\]</span> where <span class="math inline">\(x_i\)</span> uniformly distributed between 0 and 1 and <span class="math inline">\(\epsilon_i\)</span> is drawn from a normal distribution with standard deviation 0.5.</strong></p></li>
+<li><p><strong>Define the model <span class="math inline">\(f(x;a,b)=a+b x\)</span>. Find the parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> which minimize the objective <span class="math inline">\(\xi(a,b)=\sum_i (f(x_i;a,b)-y_i)^2\)</span> by using a numerical optimization algorithm (not the formula for the regression). Plot.</strong></p></li>
+</ol>
 </section>
-<section id="lagrangian-stochastic" class="level3">
-<h3 class="anchored" data-anchor-id="lagrangian-stochastic">Lagrangian (stochastic)</h3>
-<div class="container">
-<div class="col">
+<section id="part-ii---dividend-pricing" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii---dividend-pricing">Part II - Dividend Pricing</h2>
+<p>A dividend process is described by <span class="math inline">\(d_t=\exp(\epsilon) (d_{t-1})^\rho\)</span> with <span class="math inline">\(\rho=0.9\)</span> and <span class="math inline">\(\epsilon\)</span> a normal i.i.d. process with mean 0 and standard deviation 0.05. Given discount rate <span class="math inline">\(\beta=0.95\)</span> our ultimate goal is to evaluate the price of a right to the dividend, which satisfies:</p>
+<p><span class="math display">\[p_t=d_t + \beta E_t \left[ p_{t+1} \right]\]</span></p>
+<p>In functional form, we look for a function <span class="math inline">\(p()\)</span> such that</p>
+<p><span class="math display">\[\forall d, {\color{blue}{p}}(d)=d+\beta E_{\epsilon} \left[ {\color{red}{p}}\left( \exp(\epsilon) (d)^\rho \right)\right]\]</span></p>
+<p>In this context, the time-iteration algorithm consists in updating the price function on the left as a function of the price function on the right. It raises two challenges: - integrate the term within the square brackets (we’ll use quadrature) - interpolate the price function so that it can be evaluated at any realisation of <span class="math inline">\(\exp(\epsilon) (d)^\rho\)</span></p>
+<ol type="1">
+<li><p><strong>Integration: discretize random shock <span class="math inline">\(\epsilon_t\)</span> with <span class="math inline">\(K=5\)</span> nodes and weights <span class="math inline">\((w_i, \epsilon_i)\)</span> by using a gauss-hermite quadrature. As an example, use this discretization to evaluate <span class="math inline">\(\mathbb{E}\left(\epsilon^2\right)\)</span> and <span class="math inline">\(\mathbb{E}\left[ \exp(\epsilon)\right]\)</span>.</strong></p></li>
+<li><p><strong>Interpolation: for <span class="math inline">\(N=20\)</span>, propose a regular grid <span class="math inline">\((d_1, ... d_N)\)</span> for <span class="math inline">\(d\)</span> that is large enough to contain a large fraction of of the realizations of <span class="math inline">\(d_t\)</span>. Function <span class="math inline">\(p()\)</span> will be represented by an <span class="math inline">\(N\)</span>-components vector <code>p</code>. Linear interpolation will be used to evaluate <code>p</code> outside of the grid points (you can use <code>Interpolations.jl</code>). Choose an initial guess for <span class="math inline">\(p\)</span>, for instance <span class="math inline">\(p(d)=d^2\)</span> and plot the interpolating function with the interpolated points.</strong></p></li>
+</ol>
+<p><mark>Hint</mark>: given a vector of points <code>x</code> and matching vector of values <code>y</code>, you can use <code>itp = LinearInterpolation(x, y, extrapolation_bc = Line())</code> to construct a smooth function, which equals <code>y</code> on <code>x</code>. You can then interpolate at any point or vector of points <code>z</code> with <code>itp(z)</code>.</p>
+<ol start="3" type="1">
+<li><p><strong>Assuming vector <code>p0</code> represents the <span class="math inline">\(p()\)</span> function on the right, compute <code>p1</code> vector which represents the <span class="math inline">\(p()\)</span> function on the left. Call <code>T()</code> the function which map <code>p0</code> to <code>p1</code>.</strong></p></li>
+<li><p><strong>Find the equilibrium price <code>p</code> by iterating on <code>T()</code>. Plot.</strong></p></li>
+</ol>
+</section>
+<section id="part-iii---neoclassical-model-and-damage-function" class="level2">
+<h2 class="anchored" data-anchor-id="part-iii---neoclassical-model-and-damage-function">Part III - Neoclassical model and damage function</h2>
+<p>The goal of this exercise is to compute the optimal transition for a neoclassical growth model, augmented with a climate damage function. This approach is (loosely) inspired by the work from William Nordhaus on the <a href="https://en.wikipedia.org/wiki/DICE_model">DICE model</a>.</p>
+<p>We start with a model characterized by the following equations:</p>
 <ul>
-<li>exogenous process defines an event <strong>tree</strong> <span class="math inline">\((s)\)</span>
-<ul>
-<li>it is a very useful concept to understand stochastic optimization, complete markets, etc.</li>
-<li>math for continuous processes a bit involved (filtrations, …), but most intuition can be gained from discrete process</li>
-</ul></li>
+<li>transition of capital: <span class="math display">\[k_t = (1-\delta) k_{t-1} + i_{t-1}\]</span></li>
+<li>production: <span class="math display">\[y_t = e^{a_t}(1-\omega_t)k_t^{\alpha}\]</span></li>
+<li>budget constraint: <span class="math display">\[c_t = y_t - i_t\]</span></li>
 </ul>
-<p>[graph ]</p>
-</div>
-<div class="col">
-<ul>
-<li>consider a discrete process (for instance <span class="math inline">\(\epsilon_t \in [ \overline{\epsilon}, \underline{\epsilon}]\)</span>)
-<ul>
-<li>an event is defined as the history of the shocks so far</li>
-<li>ex: <span class="math inline">\((\overline{\epsilon} , \overline{\epsilon}, \underline{\epsilon}, \overline{\epsilon})\)</span></li>
-</ul></li>
-<li>if <span class="math inline">\(s^{\prime}\)</span> is the sucessor of <span class="math inline">\(s\)</span> we denote <span class="math inline">\(s \subset s^{\prime}\)</span>
-<ul>
-<li><span class="math inline">\(s\)</span> is in the history of <span class="math inline">\(s^{\prime}\)</span></li>
-<li>transition probabilities <span class="math inline">\(\tau(s,s^{\prime})\)</span>
-<ul>
-<li><span class="math inline">\(1 = \sum_{s^{\prime} | s\subset s^{\prime}} \tau(s, s^{\prime})\)</span></li>
-</ul></li>
-</ul></li>
-<li>each node has a given probability <span class="math inline">\(p(s)\)</span>. By construction:
-<ul>
-<li><span class="math inline">\(p(s^{\prime}) = p(s) \tau(s,s^{\prime})\)</span></li>
-</ul></li>
-<li>sometimes, we keep time subscript:
-<ul>
-<li>ex: <span class="math inline">\(s_4 = (\overline{\epsilon} , \overline{\epsilon}, \underline{\epsilon}, \overline{\epsilon})\)</span></li>
-<li>but for each <span class="math inline">\(t\)</span> there are many possible <span class="math inline">\(s_t\)</span></li>
-</ul></li>
-</ul>
+<p>where: - <span class="math inline">\(k_t\)</span> is aggregate capital - <span class="math inline">\(a_t\)</span> is the exogenous productivity process - <span class="math inline">\(\omega_t\)</span> is the damage from climate warming (to be endogenized)</p>
+<p>We define the saving rate as <span class="math inline">\(s_t = \frac{i_t}{y_t}\)</span></p>
+<section id="solow-model" class="level3">
+<h3 class="anchored" data-anchor-id="solow-model">Solow model</h3>
+<p>Initially, we assume that <span class="math inline">\(\omega_t\)</span> is zero.</p>
+<p><strong>1. Create a nameduple <code>m</code> to hold the parameters of the model.</strong></p>
+<div id="cell-18" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> (;α<span class="op">=</span><span class="fl">0.3</span>, β<span class="op">=</span><span class="fl">0.96</span>, γ<span class="op">=</span><span class="fl">0.5</span>, δ<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(α = 0.3, β = 0.96, γ = 0.5, δ = 0.1)</code></pre>
 </div>
 </div>
-<hr>
+<p><strong>2. Write <code>steady_state_residual(model, a::Number, s::Number, v::AbstractVector)::AbstractVector</code> function to compute the steady-state residuals of the model for any productivity level <span class="math inline">\(a\)</span> and saving rate <span class="math inline">\(s\)</span> where <span class="math inline">\(v\)</span> is a guess for <span class="math inline">\((k,y,c)\)</span>.</strong></p>
+<p><strong>3. Write a function <code>steady_state(model, a::Number, s)</code> to <em>numerically</em> compute the steady-state using a nonlinear solver. Compute (and check) the steady-states for <span class="math inline">\(a=0.0\)</span> and <span class="math inline">\(a=0.1\)</span>.</strong></p>
+<p><strong>4. We now assume the productivity process follows the exogenous evolution <span class="math inline">\(a_t=\begin{cases} 0 \; \text{if} \; t=&lt;10 \\ 0.1 \;  \text{if} \; t\geq 10 \end{cases}\)</span>. Define vector <code>a</code></strong></p>
+<p><strong>5. Write a function <code>solow(model, a::Vector, s::Number)</code> to compute the transition of all economic variables <span class="math inline">\((v_1, ... v_T)\)</span> over <code>T</code> periods starting from the steady-state, given exogenous productivity process (<code>length(a)=T</code>). Choose the return type wisely to make it easy to manipulate. The initial (predetermined) capital should be equal to the steady-state for <span class="math inline">\(a=0\)</span> and you can check that final values should all correspond to the steady-state values for <span class="math inline">\(a=0.1\)</span>.</strong></p>
+<p><strong>6. Plot the results from the solow function and comment.</strong></p>
 </section>
-<section id="lagrangian-stochastic-2" class="level3">
-<h3 class="anchored" data-anchor-id="lagrangian-stochastic-2">Lagrangian (stochastic 2)</h3>
-<ul>
-<li><p>Stochastic optimization (infinite horizon) <span class="math display">\[\max_{ c_t } \mathbb{E_0} \left[ \sum_{t=1}^{\infty} \beta^i U(c_t) \right]\]</span></p></li>
-<li><p>What it really means (<span class="math inline">\(|s|\)</span> is time of event <span class="math inline">\(s\)</span>) <span class="math display">\[\max_{ \forall s,  c(s)} \sum_{s} p(s) \beta^{|s|} U(c(s))\]</span></p></li>
-<li><p>Or: <span class="math display">\[\max_{ c(s_t) } \sum_{t}  \beta^{t} \sum_{s_t} p(s_t)U(c(s_t))\]</span></p></li>
-<li><p>Think of it as a regular sum</p></li>
-<li><p>When you differentiate the lagrangian, you are differentiating w.r.t. all <span class="math inline">\(c(s_t)\)</span>, i.e the values of <span class="math inline">\(c\)</span> on each of the nodes.</p></li>
-<li><p>Example: cake eating</p></li>
-</ul>
-<hr>
+<section id="social-planner" class="level3">
+<h3 class="anchored" data-anchor-id="social-planner">Social planner</h3>
+<p>With the exact same parameterization we now try to solve the ramsey planner problem. We seek to find the optimal sequence of saving rates <span class="math inline">\((s_1, ..., s_T)\)</span> so as to maximize the intertemporal value:</p>
+<p><span class="math display">\[\max_{s_1, ..., s_T} V(s_1, ..., s_T) = \sum_{t=1}^{T} \beta^t U(c_t)\]</span></p>
+<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span></p>
+<p>(note that in the formula above the periods start at 1 to simplify the coding but this bears no consequence).</p>
+<p>The optimality condition from private savings is:</p>
+<p>$$E_t = 1</p>
+<p><strong>7. Write a function <code>steady_state(model, a)</code> to compute the steady-state for a given productivity level.</strong></p>
+<p><strong>8. Write a function <code>ramsey_simul(model, a::Vector, s::AbstractVector)</code> to simulate the evolution of all variables given a choice of saving rates (with <code>length(a)=length(s)=T</code>). Simulate and plot starting from the initial steady-state.</strong></p>
+<p><strong>9. Write a function <code>lifetime_reward(model, a::Vector, s::AbstractVector)::Number</code> which computes the lifetime value of a given choice of saving rates.</strong></p>
+<p><strong>10. Using your preferred method, compute the gradient of function <code>u-&gt;lifetime_reward(model, a, u,; T=100)</code></strong></p>
+<p><strong>11. Using an algorithm from Optim.jl compute the sequence of saving rates, maximizing utility function. Plot the optimal sequence of saving rates. What happens?</strong></p>
+<p>(hint: despite the fact that the solution is interior, boxed algorithms work better here, for instance with the constraints <code>0.001&lt;=s&lt;=0.999</code> ; check documentation to get the api)</p>
+<p><strong>12. Modify the reward function so that the function to maximize is now:</strong></p>
+<p><span class="math display">\[\max_{s_1, ..., s_T} V(s_1, ..., s_T) = \sum_{t=1}^{T} \beta^t U(c_t) + \kappa (k_T - \overline{k})^2\]</span></p>
+<p><strong>where <span class="math inline">\(\kappa\)</span> is a weight (for instance 1000) and <span class="math inline">\(\overline{k}\)</span> the <em>final</em> steady-state (i.e.&nbsp;computed for last value of a)</strong></p>
+<p><strong>Find the optimal sequence of saving rates using numerical optimization.</strong></p>
+<p><strong>13. Plot the result and comment</strong></p>
 </section>
-<section id="back-to-rbc" class="level3">
-<h3 class="anchored" data-anchor-id="back-to-rbc">Back to RBC</h3>
-<p><span class="math display">\[\max_{\begin{matrix}c_t, n_t\\\\c_t \geq 0\\\\ y_t \geq c_t\\\\n_t \geq 0\\\\1 \geq n_t\end{matrix}} \mathbb{E}_0 \left[ \sum \beta^t \left( U(c_t) + \chi V(1-n_t) \right) \right]\]</span></p>
-<ul>
-<li>We know that optimally <span class="math inline">\(c_t&gt;0\)</span>, <span class="math inline">\(c_t&lt;y_t\)</span> and <span class="math inline">\(n_t&gt;0\)</span>
-<ul>
-<li>equality cases lead to zero production, i.e.&nbsp;infinite marginal utility</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="back-to-rbc-2" class="level3">
-<h3 class="anchored" data-anchor-id="back-to-rbc-2">Back to RBC (2)</h3>
-<p><span class="math display">\[\max_{\begin{matrix}c_t, n_t\\\\c_t \geq 0\\\\ k_{t+1} \geq 0 \\\\n_t \geq 0\\\\1 \geq n_t \\\\ y_t \geq c_t - i_t  \\\\ k_{t+1} = (1-\delta) k_t  + i_t \\\\ y_t = e^{z_t} k_t^{\alpha} n_t^{1-\alpha} \end{matrix}} \mathbb{E}_0 \left[ \sum_t \beta^t \left( U(c_t) + \chi V(1-n_t) \right) \right]\]</span></p>
-<ul>
-<li>We know that optimally <span class="math inline">\(c_t&gt;0\)</span>, and <span class="math inline">\(n_t&gt;0\)</span>, <span class="math inline">\(k_{t+1}&gt;0\)</span>
-<ul>
-<li>equality cases lead to zero production, i.e.&nbsp;infinite marginal utility</li>
-<li>we can drop the corresponding constraints</li>
-</ul></li>
-<li>We <em>assume</em> <span class="math inline">\(n_t=1\)</span> is never binding (this would correspond to unemployment)</li>
-</ul>
-<hr>
-</section>
-<section id="back-to-rbc-3" class="level3">
-<h3 class="anchored" data-anchor-id="back-to-rbc-3">Back to RBC (3)</h3>
-<p><span class="math display">\[\mathcal{L} = \mathbb{E}\_0 \left[ \sum_t \beta^t \left\\{ \begin{matrix} U(c_t) + \chi V(1-n_t) \\\\ + \lambda_t (y_t - c_t) \\\\  + q_t (k\_{t+1} - (1-\delta) k_t - i_{t} ) \\\\ + \nu_t (y_t - e^{z_t} k_t^{\alpha}n_t^{1-\alpha})  \end{matrix} \right\\} \right]\]</span></p>
-<ul>
-<li>Let’s derive w.r.t. all nonpredetermined values within the sum:
-<ul>
-<li>… explain</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="rbc-first-order-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="rbc-first-order-conditions">RBC first order conditions:</h3>
-<p><span class="math display">\[\begin{eqnarray}
-U^{\prime}(c_t) &amp; = &amp; \beta \mathbb{E}\_t \left[  U^{\prime} (c_{t+1}) \left(
-         (1-\delta) + \alpha e^{z\_{t+1}} k\_{t+1}^{\alpha-1} n\_{t+1}^{1-\alpha}
-             \right) \right] \\\\
-\chi V^{\prime} (1-n_t) &amp; = &amp;  (1-\alpha) e^{z_t} k_t^{\alpha} (n_t)^{-\alpha} U^{\prime}(c_t)
-\end{eqnarray}\]</span></p>
-<hr>
-</section>
-<section id="exercise" class="level3">
-<h3 class="anchored" data-anchor-id="exercise">Exercise:</h3>
-<ul>
-<li>Set <span class="math inline">\(U(x) = \frac{c_t^{1-\gamma}}{1-\gamma}\)</span>, <span class="math inline">\(V(x) = \frac{(1-x)^{1-\eta}}{1-\eta}\)</span></li>
-<li>Try to find the steady state
-<ul>
-<li>it is impossible to do so in closed-form</li>
-</ul></li>
-<li>Set <span class="math inline">\(\overline{n} = 0.33\)</span> and adjust <span class="math inline">\(\chi\)</span> so that it is a steady-state</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="the-decentralized-story" class="level2">
-<h2 class="anchored" data-anchor-id="the-decentralized-story">The decentralized story</h2>
-<hr>
-<section id="planner-vs-decentralized" class="level3">
-<h3 class="anchored" data-anchor-id="planner-vs-decentralized">Planner vs decentralized</h3>
-<ul>
-<li>So far, we have assumed, that the same agent decides on consumption and labour supply</li>
-<li>What if some decisions are taken in some decentralized markets?</li>
-<li>New structure:
-<ul>
-<li>decentralized <em>competitive</em> firms
-<ul>
-<li>rent capital and workers</li>
-<li>sell goods</li>
-</ul></li>
-<li>a representative household
-<ul>
-<li>supplies labour</li>
-<li>accumulates capital and rents it to firms</li>
-<li>consume goods</li>
-</ul></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="the-firms" class="level3">
-<h3 class="anchored" data-anchor-id="the-firms">The firms</h3>
-<ul>
-<li>Firm <span class="math inline">\(i\)</span>
-<ul>
-<li>chooses capital <span class="math inline">\(k^i\)</span> and labour <span class="math inline">\(n^i\)</span></li>
-</ul></li>
-<li>Cobb Douglas production: <span class="math inline">\(y_i = f(k_i, n_i) = (k_i)^{\alpha} (n_i)^(1-\alpha)\)</span></li>
-<li>Since there is only one good, its price can be set to <span class="math inline">\(1\)</span></li>
-<li>Firm takes wages <span class="math inline">\(w\)</span> and rental price of capital <span class="math inline">\(r\)</span> as given: <span class="math display">\[max_{k_i, n_i} \pi(k_i, n_i) =  f(k_i, n_i) - r  k_i - w n_i\]</span></li>
-<li>Optimally:
-<ul>
-<li><span class="math inline">\(f_k^{\prime}(k_i, n_i) = \alpha k_i^{\alpha-1} n_i^{1-\alpha}  = r\)</span></li>
-<li><span class="math inline">\(f_n^{\prime}(k_i, n_i) = (1-\alpha) k_i^{\alpha-1} n_i^{-\alpha}  = w\)</span></li>
-</ul></li>
-<li>Remark:
-<ul>
-<li>capital share: <span class="math inline">\(\frac{r k_i}{y_i} = \alpha\)</span></li>
-<li>labour share: <span class="math inline">\(\frac{w n_i}{y_i} = 1- \alpha\)</span></li>
-<li>profits are zero</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="aggregation" class="level3">
-<h3 class="anchored" data-anchor-id="aggregation">Aggregation</h3>
-<ul>
-<li>What is the production of all firms if total capital is <span class="math inline">\(K\)</span> and total labour is <span class="math inline">\(L\)</span> ?</li>
-<li>Note that for each firm <span class="math display">\[(1 - \alpha) \frac{k_i}{l_i} = \alpha \frac{w}{r}\]</span></li>
-<li>We can sum over all firms to get: <span class="math display">\[(1-\alpha){K} = \alpha \frac{w}{r}L\]</span></li>
-<li>we can write: <span class="math display">\[y_i = (k_i)^{\alpha} (n_i)^{1-\alpha} = k_i \left( \frac{k_i}{n_i} \right)^{1-\alpha} = k_i (K/L)^{1-\alpha}\]</span></li>
-<li>and sum over all firms: <span class="math display">\[Y = K (K/L)^{1-\alpha} = K^\alpha L ^{1-\alpha}\]</span></li>
-<li>The sum of many cobb douglas-firms is a big cobb-douglas firm !</li>
-</ul>
-<hr>
-</section>
-<section id="representative-agent" class="level3">
-<h3 class="anchored" data-anchor-id="representative-agent">Representative agent</h3>
-<ul>
-<li>Our representative agent takes <span class="math inline">\(w_t\)</span> and <span class="math inline">\(r_t\)</span> as given.</li>
-<li>He supplies labour and capital, and decides how much to save so as to maximize: <span class="math display">\[\max_{\begin{matrix} c_t, n_t \\\\ c_t \leq \pi_t + r_t k_t + w_t n_t - i_t \\\\ k_{t+1} = (1-\delta) k_t + i_t \\\\ c_t \geq 0 \end{matrix}} \sum_t \beta^t \left(U(c_t)  + V(n_t) \right)\]</span></li>
-<li><!-- .element class="fragment" -->
-Result: <span class="math display">\[\begin{eqnarray} \beta
-U^{\prime}(c_t) &amp; = &amp; \beta \mathbb{E}\_t \left[  U^{\prime} (c_{t+1}) \left( (1-\delta) + r_{t+1}\right) \right] \\\\
-\chi V^{\prime} (1-n_t) &amp; = &amp; w_t U^{\prime}(c_t)
-\end{eqnarray}\]</span></li>
-<li><!-- .element class="fragment" -->
-Result:
-<ul>
-<li>exactly the same equations as in the central planner version (in this case)</li>
-<li>this formulation can be used to study distortionary taxes:
-<ul>
-<li>ex: labour income tax <span class="math inline">\(\tau\)</span></li>
-</ul></li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="labour-tax" class="level3">
-<h3 class="anchored" data-anchor-id="labour-tax">Labour tax</h3>
-<ul>
-<li>Our representative agent takes <span class="math inline">\(w_t\)</span> and <span class="math inline">\(r_t\)</span> as given.</li>
-<li>He supplies labour and capital, and decides how much to save so as to maximize: <span class="math display">\[\max_{\begin{matrix} c_t, n_t \\\\ c_t \leq \pi_t + (1-\tau) w_t n_t + r_t k_t - i_t + g_t \\\\ k_{t+1} = (1-\delta) k_t + i_t \\\\ c_t \geq 0 \end{matrix}} \sum_t \beta^t \left(U(c_t)  + V(n_t) \right)\]</span></li>
-<li>Note the new budget constraint
-<ul>
-<li>labour income is taxed, but a lump-sum subsidy ensures nothing is destroyed</li>
-<li><span class="math inline">\(g_t =\tau w_t k_t\)</span> is not taken into account for intertemporal optimization</li>
-</ul></li>
-<li><!-- .element class="fragment" -->
-Result: <span class="math display">\[\begin{eqnarray} \beta
-U^{\prime}(c_t) &amp; = &amp; \beta \mathbb{E}\_t \left[  U^{\prime} (c_{t+1}) \left( (1-\delta) + r_{t+1}\right) \right] \\\\
-\chi V^{\prime} (1-n_t) &amp; = &amp; (1-\tau) w_t U^{\prime}(c_t)
-\end{eqnarray}\]</span></li>
-<li><!-- .element class="fragment" -->
-Result:
-<ul>
-<li>exactly the same equations as in the central planner version (in this case)</li>
-<li>this formulation can be used to study distortionary taxes:
-<ul>
-<li>ex: labour income tax <span class="math inline">\(\tau\)</span></li>
-</ul></li>
-</ul></li>
-</ul>
+<section id="damage-function" class="level3">
+<h3 class="anchored" data-anchor-id="damage-function">Damage function</h3>
+<p>In this section the productivity process is identically zero but we add an energy sector and a damage function.</p>
+<p>The production is now:</p>
+<p><span class="math display">\[y_t = e^{a_t}(1-\omega_t) k_{g,t}^{\alpha} e_t^{\alpha_e}\]</span></p>
+<p>where <span class="math inline">\(k^g_t\)</span> is the share of current capital allocated to the production of final goods. Energy <span class="math inline">\(e_t\)</span> is produced using production function</p>
+<p><span class="math display">\[e_t = (k_{e,t})^\alpha\]</span></p>
+<p>and capital available <span class="math inline">\(k_t\)</span> (predetermined) must be allocated between the two sectors so that:</p>
+<p><span class="math display">\[k_t = k_{g,t} + k_{e,t}\]</span></p>
+<p>Damage function is:</p>
+<p><span class="math display">\[\omega_t = \lambda θ_t\]</span></p>
+<p>with <span class="math inline">\(\lambda=0.01\)</span>.</p>
+<p>Temperature <span class="math inline">\(\theta_t\)</span> follows:</p>
+<p><span class="math display">\[θ_t = ρ θ_{t-1} + e_t\]</span></p>
+<p>with <span class="math inline">\(\rho=0.9\)</span> (it should be very autocorrelated but we set it smaller than 1 in order to have a unique steady-state)</p>
+<p><strong>14. Write a new model structure to hold all the old and new parameters</strong></p>
+<p><strong>15. Assuming market for capital and for energy are perfectly competitive, justify that the fraction of capital allocated to the final sector is <span class="math inline">\(\frac{k_{g,t}}{k_t}=\frac{1}{1+\alpha_e}\)</span>.</strong></p>
+<p><strong>16. Write the new steady-state equations.</strong></p>
+<p><strong>17. Rewrite a function to compute the steady-state variables for any productivity level, taking climate damage into account.</strong></p>
+<p><strong>18. Rewrite the <code>ramsey_simul</code> and <code>lifetime_reward</code> functions taking climate damage into account.</strong></p>
+<p><strong>19. Solve for the new optimal transition. Plot and comment (compare to the no-damage case)</strong></p>
 
 
 </section>

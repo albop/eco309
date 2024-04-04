@@ -10,8 +10,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="author" content="Year 2022-2023 (MIE37)">
-  <title>Computational Economics - 309 - Discrete Dynamic Programming</title>
+  <meta name="author" content="Year 2022-2023 (ECO309)">
+  <title>Introduction to Computational Economics - Discrete Dynamic Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,12 +392,12 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Discrete Dynamic Programming</h1>
-  <p class="subtitle">Advanced Macro: Numerical Methods</p>
+  <p class="subtitle">Computational Economics</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Year 2022-2023 (MIE37) 
+Year 2022-2023 (ECO309) 
 </div>
 </div>
 </div>
@@ -578,6 +578,11 @@ Year 2022-2023 (MIE37)
 <li>Are there cycles? Starting from a state <span class="math inline">\(i\)</span>, how long does it take to return to <span class="math inline">\(i\)</span>?</li>
 <li>The <strong>period</strong> of a state is defined as <span class="math display">\[gcd( {k\geq 1 | (P^k)_{i,i}&gt;0} )\]</span></li>
 <li>If a state has a period d&gt;1 the chain returns to the state only at dates multiple of d.</li>
+</ul>
+<p>…</p>
+<ul>
+<li>A state is <strong>aperiodic</strong> if period is 1.</li>
+<li>A Markov chain is aperiodic if all sates are aperiodic</li>
 </ul>
 </section>
 <section id="aperiodicity-example-from-qe" class="slide level2">
@@ -931,7 +936,10 @@ Year 2022-2023 (MIE37)
 <li>exclude a priori some branches in the tree using knowledge of the problem</li>
 </ul></li>
 </ul>
+<div class="fragment">
+<p><img data-src="bongcloud.jpg"></p>
 <!-- [TODO: chess: bongcloud attack] -->
+</div>
 </section></section>
 <section>
 <section id="infinite-horizon-dmdp" class="title-slide slide level1 center">

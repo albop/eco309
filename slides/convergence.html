@@ -10,8 +10,8 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="author" content="Year 2022-2023 (MIE37)">
-  <title>Computational Economics - 309 - Discretization</title>
+  <meta name="author" content="Year 2022-2023 (ECO309)">
+  <title>Introduction to Computational Economics - Convergence of sequences</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -391,363 +326,294 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Discretization</h1>
-  <p class="subtitle">Computational Econommics, 2023 (ECO309)</p>
+  <h1 class="title">Convergence of sequences</h1>
+  <p class="subtitle">Computational Economics</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Year 2022-2023 (MIE37) 
+Year 2022-2023 (ECO309) 
 </div>
 </div>
 </div>
 
 </section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
+<section id="life-of-a-computational-economist" class="slide level2">
+<h2>Life of a computational economist</h2>
 
-</section>
-<section id="several-kinds-of-discretization" class="slide level2">
-<h2>Several kinds of Discretization</h2>
+<img data-src="impossible.jpg" class="r-stretch"></section>
+<section id="life-of-a-computational-economist-1" class="slide level2">
+<h2>Life of a computational economist</h2>
+<video data-src="waiting_for_convergence.mp4" class="r-stretch" controls=""><a href="waiting_for_convergence.mp4">Video</a></video>
 <ul>
-<li>approximate operator with a finite number of iterations:
+<li><!-- .element: class="fragment" -->
+We spend <strong>a lot</strong> of time waiting for algorithms to converge!
 <ul>
-<li>compute <span class="math inline">\(\int_a^b f(x) dx\)</span></li>
-<li>compute <span class="math inline">\(E_\omega f(\omega)\)</span></li>
-</ul></li>
-<li>represent an infinite dimensional object with a finite set of parameters:
-<ul>
-<li><span class="math inline">\(f \equiv (f(x_i))_{i=1:N}\)</span> with <span class="math inline">\(x_i=a+\frac{i-1}{N-1}(b-a)\)</span>
-<ul>
-<li>discretize arguments</li>
-</ul></li>
-<li><span class="math inline">\(\omega \equiv (\mu_i, \omega_i)_{i=1:N}\)</span> such that <span class="math inline">\(E_\omega f(\omega) \approx \sum_i \mu_i f(\omega_i)\)</span> (quantization)</li>
-</ul></li>
-<li>discretize continous process by a discrete one:
-<ul>
-<li>continuous markov chain to discrete markov Chain</li>
+<li><!-- .element: class="fragment" -->
+solution 1: program better</li>
+<li><!-- .element: class="fragment" -->
+solution 2: better algorithms</li>
+<li><!-- .element: class="fragment" -->
+even better: understand convergence properties (information about the model)</li>
 </ul></li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="discretizing-an-ar1" class="title-slide slide level1 center">
-<h1>Discretizing an AR1</h1>
-
+<section id="recursive-sequence" class="slide level2">
+<h2>Recursive sequence</h2>
+<p>Consider a function <span class="math inline">\(f: R\rightarrow R\)</span> and a recursive sequence <span class="math inline">\((x_n)\)</span> defined by <span class="math inline">\(x_0\)</span> and <span class="math inline">\(x_n = f(x_{n-1})\)</span>.</p>
+<p>We want to compute a fixed point of <span class="math inline">\(f\)</span> and study its properties.</p>
 </section>
-<section id="discretizing-an-ar1-1" class="slide level2">
-<h2>Discretizing an AR1</h2>
+<section id="example-growth-model" class="slide level2">
+<h2>Example: growth model</h2>
+<div class="columns r-stretch">
+<div class="column">
 <ul>
-<li>Take <span class="math inline">\(AR1\)</span> process <span class="math display">\[x_t = \rho x_{t-1} + \epsilon_t\]</span>
+<li>Solow growth model:
 <ul>
-<li>with <span class="math inline">\(|\rho| &lt;1\)</span> and <span class="math inline">\(\epsilon \sim N(0,\sigma)\)</span></li>
+<li>capital accumulation: <span class="math display">\[k_t = (1-\delta)k_{t-1} + i_{t-1}\]</span></li>
+<li>production: <span class="math display">\[y_t = k_t^\alpha\]</span></li>
+<li>consumption: <span class="math display">\[c_t = (1-{\color{red}s})y_t\]</span> <span class="math display">\[i_t = s y_t\]</span></li>
 </ul></li>
-<li>Can we replace <span class="math inline">\((x_t)\)</span> by a discrete markov chain?
+</ul>
+</div><div class="column">
+<div class="r-stack">
+<div class="fragment current-visible">
 <ul>
-<li>approximate version:
+<li>For a given value of <span class="math inline">\({\color{red} s}\in\mathbb{R}^{+}\)</span> ( <span class="math inline">\({\color{red} s}\)</span> is a <strong>decision rule</strong>) <span class="math display">\[k_{t+1} = f(k_t, {\color{red} s})\]</span>
 <ul>
-<li>good time <span class="math inline">\(x^g\)</span> and bad time <span class="math inline">\(x^b\)</span>. Probability <span class="math inline">\(\pi\)</span> of staying in the same, <span class="math inline">\(1-\pi\)</span> of switching.</li>
+<li><strong>backward-looking</strong> iterations</li>
+<li>Solow hypothesis: saving rate is invariant</li>
 </ul></li>
-<li>two systematic methods (available in <em>QuantEcon.jl</em>)
+</ul>
+</div>
+<div class="fragment current-visible">
 <ul>
-<li>Tauchen</li>
-<li>Rouwenhorst</li>
+<li>Questions:
+<ul>
+<li>What is the steady-state?</li>
+<li>Can we characterize the transition back the steady-state?</li>
+<li>Characterize the dynamics close to the steady-state?
+<ul>
+<li>next session</li>
+</ul></li>
+<li>what is the optimal <span class="math inline">\(s\)</span> ?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="another-example-linear-new-keynesian-model" class="slide level2">
+<h2>Another example: linear new keynesian model</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Basic New Keynesian model (<a href="https://www.crei.cat/wp-content/uploads/users/pages/ch3_slides_june2015(1).pdf">full derivation</a> if curious )
+<ul>
+<li>new philips curve (PC):<span class="math display">\[\pi_t = \beta \mathbb{E}_t \pi_{t+1} + \kappa y_t\]</span></li>
+<li>dynamic investment-saving equation (IS):<span class="math display">\[y_t = \beta \mathbb{E}_t y_{t+1} - \frac{1}{\sigma}(i_t - \mathbb{E}_t(\pi_{t+1}) ) - {\color{green} z_t}\]</span></li>
+<li>interest rate setting (taylor rule): <span class="math display">\[i_t = \alpha_{\pi} \pi_t + \alpha_{y} y_t\]</span></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Solving the system:</li>
+<li>solution: <span class="math inline">\(\begin{bmatrix}\pi_t \\\\ y_t \end{bmatrix} = {\color{red} c} z_t\)</span></li>
+</ul>
+</div>
+</div><div class="column">
+<div class="fragment">
+<ul>
+<li><em>forward looking</em>:
+<ul>
+<li>take <span class="math inline">\(\begin{bmatrix}\pi_{t+1} \\\\ y_{t+1} \end{bmatrix} = {\color{red} {c_n}} z_{t+1}\)</span></li>
+<li>deduce <span class="math inline">\(\begin{bmatrix}\pi_{t} \\\\ y_{t} \end{bmatrix} = {\color{red} {c_{n+1}}} z_{t}\)</span></li>
+<li><span class="math inline">\(\mathcal{T}: \underbrace{c_{n}}_{t+1: \; \text{tomorrow}} \rightarrow \underbrace{c_{n+1}}_{t: \text{today}}\)</span> is the <strong>time-iteration</strong> operator (a.k.a. <strong>Coleman</strong> operator)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Questions:
+<ul>
+<li>What is the limit to <span class="math inline">\(c_{t+1} = \mathcal{T} c_n\)</span> ?</li>
+<li>Under wich conditions (on <span class="math inline">\(\alpha_{\pi}, \alpha_y\)</span>) is it convergent ?
+<ul>
+<li>determinacy conditions</li>
+<li>interpretation: does the central bank manage to control inflation expectations?</li>
 </ul></li>
 </ul></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section id="ar1-tauchen" class="slide level2">
-<h2>AR1: Tauchen</h2>
+<section id="recursive-series-2" class="slide level2">
+<h2>Recursive series (2)</h2>
 <ul>
-<li><p>The unconditional distribution of an AR1 is a normal law <span class="math inline">\(\mathcal{N}(0,\frac{\sigma}{\sqrt{1-\rho^2}})\)</span></p></li>
-<li><p>Choose <span class="math inline">\(m&gt;0\)</span>, typically <span class="math inline">\(m=3\)</span></p></li>
-<li><p>Bound the process: <span class="math inline">\(\underline{x} = -m \frac{\sigma}{\sqrt{1-\rho^2}}\)</span> and <span class="math inline">\(\overline{x} = m \frac{\sigma}{\sqrt{1-\rho^2}}\)</span></p></li>
-<li><p>Define the <span class="math inline">\(N\)</span> discretized points (<span class="math inline">\(i\in[1,n]\)</span>): <span class="math inline">\(y_i = \underline{x} + \frac{i-1}{N-1}(\overline{x}-\underline{x})\)</span></p></li>
-<li><p>Define the transitions:</p></li>
-</ul>
-<p><span class="math display">\[\begin{eqnarray}
-\pi_{ij} &amp; = &amp; prob \left( y_{t+1}=y_j|y_t=y_i\right)\\
-         &amp; = &amp; prob \left( |y_{t+1}-x_j| = \inf_k |y_{t+1}-x_k| \left| y_t=y_i \right. \right)
-\end{eqnarray}\]</span></p>
-</section>
-<section id="ar1-tauchen-2" class="slide level2">
-<h2>AR1: Tauchen (2)</h2>
+<li>Wait: does a fixed point exist?
 <ul>
-<li><p>Formulas <span class="math inline">\(\delta=\frac{\overline{x}-\underline{x}}{N}\)</span>:</p>
-<ul>
-<li><p>if <span class="math inline">\(1&lt;k&lt;N-1\)</span></p>
-<p><span class="math display">\[\pi_{jk} = F(\frac{y_k + \delta/2-\rho y_j}{\sigma_{\epsilon}}) - F(y_k + \delta/2-\rho y_j)\]</span></p></li>
-<li><p>if <span class="math inline">\(k=1\)</span></p>
-<p><span class="math display">\[\pi_{j} = F(\frac{y_k + \delta/2-\rho y_j}{\sigma_{\epsilon}}) \]</span></p></li>
-<li><p>if <span class="math inline">\(k=N\)</span></p>
-<p><span class="math display">\[\pi_{j} = 1- F(\frac{y_k - \delta/2-\rho y_j}{\sigma_{\epsilon}}) \]</span></p></li>
+<li>we’re not very concerned by the existence problem here</li>
+<li>we’ll be happy with local conditions (existence, uniqueness) around a solution</li>
 </ul></li>
+<li>We can assume there is an interval such that <span class="math inline">\(f([a,b])\subset[a,b]\)</span>. Then we know there exists <span class="math inline">\(x\)</span> in <span class="math inline">\([a,b]\)</span> such that <span class="math inline">\(f(x)=x\)</span>. But there can be many such points.</li>
 </ul>
 </section>
-<section id="how-to-assess-the-quality-of-approximation" class="slide level2">
-<h2>How to assess the quality of approximation ?</h2>
-<ul>
-<li><p>compare generated stationary moments between discretized process and true AR1:</p>
-<ul>
-<li>E(), Var(), ACor()</li>
-</ul></li>
-<li><p>by looking at the exact ergodic distribution or by doing some simulations</p></li>
-<li><p>not very precise when then process is very persistent <span class="math inline">\(\rho\approx 1\)</span></p></li>
-</ul>
-</section>
-<section id="rouvenhorst-method-1" class="slide level2">
-<h2>Rouvenhorst method (1)</h2>
-<ul>
-<li>N = 2
-<ul>
-<li>choose <span class="math inline">\(y_1=-\psi\)</span>, <span class="math inline">\(y_2=\psi\)</span></li>
-<li>define transition matrix: <span class="math display">\[\Theta_2 = \begin{bmatrix}
-p &amp; 1-p\\\\
-1-q &amp; q
-\end{bmatrix}\]</span></li>
-<li>choose <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> and <span class="math inline">\(\psi\)</span> to match some moments: <span class="math inline">\(E()\)</span>, <span class="math inline">\(Var()\)</span>, <span class="math inline">\(ACor()\)</span>
-<ul>
-<li>they can be computed analytically for AR1 and for discretized version.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="rouvenhorst-method-2" class="slide level2">
-<h2>Rouvenhorst method (2)</h2>
-<ul>
-<li>N &gt;2 <span class="math display">\[\Theta_N =
-p \begin{bmatrix}  
-\Theta_{N-1}  &amp; 0\\\\
-0 &amp; 0
-\end{bmatrix} +
-(1-p) \begin{bmatrix}  
-0 &amp; \Theta_{N-1} \\\\
-0 &amp; 0
-\end{bmatrix} +
-(1-q) \begin{bmatrix}  
-0 &amp; 0\\\\
-\Theta_{N-1} &amp; 0
-\end{bmatrix} +
-q \begin{bmatrix}  
-0 &amp; 0\\\\
-0 &amp; \Theta_{N-1}
-\end{bmatrix}
-\]</span></li>
-<li>Normalize all lines</li>
-</ul>
-</section>
-<section id="rouvenhorst-method-3" class="slide level2">
-<h2>Rouvenhorst method (3)</h2>
-<ul>
-<li><p>Procedure converges to Bernouilli distribution.</p></li>
-<li><p>Moments can be computed in closed form:</p>
-<ul>
-<li><span class="math inline">\(E() = \frac{(q-p)\psi}{2-(p+q)}\)</span></li>
-<li><span class="math inline">\(Var() = \psi^2 \left[ 1-4 s (1-s) + \frac{4s(1-s)}{N-1}\right]\)</span></li>
-<li><span class="math inline">\(Acor()= p+q-1\)</span></li>
-</ul></li>
-<li><p>Rouwenhorst method performs better for highly correlated processes</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="discretizing-an-iid-law" class="title-slide slide level1 center">
-<h1>Discretizing an iid law</h1>
-
-</section>
-<section id="common-problem" class="slide level2">
-<h2>Common problem:</h2>
-<ul>
-<li><p>Given <span class="math inline">\(f\)</span>, and an iid process <span class="math inline">\(\epsilon \sim N(0,\sigma^2)\)</span>, how to approximate <span class="math inline">\(E_{\epsilon} f(\epsilon)\)</span> ?</p></li>
-<li><p>Ideas:</p>
-<ul>
-<li>draw <em>lots</em> of random <span class="math inline">\((\epsilon\_n)\_{n=1:N}\)</span> and compute <span class="math display">\[\frac{1}{N}\sum_{n=1}^N f(\epsilon_n)\]</span>
-<ul>
-<li>aka Monte-Carlo simulations</li>
-</ul></li>
-<li>given a method to approximate integrals, compute <span class="math display">\[\int_{u=-\infty}^{\infty} f(u) \mu(u) du\]</span> with <span class="math inline">\(\mu(u)=\frac{1}{\sigma\sqrt{2 \pi}}e^{-\frac{u^2}{2\sigma^2}}\)</span></li>
-<li><em>discretize</em> (or <em>quantize</em>) the signal <span class="math inline">\(\epsilon\)</span> as <span class="math inline">\((w_i, \epsilon_i)_{i=1:N}\)</span> and compute:</li>
-</ul></li>
-</ul>
-<p><span class="math display">\[\frac{1}{N} \sum_n w_n f(\epsilon_n)\]</span></p>
-</section>
-<section id="whats-wrong-with-monte-carlo-simulations" class="slide level2">
-<h2>What’s wrong with Monte-Carlo Simulations?</h2>
-<ul>
-<li><p>Let’s take an exemple:</p>
-<ul>
-<li>consumption is <span class="math inline">\(C(\epsilon)=U(e^{\epsilon})\)</span></li>
-<li>with <span class="math inline">\({\sigma}\_{\epsilon}=0.05\)</span> and <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\gamma=40\)</span>.</li>
-</ul></li>
-<li><p>Let’s compute <span class="math inline">\(E_{\epsilon}(C(\epsilon))\)</span> precisely.</p></li>
-<li><p>Discuss value of <span class="math inline">\(\gamma\)</span>: is it crazy? (risk return)</p></li>
-</ul>
-</section>
-<section id="whats-wrong-with-monte-carlo-simulations-1" class="slide level2">
-<h2>What’s wrong with Monte-Carlo Simulations?</h2>
-<p>Compute expectation</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="co"># imports:</span></span>
-<span id="cb1-2"><a></a><span class="im">using</span> <span class="bu">Distributions</span>: Normal</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># define the model</span></span>
-<span id="cb1-5"><a></a>σ <span class="op">=</span> <span class="fl">0.05</span>; γ <span class="op">=</span> <span class="fl">40</span></span>
-<span id="cb1-6"><a></a><span class="fu">U</span>(x)<span class="op">=</span>(x<span class="op">^</span>(<span class="op">-</span>γ))<span class="op">/</span>(<span class="op">-</span>γ)</span>
-<span id="cb1-7"><a></a><span class="fu">C</span>(<span class="cn">e</span>) <span class="op">=</span> <span class="fu">U</span>(<span class="fu">exp</span>(<span class="cn">e</span>))</span>
-<span id="cb1-8"><a></a></span>
-<span id="cb1-9"><a></a><span class="co"># create distributions</span></span>
-<span id="cb1-10"><a></a>dis <span class="op">=</span> <span class="fu">Normal</span>(<span class="fl">0</span>,σ)      </span>
-<span id="cb1-11"><a></a><span class="fu">E_ϵ</span>(f;N<span class="op">=</span><span class="fl">1000</span>) <span class="op">=</span> <span class="fu">sum</span>(<span class="fu">f</span>(<span class="fu">rand</span>(dis)) <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span>N)<span class="op">/</span>N</span>
-<span id="cb1-12"><a></a></span>
-<span id="cb1-13"><a></a>NVec <span class="op">=</span> [<span class="fl">1000</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">15000</span>, <span class="fl">20000</span>]</span>
-<span id="cb1-14"><a></a>vals <span class="op">=</span> [<span class="fu">E_ϵ</span>(C; N<span class="op">=</span>i) for i<span class="op">=</span>NVec]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a></a>julia<span class="op">&gt;</span> vals <span class="op">=</span> [<span class="fu">E_ϵ</span>(C; N<span class="op">=</span>i) for i<span class="op">=</span>NVec</span>
-<span id="cb2-2"><a></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">Array</span>{<span class="dt">Float64</span>,<span class="fl">1</span>}<span class="op">:</span></span>
-<span id="cb2-3"><a></a> <span class="op">-</span><span class="fl">0.17546927855215824</span></span>
-<span id="cb2-4"><a></a> <span class="op">-</span><span class="fl">0.2906119630309043</span></span>
-<span id="cb2-5"><a></a> <span class="op">-</span><span class="fl">0.17924501776041424</span></span>
-<span id="cb2-6"><a></a> <span class="op">-</span><span class="fl">0.1826805612086024</span></span>
-<span id="cb2-7"><a></a> <span class="op">-</span><span class="fl">0.181184208323609</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<!-- .element class="fragment" -->
-</section>
-<section id="whats-wrong-with-monte-carlo-simulations-2" class="slide level2">
-<h2>What’s wrong with Monte-Carlo Simulations?</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a><span class="im">using</span> <span class="bu">Statistics</span>: std</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="co">#computes estimates for various N</span></span>
-<span id="cb3-4"><a></a><span class="fu">stdev</span>(f; N<span class="op">=</span><span class="fl">100</span>, K<span class="op">=</span><span class="fl">100</span>) <span class="op">=</span> <span class="fu">std</span>(<span class="fu">E_ϵ</span>(f; N<span class="op">=</span>N) <span class="cf">for</span> k<span class="op">=</span><span class="fl">1</span><span class="op">:</span>K)</span>
-<span id="cb3-5"><a></a>sdvals <span class="op">=</span> [<span class="fu">stdev</span>(C; N<span class="op">=</span>n, K<span class="op">=</span><span class="fl">10000</span>) for n<span class="op">=</span>NVec]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a></a>julia<span class="op">&gt;</span> <span class="pp">@time</span> sdvals <span class="op">=</span> [<span class="fu">stdev</span>(C; N<span class="op">=</span>n, K<span class="op">=</span><span class="fl">10000</span>) for n<span class="op">=</span>NVec]      </span>
-<span id="cb4-2"><a></a> <span class="fl">99.558940</span> seconds (<span class="fl">2.55</span> G allocations<span class="op">:</span> <span class="fl">38.011</span> GiB, <span class="fl">0.81</span><span class="op">%</span> gc time)</span>
-<span id="cb4-3"><a></a><span class="fl">5</span><span class="op">-</span>element <span class="dt">Array</span>{<span class="dt">Float64</span>,<span class="fl">1</span>}<span class="op">:</span>                                       </span>
-<span id="cb4-4"><a></a> <span class="fl">0.04106466473642666</span>                                              </span>
-<span id="cb4-5"><a></a> <span class="fl">0.018296399941889575</span>                                             </span>
-<span id="cb4-6"><a></a> <span class="fl">0.013174287295527257</span>                                             </span>
-<span id="cb4-7"><a></a> <span class="fl">0.01086721462174894</span>                                              </span>
-<span id="cb4-8"><a></a> <span class="fl">0.009383218078206898</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="quick-theory-1" class="slide level2">
-<h2>Quick theory (1)</h2>
-<ul>
-<li>Fact: the sum of several independent gaussian variables is a gaussian variable</li>
-<li>So <span class="math inline">\(T_N =\frac{1}{N}\sum_{n=1}^N \epsilon_n\)</span> is gaussian variable. Its mean is 0 (unbiased). Let’s compute its variance: <span class="math display">\[E(T_N^2) = \frac{1}{N^2} \sum_{n=1}^N E\left[ \epsilon_n^2 \right]\]</span></li>
-<li>The standard deviation is: <span class="math display">\[s_N = \sigma(T_N^2) = \frac{1}{\sqrt{\color{red} N}} \sigma_{\epsilon}\]</span></li>
-<li>Conclusion: the precision of (basic) Monte-Carlo decreases only as a square root of the number of experiments.</li>
-</ul>
-</section>
-<section id="quick-theory-2" class="slide level2">
-<h2>Quick theory (2)</h2>
-<ul>
-<li>In the general case, the Monte-Carlo estimator is: <span class="math display">\[T^{MC}\_N =\frac{1}{N}\sum\_{n=1}^N f(\epsilon_n)\]</span></li>
-<li>It is unbiased: <span class="math display">\[E(T_N^{MC}) = E\left[f(\epsilon) \right]\]</span></li>
-<li>It’s variance is <span class="math display">\[E(T_N^{MC}) \propto \frac{1}{\sqrt{N}}\]</span>
-<ul>
-<li>slow</li>
-<li>on the plus side: rate independent of the dimension of <span class="math inline">\(\epsilon\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="quantization-using-quantiles" class="slide level2">
-<h2>Quantization using quantiles</h2>
+<section id="example-growth-model-with-multiple-fixed-points" class="slide level2">
+<h2>Example: growth model with multiple fixed points</h2>
 <div class="container">
 <div class="col">
 <ul>
-<li><em>Equiprobable</em> discretization</li>
-<li>Works for any distribution with pdf and cdf</li>
-<li>Split the space into equal <span class="math inline">\(N\)</span> quantiles: <span class="math display">\[(I_i=[a_i,a_{i+1}])_{i=1:N}\]</span> such that <span class="math display">\[prob(\epsilon \in I_i)=\frac{1}{N}\]</span></li>
-<li>Choose the <em>nodes</em> as the median of each interval: <span class="math display">\[prob(\epsilon\in[a_i,x_i]) = prob(\epsilon\in[x_i,a_{i+1}])\]</span></li>
-<li>The quantization is <span class="math inline">\((1/N, x_i)_{i=1:N}\)</span></li>
+<li>In the growth model, if we change the production function: <span class="math inline">\(y=k^{\alpha}\)</span> for a nonconvex/nonmonotonic one, we can get multiple fixed points.</li>
 </ul>
 </div>
 <div class="col">
-<p>[graph]</p>
+<p><img src="growth_multiple_equilibria.jpg" width="100%"></p>
 </div>
 </div>
-<!-- ### Quadrature rule
-
-Idea:
-- $f\in \mathcal{F}$ a Banach space
-  - $I: f\rightarrow E_{\epsilon} f(\epsilon)$ is a linear application
-- suppose there is a dense family of polynomials $P_n$, spanning $\mathcal{F}_n$
-  - $I$ restricted to $\mathcal{F}_N$ is a $N$-dimensional linear form
-- take $N$ points $(a_n)_{n\in[1,N]}$. The set $\{f\rightarrow\sum_{n=1}^N w_n f(a_n) | w_1, ... w_N\}$ is a vectorial space.
-  - one element matches exactly $\left.I\right|_{\mathcal{F}}$
-- so the quadrature rule $(w_n, a_n)$ is exactly accurate for polynomials of order $n<N$.
-  - how to choose the points $a_n$?
-
---- -->
 </section>
-<section id="gauss-hermite" class="slide level2">
-<h2>Gauss-Hermite</h2>
+<section id="convergence" class="slide level2">
+<h2>Convergence</h2>
 <ul>
-<li><span class="math inline">\(f\in \mathcal{F}\)</span> a Banach space (or <span class="math inline">\(\mathbb{R}^n\)</span>), <span class="math inline">\(\epsilon\)</span> a gaussian variable
+<li>How do we characterize behaviour around <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)=x\)</span>?
 <ul>
-<li><span class="math inline">\(I: f\rightarrow E_{\epsilon} f(\epsilon)\)</span> is a linear application</li>
-</ul></li>
-<li>suppose there is a dense family of polynomials <span class="math inline">\(P_n\)</span>, spanning <span class="math inline">\(\mathcal{F}_n\)</span>
-<ul>
-<li><span class="math inline">\(I\)</span> restricted to <span class="math inline">\(\mathcal{F}_N\)</span> is a <span class="math inline">\(N\)</span>-dimensional linear form</li>
-</ul></li>
-<li>Gauss quadrature magic
-<ul>
-<li>a way to choose <span class="math inline">\(\\epsilon_i\)</span> <strong>and</strong> <span class="math inline">\(w_i\)</span> such that <span class="math display">\[\left(f\rightarrow\sum\_{n=1}^N w_n f(\epsilon_i) \right)= \left.I\right|\_{\mathcal{F}_{2N}}\]</span></li>
+<li>if <span class="math inline">\(|f^{\prime}(x)|&gt;1\)</span>: series is unstable and will not converge to <span class="math inline">\(x\)</span> except by chance</li>
+<li>if <span class="math inline">\(|f^{\prime}(x)|&lt;1\)</span>: <span class="math inline">\(x\)</span> is a stable fixed point</li>
+<li>if <span class="math inline">\(|f^{\prime}(x)|=1\)</span>: ??? (look at higher order terms, details ↓)</li>
 </ul></li>
 </ul>
 </section>
-<section id="gauss-hermite-1" class="slide level2">
-<h2>Gauss-Hermite</h2>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>To get the intution about local convergence assume, you have an initial point <span class="math inline">\(x_n\)</span> close to the steady state and consider the following expresion:</p>
+<p><span class="math inline">\(x_{n+1} - x = f(x_n) - f(x) = f^{\prime}(x) (x_n-x) + o( (x_n-x) )\)</span></p>
+<p>If one sets aside the error term (which one can do with full mathematical rigour), the dynamics for very small perturbations are given by:</p>
+<p><span class="math inline">\(|x_{n+1} - x| = |f^{\prime}(x)| |x_n-x|\)</span></p>
+<p>When <span class="math inline">\(|f^{\prime}(x)|&lt;1\)</span>, the distance to the target decreases at each iteration and we have convergence. When <span class="math inline">\(|f^{\prime}(x)|&gt;1\)</span> there is local divergence.</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>What about the case <span class="math inline">\(|f^{\prime}(x)=1|\)</span>? Many cases are possible. To distinguish between them, one needs to inspect higher order derivatives.</p>
 <ul>
-<li>Very accurate if a function can be approximated by polynomials</li>
-<li>Bad:
+<li>when <span class="math inline">\(|f^{\prime}(x)=1|\)</span>, <span class="math inline">\(|f^{\prime\prime}(x)|\neq 0\)</span> the series will convergence, only if <span class="math inline">\((x_0-x)f^{\prime\prime}(x)&lt;0\)</span>, i.e.&nbsp;starting from one side of the fixed point. The steady-state is not stable.</li>
+<li>When <span class="math inline">\(|f^{\prime}(x)=1|\)</span>, <span class="math inline">\(|f^{\prime\prime}(x)| = 0\)</span>, <span class="math inline">\(|f^{\prime \prime\prime}(x)|\neq 0\)</span> the series will converge, only if <span class="math inline">\(f^{\prime}(x)(f^{\prime\prime\prime}(x))&lt;1\)</span></li>
+</ul>
+<p>In general, there is stability only if the function <span class="math inline">\(f\)</span> is crossing the 45 degrees line (when <span class="math inline">\(f^ {\prime}(x)=1)\)</span>, or the -45 degrees line (when <span class="math inline">\(f^ {\prime}(x)=1\)</span>)</p>
+<p>Mathematically, this involves, that: - the first non-zero coefficient <span class="math inline">\(f^{k}(x)\)</span> with <span class="math inline">\(k&gt;1\)</span> has odd order (<span class="math inline">\(k\)</span> odd) - it has the right sign</p>
+</section>
+<section id="change-the-problem" class="slide level2">
+<h2>Change the problem</h2>
 <ul>
-<li>imprecise if function <span class="math inline">\(f\)</span> has kinks or non local behaviour
+<li>Sometimes, we are interested in tweaking the convergence speed:</li>
+</ul>
+<p><span class="math display">\[x_{n+1} = (1-\lambda) x_n + \lambda f(x_n)\]</span></p>
 <ul>
-<li>points <span class="math inline">\(\epsilon_n\)</span> can be very far from the origin (TODO: graph)</li>
+<li><span class="math inline">\(\lambda\)</span> is the learning rate:
+<ul>
+<li><span class="math inline">\(\lambda&gt;1\)</span>: acceleration</li>
+<li><span class="math inline">\(\lambda&lt;1\)</span>: dampening</li>
 </ul></li>
-<li>not super easy to commute weights and nodes (but there are good libraries)</li>
-</ul></li>
+<li>We can also replace the function by another one <span class="math inline">\(g\)</span> such that <span class="math inline">\(g(x)=x\iff f(x)=x\)</span>, for instance:</li>
+</ul>
+<p><span class="math display">\[g(x)=x-\frac{f(x)-x}{f^{\prime}(x)-1}\]</span></p>
+</section>
+<section id="dynamics-around-a-stable-point" class="slide level2">
+<h2>Dynamics around a stable point</h2>
+<ul>
+<li>We can write successive approximation errors:</li>
+</ul>
+<p><span class="math display">\[|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| \]</span></p>
+<p><span class="math display">\[|x_t - x_{t-1}| \sim |f^{\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| \]</span></p>
+<ul>
+<li><p>Ratio of successive approximation errors <span class="math display">\[\lambda_t =  \frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}\]</span></p></li>
+<li><p><span class="math inline">\(\lambda_t \rightarrow | f^{\prime}(\overline{x}) |\)</span></p></li>
 </ul>
 </section>
-<section id="gauss-" class="slide level2">
-<h2>Gauss-*</h2>
+<section id="dynamics-around-a-stable-point-2" class="slide level2">
+<h2>Dynamics around a stable point (2)</h2>
+<p>How do we derive an error bound? Suppose that we have <span class="math inline">\(\overline{\lambda}&gt;|f^{\prime}(x_k)|\)</span> for all <span class="math inline">\(k\geq k_0\)</span>:</p>
+<p><span class="math display">\[|x_t - x| \leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... \]</span></p>
+<p><span class="math display">\[|x_t - x| \leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... \]</span></p>
+<p><span class="math display">\[|x_t - x| \leq |x_t - x_{t+1}| + \overline{\lambda} |x_t - x_{t+1}| + \overline{\lambda}^2 |x_t - x_{t+1}| + ... \]</span></p>
+<p><span class="math display">\[|x_t - x| \leq \frac{1} {1-\overline{\lambda}} | x_t - x_{t+1} |\]</span></p>
+</section>
+<section id="how-do-we-improve-convergence" class="slide level2">
+<h2>How do we improve convergence ?</h2>
+<p><span class="math display">\[\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \sim |f^{\prime}(x_{t-1})|  \]</span></p>
+<p>corresponds to the case of <strong>linear</strong> convergence (kind of slow).</p>
+</section>
+<section id="aitkens-extrapolation" class="slide level2">
+<h2>Aitken’s extrapolation</h2>
+<p>When convergence is geometric, we have: <span class="math display">\[ \lim_{x\rightarrow \infty}\frac{ x_{t+1}-x}{x_t-x} = \lambda \in \mathbb{R}^{\star}\]</span></p>
+<p>Which implies:</p>
+<p><span class="math display">\[\frac{ x_{t+1}-x}{x_t-x} \sim \frac{ x_{t}-x}{x_{t-1}-x}\]</span></p>
+</section>
+<section id="aitkens-extrapolation-2" class="slide level2">
+<h2>Aitken’s extrapolation (2)</h2>
+<p>Take <span class="math inline">\(x_{t-1}, x_t\)</span> and <span class="math inline">\(x_{t+1}\)</span> as given and solve for <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[x = \frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}\]</span></p>
+<p>or after some reordering</p>
+<p><span class="math display">\[x = x_{t-1} - \frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}\]</span></p>
+</section>
+<section id="steffensens-method" class="slide level2">
+<h2>Steffensen’s Method:</h2>
+<ol type="1">
+<li>start with a guess <span class="math inline">\(x_0\)</span>, compute <span class="math inline">\(x_1=f(x_0)\)</span> and <span class="math inline">\(x_2=f(x_1)\)</span></li>
+<li>use Aitken’s guess for <span class="math inline">\(x^{\star}\)</span>. If required tolerance is met, stop.</li>
+<li>otherwise, set <span class="math inline">\(x_0 = x^{\star}\)</span> and go back to step 1.</li>
+</ol>
+<p>It can be shown that the sequence generated from Steffensen’s method converges <strong>quadratically</strong>, that is</p>
+<p><span class="math inline">\(\lim_{t\rightarrow\infty} \frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \leq M  \in \mathbb{R}^{\star}\)</span></p>
+</section>
+<section id="convergence-speed" class="slide level2">
+<h2>Convergence speed</h2>
+<p>Rate of convergence of series <span class="math inline">\(x_t\)</span> towards <span class="math inline">\(x^{\star}\)</span> is:</p>
 <ul>
-<li><p>Same logic can be applied to compute integration with weight function <span class="math inline">\(w(x)\)</span>: <span class="math display">\[\int_a^b f(x) w(x)\]</span></p></li>
-<li><p>Gauss-Hermite:</p>
-<ul>
-<li><span class="math inline">\(w(x) = e^{-x^2}\)</span>, <span class="math inline">\([a,b] = [-\infty, \infty]\)</span></li>
-</ul></li>
-<li><p>Gauss-Legendre:</p>
-<ul>
-<li><span class="math inline">\(w(x) = 1\)</span></li>
-</ul></li>
-<li><p>Gauss-Chebychev:</p>
-<ul>
-<li><span class="math inline">\(w(x)=\sqrt{1-x^2}\)</span>, <span class="math inline">\([a,b] = [-1, 1]\)</span></li>
-<li>for periodic functions</li>
-</ul></li>
+<li>linear: <span class="math display">\[{\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = \mu \in R^+\]</span></li>
+<li>superlinear: <span class="math display">\[{\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|} = 0\]</span></li>
+<li>quadratic: <span class="math display">\[{\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|^{\color{red}2}} = \mu \in R^+\]</span></li>
 </ul>
+</section>
+<section id="convergence-speed-1" class="slide level2">
+<h2>Convergence speed</h2>
+<p>Remark: in the case of linear convergence:</p>
+<p><span class="math display">\[{\lim}_{t\rightarrow\infty} \frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \mu \in R^+ \iff {\lim}\_{t\rightarrow\infty} \frac{|x_{t+1}-x^{\star}|}{|x_{t}-x^{\star}|}=\frac{1}{1-\mu}\]</span></p>
 </section>
 <section id="in-practice" class="slide level2">
 <h2>In practice</h2>
-<p>Beware that weight is not the density of the normal law:</p>
-<p><span class="math display">\[\frac{1}{\sqrt{2 \pi \sigma^2}}\int f(x) e^{-\frac{x^2}{2\sigma^2}}dx = {\frac{1}{\sqrt{\pi}}}\int f(u {\sigma \sqrt{2}}) e^{-{u^2}}du \]</span> <span class="math display">\[{\frac{1}{\sqrt{\pi}}}\sum_n w_n f(\epsilon_n {\sigma \sqrt{2}})\]</span></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a><span class="im">using</span> <span class="bu">FastGaussQuadrature</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a>x, w <span class="op">=</span> <span class="fu">gausslegendre</span>( <span class="fl">10</span> );</span>
-<span id="cb5-4"><a></a>x <span class="op">=</span> x<span class="op">.*</span><span class="fu">σ*sqrt</span>(<span class="fl">2</span>) <span class="co"># renormalize nodes</span></span>
-<span id="cb5-5"><a></a>s <span class="op">=</span> <span class="fu">sum</span>( <span class="fu">w_*U</span>(<span class="fu">exp</span>(x_)) <span class="cf">for</span> (w_,x_) <span class="kw">in</span> <span class="fu">zip</span>(x,w))</span>
-<span id="cb5-6"><a></a>s <span class="op">/=</span> <span class="fu">sqrt</span>(<span class="op">\</span><span class="cn">pi</span>) <span class="co"># renormalize output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Problem:
+<ul>
+<li>Suppose one is trying to find <span class="math inline">\(x\)</span> solving the model <span class="math inline">\(G(x)=0\)</span></li>
+<li>An iterative algorithm provides a function <span class="math inline">\(f\)</span> defining a recursive series <span class="math inline">\(x_{t+1}\)</span>.</li>
+</ul></li>
+<li>The best practice consists in monitoring at the same time:
+<ul>
+<li>the success criterion: <span class="math display">\[\epsilon_n = |G(x_n)|\]</span>
+<ul>
+<li><!-- .element: class="fragment" -->
+have you found the solution?</li>
+</ul></li>
+<li>the successive approximation errors <span class="math display">\[\eta_n = |x_{n+1} - x_n|\]</span>
+<ul>
+<li><!-- .element: class="fragment" -->
+are you making progress?</li>
+</ul></li>
+<li>the ratio of successive approximation errors <span class="math display">\[\lambda_n = \frac{\eta_n}{\eta_{n-1}}\]</span>
+<ul>
+<li><!-- .element: class="fragment" -->
+what kind of convergence? (if <span class="math inline">\(|\lambda_n|&lt;1\)</span>: OK, otherwise: ❓)</li>
+</ul></li>
+</ul></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -840,7 +706,7 @@ Idea:
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'grid',
+        navigationMode: 'linear',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Economics - 309 - Tutorial: Automatic Differentiation</title>
+<title>Introduction to Computational Economics - Tutorial: Basic Optimization Algorithms</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -110,7 +81,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Computational Economics - 309
+      Introduction to Computational Economics
       </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
@@ -126,7 +97,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computational Economics - 309</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,14 +118,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of sequences</span></a>
   </div>
 </li>
       </ul>
@@ -170,14 +141,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia Basics</span></a>
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+ <span class="menu-text">Tutorial: Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -209,17 +180,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tutorial-automatic-differentiation" id="toc-tutorial-automatic-differentiation" class="nav-link active" data-scroll-target="#tutorial-automatic-differentiation">Tutorial: Automatic Differentiation</a>
+  <li><a href="#tutorial-basic-optimization-algorithms" id="toc-tutorial-basic-optimization-algorithms" class="nav-link active" data-scroll-target="#tutorial-basic-optimization-algorithms">Tutorial: Basic Optimization Algorithms</a>
   <ul class="collapse">
-  <li><a href="#computational-economics-eco309" id="toc-computational-economics-eco309" class="nav-link" data-scroll-target="#computational-economics-eco309">Computational Economics (ECO309)</a>
-  <ul class="collapse">
-  <li><a href="#simulating-an-ar1" id="toc-simulating-an-ar1" class="nav-link" data-scroll-target="#simulating-an-ar1">Simulating an AR1</a></li>
-  </ul></li>
-  <li><a href="#learning-the-consumption-rule" id="toc-learning-the-consumption-rule" class="nav-link" data-scroll-target="#learning-the-consumption-rule">Learning the Consumption Rule</a>
-  <ul class="collapse">
-  <li><a href="#lifetime-reward" id="toc-lifetime-reward" class="nav-link" data-scroll-target="#lifetime-reward">Lifetime reward</a></li>
-  <li><a href="#learning-to-save" id="toc-learning-to-save" class="nav-link" data-scroll-target="#learning-to-save">Learning to save</a></li>
-  </ul></li>
+  <li><a href="#computational-economics-eco309" id="toc-computational-economics-eco309" class="nav-link" data-scroll-target="#computational-economics-eco309">Computational Economics (ECO309)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -229,7 +192,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial: Automatic Differentiation</h1>
+<h1 class="title">Tutorial: Basic Optimization Algorithms</h1>
 </div>
 
 
@@ -246,57 +209,23 @@ window.Quarto = {
 </header>
 
 
-<section id="tutorial-automatic-differentiation" class="level1">
-<h1>Tutorial: Automatic Differentiation</h1>
+<section id="tutorial-basic-optimization-algorithms" class="level1">
+<h1>Tutorial: Basic Optimization Algorithms</h1>
 <section id="computational-economics-eco309" class="level2">
 <h2 class="anchored" data-anchor-id="computational-economics-eco309">Computational Economics (ECO309)</h2>
-<hr>
-<section id="simulating-an-ar1" class="level3">
-<h3 class="anchored" data-anchor-id="simulating-an-ar1">Simulating an AR1</h3>
-<p>Choose a 2x2 matrix <span class="math inline">\(P\)</span> (with spectral radius &lt;1) and a 2x2 matrix Q.</p>
-<p>Consider the VAR1 process <span class="math inline">\(x_t = P x_{t-1} + Q \epsilon_t\)</span> where <span class="math inline">\(\epsilon_t= (\eta_{1,t}, \eta_{2,t})\)</span> with <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span></p>
-<p><strong>Compute impulse response functions.</strong></p>
-<p><strong>Simulate the process for <span class="math inline">\(T\)</span> periods.</strong></p>
-<p><strong>Simulate the process <span class="math inline">\(N=1000\)</span> times for <span class="math inline">\(T=1000\)</span> periods. How would you store the results?</strong></p>
-<p><strong>Make density plots to illustrate the ergodic property of the process</strong></p>
-<p><strong>Compute the asymptotic variance of the process. Compare with the theoretical one.</strong></p>
-</section>
-</section>
-<section id="learning-the-consumption-rule" class="level2">
-<h2 class="anchored" data-anchor-id="learning-the-consumption-rule">Learning the Consumption Rule</h2>
-<p>This exercise is inspired from <em>Individual learning about consumption</em> by Todd Allen and Chris Carroll <a href="https://www.econstor.eu/bitstream/10419/72016/1/328292125.pdf">link</a> and from <em>Deep Learning for Solving Economic models</em> by Maliar, Maliar and Winant <a href="https://web.stanford.edu/~maliars/Files/JME2021.pdf">link</a></p>
-<p>We consider the following consumption saving problem. An agent receives random income <span class="math inline">\(y_t = \exp(\epsilon_t)\)</span> where <span class="math inline">\(\epsilon_t\sim \mathcal{N}(\sigma)\)</span> (<span class="math inline">\(\sigma\)</span> is the standard deviation.)</p>
-<p>Consumer starts the period with available income <span class="math inline">\(w_t\)</span>. The law of motion for available income is:</p>
-<p><span class="math display">\[w_t = \exp(\epsilon_t) + (w_{t-1}-c_{t-1}) r\]</span></p>
-<p>where consumption <span class="math inline">\(c_t \in ]0,w_t]\)</span> is chosen in each period in order to maximize:</p>
-<p><span class="math display">\[E_t \sum_{t=0}^T \beta^t U(c_t)\]</span></p>
-<p>given initial available income <span class="math inline">\(w_0\)</span>.</p>
-<p>In the questions below, we will use the following calibration: - <span class="math inline">\(\beta = 0.9\)</span> - <span class="math inline">\(\sigma = 0.1\)</span> - <span class="math inline">\(T=100\)</span> - <span class="math inline">\(U(x) = \frac{x^{1-\gamma}}{1-\gamma}\)</span> with <span class="math inline">\(\gamma=2\)</span> - <span class="math inline">\(w_0 = 1.1\)</span> (alternatively, consider values 0.5 and 1)</p>
-<p>The theoretical solution to this problem is a concave function <span class="math inline">\(\varphi\)</span> such that <span class="math inline">\(\varphi(x)\in ]0,x]\)</span> and <span class="math inline">\(\forall t,  c_t=\varphi(w_t)\)</span>. Qualitatively, agents accumulate savings, up to a certain point (a buffer stock), beyond which wealth is not increasing any more (in expectation).</p>
-<p>Carroll and Allen have noticed that the true solution can be approximated very well by a simple rule:</p>
-<p><span class="math inline">\(\psi(x) = \min(x, \theta_0 + \theta_1 (x - \theta_0) )\)</span></p>
-<p>The main question they ask in the aforementioned paper is whether it is realistic that agents would learn good values of <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span> by observing past experiences.</p>
-<p>We would like to examine this result.</p>
-<section id="lifetime-reward" class="level3">
-<h3 class="anchored" data-anchor-id="lifetime-reward">Lifetime reward</h3>
-<p><strong>Define a NamedTuple to hold the parameter values</strong></p>
-<p><strong>Define simple rule fonction <code>consumption(w::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which compute consumption using a simple rule. What is the meaning of <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>? Make a plot in the space <span class="math inline">\(w,c\)</span>, including consumption rule and the line where <span class="math inline">\(w_{t+1} = w_t\)</span>.</strong></p>
-<p>(remark for later: <code>Number</code> type is compatible with ForwardDiff.jl 😉)</p>
-<p><strong>Write a function <code>lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which computes one realization of <span class="math inline">\(\sum \beta^t U(c_t)\)</span> for initial wealth <code>w_0</code> and simple rule <code>θ_0</code>, <code>θ_1</code>. Mathematically, we denote it by <span class="math inline">\(\xi(\omega; \theta_0, \theta_1)\)</span>, where <span class="math inline">\(\omega\)</span> represents the succession of random income draws.</strong></p>
-<p><strong>Write a function <code>expected_lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number,  p::NamedTuple; N=1000)</code> which computes expected lifetime reward using <code>N</code> Monte-Carlo draws. Mathematically, we write it <span class="math inline">\(\Xi^{N}(\theta_0, \theta_1) =\frac{1}{N} \sum_1^N {\xi(\omega_N; \theta_0, \theta_1)}\)</span>. Check empirically that standard deviation of these draws decrease proportionally to <span class="math inline">\(\frac{1}{\sqrt{N}}\)</span> .</strong></p>
-<p>__Using a high enough number for <code>N</code>, compute optimal values for <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>. What is the matching value for the objective function converted into an equivalent stream of determinstic consumption ? That is if <code>V</code> is the approximated value computed above, what is <span class="math inline">\(\bar{c}\in \R\)</span> such that $ V= _{t=0}^T ^t U({c})$ ?__</p>
-<p><strong>Using a high enough number for <code>N</code>, make contour plots of lifetime rewards as a function of <code>θ_0</code> and <code>θ_1</code>. Ideally, represent lines with <span class="math inline">\(1\%\)</span> consumption loss, <span class="math inline">\(5\%\)</span> and <span class="math inline">\(10\%\)</span> deterministic consumption loss w.r.t. to maximum.</strong></p>
-</section>
-<section id="learning-to-save" class="level3">
-<h3 class="anchored" data-anchor-id="learning-to-save">Learning to save</h3>
-<p><strong>We now focus on the number of steps it takes to optimize <span class="math inline">\(\theta_0\)</span>, <span class="math inline">\(\theta_1\)</span>.</strong></p>
-<p><strong>Implement a function <code>∇(θ::Vector; N=1000)::Vector</code> which computes the gradient of the objective w.r.t. <code>θ==[θ_0,θ_1]</code>. (You need to use automatic differentiation, otherwise you might get incorrect results).</strong></p>
-<p><strong>Implement a gradient descent algorithm to maximize <span class="math inline">\(\Xi^N(\theta_0, \theta_1)\)</span> using learning rate <span class="math inline">\(\lambda \in ]0,1]\)</span>. Stop after a predefined number of iterations. Compare convergence speed for different values of <span class="math inline">\(\lambda\)</span> and plot them on the <span class="math inline">\(\theta_0, \theta_1\)</span> plan. How many steps does it take to enter the <code>1%</code> error zone? The <code>5%</code> and the <code>10%</code> error zone?</strong></p>
-<p><strong>Even for big N, the evaluated value of ∇ are stochastic, and always slightly inaccurate. In average, they are non-biased and the algorithm converges in expectation (it fluctuates around the maximum). This is called the stochastic gradient method.</strong></p>
-<p><strong>What are the values of <span class="math inline">\(N\)</span> and <span class="math inline">\(\lambda\)</span> which minimize the number of iterations before reaching the target zones (at 1%, 2%, etc…)? How many simulations periods does it correspond to? Would you say it is realistic that consumers learn from their own experience?</strong></p>
+<p>The spirit of this simple tutorial consists in learning how to write simple solution algorithms. For each algorithm, test that it works, using simple test functions whose solution is known.</p>
+<p><strong>Write a function <code>fixed_point(f::Function, x0::Float64)</code> which computes the fixed point of <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Write a function <code>bisection(f::Function, a::Float64, b::Float64)</code> which computes a zero of function <code>f</code> within <code>(a,b)</code> using a bisection method.</strong></p>
+<p><strong>Write a function <code>golden(f::Function, a::Float64, b::Float64)</code> which computes a zero of function <code>f</code> within <code>(a,b)</code> using a golden ratio method.</strong></p>
+<p><strong>Write a function <code>zero_newton(f::Function, x0::Float64)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Add an option <code>zero_newton(f::Function, x0::Float64, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
+<p><strong>Write a function <code>min_gd(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using gradient descent. Assume <code>f</code> returns a scalar and a gradient.</strong></p>
+<p><strong>Write a function <code>min_nr(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using Newton-Raphson method. Assume <code>f</code> returns a scalar, a gradient, and a hessian.</strong></p>
+<p><strong>Write a method <code>zero_newton(f::Function, x0::Vector{Float64})</code> which computes the zero of a vector valued function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Add an method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
+<p><strong>Add a method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true, lb=Vector{Float64})</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> taking complementarity constraint into account <code>x&gt;=lb</code> using the Fischer-Burmeister method.</strong></p>
 
 
-</section>
 </section>
 </section>
 

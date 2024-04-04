@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Economics - 309 - Convergence: Solow Model</title>
+<title>Introduction to Computational Economics - Tutorial: Discrete Dynamic Programming (2)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -144,7 +110,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Computational Economics - 309
+      Introduction to Computational Economics
       </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
@@ -160,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computational Economics - 309</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -181,14 +147,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of sequences</span></a>
   </div>
 </li>
       </ul>
@@ -204,14 +170,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia Basics</span></a>
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+ <span class="menu-text">Tutorial: Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -243,9 +209,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#convergence-solow-model" id="toc-convergence-solow-model" class="nav-link active" data-scroll-target="#convergence-solow-model">Convergence: Solow Model</a>
+  <li><a href="#tutorial-discrete-dynamic-programming-2" id="toc-tutorial-discrete-dynamic-programming-2" class="nav-link active" data-scroll-target="#tutorial-discrete-dynamic-programming-2">Tutorial: Discrete Dynamic Programming (2)</a>
   <ul class="collapse">
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link" data-scroll-target="#solow-model">Solow Model</a></li>
+  <li><a href="#advanced-macro-numerical-methods" id="toc-advanced-macro-numerical-methods" class="nav-link" data-scroll-target="#advanced-macro-numerical-methods">Advanced Macro: numerical methods</a>
+  <ul class="collapse">
+  <li><a href="#job-search-model" id="toc-job-search-model" class="nav-link" data-scroll-target="#job-search-model">Job-Search Model</a></li>
+  <li><a href="#simulating-an-ar1" id="toc-simulating-an-ar1" class="nav-link" data-scroll-target="#simulating-an-ar1">Simulating an AR1</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -255,7 +225,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Convergence: Solow Model</h1>
+<h1 class="title">Tutorial: Discrete Dynamic Programming (2)</h1>
 </div>
 
 
@@ -272,150 +242,56 @@ window.Quarto = {
 </header>
 
 
-<section id="convergence-solow-model" class="level1">
-<h1>Convergence: Solow Model</h1>
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
-<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
-<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
-<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
-<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
-<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
-<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
-<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
-<p>The goal of the representative agent is to maximize:</p>
-<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
-<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
-<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
-<div id="cell-4" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (;β<span class="op">=</span><span class="fl">0.96</span>, δ<span class="op">=</span><span class="fl">0.1</span>, α<span class="op">=</span><span class="fl">0.3</span>, γ<span class="op">=</span><span class="fl">4.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>(β = 0.96, δ = 0.1, α = 0.3, γ = 4.0)</code></pre>
-</div>
-</div>
-<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
-<p><span class="math display">\[k_{t+1}= (1-\delta) k_t + (1-s) k_t^{\alpha}\]</span></p>
-<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
-<div id="cell-8" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function f(k::Float64, p::NamedTuple)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we added a keyword argument to specify the saving rate</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span>(k, p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (;α, δ) <span class="op">=</span> p <span class="co"># keyword unpacking syntax</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> <span class="fu">k*</span>(<span class="fl">1</span><span class="op">-</span>δ) <span class="op">+</span> s<span class="op">*</span>k<span class="op">^</span>α</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> val </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>f (generic function with 2 methods)</code></pre>
-</div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">0.1</span>, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>0.1902374467254545</code></pre>
-</div>
-</div>
-<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
-<div id="cell-11" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">simulate</span>(k0, T, p; s<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sim <span class="op">=</span> [k0]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>T    <span class="co"># same as for i in ... or for i=...</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># in Julia, intervals contain the lower and upper bound</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        k1 <span class="op">=</span> <span class="fu">f</span>(k0, p; s<span class="op">=</span>s)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add new value to simulation vector</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">push!</span>(sim, k1)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        k0 <span class="op">=</span> k1</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sim</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>simulate (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-12" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> <span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>101-element Vector{Float64}:
- 0.2
- 0.30340677254400195
- 0.4129080792968781
- 0.525003373019628
- 0.6373491155565568
- 0.7483344417178636
- 0.856841626057419
- 0.9620988898971137
- 1.0635841029776287
- 1.1609587708409257
- ⋮
- 2.6876186883735818
- 2.6879113388853018
- 2.6881835130861362
- 2.6884366430712516
- 2.6886720608576273
- 2.688891005366757
- 2.689094628921639
- 2.6892840032916374
- 2.6894601253165105</code></pre>
-</div>
-</div>
-<div id="cell-13" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sometimes, we want to avoid using too much memory</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in that case we try to do as many inplace operations as possible</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">simulate_preallocate</span>(k, T, p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="fu">zeros</span>(T) <span class="co"># allocates memore</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    v[<span class="fl">1</span>] <span class="op">=</span> k</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>(T<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        k0 <span class="op">=</span> v[t]</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        v[t<span class="op">+</span><span class="fl">1</span>] <span class="op">=</span> <span class="fu">f</span>(k0, p; s<span class="op">=</span>s)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>simulate_preallocate (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-14" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">simulate</span>(<span class="fl">0.2</span>, <span class="fl">1000000</span>, p);</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">simulate_preallocate</span>(<span class="fl">0.2</span>, <span class="fl">1000000</span>, p);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.067737 seconds (14 allocations: 9.781 MiB)
-  0.055613 seconds (2 allocations: 7.629 MiB)</code></pre>
-</div>
-</div>
-<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
-<div id="cell-16" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pl<span class="op">=</span> <span class="fu">plot</span>(<span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;); label<span class="op">=</span><span class="st">"baseline"</span>, title<span class="op">=</span><span class="st">"Convergence of Solow Model"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(pl, <span class="fu">simulate</span>(<span class="fl">6.0</span>, <span class="fl">100</span>, p;); label<span class="op">=</span><span class="st">"high initial capital"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(pl, <span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;s<span class="op">=</span><span class="fl">0.2</span>); label<span class="op">=</span><span class="st">"lower saving rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
-<div id="cell-18" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">steady_state</span>(p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    sim <span class="op">=</span> <span class="fu">simulate</span>(<span class="fl">0.1</span>, <span class="fl">1000</span>, p)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sim[<span class="kw">end</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>steady_state (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">steady_state</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2.691800385264708</code></pre>
-</div>
-</div>
+<section id="tutorial-discrete-dynamic-programming-2" class="level1">
+<h1>Tutorial: Discrete Dynamic Programming (2)</h1>
+<section id="advanced-macro-numerical-methods" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-macro-numerical-methods">Advanced Macro: numerical methods</h2>
+<section id="job-search-model" class="level3">
+<h3 class="anchored" data-anchor-id="job-search-model">Job-Search Model</h3>
+<ul>
+<li>When unemployed in date, a job-seeker
+<ul>
+<li>consumes unemployment benefit <span class="math inline">\(c_t = \underline{c}\)</span></li>
+<li>receives in every date <span class="math inline">\(t\)</span> a job offer <span class="math inline">\(w_t\)</span>
+<ul>
+<li><span class="math inline">\(w_t\)</span> is i.i.d.,</li>
+<li>takes values <span class="math inline">\(w_1, w_2, w_3\)</span> with probabilities <span class="math inline">\(p_1, p_2, p_3\)</span></li>
+</ul></li>
+<li>if job-seeker accepts, becomes employed at rate <span class="math inline">\(w_t\)</span> in the next period</li>
+<li>else he stays unemployed</li>
+</ul></li>
+<li>When employed at rate <span class="math inline">\(w\)</span>
+<ul>
+<li>worker consumes salary <span class="math inline">\(c_t = w\)</span></li>
+<li>with small probability <span class="math inline">\(\lambda&gt;0\)</span> looses his job:
+<ul>
+<li>starts next period unemployed</li>
+</ul></li>
+<li>otherwise stays employed at same rate</li>
+</ul></li>
+<li>Objective: <span class="math inline">\(\max E_0 \left\{ \sum \beta^t \log(w_t) \right\}\)</span></li>
+</ul>
+<p><strong>What are the states, the controls, the reward of this problem ? Write down the Bellman equation.</strong></p>
+<p><strong>Define a parameter structure for the model.</strong></p>
+<p><strong>Define a function <code>value_update(V_U::Vector{Float64}, V_E::Vector{Float64}, x::Vector{Bool}, p::Parameters)::Tuple{Vector, Vector}</code>, which takes in value functions tomorrow and a policy vector and return updated values for today.</strong></p>
+<p><strong>Define a function <strong>Define a function <code>policy_eval(x::Vector{Bool}, p::Parameter)::Tuple{Vector, Vector}</code> which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.</strong> which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.</strong></p>
+<p><strong>Define a function <code>bellman_step(V_E::Vector, V_U::Vector, p::Parameters)::Tuple{Vector, Vector, Vector}</code> which returns updated values, together with improved policy rules.</strong></p>
+<p><strong>Implement Value Function</strong></p>
+<p><strong>Implement Policy Iteration and compare rates of convergence.</strong></p>
+<p><strong>Discuss the Effects of the Parameters</strong></p>
+</section>
+<section id="simulating-an-ar1" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-an-ar1">Simulating an AR1</h3>
+<p>Choose a 2x2 matrix <span class="math inline">\(P\)</span> (with spectral radius &lt;1) and a 2x2 matrix Q.</p>
+<p>Consider the VAR1 process <span class="math inline">\(x_t = P x_{t-1} + Q \epsilon_t\)</span> where <span class="math inline">\(\epsilon_t= (\eta_{1,t}, \eta_{2,t})\)</span> with <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span></p>
+<p><strong>Compute impulse response functions.</strong></p>
+<p><strong>Simulate the process for <span class="math inline">\(T\)</span> periods.</strong></p>
+<p><strong>Simulate the process <span class="math inline">\(N=1000\)</span> times for <span class="math inline">\(T=1000\)</span> periods. How would you store the results?</strong></p>
+<p><strong>Make density plots to illustrate the ergodic property of the process</strong></p>
+<p><strong>Compute the asymptotic variance of the process. Compare with the theoretical one.</strong></p>
 
 
+</section>
 </section>
 </section>
 

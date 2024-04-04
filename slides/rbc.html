@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Economics - 309</title>
+<title>Introduction to Computational Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Computational Economics - 309
+      Introduction to Computational Economics
       </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
@@ -126,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Computational Economics - 309</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,14 +147,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of sequences</span></a>
   </div>
 </li>
       </ul>
@@ -170,14 +170,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia Basics</span></a>
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of Sequences</span></a>
+ <span class="menu-text">Tutorial: Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -209,9 +209,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#real-business-cycles-with-dolo" id="toc-real-business-cycles-with-dolo" class="nav-link active" data-scroll-target="#real-business-cycles-with-dolo">Real Business Cycles, with Dolo</a>
+  <li><a href="#real-business-cycles" id="toc-real-business-cycles" class="nav-link active" data-scroll-target="#real-business-cycles">Real Business Cycles</a>
   <ul class="collapse">
-  <li><a href="#advanced-macro-numerical-methods-2021-mie37" id="toc-advanced-macro-numerical-methods-2021-mie37" class="nav-link" data-scroll-target="#advanced-macro-numerical-methods-2021-mie37">Advanced Macro: Numerical Methods, 2021 (MIE37)</a>
+  <li><a href="#computational-economics-2022-eco-309" id="toc-computational-economics-2022-eco-309" class="nav-link" data-scroll-target="#computational-economics-2022-eco-309">Computational Economics 2022 (ECO 309)</a>
   <ul class="collapse">
   <li><a href="#the-rbc-model-planner-version" id="toc-the-rbc-model-planner-version" class="nav-link" data-scroll-target="#the-rbc-model-planner-version">The RBC Model: planner version</a></li>
   <li><a href="#lagrangian" id="toc-lagrangian" class="nav-link" data-scroll-target="#lagrangian">Lagrangian</a></li>
@@ -241,16 +241,23 @@ window.Quarto = {
 
 
 
-<section id="real-business-cycles-with-dolo" class="level1">
-<h1>Real Business Cycles, with Dolo</h1>
-<section id="advanced-macro-numerical-methods-2021-mie37" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-macro-numerical-methods-2021-mie37">Advanced Macro: Numerical Methods, 2021 (MIE37)</h2>
+<section id="real-business-cycles" class="level1">
+<h1>Real Business Cycles</h1>
+<section id="computational-economics-2022-eco-309" class="level2">
+<h2 class="anchored" data-anchor-id="computational-economics-2022-eco-309">Computational Economics 2022 (ECO 309)</h2>
 <hr>
+<ul>
+<li>Real Business Cycle
 <ul>
 <li>Like the neo-classical growth model</li>
 <li>With shocks</li>
 <li>With labour</li>
 <li>With a decentralized interpretation</li>
+</ul></li>
+<li>Explains <em>short term</em> fluctuations
+<ul>
+<li>without demand shocks / money</li>
+</ul></li>
 </ul>
 <hr>
 <section id="the-rbc-model-planner-version" class="level3">
@@ -312,12 +319,7 @@ k_t = (1-\delta) k_{t-1} + i_{t-1}
 <li>math for continuous processes a bit involved (filtrations, …), but most intuition can be gained from discrete process</li>
 </ul></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="head_tail.png" class="img-fluid figure-img"></p>
-<figcaption>head or tail</figcaption>
-</figure>
-</div>
+<p>[graph ]</p>
 </div>
 <div class="col">
 <ul>
