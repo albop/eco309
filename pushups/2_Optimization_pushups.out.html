@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Computational Economics - Tutorial: Discrete Dynamic Programming (2)</title>
+<title>Introduction to Computational Economics - Optimization Pushups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -147,14 +118,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of sequences</span></a>
+  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
   </div>
 </li>
       </ul>
@@ -177,7 +154,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial: Convergence</span></a>
+ <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
       </ul>
@@ -197,6 +174,12 @@ window.Quarto = {
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization Pushups</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -209,14 +192,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tutorial-discrete-dynamic-programming-2" id="toc-tutorial-discrete-dynamic-programming-2" class="nav-link active" data-scroll-target="#tutorial-discrete-dynamic-programming-2">Tutorial: Discrete Dynamic Programming (2)</a>
-  <ul class="collapse">
-  <li><a href="#advanced-macro-numerical-methods" id="toc-advanced-macro-numerical-methods" class="nav-link" data-scroll-target="#advanced-macro-numerical-methods">Advanced Macro: numerical methods</a>
-  <ul class="collapse">
-  <li><a href="#job-search-model" id="toc-job-search-model" class="nav-link" data-scroll-target="#job-search-model">Job-Search Model</a></li>
-  <li><a href="#simulating-an-ar1" id="toc-simulating-an-ar1" class="nav-link" data-scroll-target="#simulating-an-ar1">Simulating an AR1</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#optimization-pushups" id="toc-optimization-pushups" class="nav-link active" data-scroll-target="#optimization-pushups">Optimization Pushups</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +201,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial: Discrete Dynamic Programming (2)</h1>
+<h1 class="title">Optimization Pushups</h1>
 </div>
 
 
@@ -242,57 +218,21 @@ window.Quarto = {
 </header>
 
 
-<section id="tutorial-discrete-dynamic-programming-2" class="level1">
-<h1>Tutorial: Discrete Dynamic Programming (2)</h1>
-<section id="advanced-macro-numerical-methods" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-macro-numerical-methods">Advanced Macro: numerical methods</h2>
-<section id="job-search-model" class="level3">
-<h3 class="anchored" data-anchor-id="job-search-model">Job-Search Model</h3>
-<ul>
-<li>When unemployed in date, a job-seeker
-<ul>
-<li>consumes unemployment benefit <span class="math inline">\(c_t = \underline{c}\)</span></li>
-<li>receives in every date <span class="math inline">\(t\)</span> a job offer <span class="math inline">\(w_t\)</span>
-<ul>
-<li><span class="math inline">\(w_t\)</span> is i.i.d.,</li>
-<li>takes values <span class="math inline">\(w_1, w_2, w_3\)</span> with probabilities <span class="math inline">\(p_1, p_2, p_3\)</span></li>
-</ul></li>
-<li>if job-seeker accepts, becomes employed at rate <span class="math inline">\(w_t\)</span> in the next period</li>
-<li>else he stays unemployed</li>
-</ul></li>
-<li>When employed at rate <span class="math inline">\(w\)</span>
-<ul>
-<li>worker consumes salary <span class="math inline">\(c_t = w\)</span></li>
-<li>with small probability <span class="math inline">\(\lambda&gt;0\)</span> looses his job:
-<ul>
-<li>starts next period unemployed</li>
-</ul></li>
-<li>otherwise stays employed at same rate</li>
-</ul></li>
-<li>Objective: <span class="math inline">\(\max E_0 \left\{ \sum \beta^t \log(w_t) \right\}\)</span></li>
-</ul>
-<p><strong>What are the states, the controls, the reward of this problem ? Write down the Bellman equation.</strong></p>
-<p><strong>Define a parameter structure for the model.</strong></p>
-<p><strong>Define a function <code>value_update(V_U::Vector{Float64}, V_E::Vector{Float64}, x::Vector{Bool}, p::Parameters)::Tuple{Vector, Vector}</code>, which takes in value functions tomorrow and a policy vector and return updated values for today.</strong></p>
-<p><strong>Define a function <strong>Define a function <code>policy_eval(x::Vector{Bool}, p::Parameter)::Tuple{Vector, Vector}</code> which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.</strong> which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.</strong></p>
-<p><strong>Define a function <code>bellman_step(V_E::Vector, V_U::Vector, p::Parameters)::Tuple{Vector, Vector, Vector}</code> which returns updated values, together with improved policy rules.</strong></p>
-<p><strong>Implement Value Function</strong></p>
-<p><strong>Implement Policy Iteration and compare rates of convergence.</strong></p>
-<p><strong>Discuss the Effects of the Parameters</strong></p>
-</section>
-<section id="simulating-an-ar1" class="level3">
-<h3 class="anchored" data-anchor-id="simulating-an-ar1">Simulating an AR1</h3>
-<p>Choose a 2x2 matrix <span class="math inline">\(P\)</span> (with spectral radius &lt;1) and a 2x2 matrix Q.</p>
-<p>Consider the VAR1 process <span class="math inline">\(x_t = P x_{t-1} + Q \epsilon_t\)</span> where <span class="math inline">\(\epsilon_t= (\eta_{1,t}, \eta_{2,t})\)</span> with <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\eta_1\sim\mathcal{N}(0,1)\)</span></p>
-<p><strong>Compute impulse response functions.</strong></p>
-<p><strong>Simulate the process for <span class="math inline">\(T\)</span> periods.</strong></p>
-<p><strong>Simulate the process <span class="math inline">\(N=1000\)</span> times for <span class="math inline">\(T=1000\)</span> periods. How would you store the results?</strong></p>
-<p><strong>Make density plots to illustrate the ergodic property of the process</strong></p>
-<p><strong>Compute the asymptotic variance of the process. Compare with the theoretical one.</strong></p>
+<section id="optimization-pushups" class="level1">
+<h1>Optimization Pushups</h1>
+<p>The spirit of this simple tutorial consists in learning how to write simple solution algorithms. For each algorithm, test that it works, using simple test functions whose solution is known.</p>
+<p><strong>Write a function <code>fixed_point(f::Function, x0::Float64)</code> which computes the fixed point of <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Write a function <code>bisection(f::Function, a::Float64, b::Float64)</code> which computes the zero of function <code>f</code> within <code>(a,b)</code> using a bisection method.</strong></p>
+<p><strong>Write a function <code>golden(f::Function, a::Float64, b::Float64)</code> which computes a zero of function <code>f</code> within <code>(a,b)</code> using a golden ratio method.</strong></p>
+<p><strong>Write a function <code>zero_newton(f::Function, x0::Float64)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Add an option <code>zero_newton(f::Function, x0::Float64, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
+<p><strong>Write a function <code>min_gd(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using gradient descent. Assume <code>f</code> returns a scalar and a gradient.</strong></p>
+<p><strong>Write a function <code>min_nr(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using Newton-Raphson method. Assume <code>f</code> returns a scalar, a gradient, and a hessian.</strong></p>
+<p><strong>Write a method <code>zero_newton(f::Function, x0::Vector{Float64})</code> which computes the zero of a vector valued function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
+<p><strong>Add an method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
+<p><strong>Add a method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true, lb=Vector{Float64})</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> taking complementarity constraint into account <code>x&gt;=lb</code> using the Fischer-Burmeister method.</strong></p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

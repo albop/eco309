@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pablo Winant">
 
-<title>Introduction to Computational Economics - Optimization</title>
+<title>Introduction to Computational Economics - Convergence: Solow Model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,7 +97,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -127,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Introduction to Computational Economics</a> 
+      <a href="../../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -148,14 +147,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of sequences</span></a>
+  <a href="../../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
   </div>
 </li>
       </ul>
@@ -171,14 +176,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial: Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial: Convergence</span></a>
+  <a href="../../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
       </ul>
@@ -194,8 +199,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Epidemiology Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization Pushups</span></a>
   </div>
 </li>
       </ul>
@@ -210,31 +221,25 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#computational-economics-mie37" id="toc-computational-economics-mie37" class="nav-link active" data-scroll-target="#computational-economics-mie37">Computational Economics (MIE37)</a></li>
-  <li><a href="#profit-optimization-by-a-monopolist" id="toc-profit-optimization-by-a-monopolist" class="nav-link" data-scroll-target="#profit-optimization-by-a-monopolist">Profit optimization by a monopolist</a></li>
-  <li><a href="#constrained-optimization" id="toc-constrained-optimization" class="nav-link" data-scroll-target="#constrained-optimization">Constrained optimization</a></li>
-  <li><a href="#consumption-optimization" id="toc-consumption-optimization" class="nav-link" data-scroll-target="#consumption-optimization">Consumption optimization</a></li>
+  <li><a href="#convergence-solow-model" id="toc-convergence-solow-model" class="nav-link active" data-scroll-target="#convergence-solow-model">Convergence: Solow Model</a>
+  <ul class="collapse">
+  <li><a href="#solow-model" id="toc-solow-model" class="nav-link" data-scroll-target="#solow-model">Solow Model</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="4_Optimization.out.ipynb" download="4_Optimization.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Optimization</h1>
+<h1 class="title">Convergence: Solow Model</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Pablo Winant </p>
-          </div>
-  </div>
     
   
     
@@ -245,40 +250,31 @@ window.Quarto = {
 </header>
 
 
-<section id="computational-economics-mie37" class="level2">
-<h2 class="anchored" data-anchor-id="computational-economics-mie37">Computational Economics (MIE37)</h2>
-<p>In this tutorial you will learn to code and use common optimization algorithms for static models.</p>
-<hr>
-</section>
-<section id="profit-optimization-by-a-monopolist" class="level2">
-<h2 class="anchored" data-anchor-id="profit-optimization-by-a-monopolist">Profit optimization by a monopolist</h2>
-<p>A monopolist produces quantity <span class="math inline">\(q\)</span> of goods X at price <span class="math inline">\(p\)</span>. Its cost function is <span class="math inline">\(c(q) = 0.5 + q (1-qe^{-q})\)</span></p>
-<p>The consumer’s demand for price <span class="math inline">\(p\)</span> is <span class="math inline">\(x(p)=2 e^{-0.5 p}\)</span> (constant elasticity of demand to price).</p>
-<p><strong>Write down the profit function of the monopolist and find the optimal production (if any). Don’t use any library except for plotting.</strong></p>
-<hr>
-</section>
-<section id="constrained-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="constrained-optimization">Constrained optimization</h2>
-<p>Consider the function <span class="math inline">\(f(x,y) = 1-(x-0.5)^2 -(y-0.3)^2\)</span>.</p>
-<p><strong>Use Optim.jl to minimize <span class="math inline">\(f\)</span> without constraint. Check you understand diagnostic information returned by the optimizer.</strong></p>
-<p><strong>Now, consider the constraint <span class="math inline">\(x&lt;0.3\)</span> and maximize <span class="math inline">\(f\)</span> under this new constraint.</strong></p>
-<p><strong>Reformulate the problem as a root finding problem with lagrangians. Write the complementarity conditions.</strong></p>
-<p><strong>Solve using NLSolve.jl</strong></p>
-<hr>
-</section>
-<section id="consumption-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="consumption-optimization">Consumption optimization</h2>
-<p>A consumer has preferences <span class="math inline">\(U(c_1, c_2)\)</span> over two consumption goods <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span>.</p>
-<p>Given a budget <span class="math inline">\(I\)</span>, consumer wants to maximize utility subject to the budget constraint <span class="math inline">\(p_1 c_1 + p_2 c_2 \leq I\)</span>.</p>
-<p>We choose a Stone-Geary specification where</p>
-<p><span class="math inline">\(U(c_1, c_2)=\beta_1 \log(c_1-\gamma_1) + \beta_2 \log(c_2-\gamma_2)\)</span></p>
-<p><strong>Write the Karush-Kuhn-Tucker necessary conditions for the problem.</strong></p>
-<p><strong>Verify the KKT conditions are sufficient for optimality.</strong></p>
-<p><strong>Derive analytically the demand functions, and the shadow price.</strong></p>
-<p><strong>Interpret this problem as a complementarity problem and solve it using NLSolve.</strong></p>
-<p><strong>Produce some nice graphs with isoutility curves, the budget constraint and the optimal choice.</strong></p>
+<section id="convergence-solow-model" class="level1">
+<h1>Convergence: Solow Model</h1>
+<p>Pablo Winant</p>
+<section id="solow-model" class="level3">
+<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
+<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
+<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
+<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
+<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
+<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
+<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
+<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
+<p>The goal of the representative agent is to maximize:</p>
+<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
+<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
+<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
+<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
+<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
+<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
+<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
+<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
+<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

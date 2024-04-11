@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Computational Economics - Tutorial: Epidemiology Models</title>
+<title>Introduction to Computational Economics - Epidemiology Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,14 +147,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of sequences</span></a>
+  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
   </div>
 </li>
       </ul>
@@ -177,7 +183,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial: Convergence</span></a>
+ <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
       </ul>
@@ -197,6 +203,12 @@ window.Quarto = {
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization Pushups</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -209,14 +221,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tutorial-epidemiology-models" id="toc-tutorial-epidemiology-models" class="nav-link active" data-scroll-target="#tutorial-epidemiology-models">Tutorial: Epidemiology Models</a>
-  <ul class="collapse">
-  <li><a href="#computational-economics-eco309" id="toc-computational-economics-eco309" class="nav-link" data-scroll-target="#computational-economics-eco309">Computational Economics (ECO309)</a>
+  <li><a href="#epidemiology-models" id="toc-epidemiology-models" class="nav-link active" data-scroll-target="#epidemiology-models">Epidemiology Models</a>
   <ul class="collapse">
   <li><a href="#simple-sir-model" id="toc-simple-sir-model" class="nav-link" data-scroll-target="#simple-sir-model">Simple SIR model</a></li>
   <li><a href="#a-spatial-sir-model" id="toc-a-spatial-sir-model" class="nav-link" data-scroll-target="#a-spatial-sir-model">A Spatial SIR model</a></li>
   <li><a href="#additional-questions" id="toc-additional-questions" class="nav-link" data-scroll-target="#additional-questions">Additional questions</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -226,7 +235,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial: Epidemiology Models</h1>
+<h1 class="title">Epidemiology Models</h1>
 </div>
 
 
@@ -243,10 +252,8 @@ window.Quarto = {
 </header>
 
 
-<section id="tutorial-epidemiology-models" class="level1">
-<h1>Tutorial: Epidemiology Models</h1>
-<section id="computational-economics-eco309" class="level2">
-<h2 class="anchored" data-anchor-id="computational-economics-eco309">Computational Economics (ECO309)</h2>
+<section id="epidemiology-models" class="level1">
+<h1>Epidemiology Models</h1>
 <p>H.W. Heathcote: epidemiologic models are <em>deterministic models for infectious diseases which are spread by direct person-to-person contact in a population</em>.</p>
 <p>This kind of models has been used since by a few decades by economist, for matters that have nothing to do with health.</p>
 <ul>
@@ -256,7 +263,7 @@ window.Quarto = {
 </ul>
 <p>Epidemiologic models have two features that depart from standard economic models:</p>
 <ul>
-<li>Agent’s behaviour does not take the full system into account, an is irrational in the sense that it isn’t forwards looking. Instead, an agent is given a behavioural heuristic.</li>
+<li>Agent’s behaviour does not take the full system into account, an is irrational in the sense that it isn’t forward looking. Instead, an agent is given a behavioural heuristic.</li>
 <li>The transitions of the whole system can be determined without solving for complex interactions first.</li>
 </ul>
 <p>Understanding why these two assumptions are very costly for economists will keep us busy during a big part of the course. Here we just consider two simple models as small programming exercises.</p>
@@ -267,7 +274,7 @@ window.Quarto = {
 <p><strong>Write down the transition equations for <span class="math inline">\(n_I\)</span>, the number of infected people, for <span class="math inline">\(n_R\)</span> the number of recovered people and <span class="math inline">\(n_S\)</span> the number of susceptible people.</strong></p>
 <p><strong>Compute the transition function <code>f</code> for the vector state <span class="math inline">\(s_t\)</span> returning <span class="math inline">\(s_{t+1}\)</span>.</strong></p>
 <p><strong>Compute the transitions over <span class="math inline">\(T\)</span> periods. Plot the result using Plots.jl. (bonus: check against closed form solution)</strong></p>
-<p><strong>We now assume a Susceptible person who meets an infected one has a probability <span class="math inline">\(\mu\)</span> of catching the disease. Update the transition function. Update function <span class="math inline">\(f\)</span> and write a function of <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span> which returns the simulation. Compare different values of the parameters. How would you interpret “social distancing”? How would you choose parameters <span class="math inline">\(\Pi\)</span> and <span class="math inline">\(\mu\)</span>?</strong></p>
+<p><strong>We now assume a Susceptible person who meets an infected one has a probability <span class="math inline">\(\mu\)</span> of catching the disease. Update the transition function <span class="math inline">\(f\)</span> and write a function <code>simulate</code> of <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span> which returns the simulation. Compare different values of the parameters. How would you interpret “social distancing”? How would you choose parameters <span class="math inline">\(\Pi\)</span> and <span class="math inline">\(\mu\)</span></strong></p>
 </section>
 <section id="a-spatial-sir-model" class="level3">
 <h3 class="anchored" data-anchor-id="a-spatial-sir-model">A Spatial SIR model</h3>
@@ -288,10 +295,14 @@ window.Quarto = {
 </section>
 <section id="additional-questions" class="level3">
 <h3 class="anchored" data-anchor-id="additional-questions">Additional questions</h3>
-<p>Have fun by trying to answer one of these questions: - change probability of infection so that it depends on the number of infected people in the vincinity (with some suitable functional formulation for) - compute an animation of the transition - compute an interactive visualisation (with <code>Interact.jl</code> if available)</p>
+<p>Have fun by trying to answer one of these questions:</p>
+<ul>
+<li>change probability of infection so that it depends on the number of infected people in the vincinity (with some suitable functional formulation for)</li>
+<li>compute an animation of the transition</li>
+<li>compute an interactive visualisation (with <code>Interact.jl</code> if available)</li>
+</ul>
 
 
-</section>
 </section>
 </section>
 

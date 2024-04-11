@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -114,9 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Introduction to Computational Economics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pushups/1_epidemiology.html">Pushups</a></li><li class="breadcrumb-item"><a href="../pushups/2_Optimization_pushups.html">Optimization Pushups</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,14 +116,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/convergence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Convergence of sequences</span></a>
+  <a href="../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
   </div>
 </li>
       </ul>
@@ -182,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial: Convergence</span></a>
+ <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
       </ul>
@@ -202,6 +172,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Optimization Pushups</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -215,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pushups/1_epidemiology.html">Pushups</a></li><li class="breadcrumb-item"><a href="../pushups/2_Optimization_pushups.html">Optimization Pushups</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Optimization Pushups</h1>
 </div>
@@ -236,247 +212,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The spirit of this simple tutorial consists in learning how to write simple solution algorithms. For each algorithm, test that it works, using simple test functions whose solution is known.</p>
 <p><strong>Write a function <code>fixed_point(f::Function, x0::Float64)</code> which computes the fixed point of <code>f</code> starting from initial point <code>x0</code>.</strong></p>
-<p><strong>Write a function <code>bisection(f::Function, a::Float64, b::Float64)</code> which computes a zero of function <code>f</code> within <code>(a,b)</code> using a bisection method.</strong></p>
+<p><strong>Write a function <code>bisection(f::Function, a::Float64, b::Float64)</code> which computes the zero of function <code>f</code> within <code>(a,b)</code> using a bisection method.</strong></p>
 <p><strong>Write a function <code>golden(f::Function, a::Float64, b::Float64)</code> which computes a zero of function <code>f</code> within <code>(a,b)</code> using a golden ratio method.</strong></p>
 <p><strong>Write a function <code>zero_newton(f::Function, x0::Float64)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
 <p><strong>Add an option <code>zero_newton(f::Function, x0::Float64, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
 <p><strong>Write a function <code>min_gd(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using gradient descent. Assume <code>f</code> returns a scalar and a gradient.</strong></p>
 <p><strong>Write a function <code>min_nr(f::Function, x0::Float64)</code> which computes the minimum of function <code>f</code> using Newton-Raphson method. Assume <code>f</code> returns a scalar, a gradient, and a hessian.</strong></p>
 <p><strong>Write a method <code>zero_newton(f::Function, x0::Vector{Float64})</code> which computes the zero of a vector valued function <code>f</code> starting from initial point <code>x0</code>.</strong></p>
-<div id="cell-17" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(z) <span class="op">=</span> <span class="kw">let</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    x,y <span class="op">=</span> z</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    [x<span class="op">^</span><span class="fl">3</span> <span class="op">+</span> y, x<span class="op">-</span>y] </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> [<span class="fl">0.1</span>, <span class="fl">0.3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- 0.1
- 0.3</code></pre>
-</div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
-  0.301
- -0.19999999999999998</code></pre>
-</div>
-</div>
-<div id="cell-19" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ForwardDiff</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ForwardDiff.<span class="fu">jacobian</span>(f, x0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2×2 Matrix{Float64}:
- 0.03   1.0
- 1.0   -1.0</code></pre>
-</div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">zero_newton</span>(f, x0; maxit<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">false</span>, τ_η<span class="op">=</span><span class="fl">1e-10</span>, τ_ϵ<span class="op">=</span><span class="fl">1e-10</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># local x1</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> x0</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> it <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>maxit</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        f0 <span class="op">=</span> <span class="fu">f</span>(x0)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        ϵ <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(f0))</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ϵ <span class="op">&lt;</span> τ_ϵ</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            verbose ? <span class="fu">println</span>(<span class="st">"Iteration </span><span class="sc">$</span>(it)<span class="st">: ϵ=</span><span class="sc">$</span>(ϵ)<span class="st"> "</span>) <span class="op">:</span> <span class="cn">nothing</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x0</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        J0 <span class="op">=</span> ForwardDiff.<span class="fu">jacobian</span>(f, x0)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        x1 <span class="op">=</span> x0 <span class="op">-</span> J0 <span class="op">\</span> f0</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        η <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(x1<span class="op">-</span>x0))</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> η<span class="op">&lt;</span>τ_η</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x1</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># cond ? do : otherwise</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        verbose ? <span class="fu">println</span>(<span class="st">"Iteration </span><span class="sc">$</span>(it)<span class="st">: ϵ=</span><span class="sc">$</span>(ϵ)<span class="st"> : η=</span><span class="sc">$</span>(η)<span class="st">"</span>) <span class="op">:</span> <span class="cn">nothing</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        x0 <span class="op">=</span> x1</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x1</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>zero_newton (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-21" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zero_newton</span>(f, x0; verbose<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Iteration 1: ϵ=0.301 : η=0.2980582524271845
-Iteration 2: ϵ=0.0019417548939487858 : η=0.00194173293071458
-Iteration 3: ϵ=1.4642100930805857e-8 : η=1.4642100930805848e-8
-Iteration 4: ϵ=6.617444900424222e-24 </code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- 6.617444900424222e-24
- 6.617444900424222e-24</code></pre>
-</div>
-</div>
 <p><strong>Add an method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true)</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> using backtracking in each iteration.</strong></p>
-<div id="cell-23" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">zero_newton</span>(f, x0; maxit<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">false</span>, τ_η<span class="op">=</span><span class="fl">1e-10</span>, τ_ϵ<span class="op">=</span><span class="fl">1e-10</span>, backtrack<span class="op">=</span><span class="cn">true</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># local x1</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> x0</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> it <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>maxit</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        f0 <span class="op">=</span> <span class="fu">f</span>(x0)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        ϵ <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(f0))</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ϵ <span class="op">&lt;</span> τ_ϵ</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            verbose ? <span class="fu">println</span>(<span class="st">"Iteration </span><span class="sc">$</span>(it)<span class="st">: ϵ=</span><span class="sc">$</span>(ϵ)<span class="st"> "</span>) <span class="op">:</span> <span class="cn">nothing</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x0</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        J0 <span class="op">=</span> ForwardDiff.<span class="fu">jacobian</span>(f, x0)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Newton steap</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        Δ <span class="op">=</span> <span class="op">-</span> J0 <span class="op">\</span> f0</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> !backtrack</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            x1 <span class="op">=</span> x0 <span class="op">+</span> Δ</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                x1 <span class="op">=</span> x0 <span class="op">+</span> <span class="fl">2.0</span><span class="op">^</span>(<span class="op">-</span>i)<span class="op">*</span>Δ</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                <span class="co"># test function for new guess</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                f1 <span class="op">=</span> <span class="fu">f</span>(x1)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                ϵ<span class="fl">1</span> <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(f1))</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> ϵ<span class="fl">1</span><span class="op">&lt;</span>ϵ</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># new guess is good</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">end</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">end</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        η <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.(x1<span class="op">-</span>x0))</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> η<span class="op">&lt;</span>τ_η</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x1</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># cond ? do : otherwise</span></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>        verbose ? <span class="fu">println</span>(<span class="st">"Iteration </span><span class="sc">$</span>(it)<span class="st">: ϵ=</span><span class="sc">$</span>(ϵ)<span class="st"> : η=</span><span class="sc">$</span>(η)<span class="st">"</span>) <span class="op">:</span> <span class="cn">nothing</span></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>        x0 <span class="op">=</span> x1</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x1</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>zero_newton (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-24" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zero_newton</span>(f, x0, verbose<span class="op">=</span><span class="cn">true</span>, backtrack<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Iteration 1: ϵ=0.301 : η=0.2980582524271845
-Iteration 2: ϵ=0.0019417548939487858 : η=0.00194173293071458
-Iteration 3: ϵ=1.4642100930805857e-8 : η=1.4642100930805848e-8
-Iteration 4: ϵ=6.617444900424222e-24 </code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- 6.617444900424222e-24
- 6.617444900424222e-24</code></pre>
-</div>
-</div>
 <p><strong>Add a method <code>zero_newton(f::Function, x0::Vector{Float64}, backtracking=true, lb=Vector{Float64})</code> which computes the zero of function <code>f</code> starting from initial point <code>x0</code> taking complementarity constraint into account <code>x&gt;=lb</code> using the Fischer-Burmeister method.</strong></p>
-<div id="cell-26" class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">g</span>(z) <span class="op">=</span> <span class="kw">let</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    x,y<span class="op">=</span>z</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    [ y<span class="op">-</span>x, x<span class="op">^</span><span class="fl">2</span><span class="op">+</span>y<span class="op">^</span><span class="fl">2</span><span class="op">-</span><span class="fl">1</span> ]</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>lb <span class="op">=</span> [<span class="fl">0.0</span>, <span class="op">-</span><span class="fl">10000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
-      0.0
- -10000.0</code></pre>
-</div>
-</div>
-<div id="cell-27" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">φ_FB</span>(a,b) <span class="op">=</span> <span class="fu">a+b-sqrt</span>(a<span class="op">^</span><span class="fl">2</span><span class="op">+</span>b<span class="op">^</span><span class="fl">2</span>)  <span class="co"># min</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>φ_FB (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-28" class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ncp</span>(f, x0, lb; args<span class="op">...</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the dot calls φ_FB component-wise on its vector arguments</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fun</span>(u) <span class="op">=</span> <span class="fu">φ_FB</span>.(<span class="fu">f</span>(u), u <span class="op">-</span> lb)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">zero_newton</span>(fun, x0; args<span class="op">...</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>ncp (generic function with 2 methods)</code></pre>
-</div>
-</div>
-<div id="cell-29" class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- 0.1
- 0.3</code></pre>
-</div>
-</div>
-<div id="cell-30" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncp</span>(g, x0, lb; maxit<span class="op">=</span><span class="fl">100</span>, verbose<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Iteration 1: ϵ=0.900040498785529 : η=0.8449227125187968
-Iteration 2: ϵ=0.34501875850946817 : η=0.17623432346721998
-Iteration 3: ϵ=0.04599075111946149 : η=0.022412443670669857
-Iteration 4: ϵ=0.0005761770207755035 : η=0.0002880043594630788
-Iteration 5: ϵ=8.413735486101359e-8 : η=4.2068675654149956e-8
-Iteration 6: ϵ=0.0 </code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- -5.460886251568741e-17
-  1.0000000000002816</code></pre>
-</div>
-</div>
-<div id="cell-31" class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncp</span>(g, [<span class="fl">0.6</span>, <span class="fl">0.6</span>], lb; maxit<span class="op">=</span><span class="fl">100</span>, verbose<span class="op">=</span><span class="cn">true</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Iteration 1: ϵ=0.2800039197663864 : η=0.11666503345865797
-Iteration 2: ϵ=0.027217503327847226 : η=0.009494525381928298
-Iteration 3: ϵ=0.0001802549850253854 : η=6.37240192483679e-5
-Iteration 4: ϵ=8.119968697428703e-9 : η=2.8708424526513454e-9
-Iteration 5: ϵ=0.0 </code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>2-element Vector{Float64}:
- 0.7071067811866388
- 0.7071067811866388</code></pre>
-</div>
-</div>
 
 
 
