@@ -388,11 +388,11 @@
     ]
   },
   {
-    "objectID": "slides/session_3/index.html#stochastic-vs-determinstic",
-    "href": "slides/session_3/index.html#stochastic-vs-determinstic",
+    "objectID": "slides/session_3/index.html#stochastic-vs-deterministic",
+    "href": "slides/session_3/index.html#stochastic-vs-deterministic",
     "title": "Optimization",
-    "section": "Stochastic vs Determinstic",
-    "text": "Stochastic vs Determinstic\n\nCommon case, especially in machine learning \\[f(x) = E_{\\epsilon}[ \\xi (\\epsilon, x)]\\]\nOne wants to maximize (resp solve) w.r.t. \\(x\\) but it is costly to compute expectation precisely using Monte-Carlo draws (there are other methods).\nA stochastic optimization method allows to use noisy estimates of the expectation, and will still converge in expectation.\nFor now we focus on deterministic methods. Maybe later…",
+    "section": "Stochastic vs Deterministic",
+    "text": "Stochastic vs Deterministic\n\nCommon case, especially in machine learning \\[f(x) = E_{\\epsilon}[ \\xi (\\epsilon, x)]\\]\nOne wants to maximize (resp solve) w.r.t. \\(x\\) but it is costly to compute expectation precisely using Monte-Carlo draws (there are other methods).\nA stochastic optimization method allows to use noisy estimates of the expectation, and will still converge in expectation.\nFor now we focus on deterministic methods. Maybe later…",
     "crumbs": [
       "Slides",
       "Optimization"
@@ -828,7 +828,7 @@
     "href": "index.html#indicative-schedule",
     "title": "Computational Economics - ECO309",
     "section": "Indicative Schedule",
-    "text": "Indicative Schedule\n\n\n\n\n\nDate\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 11, 2024\n\n\nOptimization\n\n\n\n\n\nNo matching items"
+    "text": "Indicative Schedule\n\n\n\n\n\nDate\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#communication",
@@ -849,28 +849,44 @@
     "href": "tutorials/3_Optimization.html",
     "title": "Optimization",
     "section": "",
-    "text": "In this tutorial you will learn to code and use common optimization algorithms for static models."
+    "text": "In this tutorial you will learn to code and use common optimization algorithms for static models.",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
   },
   {
     "objectID": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
     "href": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
     "title": "Optimization",
     "section": "Profit optimization by a monopolist",
-    "text": "Profit optimization by a monopolist\nA monopolist produces quantity \\(q\\) of goods X at price \\(p\\). Its cost function is \\(c(q) = 0.5 + q (1-qe^{-q})\\)\nThe consumer’s demand for price \\(p\\) is \\(x(p)=2 e^{-0.5 p}\\) (constant elasticity of demand to price).\nWrite down the profit function of the monopolist and find the optimal production (if any). Don’t use any library except for plotting."
+    "text": "Profit optimization by a monopolist\nA monopolist produces quantity \\(q\\) of goods X at price \\(p\\). Its cost function is \\(c(q) = 0.5 + q (1-qe^{-q})\\)\nThe consumer’s demand for price \\(p\\) is \\(x(p)=2 e^{-0.5 p}\\) (constant elasticity of demand to price).\nWrite down the profit function of the monopolist and find the optimal production (if any). Don’t use any library except for plotting.",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
   },
   {
     "objectID": "tutorials/3_Optimization.html#constrained-optimization",
     "href": "tutorials/3_Optimization.html#constrained-optimization",
     "title": "Optimization",
     "section": "Constrained optimization",
-    "text": "Constrained optimization\nConsider the function \\(f(x,y) = 1-(x-0.5)^2 -(y-0.3)^2\\).\nUse Optim.jl to minimize \\(f\\) without constraint. Check you understand diagnostic information returned by the optimizer.\nNow, consider the constraint \\(x&lt;0.3\\) and maximize \\(f\\) under this new constraint.\nReformulate the problem as a root finding problem with lagrangians. Write the complementarity conditions.\nSolve using NLSolve.jl"
+    "text": "Constrained optimization\nConsider the function \\(f(x,y) = 1-(x-0.5)^2 -(y-0.3)^2\\).\nUse Optim.jl to minimize \\(f\\) without constraint. Check you understand diagnostic information returned by the optimizer.\nNow, consider the constraint \\(x&lt;0.3\\) and maximize \\(f\\) under this new constraint.\nReformulate the problem as a root finding problem with lagrangians. Write the complementarity conditions.\nSolve using NLSolve.jl",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
   },
   {
     "objectID": "tutorials/3_Optimization.html#consumption-optimization",
     "href": "tutorials/3_Optimization.html#consumption-optimization",
     "title": "Optimization",
     "section": "Consumption optimization",
-    "text": "Consumption optimization\nA consumer has preferences \\(U(c_1, c_2)\\) over two consumption goods \\(c_1\\) and \\(c_2\\).\nGiven a budget \\(I\\), consumer wants to maximize utility subject to the budget constraint \\(p_1 c_1 + p_2 c_2 \\leq I\\).\nWe choose a Stone-Geary specification where\n\\(U(c_1, c_2)=\\beta_1 \\log(c_1-\\gamma_1) + \\beta_2 \\log(c_2-\\gamma_2)\\)\nWrite the Karush-Kuhn-Tucker necessary conditions for the problem.\nVerify the KKT conditions are sufficient for optimality.\nDerive analytically the demand functions, and the shadow price.\nInterpret this problem as a complementarity problem and solve it using NLSolve.\nProduce some nice graphs with isoutility curves, the budget constraint and the optimal choice."
+    "text": "Consumption optimization\nA consumer has preferences \\(U(c_1, c_2)\\) over two consumption goods \\(c_1\\) and \\(c_2\\).\nGiven a budget \\(I\\), consumer wants to maximize utility subject to the budget constraint \\(p_1 c_1 + p_2 c_2 \\leq I\\).\nWe choose a Stone-Geary specification where\n\\(U(c_1, c_2)=\\beta_1 \\log(c_1-\\gamma_1) + \\beta_2 \\log(c_2-\\gamma_2)\\)\nWrite the Karush-Kuhn-Tucker necessary conditions for the problem.\nVerify the KKT conditions are sufficient for optimality.\nDerive analytically the demand functions, and the shadow price.\nInterpret this problem as a complementarity problem and solve it using NLSolve.\nProduce some nice graphs with isoutility curves, the budget constraint and the optimal choice.",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
   },
   {
     "objectID": "tutorials/2_solow_correction.html",
