@@ -1,0 +1,34 @@
+project:
+  type: website
+exectute:
+  echo: true
+website:
+  title: "Introduction to Computational Economics"
+  sidebar:
+      style: "docked"
+      search: true
+      contents:
+        - section: "Slides"
+          contents:
+            - slides/session_1/index.qmd
+            - slides/session_2/index.qmd
+            - slides/session_3/index.qmd
+
+        - section: "Tutorials"
+          contents:
+            - tutorials/1_1_Julia_Basics.ipynb
+            - tutorials/2_solow.ipynb
+            - tutorials/3_Optimization.ipynb
+        - section: "Pushups"
+          contents:
+            - pushups/1_epidemiology.ipynb
+            - pushups/2_Optimization_pushups.ipynb
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,40 @@
+---
+title: "Computational Economics - ECO309"
+listing:
+  id: course-listing
+  type: table
+  sort-ui: false
+  filter-ui: false
+  contents:
+    - slides/session_*/index.qmd
+    - prep*/index.qmd
+  sort: date
+  fields: [date, title]
+---
+
+<mark>Homework</mark>
+
+- work on the first homework
+
+
+## Indicative Schedule
+
+::: {#course-listing}
+
+:::
+
+## Communication
+
+- Zulip (best)
+- Email to `pablo.winant@polytechniqe.edu` or `pwinant@escp.eu`
+  - subject starting with `[eco309]`
+- Github issues (PR also welcome)
+
+## Assessment
+
+- tutorials (optional) 
+- two projects (mandatory)
+- presentations (optional)
+
+
+
