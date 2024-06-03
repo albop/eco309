@@ -12,11 +12,6 @@ listing:
   fields: [date, title]
 ---
 
-<mark>Homework</mark>
-
-- work on the first homework
-
-
 ## Indicative Schedule
 
 ::: {#course-listing}
@@ -33,7 +28,7 @@ listing:
 ## Assessment
 
 - tutorials (optional) 
-- two projects (mandatory)
+- coursework (mandatory)
 - presentations (optional)
 
 
