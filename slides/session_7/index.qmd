@@ -1,0 +1,66 @@
+---
+title: Discrete Dynamic Programming
+subtitle:  "Computational Economics"
+author: Year 2023-2024 (ECO309)
+date: 2024/06/04
+format:
+  revealjs:
+    html-math-method: mathjax
+    width: 1920
+    height: 1080
+logo: logo.png
+---
+
+##
+
+Consider the following problems:
+
+::: columns
+:::: {.column width=25%}
+
+Monopoly pricing:
+
+$$\max_{q} \pi(q) - c(q)$$
+
+::::
+:::: {.column width=25%}
+
+Shopping problem
+
+$$\max_{c_1,c_2, budget constraint} U(c_1,c_2)$$
+
+::::
+:::: {.column width=50%}
+
+Consumption Savings
+
+$$\max_{c(), w_{t+1}=(w_t-c(w_t))(1+r)) + y_{t+1}} E_0 \sum_t \beta^t U(c(w_t))$$
+
+
+::::
+:::
+
+|   Problem           | objective        | action                         | state            | transition          | type                 |
+| ------------------- | ---------------- | ------------------------------ | ---------------- | ------------------- | -------------------- |
+| monopoly pricing    | profit           | choose quantity to produce     |                  |                     | optimization         |
+| shopping problem    | utility          | choose consumption composition | budget $B$       |                     | comparative statics  |
+| consumption/savings | expected welfare | save or consume                | available income | evolution of wealth | dynamic optimization |
+
+## Why is Dynamic Optimization Hard ?
+
+In a dynamic optimization problem, the actions taken in a given state today, depend on the outcome in future states.
+
+Dynamic optimization can lead to deterministic (sometimes) or stochastic optimization problems (mostly)
+
+
+## States Transitions (Markov Chains)
+
+
+##
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```

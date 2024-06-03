@@ -2,7 +2,7 @@
 title: Differentiation
 subtitle:  "Computational Economics"
 author: Year 2023-2024 (ECO309)
-date: 2024/06/06
+date: 2024/05/29
 format:
   revealjs:
     html-math-method: mathjax

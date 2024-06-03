@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -313,7 +313,7 @@ Title
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1712821292878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
+<tr data-index="0" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1717421451873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
 <td>
 <span class="listing-date">Mar 28, 2024</span>
 </td>
@@ -321,7 +321,7 @@ Title
 <a href="./slides/session_1/index.html" class="title listing-title">Introduction</a>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1712181600000" data-listing-file-modified-sort="1712824917882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1211" data-listing-title-sort="Convergence of Sequences" data-listing-filename-sort="index.qmd">
+<tr data-index="1" data-listing-date-sort="1712181600000" data-listing-file-modified-sort="1717421451876" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1211" data-listing-title-sort="Convergence of Sequences" data-listing-filename-sort="index.qmd">
 <td>
 <span class="listing-date">Apr 4, 2024</span>
 </td>
@@ -329,7 +329,7 @@ Title
 <a href="./slides/session_2/index.html" class="title listing-title">Convergence of Sequences</a>
 </td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1713996000000" data-listing-file-modified-sort="1714032557528" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2630" data-listing-title-sort="Optimization" data-listing-filename-sort="index.qmd">
+<tr data-index="2" data-listing-date-sort="1713996000000" data-listing-file-modified-sort="1717421451893" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2630" data-listing-title-sort="Optimization" data-listing-filename-sort="index.qmd">
 <td>
 <span class="listing-date">Apr 25, 2024</span>
 </td>
@@ -337,12 +337,20 @@ Title
 <a href="./slides/session_3/index.html" class="title listing-title">Optimization</a>
 </td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1717624800000" data-listing-file-modified-sort="1717055756224" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="707" data-listing-title-sort="Differentiation" data-listing-filename-sort="index.qmd">
+<tr data-index="3" data-listing-date-sort="1716933600000" data-listing-file-modified-sort="1717430961578" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="707" data-listing-title-sort="Differentiation" data-listing-filename-sort="index.qmd">
 <td>
-<span class="listing-date">Jun 6, 2024</span>
+<span class="listing-date">May 29, 2024</span>
 </td>
 <td>
 <a href="./slides/session_6/index.html" class="title listing-title">Differentiation</a>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1717452000000" data-listing-file-modified-sort="1717433922599" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="263" data-listing-title-sort="Discrete Dynamic Programming" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jun 4, 2024</span>
+</td>
+<td>
+<a href="./slides/session_7/index.html" class="title listing-title">Discrete Dynamic Programming</a>
 </td>
 </tr>
 </tbody>
@@ -537,12 +545,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {

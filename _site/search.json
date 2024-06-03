@@ -80,14 +80,14 @@
     "href": "index.html",
     "title": "Computational Economics - ECO309",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nJun 6, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nMay 29, 2024\n\n\nDifferentiation\n\n\n\n\nJun 4, 2024\n\n\nDiscrete Dynamic Programming\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#indicative-schedule",
     "href": "index.html#indicative-schedule",
     "title": "Computational Economics - ECO309",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nJun 6, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nMay 29, 2024\n\n\nDifferentiation\n\n\n\n\nJun 4, 2024\n\n\nDiscrete Dynamic Programming\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#communication",
@@ -1088,5 +1088,40 @@
     "title": "Convergence: Solow Model",
     "section": "",
     "text": "Convergence: Solow Model\nPablo Winant\n\nSolow Model\nA representative agent uses capital \\(k_t\\) to produce \\(y_t\\) using the following production function:\n\\[y_t = k_t^{\\alpha}\\]\nHe chooses to consume an amount \\(c_t \\in ]0, y_t]\\) and invests what remains:\n\\[i_t = y_t - c_t\\]\nHe accumulates capital \\(k_t\\) according to:\n\\[k_{t+1} = \\left( 1-\\delta \\right) k_{t} + i_{t}\\]\nwhere \\(\\delta\\) is the depreciation rate and \\(i_t\\) is the amount invested.\nThe goal of the representative agent is to maximize:\n\\[\\sum_{t\\geq 0} \\beta^t U(c_t)\\]\nwhere \\(U(x)=\\frac{x^{1-\\gamma}}{1-\\gamma}\\) and \\(\\beta&lt;1\\) is the discount factor.\nFor now, we ignore the objective and assume that the saving rate \\(s=\\frac{c_t}{y_t}\\) is constant over time.\nCreate a NamedTuple to hold parameter values \\(\\beta=0.96\\), \\(\\delta=0.1\\), \\(\\alpha=0.3\\), \\(\\gamma=4\\).\nWrite down the formula of function \\(f\\) such that \\(k_{t+1}\\): \\(k_{t+1} = f(k_t)\\).\nDefine a function f(k::Float64, p::NamedTuple)::Float64 to represent \\(f\\) for a given calibration\nWrite a function simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64} to compute the simulation over T periods starting from initial capital level k0.\nMake a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?\nSuppose you were interested in using f to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas."
+  },
+  {
+    "objectID": "slides/session_7/index.html#section",
+    "href": "slides/session_7/index.html#section",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "Consider the following problems:\n\n\nMonopoly pricing:\n\\[\\max_{q} \\pi(q) - c(q)\\]\n\nShopping problem\n\\[\\max_{c_1,c_2, budget constraint} U(c_1,c_2)\\]\n\nConsumption Savings\n\\[\\max_{c(), w_{t+1}=(w_t-c(w_t))(1+r)) + y_{t+1}} E_0 \\sum_t \\beta^t U(c(w_t))\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nobjective\naction\nstate\ntransition\ntype\n\n\n\n\nmonopoly pricing\nprofit\nchoose quantity to produce\n\n\noptimization\n\n\nshopping problem\nutility\nchoose consumption composition\nbudget \\(B\\)\n\ncomparative statics\n\n\nconsumption/savings\nexpected welfare\nsave or consume\navailable income\nevolution of wealth\ndynamic optimization"
+  },
+  {
+    "objectID": "slides/session_7/index.html#section-1",
+    "href": "slides/session_7/index.html#section-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "flowchart LR\n  A[Hard edge] --&gt; B(Round edge)\n  B --&gt; C{Decision}\n  C --&gt; D[Result one]\n  C --&gt; E[Result two]"
+  },
+  {
+    "objectID": "slides/session_7/index.html#states-transitions",
+    "href": "slides/session_7/index.html#states-transitions",
+    "title": "Discrete Dynamic Programming",
+    "section": "States Transitions",
+    "text": "States Transitions"
+  },
+  {
+    "objectID": "slides/session_7/index.html#states-transitions-markov-chains",
+    "href": "slides/session_7/index.html#states-transitions-markov-chains",
+    "title": "Discrete Dynamic Programming",
+    "section": "States Transitions (Markov Chains)",
+    "text": "States Transitions (Markov Chains)"
+  },
+  {
+    "objectID": "slides/session_7/index.html#why-is-dynamic-optimization-hard",
+    "href": "slides/session_7/index.html#why-is-dynamic-optimization-hard",
+    "title": "Discrete Dynamic Programming",
+    "section": "Why is Dynamic Optimization Hard ?",
+    "text": "Why is Dynamic Optimization Hard ?\nIn a dynamic optimization problem, the actions taken in a given state today, depend on the outcome in future states.\nDynamic optimization can lead to deterministic (sometimes) or stochastic optimization problems (mostly)"
   }
 ]
