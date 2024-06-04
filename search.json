@@ -25,69 +25,90 @@
     ]
   },
   {
-    "objectID": "tutorials/2_solow_correction.html",
-    "href": "tutorials/2_solow_correction.html",
+    "objectID": "tutorials/7_discrete_dynamic_programming.html",
+    "href": "tutorials/7_discrete_dynamic_programming.html",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "A worker’s employment dynamics is described by the stochastic matrix\n\\[P = \\begin{bmatrix}\n1-\\alpha & \\alpha \\\\\n\\beta & 1-\\beta\n\\end{bmatrix}\\]\nwith \\(\\alpha\\in(0,1)\\) and \\(\\beta\\in (0,1)\\). First line corresponds to employment, second line to unemployment.\nWhich is the stationary equilibrium? (choose any value for \\(\\alpha\\) and \\(\\beta\\))\nIn the long run, what will the the fraction \\(p\\) of time spent unemployed? (Denote by \\(X_m\\) the fraction of dates were one is unemployed)\nIllustrate this convergence by generating a simulated series of length 10000 starting at \\(X_0=1\\). Plot \\(X_m-p\\) against \\(m\\). (Take \\(\\alpha=\\beta=0.1\\)).",
+    "crumbs": [
+      "Tutorials",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "tutorials/7_discrete_dynamic_programming.html#markov-chains",
+    "href": "tutorials/7_discrete_dynamic_programming.html#markov-chains",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "A worker’s employment dynamics is described by the stochastic matrix\n\\[P = \\begin{bmatrix}\n1-\\alpha & \\alpha \\\\\n\\beta & 1-\\beta\n\\end{bmatrix}\\]\nwith \\(\\alpha\\in(0,1)\\) and \\(\\beta\\in (0,1)\\). First line corresponds to employment, second line to unemployment.\nWhich is the stationary equilibrium? (choose any value for \\(\\alpha\\) and \\(\\beta\\))\nIn the long run, what will the the fraction \\(p\\) of time spent unemployed? (Denote by \\(X_m\\) the fraction of dates were one is unemployed)\nIllustrate this convergence by generating a simulated series of length 10000 starting at \\(X_0=1\\). Plot \\(X_m-p\\) against \\(m\\). (Take \\(\\alpha=\\beta=0.1\\)).",
+    "crumbs": [
+      "Tutorials",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "tutorials/7_discrete_dynamic_programming.html#job-search-model",
+    "href": "tutorials/7_discrete_dynamic_programming.html#job-search-model",
+    "title": "Discrete Dynamic Programming",
+    "section": "Job-Search Model",
+    "text": "Job-Search Model\nWe want to solve the following model, adapted from McCall.\n\nWhen unemployed in date, a job-seeker\n\nconsumes unemployment benefit \\(c_t = \\underline{c}\\)\nreceives in every date \\(t\\) a job offer \\(w_t\\)\n\n\\(w_t\\) is i.i.d.,\ntakes values \\(w_1, w_2, w_3\\) with probabilities \\(p_1, p_2, p_3\\)\n\nif job-seeker accepts, becomes employed at rate \\(w_t\\) in the next period\nelse he stays unemployed\n\nWhen employed at rate \\(w\\)\n\nworker consumes salary \\(c_t = w\\)\nwith small probability \\(\\lambda&gt;0\\) looses his job:\n\nstarts next period unemployed\n\notherwise stays employed at same rate\n\nObjective: \\(\\max E_0 \\left\\{ \\sum \\beta^t \\log(w_t) \\right\\}\\)\n\nWhat are the states, the controls, the reward of this problem ? Write down the Bellman equation.\nDefine a parameter structure for the model.\nDefine a function value_update(V_U::Vector{Float64}, V_E::Vector{Float64}, x::Vector{Bool}, p::Parameters)::Tuple{Vector, Vector}, which takes in value functions tomorrow and a policy vector and return updated values for today.\nDefine a function policy_eval(x::Vector{Bool}, p::Parameter)::Tuple{Vector, Vector} which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.\nDefine a function bellman_step(V_E::Vector, V_U::Vector, p::Parameters)::Tuple{Vector, Vector, Vector} which returns updated values, together with improved policy rules.\nImplement Value Function\nImplement Policy Iteration and compare rates of convergence.\nDiscuss the Effects of the Parameters",
+    "crumbs": [
+      "Tutorials",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "tutorials/2_solow.html",
+    "href": "tutorials/2_solow.html",
     "title": "Convergence: Solow Model",
     "section": "",
-    "text": "Convergence: Solow Model\n\nSolow Model\nA representative agent uses capital \\(k_t\\) to produce \\(y_t\\) using the following production function:\n\\[y_t = k_t^{\\alpha}\\]\nHe chooses to consume an amount \\(c_t \\in ]0, y_t]\\) and invests what remains:\n\\[i_t = y_t - c_t\\]\nHe accumulates capital \\(k_t\\) according to:\n\\[k_{t+1} = \\left( 1-\\delta \\right) k_{t} + i_{t}\\]\nwhere \\(\\delta\\) is the depreciation rate and \\(i_t\\) is the amount invested.\nThe goal of the representative agent is to maximize:\n\\[\\sum_{t\\geq 0} \\beta^t U(c_t)\\]\nwhere \\(U(x)=\\frac{x^{1-\\gamma}}{1-\\gamma}\\) and \\(\\beta&lt;1\\) is the discount factor.\nFor now, we ignore the objective and assume that the saving rate \\(s=\\frac{c_t}{y_t}\\) is constant over time.\nCreate a NamedTuple to hold parameter values \\(\\beta=0.96\\), \\(\\delta=0.1\\), \\(\\alpha=0.3\\), \\(\\gamma=4\\).\n\np = (;β=0.96, δ=0.1, α=0.3, γ=4.0)\n\n(β = 0.96, δ = 0.1, α = 0.3, γ = 4.0)\n\n\nWrite down the formula of function \\(f\\) such that \\(k_{t+1}\\): \\(k_{t+1} = f(k_t)\\).\n\\[k_{t+1}= (1-\\delta) k_t + (1-s) k_t^{\\alpha}\\]\nDefine a function f(k::Float64, p::NamedTuple)::Float64 to represent \\(f\\) for a given calibration\n\n# function f(k::Float64, p::NamedTuple)\n\n# we added a keyword argument to specify the saving rate\nfunction f(k, p; s=0.2)\n\n    (;α, δ) = p # keyword unpacking syntax\n\n    val = k*(1-δ) + s*k^α\n\n    return val \nend\n\nf (generic function with 2 methods)\n\n\n\nf(0.1, p)\n\n0.1902374467254545\n\n\nWrite a function simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64} to compute the simulation over T periods starting from initial capital level k0.\n\nfunction simulate(k0, T, p; s=0.5)\n\n    sim = [k0]\n\n    for i ∈ 1:T    # same as for i in ... or for i=...\n        # in Julia, intervals contain the lower and upper bound\n        k1 = f(k0, p; s=s)\n\n        # add new value to simulation vector\n        push!(sim, k1)\n\n        k0 = k1\n    end\n\n    return sim\nend\n\nsimulate (generic function with 1 method)\n\n\n\nsim = simulate(0.5, 100, p;)\n\n101-element Vector{Float64}:\n 0.2\n 0.30340677254400195\n 0.4129080792968781\n 0.525003373019628\n 0.6373491155565568\n 0.7483344417178636\n 0.856841626057419\n 0.9620988898971137\n 1.0635841029776287\n 1.1609587708409257\n ⋮\n 2.6876186883735818\n 2.6879113388853018\n 2.6881835130861362\n 2.6884366430712516\n 2.6886720608576273\n 2.688891005366757\n 2.689094628921639\n 2.6892840032916374\n 2.6894601253165105\n\n\n\n# sometimes, we want to avoid using too much memory\n# in that case we try to do as many inplace operations as possible\n\nfunction simulate_preallocate(k, T, p; s=0.2)\n    v = zeros(T) # allocates memore\n    v[1] = k\n    for t = 1:(T-1)\n        k0 = v[t]\n        v[t+1] = f(k0, p; s=s)\n    end\n    return v\nend\n\nsimulate_preallocate (generic function with 1 method)\n\n\n\n@time simulate(0.2, 1000000, p);\n@time simulate_preallocate(0.2, 1000000, p);\n\n  0.067737 seconds (14 allocations: 9.781 MiB)\n  0.055613 seconds (2 allocations: 7.629 MiB)\n\n\nMake a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?\n\npl= plot(simulate(0.5, 100, p;); label=\"baseline\", title=\"Convergence of Solow Model\")\nplot!(pl, simulate(6.0, 100, p;); label=\"high initial capital\")\nplot!(pl, simulate(0.5, 100, p;s=0.2); label=\"lower saving rate\")\n\nSuppose you were interested in using f to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.\n\nfunction steady_state(p; s=0.2)\n    sim = simulate(0.1, 1000, p)\n    return sim[end]\nend\n\nsteady_state (generic function with 1 method)\n\n\n\nsteady_state(p)\n\n2.691800385264708"
+    "text": "Solow Model\nA representative agent uses capital \\(k_t\\) to produce \\(y_t\\) using the following production function:\n\\[y_t = k_t^{\\alpha}\\]\nHe chooses to consume an amount \\(c_t \\in ]0, y_t]\\) and invests what remains:\n\\[i_t = y_t - c_t\\]\nHe accumulates capital \\(k_t\\) according to:\n\\[k_{t+1} = \\left( 1-\\delta \\right) k_{t} + i_{t}\\]\nwhere \\(\\delta\\) is the depreciation rate and \\(i_t\\) is the amount invested.\nThe goal of the representative agent is to maximize:\n\\[\\sum_{t\\geq 0} \\beta^t U(c_t)\\]\nwhere \\(U(x)=\\frac{x^{1-\\gamma}}{1-\\gamma}\\) and \\(\\beta&lt;1\\) is the discount factor.\nFor now, we ignore the objective and assume that the saving rate \\(s=\\frac{i_t}{y_t}\\) is constant over time.\n\n# how to store the model's information?\n\n\n# solution 1: variables zoo\nα = 0.3\nβ = 0.9\n\n0.9\n\n\n\n# solution 2: list\nm = [0.3, 0.9]\n\n\n# solution 2.b: tuple\nm = (0.3, 0.9)\n\n(0.3, 0.9)\n\n\n\n# solution 3: dictionary\n\n# a dictionary is a list of pairs\n:a =&gt; 2 # a pair associating symbol :a to 2b\n\"a\" =&gt; 2 # can be done with a string (but slower)\n\n# \n\nDict(\n    :α=&gt;0.3,\n    :β=&gt;0.96\n)\n\nDict{Symbol, Float64} with 2 entries:\n  :α =&gt; 0.3\n  :β =&gt; 0.96\n\n\n\n# solution 4: define your own type\nstruct MyOwnType\n    α::Float64 # fields\n    β::Float64 #\n    # γ::Float64\nend\n# problem with types: not easy to modify after first definition\n\n\nmymodel = MyOwnType(0.3, 0.96)\nmymodel.α\n\n0.3\n\n\n\n# solution 5: namedtuples\n\nmodel = (; α=0.3, β=0.96 ) # after semi-colon: named arguments\n\n(α = 0.3, β = 0.96)\n\n\n\n# behaves like a tuple:\nmodel[1]\n\n0.3\n\n\n\n# behaves like a structure:\nmodel.α\n\n0.3\n\n\n\n# is associated to a unique type (so very fast)\ntypeof(model)\n\n@NamedTuple{α::Float64, β::Float64}\n\n\nCreate a NamedTuple to hold parameter values \\(\\beta=0.96\\), \\(\\delta=0.1\\), \\(\\alpha=0.3\\), \\(\\gamma=4\\).\n\n# 🦁\nmodel = (; α=0.3, β=0.96, γ=4.0, δ=0.1 ) # after semi-colon: named arguments\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\n\n# to update model (returns a new model)\nmodel2 = merge(model, (;γ=2.0, ϵ=0.001))\nmodel2\n\n(α = 0.3, β = 0.96, γ = 2.0, δ = 0.1, ϵ = 0.001)\n\n\n\nmodel\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\nWrite down the formula of function \\(f\\) such that \\(k_{t+1}\\): \\(k_{t+1} = f(k_t)\\).\n\\[k_{t+1} = (1-\\delta) k_t + s k_t^{\\alpha}\\]\nDefine a function f(k::Float64, p::NamedTuple)::Float64 to represent \\(f\\) for a given calibration\n\n# extract δ, α from p\n\n# solution 1\nα = model.α\nδ = model.δ\n\n# solution 2: named arguments *unpacking*\n(;α, δ) = model\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\n\n# 🦁\nfunction f(k, p; s=0.2)\n\n    # extract δ, α from p\n\n    (;α, δ) = p\n\n    k1 = (1-δ)*k + s*k^α\n\n    return k1\nend\n\nf (generic function with 1 method)\n\n\n\n# 🦁\nf(0.5, model)\n\n0.6124504792712471\n\n\nWrite a function simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64} to compute the simulation over T periods starting from initial capital level k0.\n\n# by default a vector can contain anything -&gt; not efficient\n[]\n\nAny[]\n\n\n\n# otherwise, the type if inferred from the content\n[0.0]\n\n1-element Vector{Float64}:\n 0.0\n\n\n\n# unless explicitly specified\nFloat64[]\n\nFloat64[]\n\n\n\n# 🦁\nfunction simulate(k0, T, p; s=0.2)\n    # we add an option to specify the saving rate\n\n    sim = [k0]\n    for t = 1:T\n\n        kt = sim[end]\n        kn = f(kt,p; s=s)\n        push!(sim, kn)\n\n    end\n\n    return sim\n\nend\n\nsimulate (generic function with 1 method)\n\n\n\n# 🦁\nsim = simulate(0.5, 100, model; s=0.3)\n\n101-element Vector{Float64}:\n 0.5\n 0.6936757189068706\n 0.8931322483167848\n 1.0938176799995427\n 1.292616114625568\n 1.4873672712967825\n 1.6765760854980325\n 1.8592250084513522\n 2.0346465014986186\n 2.2024331183825105\n ⋮\n 4.796935178963784\n 4.797428673633411\n 4.797887638373357\n 4.798314488292645\n 4.798711469711076\n 4.7990806719381895\n 4.79942403823261\n 4.799743375998478\n 4.800040366271797\n\n\nMake a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?\n\n# 🦁\nusing Plots\nplot(sim)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# 🦁\n\n# compute growh rate \ngrowth(v) = v[2:end] ./ v[1:end-1] .- 1\n\ngrowth (generic function with 1 method)\n\n\n\n# 🦁\n\n# compare different initial capital levels\nsim0 = simulate(0.5, 100, model);\nsim1 = simulate(1.0, 100, model);\nsim2 = simulate(2.0, 100, model);\n\npl1 = plot(sim0, label=\"k0=0.5\", title=\"Capital Level\")\nplot!(pl1, sim1, label=\"k0=1.0\")\nplot!(pl1, sim2, label=\"k0=2.0\")\n\nα = model.α\ny0 = sim0.^α\ny1 = sim1.^α\ny2 = sim2.^α\n\npl2 = plot(y0, label=\"k0=0.5\", title=\"Output Level\")\nplot!(pl2, y1, label=\"k0=1.0\")\nplot!(pl2, y2, label=\"k0=2.0\")\n\npl3 = plot(growth(y0), label=\"k0=0.5\", title=\"Growth Rates\")\nplot!(pl3, growth(y1), label=\"k0=1.0\")\nplot!(pl3, growth(y2), label=\"k0=2.0\")\n\nplot(pl1, pl2, pl3)\n# plot([sim0, sim1, sim2])\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# compare different initial capital levels\nsim0 = simulate(0.5, 100, model; s=0.1);\nsim1 = simulate(0.5, 100, model; s=0.2);\nsim2 = simulate(0.5, 100, model; s=0.3);\n\npl1 = plot(sim0, label=\"s=0.1\", title=\"Capital Level\")\nplot!(pl1, sim1, label=\"s=0.2\")\nplot!(pl1, sim2, label=\"s=0.3\")\n\nα = model.α\ny0 = sim0.^α\ny1 = sim1.^α\ny2 = sim2.^α\n\npl2 = plot(y0, label=\"s=0.1\", title=\"Output Level\")\nplot!(pl2, y1, label=\"s=0.2\")\nplot!(pl2, y2, label=\"s=0.3\")\n\npl3 = plot(growth(y0), label=\"s=0.1\", title=\"Growth Rates\")\nplot!(pl3, growth(y1), label=\"s=0.2\")\nplot!(pl3, growth(y2), label=\"s=0.3\")\n\nplot(pl1, pl2, pl3)\n# plot([sim0, sim1, sim2])\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose you were interested in using f to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.\n\nquick_dirty_steady_state(model; s=0.2) = simulate(1.0, 100, model; s=s)[end]\n\nquick_dirty_steady_state (generic function with 1 method)\n\n\n\n@time quick_dirty_steady_state(model) \n\n  0.000014 seconds (5 allocations: 1.938 KiB)\n\n\n2.6904293693526475\n\n\n\n# how does the steady-state depends on saving rate ? \n\ns_vector = range(0.05, 0.95; length=1000)\nss_vector = [quick_dirty_steady_state(model;s=s) for s in s_vector]\n\nplot(s_vector, ss_vector)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# iterative version\n\nfunction steady_state(model; k0=1.0, T=1000, s=0.2, τ_η=1e-6)\n\n    for t=1:T\n        k1 = f(k0, model;s=s)\n        η = abs(k1-k0)\n        if η&lt;τ_η\n            return k1, t\n        end\n        k0 = k1\n    end\n\n\n    # kss = \nend\n\nsteady_state (generic function with 1 method)\n\n\n\n@time steady_state(model)\n\n  0.007030 seconds (9.08 k allocations: 592.906 KiB, 99.62% compilation time)\n\n\n(2.6917872031057732, 164)\n\n\n\n# 🦁\n# how do you modify it to implement Steffenson algorithm?\nfunction steady_state_steffenson(model; k0=1.0, T=1000, s=0.2, τ_η=1e-6, K=10, verbose=false)\n\n    # K number of iterations without extrapolation\n\n\n    for t=1:T\n\n        k1 = f(k0, model;s=s)\n\n        if t&gt;K\n            # use extrapolation\n            k2 = f(k1, model;s=s)\n            kn = k0 - (k1-k0)^2/(k2 - 2*k1 + k0)\n        else\n            kn = k1\n        end\n        η = abs(kn-k0)\n\n        if verbose\n            println(\"Iteration: \", t, \" : \",  k0, \" : \", kn , \" : η = \", η)\n        end\n        if η&lt;τ_η\n            return k1, t\n        end\n        k0 = kn\n    end\n\nend\n\nsteady_state_steffenson (generic function with 1 method)\n\n\n\nsteady_state_steffenson(model; verbose=true)\n\nIteration: 1 : 1.0 : 1.1 : η = 0.10000000000000009\nIteration: 2 : 1.1 : 1.195801151884219 : η = 0.095801151884219\nIteration: 3 : 1.195801151884219 : 1.2872430129191352 : η = 0.09144186103491614\nIteration: 4 : 1.2872430129191352 : 1.3742574618933996 : η = 0.08701444897426436\nIteration: 5 : 1.3742574618933996 : 1.456845771393547 : η = 0.0825883095001474\nIteration: 6 : 1.456845771393547 : 1.5350611815735393 : η = 0.07821541017999234\nIteration: 7 : 1.5350611815735393 : 1.6089955116075123 : η = 0.07393433003397298\nIteration: 8 : 1.6089955116075123 : 1.6787687913320717 : η = 0.06977327972455938\nIteration: 9 : 1.6787687913320717 : 1.7445211874595348 : η = 0.06575239612746309\nIteration: 10 : 1.7445211874595348 : 1.8064066954927231 : η = 0.061885508033188374\nIteration: 11 : 1.8064066954927231 : 2.763707849732011 : η = 0.957301154239288\nIteration: 12 : 2.763707849732011 : 2.692058690737832 : η = 0.07164915899417901\nIteration: 13 : 2.692058690737832 : 2.6918003887220845 : η = 0.00025830201574761347\nIteration: 14 : 2.6918003887220845 : 2.6918003852647976 : η = 3.4572869012094998e-9\n\n\n(2.6918003884800683, 14)\n\n\n\n@time steady_state_steffenson(model; verbose=false, K=1)\n\n  0.000008 seconds (1 allocation: 32 bytes)\n\n\n(2.691800385266389, 6)",
+    "crumbs": [
+      "Tutorials",
+      "Convergence: Solow Model"
+    ]
   },
   {
-    "objectID": "tutorials/3_Optimization.html",
-    "href": "tutorials/3_Optimization.html",
-    "title": "Optimization",
+    "objectID": "tutorials/tmp.html",
+    "href": "tutorials/tmp.html",
+    "title": "Discrete Dynamic Programming",
     "section": "",
-    "text": "In this tutorial you will learn to code and use common optimization algorithms for static models.",
-    "crumbs": [
-      "Tutorials",
-      "Optimization"
-    ]
+    "text": "A worker’s employment dynamics obey the stochastic matrix\n\\[P = \\begin{bmatrix}\n1-\\alpha & \\alpha \\\\\n\\beta & 1-\\beta\n\\end{bmatrix}\\]\n\\[P = \\begin{bmatrix}\n1-\\alpha & ... \\\\\n\\beta & ...\n\\end{bmatrix}\\]\nwith \\(\\alpha\\in(0,1)\\) and \\(\\beta\\in (0,1)\\). First line corresponds to employment, second line to unemployment.\nWhich is the stationary equilibrium? (choose any value for \\(\\alpha\\) and \\(\\beta\\))\nIn the long run, what will the the fraction \\(p\\) of time spent unemployed? (Denote by \\(X_m\\) the fraction of dates were one is unemployed)\nIllustrate this convergence by generating a simulated series of length 10000 starting at \\(X_0=1\\). Plot \\(X_m-p\\) against \\(m\\). (Take \\(\\alpha=\\beta=0.1\\))."
   },
   {
-    "objectID": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
-    "href": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
-    "title": "Optimization",
-    "section": "Profit optimization by a monopolist",
-    "text": "Profit optimization by a monopolist\nA monopolist produces quantity \\(q\\) of goods X at price \\(p\\). Its cost function is \\(c(q) = 0.5 + q (1-qe^{-q})\\)\nThe consumer’s demand for price \\(p\\) is \\(x(p)=2 e^{-0.5 p}\\) (constant elasticity of demand to price).\nWrite down the profit function of the monopolist and find the optimal production (if any). Don’t use any library except for plotting.\n\nusing Plots\n\n\nc(q) = 0.5 + q*(1-(q*exp(-q)))\n# c(q) = 0.5 + q*(1-q*exp(-q))\n# x(p) = 2*exp(-0.5*p)\np(q) = - 2*log(q/2)\nπ(q) = q*p(q) - c(q)\n\nπ (generic function with 1 method)\n\n\n\np(0.001)\n\n15.201804919084164\n\n\n\nc(0.001)\n\n0.5009990009995001\n\n\n\nπ(1)\n\n0.2541738022913329\n\n\n\nqvec = range(0.001, 2; length=20)\n\n0.001:0.10521052631578948:2.0\n\n\n\nqvec = 0.001: 0.001:2\n\n0.001:0.001:2.0\n\n\n\nπvec = [π(q) for q in qvec];\n\n\nπvec = π.(qvec) # vectorized call\n\n2000-element Vector{Float64}:\n -0.48579719608041594\n -0.47436498687607676\n -0.4639772859342966\n -0.454267199084793\n -0.44506047921694036\n -0.4362544994695257\n -0.4277814494554815\n -0.4195931352716545\n -0.4116535238496139\n -0.4039346476856644\n  ⋮\n -1.934699594360955\n -1.9376900425891457\n -1.9406817668948997\n -1.9436747665042937\n -1.946669040643902\n -1.9496645885408042\n -1.9526614094225765\n -1.9556595025172987\n -1.9586588670535492\n\n\n\nplot(qvec, πvec)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport Pkg; Pkg.add(\"ForwardDiff\")\n\n    Updating registry at `~/.julia/registries/General.toml`\n   Resolving package versions...\n   Installed GR_jll ────────────── v0.73.5+0\n   Installed Libmount_jll ──────── v2.40.1+0\n   Installed Cairo_jll ─────────── v1.18.0+2\n   Installed JpegTurbo_jll ─────── v3.0.3+0\n   Installed Xorg_libSM_jll ────── v1.2.4+0\n   Installed Unitful ───────────── v1.19.1\n   Installed Fontconfig_jll ────── v2.13.96+0\n   Installed PtrArrays ─────────── v1.1.0\n   Installed Libgpg_error_jll ──── v1.49.0+0\n   Installed LZO_jll ───────────── v2.10.2+0\n   Installed FriBidi_jll ───────── v1.0.14+0\n   Installed Xorg_libXext_jll ──── v1.3.6+0\n   Installed Colors ────────────── v0.12.11\n   Installed TimeZones ─────────── v1.15.0\n   Installed Libuuid_jll ───────── v2.40.1+0\n   Installed Xorg_libXrender_jll ─ v0.9.11+0\n   Installed Pixman_jll ────────── v0.43.4+0\n   Installed AliasTables ───────── v1.1.3\n   Installed Xorg_libICE_jll ───── v1.1.1+0\n   Installed Latexify ──────────── v0.16.3\n   Installed Mocking ───────────── v0.7.8\n   Installed LAME_jll ──────────── v3.100.2+0\n   Installed Glib_jll ──────────── v2.80.2+0\n   Installed FixedPointNumbers ─── v0.8.5\n   Installed TZJData ───────────── v1.2.0+2024a\n   Installed Libgcrypt_jll ─────── v1.8.11+0\n   Installed ColorSchemes ──────── v3.25.0\n   Installed GR ────────────────── v0.73.5\n  No Changes to `~/.julia/environments/v1.10/Project.toml`\n    Updating `~/.julia/environments/v1.10/Manifest.toml`\n  [66dad0bd] + AliasTables v1.1.3\n  [35d6a980] ↑ ColorSchemes v3.24.0 ⇒ v3.25.0\n  [3da002f7] ↑ ColorTypes v0.11.4 ⇒ v0.11.5\n  [5ae59095] ↑ Colors v0.12.10 ⇒ v0.12.11\n  [864edb3b] ↑ DataStructures v0.18.18 ⇒ v0.18.20\n  [31c24e10] ↑ Distributions v0.25.107 ⇒ v0.25.108\n  [1a297f60] ↑ FillArrays v1.10.0 ⇒ v1.11.0\n  [53c48c17] ↑ FixedPointNumbers v0.8.4 ⇒ v0.8.5\n  [28b8d3ca] ↑ GR v0.73.3 ⇒ v0.73.5\n  [3587e190] ↑ InverseFunctions v0.1.13 ⇒ v0.1.14\n  [23fbe1c1] ↑ Latexify v0.16.2 ⇒ v0.16.3\n  [78c3b35d] ↑ Mocking v0.7.7 ⇒ v0.7.8\n  [43287f4e] + PtrArrays v1.1.0\n  [276daf66] ↑ SpecialFunctions v2.3.1 ⇒ v2.4.0\n  [dc5dba14] ↑ TZJData v1.1.0+2023d ⇒ v1.2.0+2024a\n  [f269a46b] ↑ TimeZones v1.14.0 ⇒ v1.15.0\n  [1986cc42] ↑ Unitful v1.19.0 ⇒ v1.19.1\n  [83423d85] ↑ Cairo_jll v1.18.0+1 ⇒ v1.18.0+2\n  [2e619515] ↑ Expat_jll v2.5.0+0 ⇒ v2.6.2+0\n  [a3f928ae] ↑ Fontconfig_jll v2.13.93+0 ⇒ v2.13.96+0\n  [559328eb] ↑ FriBidi_jll v1.0.10+0 ⇒ v1.0.14+0\n  [d2c73de3] ↑ GR_jll v0.73.3+0 ⇒ v0.73.5+0\n  [7746bdde] ↑ Glib_jll v2.80.0+0 ⇒ v2.80.2+0\n  [aacddb02] ↑ JpegTurbo_jll v3.0.2+0 ⇒ v3.0.3+0\n  [c1c5ebd0] ↑ LAME_jll v3.100.1+0 ⇒ v3.100.2+0\n  [dd4b983a] ↑ LZO_jll v2.10.1+0 ⇒ v2.10.2+0\n  [d4300ac3] ↑ Libgcrypt_jll v1.8.7+0 ⇒ v1.8.11+0\n  [7add5ba3] ↑ Libgpg_error_jll v1.42.0+0 ⇒ v1.49.0+0\n  [4b2f31a3] ↑ Libmount_jll v2.39.3+0 ⇒ v2.40.1+0\n  [38a345b3] ↑ Libuuid_jll v2.39.3+1 ⇒ v2.40.1+0\n  [30392449] ↑ Pixman_jll v0.42.2+0 ⇒ v0.43.4+0\n  [f67eecfb] ↑ Xorg_libICE_jll v1.0.10+1 ⇒ v1.1.1+0\n  [c834827a] ↑ Xorg_libSM_jll v1.2.3+0 ⇒ v1.2.4+0\n  [1082639a] ↑ Xorg_libXext_jll v1.3.4+4 ⇒ v1.3.6+0\n  [ea2f1a96] ↑ Xorg_libXrender_jll v0.9.10+4 ⇒ v0.9.11+0\n  [4af54fe1] - LazyArtifacts\nPrecompiling project...\n  ✓ TZJData\n  ✓ Libuuid_jll\n  ✓ Libmount_jll\n  ✓ JpegTurbo_jll\n  ✓ PtrArrays\n  ✓ Libgpg_error_jll\n  ✓ Xorg_libICE_jll\n  ✓ FriBidi_jll\n  ✓ LAME_jll\n  ✓ Pixman_jll\n  ✓ LZO_jll\n  ✓ Mocking\n  ✓ AliasTables\n  ✓ Glib_jll\n  ✓ Libgcrypt_jll\n  ✓ Xorg_libSM_jll\n  ✓ Fontconfig_jll\n  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt\n  ✓ FixedPointNumbers\n  ✓ DataStructures\n  ✓ Latexify\n  ✓ StatsFuns → StatsFunsChainRulesCoreExt\n  ✓ Xorg_libXrender_jll\n  ✓ Xorg_libXext_jll\n  ✓ Cairo_jll\n  ✓ TimeZones\n  ✓ TimeZones → TimeZonesRecipesBaseExt\n  ✓ ColorVectorSpace → SpecialFunctionsExt\n  ✓ Colors\n  ✓ Distributions\n  ✓ ColorSchemes\n  ✓ Distributions → DistributionsTestExt\n  ✓ Distributions → DistributionsChainRulesCoreExt\n  ✓ Unitful\n  ✓ Unitful → InverseFunctionsUnitfulExt\n  ✓ Unitful → ConstructionBaseUnitfulExt\n  ✓ Accessors → AccessorsUnitfulExt\n  ✓ GR_jll\n  ✓ Roots\n  ✓ GR\n  ✓ Roots → RootsForwardDiffExt\n  ✓ HypothesisTests\n  ? HPFilter\n  ✓ Latexify → DataFramesExt\nDBnomics Waiting for background task / IO / timer.\n[pid 15256] waiting for IO to finish:\n Handle type        uv_handle_t-&gt;data\n fs_event           0x14daa40-&gt;0x7220851845e0\n timer              0x145c5f0-&gt;0x722085184610\nThis means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.\n  ✓ UnitfulLatexify\n  ✓ DBnomics\n  ✓ Plots → UnitfulExt\n  46 dependencies successfully precompiled in 104 seconds. 163 already precompiled.\n  22 dependencies precompiled but different versions are currently loaded. Restart julia to access the new versions\n  1 dependency failed but may be precompilable after restarting julia\n  2 dependencies had output during precompilation:\n┌ HPFilter\n│  WARNING: Method definition HP(Array{T, 1} where T, Int64) in module HPFilter at /home/pablo/.julia/packages/HPFilter/981TT/src/HPFilterFunc.jl:8 overwritten at /home/pablo/.julia/packages/HPFilter/981TT/src/HPFilterFunc.jl:26.\n│  ERROR: Method overwriting is not permitted during Module precompilation. Use `__precompile__(false)` to opt-out of precompilation.\n└  \n┌ DBnomics\n│  Visit &lt;https://db.nomics.world&gt;.\n│  \n│  [pid 15256] waiting for IO to finish:\n│   Handle type        uv_handle_t-&gt;data\n│   fs_event           0x14daa40-&gt;0x7220851845e0\n│   timer              0x145c5f0-&gt;0x722085184610\n│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.\n└  \n\n\n\nc(q) = 0.5 + q*(1-(q*exp(-q)))\np(q) = - 2*log(q/2)\nπ(q) = q*p(q) - c(q)\nusing ForwardDiff\nπ1(q) = ForwardDiff.derivative(π, q)\nπ2(q) = ForwardDiff.derivative(π1, q )\n\nπ2 (generic function with 1 method)\n\n\n\nprofit(q) = (π(q), π1(q), π2(q))\n\nprofit (generic function with 1 method)\n\n\n\n# function π(q, order)\n#     if order == 2\n#         return (π(q),π1(q),π2(q))\n#     elseif order==0\n#         return π(q)\n#     end\n# end \n# π(0.1, 0)\n\n\nπ (generic function with 2 methods)\n\n\n\n# IMplement Newton Raphson\n\n\nq0 = 0.5 # initial guess\n\n\n\"\"\"\nNewton Raphson algorithm\n- fun: a function returning a 3-elements tuple, with 0,1,2-order derivatives\n- x0: initial guess\n- maxit: maximum number of iterations\n- τ_η: convergence criterium for approximation errors\n\"\"\"\nfunction newton_raphson(fun, x0; maxit=100, τ_η=1e-10)\n    η0 = NaN\n    for n ∈ 1:maxit\n        f0, f1, f2 = fun(x0)\n        # newton step\n        x1 = x0 - f1 /f2\n        # successive approximation error\n        η = abs(x1-x0)\n        λ = η/η0\n        η0 = η\n        println(\"Iteration $n: η=$η : λ=$λ\")\n        if η&lt;τ_η\n            return x1\n        end\n        x0 = x1\n    end\nend\n\nnewton_raphson\n\n\n\nnewton_raphson(profit, 0.5)\n\nIteration 1: η=0.05911252674636103 : λ=NaN\nIteration 2: η=0.0027418337531417425 : λ=0.04638329477787938\nIteration 3: η=5.007147801161516e-6 : λ=0.0018262040123417595\nIteration 4: η=1.6580403716659475e-11 : λ=3.3113469733833887e-6\n\n\n0.5618593676638843",
-    "crumbs": [
-      "Tutorials",
-      "Optimization"
-    ]
+    "objectID": "tutorials/tmp.html#markov-chains",
+    "href": "tutorials/tmp.html#markov-chains",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "A worker’s employment dynamics obey the stochastic matrix\n\\[P = \\begin{bmatrix}\n1-\\alpha & \\alpha \\\\\n\\beta & 1-\\beta\n\\end{bmatrix}\\]\n\\[P = \\begin{bmatrix}\n1-\\alpha & ... \\\\\n\\beta & ...\n\\end{bmatrix}\\]\nwith \\(\\alpha\\in(0,1)\\) and \\(\\beta\\in (0,1)\\). First line corresponds to employment, second line to unemployment.\nWhich is the stationary equilibrium? (choose any value for \\(\\alpha\\) and \\(\\beta\\))\nIn the long run, what will the the fraction \\(p\\) of time spent unemployed? (Denote by \\(X_m\\) the fraction of dates were one is unemployed)\nIllustrate this convergence by generating a simulated series of length 10000 starting at \\(X_0=1\\). Plot \\(X_m-p\\) against \\(m\\). (Take \\(\\alpha=\\beta=0.1\\))."
   },
   {
-    "objectID": "tutorials/3_Optimization.html#constrained-optimization",
-    "href": "tutorials/3_Optimization.html#constrained-optimization",
-    "title": "Optimization",
-    "section": "Constrained optimization",
-    "text": "Constrained optimization\nConsider the function \\(f(x,y) = 1-(x-0.5)^2 -(y-0.3)^2\\).\nUse Optim.jl to minimize \\(f\\) without constraint. Check you understand diagnostic information returned by the optimizer.\nNow, consider the constraint \\(x&lt;0.3\\) and maximize \\(f\\) under this new constraint.\nReformulate the problem as a root finding problem with lagrangians. Write the complementarity conditions.\nSolve using NLSolve.jl",
-    "crumbs": [
-      "Tutorials",
-      "Optimization"
-    ]
+    "objectID": "tutorials/tmp.html#basic-asset-pricing-model",
+    "href": "tutorials/tmp.html#basic-asset-pricing-model",
+    "title": "Discrete Dynamic Programming",
+    "section": "Basic Asset Pricing model",
+    "text": "Basic Asset Pricing model\nA financial asset yields dividend \\((x_t)\\), which follows an AR1. It is evaluated using the stochastic discount factor: \\(\\rho_{0,t} = \\beta^t \\exp(y_t)\\) where \\(\\beta&lt;1\\) and \\(y_t\\) is an \\(AR1\\). The price of the asset is given by \\(p_0 = \\sum_{t\\geq 0} \\rho_{0,t} U(x_t)\\) where \\(U(u)=\\exp(u)^{0.5}/{0.5}\\). Our goal is to find the pricing function \\(p(x,y)\\), which yields the price of the asset in any state.\nWrite down the recursive equation which must be satisfied by \\(p\\).\n\\[p_t = U(x_t) + \\beta E_t \\left[ \\frac{e^{y_{t+1}}}{e^{y_t}} p_{t+1} \\right]\\]\nCompute the ergodic distribution of \\(x\\) and \\(y\\).\nDiscretize processes \\((x_t)\\) and \\((y_t)\\) using 2 states each. How would you represent the unknown \\(p()\\)?\nSolve for \\(p()\\) using successive approximations\nSolve for \\(p()\\) by solving a linear system (homework)"
   },
   {
-    "objectID": "tutorials/3_Optimization.html#consumption-optimization",
-    "href": "tutorials/3_Optimization.html#consumption-optimization",
-    "title": "Optimization",
-    "section": "Consumption optimization",
-    "text": "Consumption optimization\nA consumer has preferences \\(U(c_1, c_2)\\) over two consumption goods \\(c_1\\) and \\(c_2\\).\nGiven a budget \\(I\\), consumer wants to maximize utility subject to the budget constraint \\(p_1 c_1 + p_2 c_2 \\leq I\\).\nWe choose a Stone-Geary specification where\n\\(U(c_1, c_2)=\\beta_1 \\log(c_1-\\gamma_1) + \\beta_2 \\log(c_2-\\gamma_2)\\)\nWrite the Karush-Kuhn-Tucker necessary conditions for the problem.\nVerify the KKT conditions are sufficient for optimality.\nDerive analytically the demand functions, and the shadow price.\nInterpret this problem as a complementarity problem and solve it using NLSolve.\nProduce some nice graphs with isoutility curves, the budget constraint and the optimal choice.",
-    "crumbs": [
-      "Tutorials",
-      "Optimization"
-    ]
+    "objectID": "tutorials/tmp.html#asset-replacement-from-compecon",
+    "href": "tutorials/tmp.html#asset-replacement-from-compecon",
+    "title": "Discrete Dynamic Programming",
+    "section": "Asset replacement (from Compecon)",
+    "text": "Asset replacement (from Compecon)\nAt the beginning of each year, a manufacturer must decide whether to continue to operate an aging physical asset or replace it with a new one.\nAn asset that is \\(a\\) years old yields a profit contribution \\(p(a)\\) up to \\(n\\) years, at which point, the asset becomes unsafe and must be replaced by law.\nThe cost of a new asset is \\(c\\). What replacement policy maximizes profits?\nCalibration: profit \\(p(a)=50-2.5a-2.5a^2\\). Maximum asset age: 5 years. Asset replacement cost: 75, annual discount factor \\(\\delta=0.9\\).\n\np(a) = 50-2.5a-2.5a^2\n\np (generic function with 1 method)\n\n\n\nusing Plots\n\n\nplot( [p(i) for i=0:5])\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDefine kind of problem, the state space, the actions, the reward function, and the Bellman updating equation\nkind of problem: - discrete/finite state and actions space - infinite horizon - discrete dynamic programming problem (d.m.d.p.)\n\nstate-space: asset age \\(a\\in[0,1,2,3,4,5]\\)\nactions: \\(x(a)\\) keep/replace (\\(\\text{replace} in false/true\\) if a&lt;5)\n\nBellman updating equation:\n\\[ V(a) ← p(a) + \\delta \\begin{cases} V(0) - c \\   \\text{if x(a)=true} \\\\ V(a+1) \\text{if x(a)=false} \\\\ V(0)-c \\text{if a=5}\\end{cases}   \\]\nSolve the problem using Value Function Iteration\n\nfunction bellman_step()\n\nSolve the problem using Policy Iteration. Compare with VFI."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Computational Economics - ECO309",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nJun 6, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nMar 28, 2024\n\n\nDiscrete Dynamic Programming\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nMay 29, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#indicative-schedule",
     "href": "index.html#indicative-schedule",
     "title": "Computational Economics - ECO309",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nJun 6, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nMar 28, 2024\n\n\nIntroduction\n\n\n\n\nMar 28, 2024\n\n\nDiscrete Dynamic Programming\n\n\n\n\nApr 4, 2024\n\n\nConvergence of Sequences\n\n\n\n\nApr 25, 2024\n\n\nOptimization\n\n\n\n\nMay 29, 2024\n\n\nDifferentiation\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#communication",
@@ -102,226 +123,6 @@
     "title": "Computational Economics - ECO309",
     "section": "Assessment",
     "text": "Assessment\n\ntutorials (optional)\ncoursework (mandatory)\npresentations (optional)"
-  },
-  {
-    "objectID": "slides/session_2/index.html#life-of-a-computational-economist",
-    "href": "slides/session_2/index.html#life-of-a-computational-economist",
-    "title": "Convergence of Sequences",
-    "section": "Life of a computational economist",
-    "text": "Life of a computational economist",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#life-of-a-computational-economist-1",
-    "href": "slides/session_2/index.html#life-of-a-computational-economist-1",
-    "title": "Convergence of Sequences",
-    "section": "Life of a computational economist",
-    "text": "Life of a computational economist\nVideo\n\n\nWe spend a lot of time waiting for algorithms to converge!\n\n\nsolution 1: program better\n\nsolution 2: better algorithms\n\neven better: understand convergence properties (information about the model)",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#recursive-sequence",
-    "href": "slides/session_2/index.html#recursive-sequence",
-    "title": "Convergence of Sequences",
-    "section": "Recursive sequence",
-    "text": "Recursive sequence\nConsider a function \\(f: R\\rightarrow R\\) and a recursive sequence \\((x_n)\\) defined by \\(x_0\\) and \\(x_n = f(x_{n-1})\\).\nWe want to compute a fixed point of \\(f\\) and study its properties.",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#example-growth-model",
-    "href": "slides/session_2/index.html#example-growth-model",
-    "title": "Convergence of Sequences",
-    "section": "Example: growth model",
-    "text": "Example: growth model\n\n\n\nSolow growth model:\n\ncapital accumulation: \\[k_t = (1-\\delta)k_{t-1} + i_{t-1}\\]\nproduction: \\[y_t = k_t^\\alpha\\]\nconsumption: \\[c_t = (1-{\\color{red}s})y_t\\] \\[i_t = s y_t\\]\n\n\n\n\nFor a given value of \\({\\color{red} s}\\in\\mathbb{R}^{+}\\) ( \\({\\color{red} s}\\) is a decision rule) \\[k_{t+1} = f(k_t, {\\color{red} s})\\]\n\nbackward-looking iterations\nSolow hypothesis: saving rate is invariant\n\n\n\nQuestions:\n\nWhat is the steady-state?\nCan we characterize the transition back the steady-state?\nCharacterize the dynamics close to the steady-state?\nwhat is the optimal \\(s\\) ?",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#another-example-linear-new-keynesian-model",
-    "href": "slides/session_2/index.html#another-example-linear-new-keynesian-model",
-    "title": "Convergence of Sequences",
-    "section": "Another example: linear new keynesian model",
-    "text": "Another example: linear new keynesian model\n\n\n\nBasic New Keynesian model (full derivation if curious )\n\nnew philips curve (PC):\\[\\pi_t = \\beta \\mathbb{E}_t \\pi_{t+1} + \\kappa y_t\\]\ndynamic investment-saving equation (IS):\\[y_t = \\beta \\mathbb{E}_t y_{t+1} - \\frac{1}{\\sigma}(i_t - \\mathbb{E}_t(\\pi_{t+1}) ) - {\\color{green} z_t}\\]\ninterest rate setting (taylor rule): \\[i_t = \\alpha_{\\pi} \\pi_t + \\alpha_{y} y_t\\]\n\n\nSolving the system:\n\nsolution: \\(\\begin{bmatrix}\\pi_t \\\\\\\\ y_t \\end{bmatrix} = {\\color{red} c} z_t\\)\n\n\n\n\n\nforward looking:\n\ntake \\(\\begin{bmatrix}\\pi_{t+1} \\\\\\\\ y_{t+1} \\end{bmatrix} = {\\color{red} {c_n}} z_{t+1}\\)\ndeduce \\(\\begin{bmatrix}\\pi_{t} \\\\\\\\ y_{t} \\end{bmatrix} = {\\color{red} {c_{n+1}}} z_{t}\\)\n\\(\\mathcal{T}: \\underbrace{c_{n}}_{t+1: \\; \\text{tomorrow}} \\rightarrow \\underbrace{c_{n+1}}_{t: \\text{today}}\\) is the time-iteration operator (a.k.a. Coleman operator)\n\n\n\n\n\n\nQuestions:\n\nWhat is the limit to \\(c_{t+1} = \\mathcal{T} c_n\\) ?\nUnder wich conditions (on \\(\\alpha_{\\pi}, \\alpha_y\\)) is it convergent ?\n\ndeterminacy conditions\ninterpretation: does the central bank manage to control inflation expectations?",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#recursive-series-2",
-    "href": "slides/session_2/index.html#recursive-series-2",
-    "title": "Convergence of Sequences",
-    "section": "Recursive series (2)",
-    "text": "Recursive series (2)\n\nWait: does a fixed point exist?\n\nwe’re not very concerned by the existence problem here\nwe’ll be happy with local conditions (existence, uniqueness) around a solution\n\nWe can assume there is an interval such that \\(f([a,b])\\subset[a,b]\\). Then we know there exists \\(x\\) in \\([a,b]\\) such that \\(f(x)=x\\). But there can be many such points.",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#example-growth-model-with-multiple-fixed-points",
-    "href": "slides/session_2/index.html#example-growth-model-with-multiple-fixed-points",
-    "title": "Convergence of Sequences",
-    "section": "Example: growth model with multiple fixed points",
-    "text": "Example: growth model with multiple fixed points\n\n\n\nIn the growth model, if we change the production function: \\(y=k^{\\alpha}\\) for a nonconvex/nonmonotonic one, we can get multiple fixed points.",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#convergence",
-    "href": "slides/session_2/index.html#convergence",
-    "title": "Convergence of Sequences",
-    "section": "Convergence",
-    "text": "Convergence\n\nHow do we characterize behaviour around \\(x\\) such that \\(f(x)=x\\)?\n\nif \\(|f^{\\prime}(x)|&gt;1\\): series is unstable and will not converge to \\(x\\) except by chance\nif \\(|f^{\\prime}(x)|&lt;1\\): \\(x\\) is a stable fixed point\nif \\(|f^{\\prime}(x)|=1\\): ??? (look at higher order terms, details ↓)",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#section",
-    "href": "slides/session_2/index.html#section",
-    "title": "Convergence of Sequences",
-    "section": "",
-    "text": "To get the intution about local convergence assume, you have an initial point \\(x_n\\) close to the steady state and consider the following expresion:\n\\(x_{n+1} - x = f(x_n) - f(x) = f^{\\prime}(x) (x_n-x) + o( (x_n-x) )\\)\nIf one sets aside the error term (which one can do with full mathematical rigour), the dynamics for very small perturbations are given by:\n\\(|x_{n+1} - x| = |f^{\\prime}(x)| |x_n-x|\\)\nWhen \\(|f^{\\prime}(x)|&lt;1\\), the distance to the target decreases at each iteration and we have convergence. When \\(|f^{\\prime}(x)|&gt;1\\) there is local divergence.",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#section-1",
-    "href": "slides/session_2/index.html#section-1",
-    "title": "Convergence of Sequences",
-    "section": "",
-    "text": "What about the case \\(|f^{\\prime}(x)=1|\\)? Many cases are possible. To distinguish between them, one needs to inspect higher order derivatives.\n\nwhen \\(|f^{\\prime}(x)=1|\\), \\(|f^{\\prime\\prime}(x)|\\neq 0\\) the series will convergence, only if \\((x_0-x)f^{\\prime\\prime}(x)&lt;0\\), i.e. starting from one side of the fixed point. The steady-state is not stable.\nWhen \\(|f^{\\prime}(x)=1|\\), \\(|f^{\\prime\\prime}(x)| = 0\\), \\(|f^{\\prime \\prime\\prime}(x)|\\neq 0\\) the series will converge, only if \\(f^{\\prime}(x)(f^{\\prime\\prime\\prime}(x))&lt;1\\)\n\nIn general, there is stability only if the function \\(f\\) is crossing the 45 degrees line (when \\(f^ {\\prime}(x)=1)\\), or the -45 degrees line (when \\(f^ {\\prime}(x)=1\\))\nMathematically, this involves, that: - the first non-zero coefficient \\(f^{k}(x)\\) with \\(k&gt;1\\) has odd order (\\(k\\) odd) - it has the right sign\n\n\n[TODO: add graph]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#change-the-problem",
-    "href": "slides/session_2/index.html#change-the-problem",
-    "title": "Convergence of Sequences",
-    "section": "Change the problem",
-    "text": "Change the problem\n\nSometimes, we are interested in tweaking the convergence speed:\n\n\\[x_{n+1} = (1-\\lambda) x_n + \\lambda f(x_n)\\]\n\n\\(\\lambda\\) is the learning rate:\n\n\\(\\lambda&gt;1\\): acceleration\n\\(\\lambda&lt;1\\): dampening\n\nWe can also replace the function by another one \\(g\\) such that \\(g(x)=x\\iff f(x)=x\\), for instance:\n\n\\[g(x)=x-\\frac{f(x)-x}{f^{\\prime}(x)-1}\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#dynamics-around-a-stable-point",
-    "href": "slides/session_2/index.html#dynamics-around-a-stable-point",
-    "title": "Convergence of Sequences",
-    "section": "Dynamics around a stable point",
-    "text": "Dynamics around a stable point\n\nWe can write successive approximation errors:\n\n\\[|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| \\]\n\\[|x_t - x_{t-1}| \\sim |f^{\\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| \\]\n\nRatio of successive approximation errors \\[\\lambda_t =  \\frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}\\]\n\\(\\lambda_t \\rightarrow | f^{\\prime}(\\overline{x}) |\\)",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#dynamics-around-a-stable-point-2",
-    "href": "slides/session_2/index.html#dynamics-around-a-stable-point-2",
-    "title": "Convergence of Sequences",
-    "section": "Dynamics around a stable point (2)",
-    "text": "Dynamics around a stable point (2)\nHow do we derive an error bound? Suppose that we have \\(\\overline{\\lambda}&gt;|f^{\\prime}(x_k)|\\) for all \\(k\\geq k_0\\):\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... \\]\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... \\]\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + \\overline{\\lambda} |x_t - x_{t+1}| + \\overline{\\lambda}^2 |x_t - x_{t+1}| + ... \\]\n\\[|x_t - x| \\leq \\frac{1} {1-\\overline{\\lambda}} | x_t - x_{t+1} |\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#how-do-we-improve-convergence",
-    "href": "slides/session_2/index.html#how-do-we-improve-convergence",
-    "title": "Convergence of Sequences",
-    "section": "How do we improve convergence ?",
-    "text": "How do we improve convergence ?\n\\[\\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \\sim |f^{\\prime}(x_{t-1})|  \\]\ncorresponds to the case of linear convergence (kind of slow).",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#aitkens-extrapolation",
-    "href": "slides/session_2/index.html#aitkens-extrapolation",
-    "title": "Convergence of Sequences",
-    "section": "Aitken’s extrapolation",
-    "text": "Aitken’s extrapolation\nWhen convergence is geometric, we have: \\[ \\lim_{x\\rightarrow \\infty}\\frac{ x_{t+1}-x}{x_t-x} = \\lambda \\in \\mathbb{R}^{\\star}\\]\nWhich implies:\n\\[\\frac{ x_{t+1}-x}{x_t-x} \\sim \\frac{ x_{t}-x}{x_{t-1}-x}\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#aitkens-extrapolation-2",
-    "href": "slides/session_2/index.html#aitkens-extrapolation-2",
-    "title": "Convergence of Sequences",
-    "section": "Aitken’s extrapolation (2)",
-    "text": "Aitken’s extrapolation (2)\nTake \\(x_{t-1}, x_t\\) and \\(x_{t+1}\\) as given and solve for \\(x\\):\n\\[x = \\frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}\\]\nor after some reordering\n\\[x = x_{t-1} - \\frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#steffensens-method",
-    "href": "slides/session_2/index.html#steffensens-method",
-    "title": "Convergence of Sequences",
-    "section": "Steffensen’s Method:",
-    "text": "Steffensen’s Method:\n\nstart with a guess \\(x_0\\), compute \\(x_1=f(x_0)\\) and \\(x_2=f(x_1)\\)\nuse Aitken’s guess for \\(x^{\\star}\\). If required tolerance is met, stop.\notherwise, set \\(x_0 = x^{\\star}\\) and go back to step 1.\n\nIt can be shown that the sequence generated from Steffensen’s method converges quadratically, that is\n\\(\\lim_{t\\rightarrow\\infty} \\frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \\leq M  \\in \\mathbb{R}^{\\star}\\)",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#convergence-speed",
-    "href": "slides/session_2/index.html#convergence-speed",
-    "title": "Convergence of Sequences",
-    "section": "Convergence speed",
-    "text": "Convergence speed\nRate of convergence of series \\(x_t\\) towards \\(x^{\\star}\\) is:\n\nlinear: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|} = \\mu \\in R^+\\]\nsuperlinear: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|} = 0\\]\nquadratic: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|^{\\color{red}2}} = \\mu \\in R^+\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#convergence-speed-1",
-    "href": "slides/session_2/index.html#convergence-speed-1",
-    "title": "Convergence of Sequences",
-    "section": "Convergence speed",
-    "text": "Convergence speed\nRemark: in the case of linear convergence:\n\\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \\mu \\in ]0,1[ \\iff {\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|}=\\frac{1}{1-\\mu}\\]",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
-  },
-  {
-    "objectID": "slides/session_2/index.html#in-practice",
-    "href": "slides/session_2/index.html#in-practice",
-    "title": "Convergence of Sequences",
-    "section": "In practice",
-    "text": "In practice\n\nProblem:\n\nSuppose one is trying to find \\(x\\) solving the model \\(G(x)=0\\)\nAn iterative algorithm provides a function \\(f\\) defining a recursive series \\(x_{t+1}\\).\n\nThe best practice consists in monitoring at the same time:\n\nthe success criterion: \\[\\epsilon_n = |G(x_n)|\\]\n\n\nhave you found the solution?\n\nthe successive approximation errors \\[\\eta_n = |x_{n+1} - x_n|\\]\n\n\nare you making progress?\n\nthe ratio of successive approximation errors \\[\\lambda_n = \\frac{\\eta_n}{\\eta_{n-1}}\\]\n\n\nwhat kind of convergence? (if \\(|\\lambda_n|&lt;1\\): OK, otherwise: ❓)",
-    "crumbs": [
-      "Slides",
-      "Convergence of Sequences"
-    ]
   },
   {
     "objectID": "slides/session_3/index.html#introduction-1",
@@ -830,6 +631,798 @@
     ]
   },
   {
+    "objectID": "slides/session_2/index.html#life-of-a-computational-economist",
+    "href": "slides/session_2/index.html#life-of-a-computational-economist",
+    "title": "Convergence of Sequences",
+    "section": "Life of a computational economist",
+    "text": "Life of a computational economist",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#life-of-a-computational-economist-1",
+    "href": "slides/session_2/index.html#life-of-a-computational-economist-1",
+    "title": "Convergence of Sequences",
+    "section": "Life of a computational economist",
+    "text": "Life of a computational economist\nVideo\n\n\nWe spend a lot of time waiting for algorithms to converge!\n\n\nsolution 1: program better\n\nsolution 2: better algorithms\n\neven better: understand convergence properties (information about the model)",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#recursive-sequence",
+    "href": "slides/session_2/index.html#recursive-sequence",
+    "title": "Convergence of Sequences",
+    "section": "Recursive sequence",
+    "text": "Recursive sequence\nConsider a function \\(f: R\\rightarrow R\\) and a recursive sequence \\((x_n)\\) defined by \\(x_0\\) and \\(x_n = f(x_{n-1})\\).\nWe want to compute a fixed point of \\(f\\) and study its properties.",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#example-growth-model",
+    "href": "slides/session_2/index.html#example-growth-model",
+    "title": "Convergence of Sequences",
+    "section": "Example: growth model",
+    "text": "Example: growth model\n\n\n\nSolow growth model:\n\ncapital accumulation: \\[k_t = (1-\\delta)k_{t-1} + i_{t-1}\\]\nproduction: \\[y_t = k_t^\\alpha\\]\nconsumption: \\[c_t = (1-{\\color{red}s})y_t\\] \\[i_t = s y_t\\]\n\n\n\n\nFor a given value of \\({\\color{red} s}\\in\\mathbb{R}^{+}\\) ( \\({\\color{red} s}\\) is a decision rule) \\[k_{t+1} = f(k_t, {\\color{red} s})\\]\n\nbackward-looking iterations\nSolow hypothesis: saving rate is invariant\n\n\n\nQuestions:\n\nWhat is the steady-state?\nCan we characterize the transition back the steady-state?\nCharacterize the dynamics close to the steady-state?\nwhat is the optimal \\(s\\) ?",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#another-example-linear-new-keynesian-model",
+    "href": "slides/session_2/index.html#another-example-linear-new-keynesian-model",
+    "title": "Convergence of Sequences",
+    "section": "Another example: linear new keynesian model",
+    "text": "Another example: linear new keynesian model\n\n\n\nBasic New Keynesian model (full derivation if curious )\n\nnew philips curve (PC):\\[\\pi_t = \\beta \\mathbb{E}_t \\pi_{t+1} + \\kappa y_t\\]\ndynamic investment-saving equation (IS):\\[y_t = \\beta \\mathbb{E}_t y_{t+1} - \\frac{1}{\\sigma}(i_t - \\mathbb{E}_t(\\pi_{t+1}) ) - {\\color{green} z_t}\\]\ninterest rate setting (taylor rule): \\[i_t = \\alpha_{\\pi} \\pi_t + \\alpha_{y} y_t\\]\n\n\nSolving the system:\n\nsolution: \\(\\begin{bmatrix}\\pi_t \\\\\\\\ y_t \\end{bmatrix} = {\\color{red} c} z_t\\)\n\n\n\n\n\nforward looking:\n\ntake \\(\\begin{bmatrix}\\pi_{t+1} \\\\\\\\ y_{t+1} \\end{bmatrix} = {\\color{red} {c_n}} z_{t+1}\\)\ndeduce \\(\\begin{bmatrix}\\pi_{t} \\\\\\\\ y_{t} \\end{bmatrix} = {\\color{red} {c_{n+1}}} z_{t}\\)\n\\(\\mathcal{T}: \\underbrace{c_{n}}_{t+1: \\; \\text{tomorrow}} \\rightarrow \\underbrace{c_{n+1}}_{t: \\text{today}}\\) is the time-iteration operator (a.k.a. Coleman operator)\n\n\n\n\n\n\nQuestions:\n\nWhat is the limit to \\(c_{t+1} = \\mathcal{T} c_n\\) ?\nUnder wich conditions (on \\(\\alpha_{\\pi}, \\alpha_y\\)) is it convergent ?\n\ndeterminacy conditions\ninterpretation: does the central bank manage to control inflation expectations?",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#recursive-series-2",
+    "href": "slides/session_2/index.html#recursive-series-2",
+    "title": "Convergence of Sequences",
+    "section": "Recursive series (2)",
+    "text": "Recursive series (2)\n\nWait: does a fixed point exist?\n\nwe’re not very concerned by the existence problem here\nwe’ll be happy with local conditions (existence, uniqueness) around a solution\n\nWe can assume there is an interval such that \\(f([a,b])\\subset[a,b]\\). Then we know there exists \\(x\\) in \\([a,b]\\) such that \\(f(x)=x\\). But there can be many such points.",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#example-growth-model-with-multiple-fixed-points",
+    "href": "slides/session_2/index.html#example-growth-model-with-multiple-fixed-points",
+    "title": "Convergence of Sequences",
+    "section": "Example: growth model with multiple fixed points",
+    "text": "Example: growth model with multiple fixed points\n\n\n\nIn the growth model, if we change the production function: \\(y=k^{\\alpha}\\) for a nonconvex/nonmonotonic one, we can get multiple fixed points.",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#convergence",
+    "href": "slides/session_2/index.html#convergence",
+    "title": "Convergence of Sequences",
+    "section": "Convergence",
+    "text": "Convergence\n\nHow do we characterize behaviour around \\(x\\) such that \\(f(x)=x\\)?\n\nif \\(|f^{\\prime}(x)|&gt;1\\): series is unstable and will not converge to \\(x\\) except by chance\nif \\(|f^{\\prime}(x)|&lt;1\\): \\(x\\) is a stable fixed point\nif \\(|f^{\\prime}(x)|=1\\): ??? (look at higher order terms, details ↓)",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#section",
+    "href": "slides/session_2/index.html#section",
+    "title": "Convergence of Sequences",
+    "section": "",
+    "text": "To get the intution about local convergence assume, you have an initial point \\(x_n\\) close to the steady state and consider the following expresion:\n\\(x_{n+1} - x = f(x_n) - f(x) = f^{\\prime}(x) (x_n-x) + o( (x_n-x) )\\)\nIf one sets aside the error term (which one can do with full mathematical rigour), the dynamics for very small perturbations are given by:\n\\(|x_{n+1} - x| = |f^{\\prime}(x)| |x_n-x|\\)\nWhen \\(|f^{\\prime}(x)|&lt;1\\), the distance to the target decreases at each iteration and we have convergence. When \\(|f^{\\prime}(x)|&gt;1\\) there is local divergence.",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#section-1",
+    "href": "slides/session_2/index.html#section-1",
+    "title": "Convergence of Sequences",
+    "section": "",
+    "text": "What about the case \\(|f^{\\prime}(x)=1|\\)? Many cases are possible. To distinguish between them, one needs to inspect higher order derivatives.\n\nwhen \\(|f^{\\prime}(x)=1|\\), \\(|f^{\\prime\\prime}(x)|\\neq 0\\) the series will convergence, only if \\((x_0-x)f^{\\prime\\prime}(x)&lt;0\\), i.e. starting from one side of the fixed point. The steady-state is not stable.\nWhen \\(|f^{\\prime}(x)=1|\\), \\(|f^{\\prime\\prime}(x)| = 0\\), \\(|f^{\\prime \\prime\\prime}(x)|\\neq 0\\) the series will converge, only if \\(f^{\\prime}(x)(f^{\\prime\\prime\\prime}(x))&lt;1\\)\n\nIn general, there is stability only if the function \\(f\\) is crossing the 45 degrees line (when \\(f^ {\\prime}(x)=1)\\), or the -45 degrees line (when \\(f^ {\\prime}(x)=1\\))\nMathematically, this involves, that: - the first non-zero coefficient \\(f^{k}(x)\\) with \\(k&gt;1\\) has odd order (\\(k\\) odd) - it has the right sign\n\n\n[TODO: add graph]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#change-the-problem",
+    "href": "slides/session_2/index.html#change-the-problem",
+    "title": "Convergence of Sequences",
+    "section": "Change the problem",
+    "text": "Change the problem\n\nSometimes, we are interested in tweaking the convergence speed:\n\n\\[x_{n+1} = (1-\\lambda) x_n + \\lambda f(x_n)\\]\n\n\\(\\lambda\\) is the learning rate:\n\n\\(\\lambda&gt;1\\): acceleration\n\\(\\lambda&lt;1\\): dampening\n\nWe can also replace the function by another one \\(g\\) such that \\(g(x)=x\\iff f(x)=x\\), for instance:\n\n\\[g(x)=x-\\frac{f(x)-x}{f^{\\prime}(x)-1}\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#dynamics-around-a-stable-point",
+    "href": "slides/session_2/index.html#dynamics-around-a-stable-point",
+    "title": "Convergence of Sequences",
+    "section": "Dynamics around a stable point",
+    "text": "Dynamics around a stable point\n\nWe can write successive approximation errors:\n\n\\[|x_t - x_{t-1}| =  | f(x_{t-1}) - f(x_{t-2})| \\]\n\\[|x_t - x_{t-1}| \\sim |f^{\\prime}(x_{t-1})| |x_{t-1} - x_{t-2}| \\]\n\nRatio of successive approximation errors \\[\\lambda_t =  \\frac{ |x_{t} - x_{t-1}| } { |x_{t-1} - x_{t-2}|}\\]\n\\(\\lambda_t \\rightarrow | f^{\\prime}(\\overline{x}) |\\)",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#dynamics-around-a-stable-point-2",
+    "href": "slides/session_2/index.html#dynamics-around-a-stable-point-2",
+    "title": "Convergence of Sequences",
+    "section": "Dynamics around a stable point (2)",
+    "text": "Dynamics around a stable point (2)\nHow do we derive an error bound? Suppose that we have \\(\\overline{\\lambda}&gt;|f^{\\prime}(x_k)|\\) for all \\(k\\geq k_0\\):\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + |x_{t+1} - x_{t+2}| + |x_{t+2} - x_{t+3}| + ... \\]\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + |f(x_{t}) - f(x_{t+1})| + |f(x_{t+1}) - f(x_{t+2})| + ... \\]\n\\[|x_t - x| \\leq |x_t - x_{t+1}| + \\overline{\\lambda} |x_t - x_{t+1}| + \\overline{\\lambda}^2 |x_t - x_{t+1}| + ... \\]\n\\[|x_t - x| \\leq \\frac{1} {1-\\overline{\\lambda}} | x_t - x_{t+1} |\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#how-do-we-improve-convergence",
+    "href": "slides/session_2/index.html#how-do-we-improve-convergence",
+    "title": "Convergence of Sequences",
+    "section": "How do we improve convergence ?",
+    "text": "How do we improve convergence ?\n\\[\\frac{|x_{t-1} - x_{t-2}|} {|x_t - x_{t-1}|} \\sim |f^{\\prime}(x_{t-1})|  \\]\ncorresponds to the case of linear convergence (kind of slow).",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#aitkens-extrapolation",
+    "href": "slides/session_2/index.html#aitkens-extrapolation",
+    "title": "Convergence of Sequences",
+    "section": "Aitken’s extrapolation",
+    "text": "Aitken’s extrapolation\nWhen convergence is geometric, we have: \\[ \\lim_{x\\rightarrow \\infty}\\frac{ x_{t+1}-x}{x_t-x} = \\lambda \\in \\mathbb{R}^{\\star}\\]\nWhich implies:\n\\[\\frac{ x_{t+1}-x}{x_t-x} \\sim \\frac{ x_{t}-x}{x_{t-1}-x}\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#aitkens-extrapolation-2",
+    "href": "slides/session_2/index.html#aitkens-extrapolation-2",
+    "title": "Convergence of Sequences",
+    "section": "Aitken’s extrapolation (2)",
+    "text": "Aitken’s extrapolation (2)\nTake \\(x_{t-1}, x_t\\) and \\(x_{t+1}\\) as given and solve for \\(x\\):\n\\[x = \\frac{x_{t+1}x_{t-1} - x_{t}^2}{x_{t+1}-2x_{t} + x_{t-1}}\\]\nor after some reordering\n\\[x = x_{t-1} - \\frac{(x_t-x_{t-1})^2}{x_{t+1}-2 x_t + x_{t-1}}\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#steffensens-method",
+    "href": "slides/session_2/index.html#steffensens-method",
+    "title": "Convergence of Sequences",
+    "section": "Steffensen’s Method:",
+    "text": "Steffensen’s Method:\n\nstart with a guess \\(x_0\\), compute \\(x_1=f(x_0)\\) and \\(x_2=f(x_1)\\)\nuse Aitken’s guess for \\(x^{\\star}\\). If required tolerance is met, stop.\notherwise, set \\(x_0 = x^{\\star}\\) and go back to step 1.\n\nIt can be shown that the sequence generated from Steffensen’s method converges quadratically, that is\n\\(\\lim_{t\\rightarrow\\infty} \\frac{x_{t+1}-x_t}{(x_t-x_{t-1})^2} \\leq M  \\in \\mathbb{R}^{\\star}\\)",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#convergence-speed",
+    "href": "slides/session_2/index.html#convergence-speed",
+    "title": "Convergence of Sequences",
+    "section": "Convergence speed",
+    "text": "Convergence speed\nRate of convergence of series \\(x_t\\) towards \\(x^{\\star}\\) is:\n\nlinear: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|} = \\mu \\in R^+\\]\nsuperlinear: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|} = 0\\]\nquadratic: \\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|^{\\color{red}2}} = \\mu \\in R^+\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#convergence-speed-1",
+    "href": "slides/session_2/index.html#convergence-speed-1",
+    "title": "Convergence of Sequences",
+    "section": "Convergence speed",
+    "text": "Convergence speed\nRemark: in the case of linear convergence:\n\\[{\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x_t|}{|x_{t}-x_{t-1}|} = \\mu \\in ]0,1[ \\iff {\\lim}_{t\\rightarrow\\infty} \\frac{|x_{t+1}-x^{\\star}|}{|x_{t}-x^{\\star}|}=\\frac{1}{1-\\mu}\\]",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_2/index.html#in-practice",
+    "href": "slides/session_2/index.html#in-practice",
+    "title": "Convergence of Sequences",
+    "section": "In practice",
+    "text": "In practice\n\nProblem:\n\nSuppose one is trying to find \\(x\\) solving the model \\(G(x)=0\\)\nAn iterative algorithm provides a function \\(f\\) defining a recursive series \\(x_{t+1}\\).\n\nThe best practice consists in monitoring at the same time:\n\nthe success criterion: \\[\\epsilon_n = |G(x_n)|\\]\n\n\nhave you found the solution?\n\nthe successive approximation errors \\[\\eta_n = |x_{n+1} - x_n|\\]\n\n\nare you making progress?\n\nthe ratio of successive approximation errors \\[\\lambda_n = \\frac{\\eta_n}{\\eta_{n-1}}\\]\n\n\nwhat kind of convergence? (if \\(|\\lambda_n|&lt;1\\): OK, otherwise: ❓)",
+    "crumbs": [
+      "Slides",
+      "Convergence of Sequences"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#introduction",
+    "href": "slides/session_7/index.html#introduction",
+    "title": "Discrete Dynamic Programming",
+    "section": "Introduction",
+    "text": "Introduction",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#section",
+    "href": "slides/session_7/index.html#section",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "The imperialism of Dynamic Programming\n— Recursive Macroeconomic Theory (Ljunqvist & Sargent)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#section-1",
+    "href": "slides/session_7/index.html#section-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "I spent the Fall quarter (of 1950) at RAND. My first task was to find a name for multistage decision processes. An interesting question is, “Where did the name, dynamic programming, come from?” The 1950s were not good years for mathematical research. We had a very interesting gentleman in Washington named Wilson. He was Secretary of Defense, and he actually had a pathological fear and hatred of the word “research”. I’m not using the term lightly; I’m using it precisely. His face would suffuse, he would turn red, and he would get violent if people used the term research in his presence. You can imagine how he felt, then, about the term mathematical. The RAND Corporation was employed by the Air Force, and the Air Force had Wilson as its boss, essentially. Hence, I felt I had to do something to shield Wilson and the Air Force from the fact that I was really doing mathematics inside the RAND Corporation. What title, what name, could I choose? In the first place I was interested in planning, in decision making, in thinking. But planning, is not a good word for various reasons. I decided therefore to use the word “programming”. I wanted to get across the idea that this was dynamic, this was multistage, this was time-varying. I thought, let’s kill two birds with one stone. Let’s take a word that has an absolutely precise meaning, namely dynamic, in the classical physical sense. It also has a very interesting property as an adjective, and that is it’s impossible to use the word dynamic in a pejorative sense. Try thinking of some combination that will possibly give it a pejorative meaning. It’s impossible. Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities.\n\n— Richard Bellman, Eye of the Hurricane: An Autobiography (1984, page 159)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#markov-chain-and-markov-process-1",
+    "href": "slides/session_7/index.html#markov-chain-and-markov-process-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Markov chain and Markov process",
+    "text": "Markov chain and Markov process\n\nStochastic process: family of random variables indexed by time\nA stochastic process has the Markov property if its future evolution depends only on its current state.\nSpecial cases:\n\n\n\n\n\n\n\n\n\n\nDiscrete States\nContinuous States\n\n\n\n\nDiscrete Time\nDiscrete Markov Chain\nContinuous Markov Chain\n\n\nContinuous Time\nMarkov Jump Process\nMarkov Process",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#stochastic-matrices",
+    "href": "slides/session_7/index.html#stochastic-matrices",
+    "title": "Discrete Dynamic Programming",
+    "section": "Stochastic matrices",
+    "text": "Stochastic matrices\n\na matrix \\(M \\in R^n\\times R^n\\) matrix is said to be stochastic if\n\nall coefficents are non-negative\nall the lines lines sum to 1 (\\(\\forall i, \\sum_j M_{ij} = 1\\))\n\na probability density is a vector \\(\\mu \\in R^n\\) such that :\n\nall components are non-negative\nall coefficients sum to 1 (\\(\\sum_{i=1}^n \\mu_{i} = 1\\))\n\na distribution is a vector with such that:\n\nall components are non-negative",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#simulation",
+    "href": "slides/session_7/index.html#simulation",
+    "title": "Discrete Dynamic Programming",
+    "section": "Simulation",
+    "text": "Simulation\n\nConsider: \\(\\mu_{i,t+1}' =\\mu_t' P\\)\nWe have \\(\\mu_{i,t+1} = \\sum_{k=1}^n  \\mu_{k,t}  P_{k, i}\\)\nAnd: \\(\\sum_i\\mu_{i,t+1} = \\sum_i \\mu_{i,t}\\)\nPostmultiplication by a stochastic matrix preserves the mass.\nInterpretation: \\(P_{ij}\\) is the fraction of the mass initially in state \\(i\\) which ends up in \\(j\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#example",
+    "href": "slides/session_7/index.html#example",
+    "title": "Discrete Dynamic Programming",
+    "section": "Example",
+    "text": "Example\n\\[\\underbrace{\n\\begin{pmatrix}\n? & ? & ?\n\\end{pmatrix}\n}_{\\mu_{t+1}'} = \\underbrace{\n\\begin{pmatrix}\n0.5 & 0.3 & 0.2\n\\end{pmatrix}\n}_{\\mu_t'} \\begin{pmatrix}\n0.4 & 0.6 & 0.0 \\\\\\\\\n0.2 & 0.5 & 0.3 \\\\\\\\\n0 & 0 & 1.0\n\\end{pmatrix}\\]\n\nGraphical Representation:",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#probabilistic-interpretation",
+    "href": "slides/session_7/index.html#probabilistic-interpretation",
+    "title": "Discrete Dynamic Programming",
+    "section": "Probabilistic interpretation",
+    "text": "Probabilistic interpretation\n\nDenote by \\(S=(s_1,...s_n)\\) a finite set with \\(n\\) elements (\\(|S|=n\\)).\nA Markov Chain with values in \\(S\\) and with transitions given by a stochastic matrix \\(P\\in R^n\\times R^n\\) identfies a stochastic process \\((X_t)_{t\\geq 0}\\) such that \\[P_{ij} = Prob(X_{t+1}=s_j|X_t=s_i)\\]\nIn words, line \\(i\\) describes the conditional distribution of \\(X_{t+1}\\) conditional on \\(X_t=s_i\\).",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#what-about-longer-horizons",
+    "href": "slides/session_7/index.html#what-about-longer-horizons",
+    "title": "Discrete Dynamic Programming",
+    "section": "What about longer horizons?",
+    "text": "What about longer horizons?\n\nIt is easy to show that for any \\(k\\), \\(P^k\\) is a stochastic matrix.\n\\(P^k_{ij}\\) denotes the probability of ending in \\(j\\), after \\(k\\) periods, starting from \\(i\\)\nGiven an initial distribution \\(\\mu_0\\in R^{+ n}\\)\n\nWhich states will visited with positive probability between t=0 and t=k?\nWhat happens in the very long run?\n\nWe need to study a little bit the properties of Markov Chains",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#connectivity",
+    "href": "slides/session_7/index.html#connectivity",
+    "title": "Discrete Dynamic Programming",
+    "section": "Connectivity",
+    "text": "Connectivity\n\nTwo states \\(s_i\\) and \\(s_j\\) are connected if \\(P_{ij}&gt;0\\)\nWe call incidence matrix: \\(\\mathcal{I}(P)=(\\delta_{P_{ij}&gt;0})_{ij}\\)\nTwo states \\(i\\) and \\(j\\) communicate with each other if there are \\(k\\) and \\(l\\) such that: \\((P^k)_ {i,j}&gt;0\\) and \\((P^l)_ {j,i}&gt;0\\)\n\nit is an equivalence relation\nwe can define equivalence classes\n\nA stochastic matrix \\(P\\) is irreducible if all states communicate\n\nthere is a unique communication class",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#connectivity-and-irreducibility",
+    "href": "slides/session_7/index.html#connectivity-and-irreducibility",
+    "title": "Discrete Dynamic Programming",
+    "section": "Connectivity and irreducibility",
+    "text": "Connectivity and irreducibility\n\n\nIrreducible\n\n\n\n\n\n\n\n\n\n\n\nIrreducible: all states can be reached with positive probability from any initial state.\n\nNot irreducible\n\n\n\n\n\n\n\n\n\n\n\n\nHere there is a subset of states (poor), which absorbs all the mass coming in.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#aperiodicity",
+    "href": "slides/session_7/index.html#aperiodicity",
+    "title": "Discrete Dynamic Programming",
+    "section": "Aperiodicity",
+    "text": "Aperiodicity\n\nAre there cycles? Starting from a state \\(i\\), how long does it take to return to \\(i\\)?\nThe period of a state is defined as \\[gcd( {k\\geq 1 | (P^k)_{i,i}&gt;0} )\\]\nIf a state has a period d&gt;1 the chain returns to the state only at dates multiple of d.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#aperiodicity-1",
+    "href": "slides/session_7/index.html#aperiodicity-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Aperiodicity",
+    "text": "Aperiodicity\n\n\nPeriodic\n\n\n\n\n\n\n\n\n\n\n\n\nIf you start from some states, you return to it, but not before two periods.\n\n\nAperiodic\n\n\n\n\n\n\n\n\n\n\n\n\nIf some mass leaves a state, some of it returns to the state in the next period.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#stationary-distribution",
+    "href": "slides/session_7/index.html#stationary-distribution",
+    "title": "Discrete Dynamic Programming",
+    "section": "Stationary distribution",
+    "text": "Stationary distribution\n\n\\(\\mu\\) is a stationary distribution if \\(\\mu' = \\mu' P\\)\nTheorem: there always exists such a distribution\n\nproof: Brouwer theorem (fixed-point result for compact-convex set)\n\\(f: \\mu\\rightarrow (\\mu'P)'\\)\n\nTheorem:\n\nif P is irreducible the fixed point \\(\\mu^{\\star}\\) is unique\nif P is irreducible and aperiodic \\(|\\mu_0' P^k - \\mu^{\\star}| \\underset{k\\to+\\infty}{\\longrightarrow}0\\) for any initial distribution \\(\\mu_0\\)\n\nWe then say the Markov chain is ergodic\n\\(\\mu^{\\star}\\) is the ergodic distribution\n\nit is the best guess, one can do for the state of the chain in the very far future",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#stationary-distribution-proof",
+    "href": "slides/session_7/index.html#stationary-distribution-proof",
+    "title": "Discrete Dynamic Programming",
+    "section": "Stationary distribution (proof)",
+    "text": "Stationary distribution (proof)\n\nBrouwer’s theorem: Let \\(\\mathcal{C}\\) be a compact convex subset of \\(R^n\\) and \\(f\\) a continuous mapping \\(\\mathcal{C}\\rightarrow \\mathcal{C}\\). Then there exists a fixed point \\(x_0\\in \\mathcal{C}\\) such that \\(f(x_0)=x_0\\)\nResult hinges on:\n\ncontinuity of \\(f: \\mu \\mapsto \\mu P\\)\nconvexity of \\(\\\\{x \\in R^n | |x|=1 \\\\}\\) (easy to check)\ncompactness of \\(\\\\{x \\in R^n | |x|=1 \\\\}\\)\n\nit is bounded\nand closed (the inverse image of 1 for \\(u\\mapsto |u|\\) which is continuous)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#stationary-distribution-1",
+    "href": "slides/session_7/index.html#stationary-distribution-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Stationary distribution?",
+    "text": "Stationary distribution?\nHow do we compute the stationary distribution?\n\nSimulation\nLinear algebra\nDecomposition",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#simulating-a-markov-chain",
+    "href": "slides/session_7/index.html#simulating-a-markov-chain",
+    "title": "Discrete Dynamic Programming",
+    "section": "Simulating a Markov Chain",
+    "text": "Simulating a Markov Chain\n\nVery simple idea:\n\nstart with any \\(\\mu_0\\) and compute the iterates recursively\n\\(\\mu_{n+1}' = \\mu_n' P\\)\nconvergence is linear:\n\n\\(|\\mu_{n+1} - \\mu_n| \\leq |P| |\\mu_n - \\mu_{n-1}|\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#using-linear-algebra",
+    "href": "slides/session_7/index.html#using-linear-algebra",
+    "title": "Discrete Dynamic Programming",
+    "section": "Using Linear Algebra",
+    "text": "Using Linear Algebra\n\nFind the solution of \\(\\mu'(P-I) = 0\\) ?\n\nnot well defined, 0 is a solution\nwe need to incorporate the constraint \\(\\sum_i(\\mu_i)=1\\)\n\nMethod:\n\nDefine \\(M_{ij} =  \\begin{cases} 1  &\\text{if} & j =0 \\\\\\\\ (P-I)_{ij}  & \\text{if} & j&gt; 1  \\end{cases}\\)\nDefine \\(D_i = \\begin{cases} 1 & \\text{if} & j = 0 \\\\\\\\0 & \\text{if} & j&gt;0 \\end{cases}\\)\nWith a linear algebra solver\n\nlook for a solution \\(\\mu\\) of \\(\\mu' M = D\\)\nor \\(M^{\\prime} \\mu = D\\prime\\)\nif you find a solution, it is unique (theorem)\n\n\nAlternative:\n\nminimize residual squares of overidentified system",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#code-example",
+    "href": "slides/session_7/index.html#code-example",
+    "title": "Discrete Dynamic Programming",
+    "section": "Code example",
+    "text": "Code example\n# we use the identity matrix and the \\ operator\nusing LinearAlgebra: I, \\\n# define a stochastic matrix (lines sum to 1)\nP = [  0.9  0.1 0.0  ;\n       0.05 0.9 0.05 ;\n       0.0  0.9 0.1  ]\n# define an auxiliary matrix\nM = P' - I\nM[end,:] .= 1.0\n# define rhs\nR = zeros(3)\nR[end] = 1\n# solve the system\nμ = M\\R\n# check that you have a solution:\n@assert sum(μ) == 1\n@assert all(abs.(μ'P - μ').&lt;1e-10)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#further-comments",
+    "href": "slides/session_7/index.html#further-comments",
+    "title": "Discrete Dynamic Programming",
+    "section": "Further comments",
+    "text": "Further comments\n\nKnowledge about the structure of the Markov Chain can help speedup the calculations\nThere are methods for potentially very-large linear system\n\nNewton-Krylov based methods, GMRES\n\nBasic algorithms are easy to implement by hand\nQuantEcon toolbox has very good methods to study markov chains",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#section-2",
+    "href": "slides/session_7/index.html#section-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "",
+    "text": "Consider the following problems:\n  \n\n\n\nMonopoly pricing:\n\\[\\max_{q} \\pi(q) - c(q)\\]\n\nShopping problem\n\\[\\max_{\\substack{c_1, c_2 \\\\ p_1 c_1 + p_2 c_2 \\leq B}} U(c_1,c_2)\\]\n\nConsumption Savings\n\\[\\max_{\\substack{c() \\\\ w_{t+1}=(w_t-c(w_t))(1+r)) + y_{t+1}}} E_0 \\sum_t \\beta^t U(c(w_t))\\]\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\nobjective\naction\nstate\ntransition\ntype\n\n\n\n\nmonopoly pricing\nprofit\nchoose quantity to produce\n\n\noptimization\n\n\nshopping problem\nutility\nchoose consumption composition\nbudget \\(B\\)\n\ncomparative statics\n\n\nconsumption/savings\nexpected welfare\nsave or consume\navailable income\nevolution of wealth\ndynamic optimization",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#general-formulation",
+    "href": "slides/session_7/index.html#general-formulation",
+    "title": "Discrete Dynamic Programming",
+    "section": "General Formulation",
+    "text": "General Formulation\nMarkov Decision Problem\n\n\n\n\nEnvironment\n\nstates: \\(s \\in S\\)\nactions: \\(x \\in X(s)\\)\ntransitions: \\(\\pi(s'| s, x) \\in S\\)\n\n\\(probability\\) of going to \\(s'\\) in state \\(s\\)…\n… given action \\(x\\)\n\n\n\n\n\n\nReward: \\(r(s,x) \\in R\\)\n\naka felicity, intratemporal utility\n\n\nPolicy: \\(x(): s \\rightarrow x\\in X(s)\\)\n\na.k.a. decision rule\nwe consider deterministic policy\ngiven \\(x()\\), the evolution of \\(s\\) is a Markov process\n\n\\(\\pi(. |s, x())\\) is a distribution for \\(s'\\) over \\(S\\)\nit depends only on \\(s\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#objective",
+    "href": "slides/session_7/index.html#objective",
+    "title": "Discrete Dynamic Programming",
+    "section": "Objective",
+    "text": "Objective\n\nexpected lifetime reward:\n\nvalue of following policy \\(x()\\) starting from \\(s\\): \\[R(s; x()) =  E_0 \\sum_t^T \\delta^t \\left[ r_t\\right]\\]\n\\(\\delta \\in [0,1[\\): discount factor\nhorizon: \\(T \\in \\\\{N, \\infty\\\\}\\)\n\nvalue of a state \\(s\\)\n\nvalue of following the optimal policy starting from \\(s\\) \\[V(s) = \\max_{ x()} R(s, x())\\]\n\\(V()\\) is the value function (t.b.d.)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#classes-of-dynamic-optimization",
+    "href": "slides/session_7/index.html#classes-of-dynamic-optimization",
+    "title": "Discrete Dynamic Programming",
+    "section": "Classes of Dynamic Optimization",
+    "text": "Classes of Dynamic Optimization\n\nThe formulation so far is very general. It encompasses several variants of the problem:\n\nfinite horizon vs infinite horizon\ndiscrete-space problem vs continuous-state space problem\nsome learning problems (reinforcement learning…)\n\nThere are also variants not included:\n\nnon time-separable problems\nnon time-homogenous problems\nsome learning problems (bayesian updating, …)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#finite-horizon-vs-infinite-horizon",
+    "href": "slides/session_7/index.html#finite-horizon-vs-infinite-horizon",
+    "title": "Discrete Dynamic Programming",
+    "section": "Finite horizon vs infinite horizon",
+    "text": "Finite horizon vs infinite horizon\n\nRecall objective: \\(V(s; x()) =  \\max E_0\\sum_{t=0}^T \\delta^t \\left[ r(s_t, x_t) \\right]\\)\nIf \\(T&lt;\\infty\\), the decision in the last periods, will be different from the periods before\n\none must find a decision rule \\(\\pi_t()\\) per period\nor, equivalently, add \\(t\\) to the state space: \\(\\tilde{S}=S\\times[0,T]\\)\n\nIf \\(T=\\infty\\), the continuation value of being in state \\(s_t\\) is independent from \\(t\\)\n\n\\[V(s; x()) = E_0 \\max \\sum_ {t=0}^{T_0} \\delta^t \\left[ r(s_t, x_t) \\right] + \\delta^{T_0} E_0  \\sum_ {t=T_0}^{\\infty} \\delta^t \\left[ r(s_t, x_t) \\right]\\]\n\\[ = E_0 \\left[ \\max \\sum_ {t=0}^{T_0} \\delta^t \\left[ r(s_t, x_t) \\right] +  \\delta^{T_0} V(s_ {T_0}; x()) \\right]\\]",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#continuous-vs-discrete",
+    "href": "slides/session_7/index.html#continuous-vs-discrete",
+    "title": "Discrete Dynamic Programming",
+    "section": "Continuous vs discrete",
+    "text": "Continuous vs discrete\n\nDiscrete Dynamic Programming (today)\n\ndiscrete states: \\(s \\in {s_1, \\cdots, s_N}\\)\ndiscrete controls: \\(|X(s)|&lt;\\infty\\)\nthere is a finite number of policies, the can be represented exactly\nunless \\(|S|\\) is very large (cf go game)\n\nContinuous problem:\n\n\\(x(s)\\), \\(V(s; \\pi)\\) require an infinite number of coefficients\nsame general approach but different implementation\ntwo main variants:\n\ndiscretize the initial problem: back to DDP\nuse approximation techniques (i.e. interpolation)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#non-time-separable-example",
+    "href": "slides/session_7/index.html#non-time-separable-example",
+    "title": "Discrete Dynamic Programming",
+    "section": "Non time separable example",
+    "text": "Non time separable example\n\nFor instance Epstein-Zin preferences: \\[\\max V(;c())\\] where \\[V_t = (1-\\delta) \\frac{c_t^{1-\\sigma}}{1-\\sigma} + \\delta \\left[ E_t V_{t+1}^{\\alpha} \\right]^{\\frac{1}{\\alpha}}\\]\nWhy would you do that?\n\nto disentangle risk aversion and elasticity of intertemporal substitution\nrobust control\n\nYou can still use ideas from Dynamic Programming.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#non-homogenous-preference",
+    "href": "slides/session_7/index.html#non-homogenous-preference",
+    "title": "Discrete Dynamic Programming",
+    "section": "Non homogenous preference",
+    "text": "Non homogenous preference\n\nLook at the \\(\\alpha-\\beta\\) model. \\[V_t = \\max \\sum_t^{\\infty} \\beta_t U(c_t)\\] where \\(\\delta_0 = 1\\), \\(\\delta_1=\\alpha\\), \\(\\delta_k=\\alpha\\beta^{k-1}\\)\nMakes the problem time-inconsistent:\n\nthe optimal policy you would choose for the continuation value after \\(T\\) is not the same if you maximize it in expectation from \\(0\\) or at \\(T\\).",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#learning-problems",
+    "href": "slides/session_7/index.html#learning-problems",
+    "title": "Discrete Dynamic Programming",
+    "section": "Learning problems",
+    "text": "Learning problems\n\nBayesian learning: Uncertainty about some model parameters\n\nex: variance and return of a stock market\nagent models this uncertainty as a distribution\nagent updates his priors after observing the result of his actions\nactions are taken optimally taken into account the revelation power of some actions\n\nIs it good?\n\nclean: the rational thing to do with uncertainty\nsuper hard: the state-space should contain all possible priors\nmathematical cleanness comes with many assumptions\n\nUsed to estimate rather big (mostly linear) models",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#learning-problems-2",
+    "href": "slides/session_7/index.html#learning-problems-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "Learning problems (2)",
+    "text": "Learning problems (2)\n\nReinforcement learning\n\nmodel can be partially or totally unknown\ndecision rule is updated by observing the reward from actions\n\nno priors\n\nsolution does not derive directly from model\n\ncan be used to solve dynamic programming problems\n\n\nGood solutions maximize a criterion similar to lifetime reward but are usually not optimal:\n\nusually evaluated by replaying the game many times\ntradeoff exploration / exploitations",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#finite-horizon-dmdp-1",
+    "href": "slides/session_7/index.html#finite-horizon-dmdp-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Finite horizon DMDP",
+    "text": "Finite horizon DMDP\nWhen \\(T&lt;\\infty\\). With discrete action the problem can be represented by a tree.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#finite-horizon-dmdp-2",
+    "href": "slides/session_7/index.html#finite-horizon-dmdp-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "Finite horizon DMDP",
+    "text": "Finite horizon DMDP\n\nIntuition: backward induction.\n\nFind optimal policy \\(x_T(s_T)\\) in all terminal states \\(s_T\\). Set \\(V_T(s_T)\\) equal to \\(r(s_T, \\pi_T)\\)\nFor each state \\(s_{k-1}\\in S\\) find \\(x_{k-1}\\in X(s_{k-1})\\) which maximizes \\[V_{k-1}(s_{k-1}) = \\max_{x_{k-1}(s_{k-1})\\in X(s_{k-1})}r(s_{k-1},x_{k-1}) + \\delta \\underbrace{ \\sum_{s_k\\in S} \\pi(s_k | s_{k-1}, x_{k-1} ) V_k(s_k)} _{ \\textit{expected continuation value} }\\]\n\nPolicies \\(x_0(), ... x_T()\\) are Markov-perfect:\n\nthey maximize utility on all subsets of the “game”\nalso from t=0",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#remarks",
+    "href": "slides/session_7/index.html#remarks",
+    "title": "Discrete Dynamic Programming",
+    "section": "Remarks",
+    "text": "Remarks\n\nCan we do better than this naive algorithm?\n\nnot really\nbut we can try to limit \\(S\\) to make the maximization step faster\nexclude a priori some branches in the tree using knowledge of the problem",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#infinite-horizon-dmdp-1",
+    "href": "slides/session_7/index.html#infinite-horizon-dmdp-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Infinite horizon DMDP",
+    "text": "Infinite horizon DMDP\n\nHorizon is infinite: \\[V(s) =  \\max E_0 \\sum_{t=0}^{\\infty} \\delta^t r(s_t, x_t) \\]\nIntuition:\n\nlet’s consider the finite horizon version \\(T&lt;\\infty\\) and \\(T &gt;&gt; 1\\)\ncompute the solution, increase \\(T\\) until the solution doesn’t change\nin practice: take an initial guess for \\(V_{T}\\) then compute optimal \\(V_{T-1}\\), \\(V_{T_2}\\) and so on, until convergence of the \\(V\\)s",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#infinite-horizon-dmdp-2",
+    "href": "slides/session_7/index.html#infinite-horizon-dmdp-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "Infinite horizon DMDP (2)",
+    "text": "Infinite horizon DMDP (2)\n\nThis is possible, it’s called Successive Approximation or Value Function Iteration\n\nhow fast does it converge? linearly\ncan we do better? yes, quadratically\n\nwith howard improvement steps",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#successive-approximation",
+    "href": "slides/session_7/index.html#successive-approximation",
+    "title": "Discrete Dynamic Programming",
+    "section": "Successive Approximation",
+    "text": "Successive Approximation\n\nConsider the decomposition: \\[V(s; x()) = E_0 \\sum_{t=0}^{\\infty} \\delta^t r(s_t, x_t) = E_0 \\left[ r(s, x(s)) + \\sum_{t=1}^{\\infty} \\delta^t r(s_t, x_t) \\right]\\]\n\nor\n\\[V(s; x()) =  r(s, x(s)) + \\delta \\sum_{s'} p(s'|s,x(s)) V(s'; x()) \\]",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#successive-approximation-2",
+    "href": "slides/session_7/index.html#successive-approximation-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "Successive Approximation (2)",
+    "text": "Successive Approximation (2)\n\nTaking continuation value as given we can certainly improve the value in every state \\(\\tilde{V}\\) by choosing \\(\\tilde{x}()\\) so as to maximize \\[\\tilde{V}(s; \\tilde{x}(), x()) =  r(s, \\tilde{x}(s)) + \\delta \\sum_{s'} \\pi(s'|s,\\tilde{x}(s) )V(s'; x()) \\]\nBy construction: \\(\\forall s, \\tilde{V}(s, \\tilde{x}(), x()) &gt; {V}(s, x())\\)\n\nit is an improvement step\n\nCan \\({V}(s, \\tilde{x}())\\) be worse for some states than \\({V}(s, x())\\) ?\n\nactually no",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#bellman-equation",
+    "href": "slides/session_7/index.html#bellman-equation",
+    "title": "Discrete Dynamic Programming",
+    "section": "Bellman equation",
+    "text": "Bellman equation\n\nIdea:\n\nit should not be possible to improve upon the optimal solution.\nHence the optimal value \\(V\\) and policy \\(x^{\\star}\\) should satisfy: \\[\\forall s\\in S, V(s) = \\max_{y(s)} r(s, y(s)) + \\delta \\sum_{s^{\\prime}\\in S} \\pi(s^{\\prime}| s, y(s)) V(s^{\\prime})\\] with the maximum attained at \\(x(s)\\).\n\nThis is referred to as the Bellman equation.\nConversely, it is possible to show that a solution to the Bellman equation is also an optimal solution to the initial problem.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#bellman-operator",
+    "href": "slides/session_7/index.html#bellman-operator",
+    "title": "Discrete Dynamic Programming",
+    "section": "Bellman operator",
+    "text": "Bellman operator\n\nThe function \\(G\\) is known as the Bellman operator: \\[G: V \\rightarrow \\max_{y(s)} r(s, y(s)) + \\delta \\sum_{s^{\\prime}\\in S} \\pi(s^{\\prime}| s, y(s)) V(s^{\\prime})\\]\nDefine sequence \\(V_n = G(V_{n-1})\\)\n\nit goes back in time\nbut is not the time-iteration operator\n\nOptimal value is a fixed point of G\nDoes \\(G\\) converges to it ? Yes, if \\(G\\) is a contraction mapping.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#blackwells-theorem",
+    "href": "slides/session_7/index.html#blackwells-theorem",
+    "title": "Discrete Dynamic Programming",
+    "section": "Blackwell’s theorem",
+    "text": "Blackwell’s theorem\n\nLet \\(X\\subset R^n\\) and let \\(\\mathcal{C}(X)\\) be a space of bounded functions \\(f: X\\rightarrow  R\\), with the sup-metric. \\(B: \\mathcal{C}(X)\\rightarrow \\mathcal{C}(X)\\) be an operator satisfying two conditions:\n\n(monotonicity) if \\(f,g \\in \\mathcal{C}(X)\\) and \\(\\forall x\\in X, f(x)\\leq g(x)\\) then\n\n\\(\\forall x \\in X (Bf)(x)\\leq(Bg)(x)\\)\n\n(discounting) there exists some \\(\\delta\\in]0,1[\\) such that: \\(B.(f+a)(x)\\leq (B.f)(x) + \\delta a, \\forall f \\in \\mathcal{C}(X), a\\geq 0, x\\in X\\)\n\nThen \\(B\\) is a contraction mapping with modulus \\(\\delta\\).",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#successive-approximation-1",
+    "href": "slides/session_7/index.html#successive-approximation-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Successive Approximation",
+    "text": "Successive Approximation\n\nUsing the Blackwell’s theorem, we can prove the Bellman operator is a contraction mapping.\nThis justifies the Value Function Iteration algorithm:\n\nchoose an initial \\(V_0\\)\ngiven \\(V_n\\) compute \\(V_{n+1} = G(V_n)\\)\niterate until \\(|V_{n+1}- V_n|\\leq \\eta\\)\n\nPolicy rule is deduced from \\(V\\) as the maximand in the Bellman step",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#successive-approximation-2-1",
+    "href": "slides/session_7/index.html#successive-approximation-2-1",
+    "title": "Discrete Dynamic Programming",
+    "section": "Successive Approximation (2)",
+    "text": "Successive Approximation (2)\nAssume that \\(X\\) is finite.\n\nNote that convergence of \\(V_n\\) is geometric\nBut \\(x_n\\) converges after a finite number of iteration.\n\nsurely the latest iterations are suboptimal\nthey serve only to evaluate the value of \\(x\\)\n\nIn fact:\n\n\\(V_n\\) is never the value of \\(x_n()\\)\nshould we try to keep both in sync?",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#policy-iteration-for-dmdp",
+    "href": "slides/session_7/index.html#policy-iteration-for-dmdp",
+    "title": "Discrete Dynamic Programming",
+    "section": "Policy iteration for DMDP",
+    "text": "Policy iteration for DMDP\n\nChoose initial policy \\(x_0()\\)\nGiven initial guess \\(x_n()\\)\n\ncompute the value function \\(V_n=V( ;x_n)\\) which satisfies\n\\(\\forall s,  V_n(s) = r(s, x_n(s)) + \\delta \\sum_{s'} \\pi(s'| s, x_n(s)) V_n(s')\\)\nimprove policy by maximizing in \\(x_n()\\) \\[\\max_{x_n()} r(s, x_n(s)) + \\delta \\sum_{s^{\\prime}\\in S} \\pi(s^{\\prime}| s, x_n(s)) V_{n-1}(s^{\\prime})\\]\n\nRepeat until convergence, i.e. \\(x_n=x_{n+1}\\)\nOne can show the speed of convergence (for \\(V_n\\)) is quadratic\n\nit corresponds the Newton-Raphson steps applied to \\(V\\rightarrow G(V)-V\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#how-do-we-compute-the-value-of-a-policy",
+    "href": "slides/session_7/index.html#how-do-we-compute-the-value-of-a-policy",
+    "title": "Discrete Dynamic Programming",
+    "section": "How do we compute the value of a policy?",
+    "text": "How do we compute the value of a policy?\n\nGiven \\(x_n\\), goal is to find \\(V_n(s)\\) in \\[\\forall s,  V_n(s) = r(s, x_n(s)) + \\delta \\sum_{s'} \\pi(s'| s, x_n(s)) V_n(s')\\]\nThree approaches:\n\nsimulate the policy rule and compute \\(E\\left[ \\sum_t \\delta^t r(s_t, x_t) \\right]\\) with Monte-Carlo draws\nsuccessive approximation:\n\nput \\(V_k\\) in the rhs and recompute the lhs \\(V_{k+1}\\), replace \\(V_k\\) by \\(V_{k+1}\\) and iterate until convergence\n\nsolve a linear system in \\(V_n\\)\n\nFor 2 and 3 it is useful to constuct a linear operator \\(M\\) such that \\(V_{n+1} = R_n + \\delta M_n .  V_n\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#idea",
+    "href": "slides/session_7/index.html#idea",
+    "title": "Discrete Dynamic Programming",
+    "section": "Idea",
+    "text": "Idea\n\nMcCall model:\n\nwhen should an unemployed person accept a job offer?\nchoice between:\n\nwait for a better offer (and receive low unemp. benefits)\naccept a suboptimal job offer\n\n\nWe present a variant of it, with a small probability of loosing a job.",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#formalization",
+    "href": "slides/session_7/index.html#formalization",
+    "title": "Discrete Dynamic Programming",
+    "section": "Formalization",
+    "text": "Formalization\n\nWhen unemployed in date, a job-seeker\n\nconsumes unemployment benefit \\(c_t = \\underline{c}\\)\nreceives in every date \\(t\\) a job offer \\(w_t\\)\n\n\\(w_t\\) is i.i.d.,\ntakes values \\(w_1, w_2, w_3\\) with probabilities \\(p_1, p_2, p_3\\)\n\nif job-seeker accepts, becomes employed at rate \\(w_t\\) in the next period\nelse he stays unemployed\n\nWhen employed at rate \\(w\\)\n\nworker consumes salary \\(c_t = w\\)\nwith small probability \\(\\lambda&gt;0\\) looses his job:\n\nstarts next period unemployed\n\notherwise stays employed at same rate\n\nObjective: \\(\\max E_0 \\left\\{ \\sum \\beta^t \\log(w_t) \\right\\}\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#states-reward",
+    "href": "slides/session_7/index.html#states-reward",
+    "title": "Discrete Dynamic Programming",
+    "section": "States / reward",
+    "text": "States / reward\n\nWhat are the states?\n\nemployement status: Unemployed / Employed\nif Unemployed:\n\nthe level \\(w\\in {w_1, w_2, w_3}\\) of the salary that is currently proposed\n\nif Employed:\n\nthe level \\(w\\in {w_1, w_2, w_3}\\) at which worker was hired\n\ncurrent state, can be represented by a 2x3 index\n\nWhat are the actions?\n\nif Unemployed:\n\nreject (false) / accept (true)\n\nif Employed: None\nactions (when unemployed) are represented by a 3 elements binary vector\n\nWhat is the (intratemporal) reward?\n\nif Unemployed: \\(U(c)\\)\nif Employed at rate w: \\(U(w)\\)\nhere it doesn’t depend on the action",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#value-function",
+    "href": "slides/session_7/index.html#value-function",
+    "title": "Discrete Dynamic Programming",
+    "section": "Value function",
+    "text": "Value function\n\\(\\newcommand{\\E}{\\mathbb{E}}\\)\n\nWhat is the value of being in a given state?\nIf Unemployed, facing current offer \\(w\\):\n\\[V^U(w) = U(\\underline{c}) + \\max_{a} \\begin{cases} \\beta V^E(w) & \\text{if $a(w)$ is true} \\\\ \\beta  E_{w'}\\left[ V^U(w^{\\prime}) \\right]  & \\text{if $a(w)$ is false} \\end{cases}\\]\nIf Employed, at rate \\(w\\) \\[V^E(w) = U(w) +  (1-\\lambda) \\beta V^E(w) +  \\lambda \\beta E_{w'}\\left[ V^U(w^{\\prime}) \\right] \\]\nWe can represent value as two functions \\(V^U\\) and \\(V^E\\) of the states as\n\ntwo vectors of Floats, with three elements (recall: value-function is real valued)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#value-function-iteration",
+    "href": "slides/session_7/index.html#value-function-iteration",
+    "title": "Discrete Dynamic Programming",
+    "section": "Value function iteration",
+    "text": "Value function iteration\n\nTake a guess for value function \\(\\tilde{V^E}\\), \\(\\tilde{V^U}\\), tomorrow\nUse it to compute value function today: \\[V^U(w) = U(\\underline{c}) + \\max_{a(w)} \\begin{cases} \\beta \\tilde{V}^E(w) & \\text{if $a(w)$ is true} \\\\ \\beta  E_{w'}\\left[ \\tilde{V}^U(w^{\\prime}) \\right]  & \\text{if $a(w)$ is false} \\end{cases}\\] \\[V^E(w) = U(w) +  (1-\\lambda) \\beta \\tilde{V}^E(w) +  \\lambda \\beta E_{w'}\\left[\\tilde{V}^U(w^{\\prime}) \\right] \\]\n\\((\\tilde{V}^E, \\tilde{V}^U)\\mapsto (V^E, V^U)\\) is one value iteration step\nNote that we don’t have to keep track of policies tomorrow\n\nall information about future decisions is contained in \\(\\tilde{V}^E, \\tilde{V}^U\\)\nbut we can keep track of current policy: \\(a(w): \\arg\\max \\cdots\\)",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#value-evaluation",
+    "href": "slides/session_7/index.html#value-evaluation",
+    "title": "Discrete Dynamic Programming",
+    "section": "Value evaluation",
+    "text": "Value evaluation\n\nSuppose we take a policy \\(a(w)\\) as given. What is the value of following this policy forever?\nThe value function \\(V_a^E\\), \\(V_a^U\\) satisfies \\[V_a^U(w) = U(\\underline{c}) + \\begin{cases} \\beta {V}^E_a(w) & \\text{if $a(w)$ is true} \\\\ \\beta  E_{w'}\\left[ {V}^U_a(w^{\\prime}) \\right]  & \\text{if $a(w)$ is false} \\end{cases}\\] \\[V_a^E(w) = U(w) +  (1-\\lambda) \\beta {V}^E_a(w) +  \\lambda \\beta E_{w'}\\left[{V}^U_a(w^{\\prime}) \\right] \\]\nNote the absence of the max function: we don’t reoptimize",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#value-evaluation-2",
+    "href": "slides/session_7/index.html#value-evaluation-2",
+    "title": "Discrete Dynamic Programming",
+    "section": "Value evaluation (2)",
+    "text": "Value evaluation (2)\n\nHow do you compute value of policy \\(a(w)\\) recursively?\nIterate: \\((\\tilde{V}^E_a, \\tilde{V}^U)\\mapsto (V^E_a, V^U_a)\\) \\[V_a^U(w) \\leftarrow U(\\underline{c}) + \\begin{cases} \\beta \\tilde{V}^E_a(w) & \\text{if $a(w)$ is true} \\\\ \\beta  E_{w'}\\left[ \\tilde{V}^U_a(w^{\\prime}) \\right]  & \\text{if $a(w)$ is false} \\end{cases}\\] \\[V_a^E(w) \\leftarrow U(w) +  (1-\\lambda) \\beta \\tilde{V}^E_a(w) +  \\lambda \\beta E_{w'}\\left[\\tilde{V}^U_a(w^{\\prime}) \\right] \\]\nNote the absence of the max function:\n\nwe don’t reoptimize\nwe we keep the same policy all along",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
+    "objectID": "slides/session_7/index.html#policy-iteration",
+    "href": "slides/session_7/index.html#policy-iteration",
+    "title": "Discrete Dynamic Programming",
+    "section": "Policy iteration",
+    "text": "Policy iteration\n\nstart with policy \\(a(w)\\)\nevaluate the value of this policy \\(V^E_a, V^U_a\\)\ncompute the optimal policy \\(a(w)\\) in the Bellman iteration\n\nhere: \\(a(w) = \\arg\\max_{a(w)} \\begin{cases} \\beta \\tilde{V}^E(w)\\\\ \\beta  E_{a'}\\left[ \\tilde{V}^U(a^{\\prime}) \\right] \\end{cases}\\)\n\niterate until \\(a(w)\\) converges",
+    "crumbs": [
+      "Slides",
+      "Discrete Dynamic Programming"
+    ]
+  },
+  {
     "objectID": "slides/session_6/index.html#main-approaches",
     "href": "slides/session_6/index.html#main-approaches",
     "title": "Differentiation",
@@ -1039,15 +1632,55 @@
     ]
   },
   {
-    "objectID": "tutorials/2_solow.html",
-    "href": "tutorials/2_solow.html",
-    "title": "Convergence: Solow Model",
+    "objectID": "tutorials/3_Optimization.html",
+    "href": "tutorials/3_Optimization.html",
+    "title": "Optimization",
     "section": "",
-    "text": "Solow Model\nA representative agent uses capital \\(k_t\\) to produce \\(y_t\\) using the following production function:\n\\[y_t = k_t^{\\alpha}\\]\nHe chooses to consume an amount \\(c_t \\in ]0, y_t]\\) and invests what remains:\n\\[i_t = y_t - c_t\\]\nHe accumulates capital \\(k_t\\) according to:\n\\[k_{t+1} = \\left( 1-\\delta \\right) k_{t} + i_{t}\\]\nwhere \\(\\delta\\) is the depreciation rate and \\(i_t\\) is the amount invested.\nThe goal of the representative agent is to maximize:\n\\[\\sum_{t\\geq 0} \\beta^t U(c_t)\\]\nwhere \\(U(x)=\\frac{x^{1-\\gamma}}{1-\\gamma}\\) and \\(\\beta&lt;1\\) is the discount factor.\nFor now, we ignore the objective and assume that the saving rate \\(s=\\frac{i_t}{y_t}\\) is constant over time.\n\n# how to store the model's information?\n\n\n# solution 1: variables zoo\nα = 0.3\nβ = 0.9\n\n0.9\n\n\n\n# solution 2: list\nm = [0.3, 0.9]\n\n\n# solution 2.b: tuple\nm = (0.3, 0.9)\n\n(0.3, 0.9)\n\n\n\n# solution 3: dictionary\n\n# a dictionary is a list of pairs\n:a =&gt; 2 # a pair associating symbol :a to 2b\n\"a\" =&gt; 2 # can be done with a string (but slower)\n\n# \n\nDict(\n    :α=&gt;0.3,\n    :β=&gt;0.96\n)\n\nDict{Symbol, Float64} with 2 entries:\n  :α =&gt; 0.3\n  :β =&gt; 0.96\n\n\n\n# solution 4: define your own type\nstruct MyOwnType\n    α::Float64 # fields\n    β::Float64 #\n    # γ::Float64\nend\n# problem with types: not easy to modify after first definition\n\n\nmymodel = MyOwnType(0.3, 0.96)\nmymodel.α\n\n0.3\n\n\n\n# solution 5: namedtuples\n\nmodel = (; α=0.3, β=0.96 ) # after semi-colon: named arguments\n\n(α = 0.3, β = 0.96)\n\n\n\n# behaves like a tuple:\nmodel[1]\n\n0.3\n\n\n\n# behaves like a structure:\nmodel.α\n\n0.3\n\n\n\n# is associated to a unique type (so very fast)\ntypeof(model)\n\n@NamedTuple{α::Float64, β::Float64}\n\n\nCreate a NamedTuple to hold parameter values \\(\\beta=0.96\\), \\(\\delta=0.1\\), \\(\\alpha=0.3\\), \\(\\gamma=4\\).\n\n# 🦁\nmodel = (; α=0.3, β=0.96, γ=4.0, δ=0.1 ) # after semi-colon: named arguments\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\n\n# to update model (returns a new model)\nmodel2 = merge(model, (;γ=2.0, ϵ=0.001))\nmodel2\n\n(α = 0.3, β = 0.96, γ = 2.0, δ = 0.1, ϵ = 0.001)\n\n\n\nmodel\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\nWrite down the formula of function \\(f\\) such that \\(k_{t+1}\\): \\(k_{t+1} = f(k_t)\\).\n\\[k_{t+1} = (1-\\delta) k_t + s k_t^{\\alpha}\\]\nDefine a function f(k::Float64, p::NamedTuple)::Float64 to represent \\(f\\) for a given calibration\n\n# extract δ, α from p\n\n# solution 1\nα = model.α\nδ = model.δ\n\n# solution 2: named arguments *unpacking*\n(;α, δ) = model\n\n(α = 0.3, β = 0.96, γ = 4.0, δ = 0.1)\n\n\n\n# 🦁\nfunction f(k, p; s=0.2)\n\n    # extract δ, α from p\n\n    (;α, δ) = p\n\n    k1 = (1-δ)*k + s*k^α\n\n    return k1\nend\n\nf (generic function with 1 method)\n\n\n\n# 🦁\nf(0.5, model)\n\n0.6124504792712471\n\n\nWrite a function simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64} to compute the simulation over T periods starting from initial capital level k0.\n\n# by default a vector can contain anything -&gt; not efficient\n[]\n\nAny[]\n\n\n\n# otherwise, the type if inferred from the content\n[0.0]\n\n1-element Vector{Float64}:\n 0.0\n\n\n\n# unless explicitly specified\nFloat64[]\n\nFloat64[]\n\n\n\n# 🦁\nfunction simulate(k0, T, p; s=0.2)\n    # we add an option to specify the saving rate\n\n    sim = [k0]\n    for t = 1:T\n\n        kt = sim[end]\n        kn = f(kt,p; s=s)\n        push!(sim, kn)\n\n    end\n\n    return sim\n\nend\n\nsimulate (generic function with 1 method)\n\n\n\n# 🦁\nsim = simulate(0.5, 100, model; s=0.3)\n\n101-element Vector{Float64}:\n 0.5\n 0.6936757189068706\n 0.8931322483167848\n 1.0938176799995427\n 1.292616114625568\n 1.4873672712967825\n 1.6765760854980325\n 1.8592250084513522\n 2.0346465014986186\n 2.2024331183825105\n ⋮\n 4.796935178963784\n 4.797428673633411\n 4.797887638373357\n 4.798314488292645\n 4.798711469711076\n 4.7990806719381895\n 4.79942403823261\n 4.799743375998478\n 4.800040366271797\n\n\nMake a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?\n\n# 🦁\nusing Plots\nplot(sim)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# 🦁\n\n# compute growh rate \ngrowth(v) = v[2:end] ./ v[1:end-1] .- 1\n\ngrowth (generic function with 1 method)\n\n\n\n# 🦁\n\n# compare different initial capital levels\nsim0 = simulate(0.5, 100, model);\nsim1 = simulate(1.0, 100, model);\nsim2 = simulate(2.0, 100, model);\n\npl1 = plot(sim0, label=\"k0=0.5\", title=\"Capital Level\")\nplot!(pl1, sim1, label=\"k0=1.0\")\nplot!(pl1, sim2, label=\"k0=2.0\")\n\nα = model.α\ny0 = sim0.^α\ny1 = sim1.^α\ny2 = sim2.^α\n\npl2 = plot(y0, label=\"k0=0.5\", title=\"Output Level\")\nplot!(pl2, y1, label=\"k0=1.0\")\nplot!(pl2, y2, label=\"k0=2.0\")\n\npl3 = plot(growth(y0), label=\"k0=0.5\", title=\"Growth Rates\")\nplot!(pl3, growth(y1), label=\"k0=1.0\")\nplot!(pl3, growth(y2), label=\"k0=2.0\")\n\nplot(pl1, pl2, pl3)\n# plot([sim0, sim1, sim2])\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# compare different initial capital levels\nsim0 = simulate(0.5, 100, model; s=0.1);\nsim1 = simulate(0.5, 100, model; s=0.2);\nsim2 = simulate(0.5, 100, model; s=0.3);\n\npl1 = plot(sim0, label=\"s=0.1\", title=\"Capital Level\")\nplot!(pl1, sim1, label=\"s=0.2\")\nplot!(pl1, sim2, label=\"s=0.3\")\n\nα = model.α\ny0 = sim0.^α\ny1 = sim1.^α\ny2 = sim2.^α\n\npl2 = plot(y0, label=\"s=0.1\", title=\"Output Level\")\nplot!(pl2, y1, label=\"s=0.2\")\nplot!(pl2, y2, label=\"s=0.3\")\n\npl3 = plot(growth(y0), label=\"s=0.1\", title=\"Growth Rates\")\nplot!(pl3, growth(y1), label=\"s=0.2\")\nplot!(pl3, growth(y2), label=\"s=0.3\")\n\nplot(pl1, pl2, pl3)\n# plot([sim0, sim1, sim2])\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSuppose you were interested in using f to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.\n\nquick_dirty_steady_state(model; s=0.2) = simulate(1.0, 100, model; s=s)[end]\n\nquick_dirty_steady_state (generic function with 1 method)\n\n\n\n@time quick_dirty_steady_state(model) \n\n  0.000014 seconds (5 allocations: 1.938 KiB)\n\n\n2.6904293693526475\n\n\n\n# how does the steady-state depends on saving rate ? \n\ns_vector = range(0.05, 0.95; length=1000)\nss_vector = [quick_dirty_steady_state(model;s=s) for s in s_vector]\n\nplot(s_vector, ss_vector)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# iterative version\n\nfunction steady_state(model; k0=1.0, T=1000, s=0.2, τ_η=1e-6)\n\n    for t=1:T\n        k1 = f(k0, model;s=s)\n        η = abs(k1-k0)\n        if η&lt;τ_η\n            return k1, t\n        end\n        k0 = k1\n    end\n\n\n    # kss = \nend\n\nsteady_state (generic function with 1 method)\n\n\n\n@time steady_state(model)\n\n  0.007030 seconds (9.08 k allocations: 592.906 KiB, 99.62% compilation time)\n\n\n(2.6917872031057732, 164)\n\n\n\n# 🦁\n# how do you modify it to implement Steffenson algorithm?\nfunction steady_state_steffenson(model; k0=1.0, T=1000, s=0.2, τ_η=1e-6, K=10, verbose=false)\n\n    # K number of iterations without extrapolation\n\n\n    for t=1:T\n\n        k1 = f(k0, model;s=s)\n\n        if t&gt;K\n            # use extrapolation\n            k2 = f(k1, model;s=s)\n            kn = k0 - (k1-k0)^2/(k2 - 2*k1 + k0)\n        else\n            kn = k1\n        end\n        η = abs(kn-k0)\n\n        if verbose\n            println(\"Iteration: \", t, \" : \",  k0, \" : \", kn , \" : η = \", η)\n        end\n        if η&lt;τ_η\n            return k1, t\n        end\n        k0 = kn\n    end\n\nend\n\nsteady_state_steffenson (generic function with 1 method)\n\n\n\nsteady_state_steffenson(model; verbose=true)\n\nIteration: 1 : 1.0 : 1.1 : η = 0.10000000000000009\nIteration: 2 : 1.1 : 1.195801151884219 : η = 0.095801151884219\nIteration: 3 : 1.195801151884219 : 1.2872430129191352 : η = 0.09144186103491614\nIteration: 4 : 1.2872430129191352 : 1.3742574618933996 : η = 0.08701444897426436\nIteration: 5 : 1.3742574618933996 : 1.456845771393547 : η = 0.0825883095001474\nIteration: 6 : 1.456845771393547 : 1.5350611815735393 : η = 0.07821541017999234\nIteration: 7 : 1.5350611815735393 : 1.6089955116075123 : η = 0.07393433003397298\nIteration: 8 : 1.6089955116075123 : 1.6787687913320717 : η = 0.06977327972455938\nIteration: 9 : 1.6787687913320717 : 1.7445211874595348 : η = 0.06575239612746309\nIteration: 10 : 1.7445211874595348 : 1.8064066954927231 : η = 0.061885508033188374\nIteration: 11 : 1.8064066954927231 : 2.763707849732011 : η = 0.957301154239288\nIteration: 12 : 2.763707849732011 : 2.692058690737832 : η = 0.07164915899417901\nIteration: 13 : 2.692058690737832 : 2.6918003887220845 : η = 0.00025830201574761347\nIteration: 14 : 2.6918003887220845 : 2.6918003852647976 : η = 3.4572869012094998e-9\n\n\n(2.6918003884800683, 14)\n\n\n\n@time steady_state_steffenson(model; verbose=false, K=1)\n\n  0.000008 seconds (1 allocation: 32 bytes)\n\n\n(2.691800385266389, 6)",
+    "text": "In this tutorial you will learn to code and use common optimization algorithms for static models.",
     "crumbs": [
       "Tutorials",
-      "Convergence: Solow Model"
+      "Optimization"
     ]
+  },
+  {
+    "objectID": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
+    "href": "tutorials/3_Optimization.html#profit-optimization-by-a-monopolist",
+    "title": "Optimization",
+    "section": "Profit optimization by a monopolist",
+    "text": "Profit optimization by a monopolist\nA monopolist produces quantity \\(q\\) of goods X at price \\(p\\). Its cost function is \\(c(q) = 0.5 + q (1-qe^{-q})\\)\nThe consumer’s demand for price \\(p\\) is \\(x(p)=2 e^{-0.5 p}\\) (constant elasticity of demand to price).\nWrite down the profit function of the monopolist and find the optimal production (if any). Don’t use any library except for plotting.\n\nusing Plots\n\n\nc(q) = 0.5 + q*(1-(q*exp(-q)))\n# c(q) = 0.5 + q*(1-q*exp(-q))\n# x(p) = 2*exp(-0.5*p)\np(q) = - 2*log(q/2)\nπ(q) = q*p(q) - c(q)\n\nπ (generic function with 1 method)\n\n\n\np(0.001)\n\n15.201804919084164\n\n\n\nc(0.001)\n\n0.5009990009995001\n\n\n\nπ(1)\n\n0.2541738022913329\n\n\n\nqvec = range(0.001, 2; length=20)\n\n0.001:0.10521052631578948:2.0\n\n\n\nqvec = 0.001: 0.001:2\n\n0.001:0.001:2.0\n\n\n\nπvec = [π(q) for q in qvec];\n\n\nπvec = π.(qvec) # vectorized call\n\n2000-element Vector{Float64}:\n -0.48579719608041594\n -0.47436498687607676\n -0.4639772859342966\n -0.454267199084793\n -0.44506047921694036\n -0.4362544994695257\n -0.4277814494554815\n -0.4195931352716545\n -0.4116535238496139\n -0.4039346476856644\n  ⋮\n -1.934699594360955\n -1.9376900425891457\n -1.9406817668948997\n -1.9436747665042937\n -1.946669040643902\n -1.9496645885408042\n -1.9526614094225765\n -1.9556595025172987\n -1.9586588670535492\n\n\n\nplot(qvec, πvec)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport Pkg; Pkg.add(\"ForwardDiff\")\n\n    Updating registry at `~/.julia/registries/General.toml`\n   Resolving package versions...\n   Installed GR_jll ────────────── v0.73.5+0\n   Installed Libmount_jll ──────── v2.40.1+0\n   Installed Cairo_jll ─────────── v1.18.0+2\n   Installed JpegTurbo_jll ─────── v3.0.3+0\n   Installed Xorg_libSM_jll ────── v1.2.4+0\n   Installed Unitful ───────────── v1.19.1\n   Installed Fontconfig_jll ────── v2.13.96+0\n   Installed PtrArrays ─────────── v1.1.0\n   Installed Libgpg_error_jll ──── v1.49.0+0\n   Installed LZO_jll ───────────── v2.10.2+0\n   Installed FriBidi_jll ───────── v1.0.14+0\n   Installed Xorg_libXext_jll ──── v1.3.6+0\n   Installed Colors ────────────── v0.12.11\n   Installed TimeZones ─────────── v1.15.0\n   Installed Libuuid_jll ───────── v2.40.1+0\n   Installed Xorg_libXrender_jll ─ v0.9.11+0\n   Installed Pixman_jll ────────── v0.43.4+0\n   Installed AliasTables ───────── v1.1.3\n   Installed Xorg_libICE_jll ───── v1.1.1+0\n   Installed Latexify ──────────── v0.16.3\n   Installed Mocking ───────────── v0.7.8\n   Installed LAME_jll ──────────── v3.100.2+0\n   Installed Glib_jll ──────────── v2.80.2+0\n   Installed FixedPointNumbers ─── v0.8.5\n   Installed TZJData ───────────── v1.2.0+2024a\n   Installed Libgcrypt_jll ─────── v1.8.11+0\n   Installed ColorSchemes ──────── v3.25.0\n   Installed GR ────────────────── v0.73.5\n  No Changes to `~/.julia/environments/v1.10/Project.toml`\n    Updating `~/.julia/environments/v1.10/Manifest.toml`\n  [66dad0bd] + AliasTables v1.1.3\n  [35d6a980] ↑ ColorSchemes v3.24.0 ⇒ v3.25.0\n  [3da002f7] ↑ ColorTypes v0.11.4 ⇒ v0.11.5\n  [5ae59095] ↑ Colors v0.12.10 ⇒ v0.12.11\n  [864edb3b] ↑ DataStructures v0.18.18 ⇒ v0.18.20\n  [31c24e10] ↑ Distributions v0.25.107 ⇒ v0.25.108\n  [1a297f60] ↑ FillArrays v1.10.0 ⇒ v1.11.0\n  [53c48c17] ↑ FixedPointNumbers v0.8.4 ⇒ v0.8.5\n  [28b8d3ca] ↑ GR v0.73.3 ⇒ v0.73.5\n  [3587e190] ↑ InverseFunctions v0.1.13 ⇒ v0.1.14\n  [23fbe1c1] ↑ Latexify v0.16.2 ⇒ v0.16.3\n  [78c3b35d] ↑ Mocking v0.7.7 ⇒ v0.7.8\n  [43287f4e] + PtrArrays v1.1.0\n  [276daf66] ↑ SpecialFunctions v2.3.1 ⇒ v2.4.0\n  [dc5dba14] ↑ TZJData v1.1.0+2023d ⇒ v1.2.0+2024a\n  [f269a46b] ↑ TimeZones v1.14.0 ⇒ v1.15.0\n  [1986cc42] ↑ Unitful v1.19.0 ⇒ v1.19.1\n  [83423d85] ↑ Cairo_jll v1.18.0+1 ⇒ v1.18.0+2\n  [2e619515] ↑ Expat_jll v2.5.0+0 ⇒ v2.6.2+0\n  [a3f928ae] ↑ Fontconfig_jll v2.13.93+0 ⇒ v2.13.96+0\n  [559328eb] ↑ FriBidi_jll v1.0.10+0 ⇒ v1.0.14+0\n  [d2c73de3] ↑ GR_jll v0.73.3+0 ⇒ v0.73.5+0\n  [7746bdde] ↑ Glib_jll v2.80.0+0 ⇒ v2.80.2+0\n  [aacddb02] ↑ JpegTurbo_jll v3.0.2+0 ⇒ v3.0.3+0\n  [c1c5ebd0] ↑ LAME_jll v3.100.1+0 ⇒ v3.100.2+0\n  [dd4b983a] ↑ LZO_jll v2.10.1+0 ⇒ v2.10.2+0\n  [d4300ac3] ↑ Libgcrypt_jll v1.8.7+0 ⇒ v1.8.11+0\n  [7add5ba3] ↑ Libgpg_error_jll v1.42.0+0 ⇒ v1.49.0+0\n  [4b2f31a3] ↑ Libmount_jll v2.39.3+0 ⇒ v2.40.1+0\n  [38a345b3] ↑ Libuuid_jll v2.39.3+1 ⇒ v2.40.1+0\n  [30392449] ↑ Pixman_jll v0.42.2+0 ⇒ v0.43.4+0\n  [f67eecfb] ↑ Xorg_libICE_jll v1.0.10+1 ⇒ v1.1.1+0\n  [c834827a] ↑ Xorg_libSM_jll v1.2.3+0 ⇒ v1.2.4+0\n  [1082639a] ↑ Xorg_libXext_jll v1.3.4+4 ⇒ v1.3.6+0\n  [ea2f1a96] ↑ Xorg_libXrender_jll v0.9.10+4 ⇒ v0.9.11+0\n  [4af54fe1] - LazyArtifacts\nPrecompiling project...\n  ✓ TZJData\n  ✓ Libuuid_jll\n  ✓ Libmount_jll\n  ✓ JpegTurbo_jll\n  ✓ PtrArrays\n  ✓ Libgpg_error_jll\n  ✓ Xorg_libICE_jll\n  ✓ FriBidi_jll\n  ✓ LAME_jll\n  ✓ Pixman_jll\n  ✓ LZO_jll\n  ✓ Mocking\n  ✓ AliasTables\n  ✓ Glib_jll\n  ✓ Libgcrypt_jll\n  ✓ Xorg_libSM_jll\n  ✓ Fontconfig_jll\n  ✓ SpecialFunctions → SpecialFunctionsChainRulesCoreExt\n  ✓ FixedPointNumbers\n  ✓ DataStructures\n  ✓ Latexify\n  ✓ StatsFuns → StatsFunsChainRulesCoreExt\n  ✓ Xorg_libXrender_jll\n  ✓ Xorg_libXext_jll\n  ✓ Cairo_jll\n  ✓ TimeZones\n  ✓ TimeZones → TimeZonesRecipesBaseExt\n  ✓ ColorVectorSpace → SpecialFunctionsExt\n  ✓ Colors\n  ✓ Distributions\n  ✓ ColorSchemes\n  ✓ Distributions → DistributionsTestExt\n  ✓ Distributions → DistributionsChainRulesCoreExt\n  ✓ Unitful\n  ✓ Unitful → InverseFunctionsUnitfulExt\n  ✓ Unitful → ConstructionBaseUnitfulExt\n  ✓ Accessors → AccessorsUnitfulExt\n  ✓ GR_jll\n  ✓ Roots\n  ✓ GR\n  ✓ Roots → RootsForwardDiffExt\n  ✓ HypothesisTests\n  ? HPFilter\n  ✓ Latexify → DataFramesExt\nDBnomics Waiting for background task / IO / timer.\n[pid 15256] waiting for IO to finish:\n Handle type        uv_handle_t-&gt;data\n fs_event           0x14daa40-&gt;0x7220851845e0\n timer              0x145c5f0-&gt;0x722085184610\nThis means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.\n  ✓ UnitfulLatexify\n  ✓ DBnomics\n  ✓ Plots → UnitfulExt\n  46 dependencies successfully precompiled in 104 seconds. 163 already precompiled.\n  22 dependencies precompiled but different versions are currently loaded. Restart julia to access the new versions\n  1 dependency failed but may be precompilable after restarting julia\n  2 dependencies had output during precompilation:\n┌ HPFilter\n│  WARNING: Method definition HP(Array{T, 1} where T, Int64) in module HPFilter at /home/pablo/.julia/packages/HPFilter/981TT/src/HPFilterFunc.jl:8 overwritten at /home/pablo/.julia/packages/HPFilter/981TT/src/HPFilterFunc.jl:26.\n│  ERROR: Method overwriting is not permitted during Module precompilation. Use `__precompile__(false)` to opt-out of precompilation.\n└  \n┌ DBnomics\n│  Visit &lt;https://db.nomics.world&gt;.\n│  \n│  [pid 15256] waiting for IO to finish:\n│   Handle type        uv_handle_t-&gt;data\n│   fs_event           0x14daa40-&gt;0x7220851845e0\n│   timer              0x145c5f0-&gt;0x722085184610\n│  This means that a package has started a background task or event source that has not finished running. For precompilation to complete successfully, the event source needs to be closed explicitly. See the developer documentation on fixing precompilation hangs for more help.\n└  \n\n\n\nc(q) = 0.5 + q*(1-(q*exp(-q)))\np(q) = - 2*log(q/2)\nπ(q) = q*p(q) - c(q)\nusing ForwardDiff\nπ1(q) = ForwardDiff.derivative(π, q)\nπ2(q) = ForwardDiff.derivative(π1, q )\n\nπ2 (generic function with 1 method)\n\n\n\nprofit(q) = (π(q), π1(q), π2(q))\n\nprofit (generic function with 1 method)\n\n\n\n# function π(q, order)\n#     if order == 2\n#         return (π(q),π1(q),π2(q))\n#     elseif order==0\n#         return π(q)\n#     end\n# end \n# π(0.1, 0)\n\n\nπ (generic function with 2 methods)\n\n\n\n# IMplement Newton Raphson\n\n\nq0 = 0.5 # initial guess\n\n\n\"\"\"\nNewton Raphson algorithm\n- fun: a function returning a 3-elements tuple, with 0,1,2-order derivatives\n- x0: initial guess\n- maxit: maximum number of iterations\n- τ_η: convergence criterium for approximation errors\n\"\"\"\nfunction newton_raphson(fun, x0; maxit=100, τ_η=1e-10)\n    η0 = NaN\n    for n ∈ 1:maxit\n        f0, f1, f2 = fun(x0)\n        # newton step\n        x1 = x0 - f1 /f2\n        # successive approximation error\n        η = abs(x1-x0)\n        λ = η/η0\n        η0 = η\n        println(\"Iteration $n: η=$η : λ=$λ\")\n        if η&lt;τ_η\n            return x1\n        end\n        x0 = x1\n    end\nend\n\nnewton_raphson\n\n\n\nnewton_raphson(profit, 0.5)\n\nIteration 1: η=0.05911252674636103 : λ=NaN\nIteration 2: η=0.0027418337531417425 : λ=0.04638329477787938\nIteration 3: η=5.007147801161516e-6 : λ=0.0018262040123417595\nIteration 4: η=1.6580403716659475e-11 : λ=3.3113469733833887e-6\n\n\n0.5618593676638843",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
+  },
+  {
+    "objectID": "tutorials/3_Optimization.html#constrained-optimization",
+    "href": "tutorials/3_Optimization.html#constrained-optimization",
+    "title": "Optimization",
+    "section": "Constrained optimization",
+    "text": "Constrained optimization\nConsider the function \\(f(x,y) = 1-(x-0.5)^2 -(y-0.3)^2\\).\nUse Optim.jl to minimize \\(f\\) without constraint. Check you understand diagnostic information returned by the optimizer.\nNow, consider the constraint \\(x&lt;0.3\\) and maximize \\(f\\) under this new constraint.\nReformulate the problem as a root finding problem with lagrangians. Write the complementarity conditions.\nSolve using NLSolve.jl",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
+  },
+  {
+    "objectID": "tutorials/3_Optimization.html#consumption-optimization",
+    "href": "tutorials/3_Optimization.html#consumption-optimization",
+    "title": "Optimization",
+    "section": "Consumption optimization",
+    "text": "Consumption optimization\nA consumer has preferences \\(U(c_1, c_2)\\) over two consumption goods \\(c_1\\) and \\(c_2\\).\nGiven a budget \\(I\\), consumer wants to maximize utility subject to the budget constraint \\(p_1 c_1 + p_2 c_2 \\leq I\\).\nWe choose a Stone-Geary specification where\n\\(U(c_1, c_2)=\\beta_1 \\log(c_1-\\gamma_1) + \\beta_2 \\log(c_2-\\gamma_2)\\)\nWrite the Karush-Kuhn-Tucker necessary conditions for the problem.\nVerify the KKT conditions are sufficient for optimality.\nDerive analytically the demand functions, and the shadow price.\nInterpret this problem as a complementarity problem and solve it using NLSolve.\nProduce some nice graphs with isoutility curves, the budget constraint and the optimal choice.",
+    "crumbs": [
+      "Tutorials",
+      "Optimization"
+    ]
+  },
+  {
+    "objectID": "tutorials/2_solow_correction.html",
+    "href": "tutorials/2_solow_correction.html",
+    "title": "Convergence: Solow Model",
+    "section": "",
+    "text": "Convergence: Solow Model\n\nSolow Model\nA representative agent uses capital \\(k_t\\) to produce \\(y_t\\) using the following production function:\n\\[y_t = k_t^{\\alpha}\\]\nHe chooses to consume an amount \\(c_t \\in ]0, y_t]\\) and invests what remains:\n\\[i_t = y_t - c_t\\]\nHe accumulates capital \\(k_t\\) according to:\n\\[k_{t+1} = \\left( 1-\\delta \\right) k_{t} + i_{t}\\]\nwhere \\(\\delta\\) is the depreciation rate and \\(i_t\\) is the amount invested.\nThe goal of the representative agent is to maximize:\n\\[\\sum_{t\\geq 0} \\beta^t U(c_t)\\]\nwhere \\(U(x)=\\frac{x^{1-\\gamma}}{1-\\gamma}\\) and \\(\\beta&lt;1\\) is the discount factor.\nFor now, we ignore the objective and assume that the saving rate \\(s=\\frac{c_t}{y_t}\\) is constant over time.\nCreate a NamedTuple to hold parameter values \\(\\beta=0.96\\), \\(\\delta=0.1\\), \\(\\alpha=0.3\\), \\(\\gamma=4\\).\n\np = (;β=0.96, δ=0.1, α=0.3, γ=4.0)\n\n(β = 0.96, δ = 0.1, α = 0.3, γ = 4.0)\n\n\nWrite down the formula of function \\(f\\) such that \\(k_{t+1}\\): \\(k_{t+1} = f(k_t)\\).\n\\[k_{t+1}= (1-\\delta) k_t + (1-s) k_t^{\\alpha}\\]\nDefine a function f(k::Float64, p::NamedTuple)::Float64 to represent \\(f\\) for a given calibration\n\n# function f(k::Float64, p::NamedTuple)\n\n# we added a keyword argument to specify the saving rate\nfunction f(k, p; s=0.2)\n\n    (;α, δ) = p # keyword unpacking syntax\n\n    val = k*(1-δ) + s*k^α\n\n    return val \nend\n\nf (generic function with 2 methods)\n\n\n\nf(0.1, p)\n\n0.1902374467254545\n\n\nWrite a function simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64} to compute the simulation over T periods starting from initial capital level k0.\n\nfunction simulate(k0, T, p; s=0.5)\n\n    sim = [k0]\n\n    for i ∈ 1:T    # same as for i in ... or for i=...\n        # in Julia, intervals contain the lower and upper bound\n        k1 = f(k0, p; s=s)\n\n        # add new value to simulation vector\n        push!(sim, k1)\n\n        k0 = k1\n    end\n\n    return sim\nend\n\nsimulate (generic function with 1 method)\n\n\n\nsim = simulate(0.5, 100, p;)\n\n101-element Vector{Float64}:\n 0.2\n 0.30340677254400195\n 0.4129080792968781\n 0.525003373019628\n 0.6373491155565568\n 0.7483344417178636\n 0.856841626057419\n 0.9620988898971137\n 1.0635841029776287\n 1.1609587708409257\n ⋮\n 2.6876186883735818\n 2.6879113388853018\n 2.6881835130861362\n 2.6884366430712516\n 2.6886720608576273\n 2.688891005366757\n 2.689094628921639\n 2.6892840032916374\n 2.6894601253165105\n\n\n\n# sometimes, we want to avoid using too much memory\n# in that case we try to do as many inplace operations as possible\n\nfunction simulate_preallocate(k, T, p; s=0.2)\n    v = zeros(T) # allocates memore\n    v[1] = k\n    for t = 1:(T-1)\n        k0 = v[t]\n        v[t+1] = f(k0, p; s=s)\n    end\n    return v\nend\n\nsimulate_preallocate (generic function with 1 method)\n\n\n\n@time simulate(0.2, 1000000, p);\n@time simulate_preallocate(0.2, 1000000, p);\n\n  0.067737 seconds (14 allocations: 9.781 MiB)\n  0.055613 seconds (2 allocations: 7.629 MiB)\n\n\nMake a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?\n\npl= plot(simulate(0.5, 100, p;); label=\"baseline\", title=\"Convergence of Solow Model\")\nplot!(pl, simulate(6.0, 100, p;); label=\"high initial capital\")\nplot!(pl, simulate(0.5, 100, p;s=0.2); label=\"lower saving rate\")\n\nSuppose you were interested in using f to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.\n\nfunction steady_state(p; s=0.2)\n    sim = simulate(0.1, 1000, p)\n    return sim[end]\nend\n\nsteady_state (generic function with 1 method)\n\n\n\nsteady_state(p)\n\n2.691800385264708"
   },
   {
     "objectID": "tutorials/6_automatic_differentiation.html",

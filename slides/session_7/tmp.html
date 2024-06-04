@@ -11,8 +11,8 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Year 2023-2024 (ECO309)">
-  <meta name="dcterms.date" content="2024-05-29">
-  <title>Introduction to Computational Economics - Differentiation</title>
+  <meta name="dcterms.date" content="2024-06-04">
+  <title>Introduction to Computational Economics - Discrete Dynamic Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -392,7 +327,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Differentiation</h1>
+  <h1 class="title">Discrete Dynamic Programming</h1>
   <p class="subtitle">Computational Economics</p>
 
 <div class="quarto-title-authors">
@@ -403,268 +338,158 @@ Year 2023-2024 (ECO309)
 </div>
 </div>
 
-  <p class="date">2024-05-29</p>
+  <p class="date">2024-06-04</p>
 </section>
-<section id="main-approaches" class="slide level2">
-<h2>Main approaches</h2>
-<ol start="0" type="1">
-<li>Manual</li>
-<li>Finite Differences</li>
-<li>Symbolic Differentiation</li>
-<li>Automatic Differentiation</li>
-</ol>
-</section>
-<section id="manual-differentiation" class="slide level2">
-<h2>Manual Differentiation</h2>
-<ul>
-<li>Trick:
-<ul>
-<li>never use <span class="math inline">\(\frac{d}{dx} \frac{u(x)}{v(x)} = \frac{u'(x)v(x)-u(x)v'(x)}{v(x)^2}\)</span></li>
-<li>use instead <span class="math display">\[\frac{d}{dx} {u(x)v(x)} = {u'(x)v(x)+u(x)v'(x)}\]</span> and <span class="math display">\[\frac{d}{dx} u(x) = -\frac{u^{\prime}}{u(x)^2}\]</span></li>
-</ul></li>
-<li>Just kidding…</li>
-</ul>
-</section>
-<section id="finite-differences" class="slide level2">
-<h2>Finite Differences</h2>
-<ul>
-<li><p>Choose small <span class="math inline">\(\epsilon&gt;0\)</span>, typically <span class="math inline">\(\sqrt{ \textit{machine eps}}\)</span></p></li>
-<li><p>Forward Difference scheme:</p>
-<ul>
-<li><span class="math inline">\(f'(x) \approx \frac{f(x+\epsilon) - f(x)}{\epsilon}\)</span></li>
-<li>precision: <span class="math inline">\(o(\epsilon)\)</span></li>
-<li>bonus: if <span class="math inline">\(f(x+\epsilon)\)</span> can compute <span class="math inline">\(f(x)-f(x-\epsilon)\)</span> instead (Backward)</li>
-</ul></li>
-<li><p>Central Difference scheme:</p>
-<ul>
-<li><span class="math inline">\(f'(x) \approx \frac{f(x+\epsilon) - f(x-\epsilon)}{2\epsilon}\)</span></li>
-<li>average of forward and backward</li>
-<li>precision: <span class="math inline">\(o(\epsilon^2)\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="finite-differences-higher-order" class="slide level2">
-<h2>Finite Differences: Higher order</h2>
-<ul>
-<li>Central formula: <span class="math display">\[\begin{aligned}
-f''(x) &amp; \approx &amp; \frac{f'(x)-f'(x-\epsilon)}{\epsilon} \approx \frac{(f(x+\epsilon))-f(x))-(f(x)-f(x-\epsilon))}{\epsilon^2}  \\ &amp; = &amp; \frac{f(x+\epsilon)-2f(x)+f(x-\epsilon)}{\epsilon^2}
-\end{aligned}\]</span>
-<ul>
-<li>precision: <span class="math inline">\(o(\epsilon)\)</span></li>
-</ul></li>
-<li>Generalizes to higher order but becomes more and more innacurate</li>
-</ul>
-</section>
-<section id="symbolic-differentiation" class="slide level2">
-<h2>Symbolic Differentiation</h2>
-<ul>
-<li>manipulate the tree of algebraic expressions
-<ul>
-<li>implements various simplification rules</li>
-</ul></li>
-<li>requires mathematical expression</li>
-<li>can produce mathematical insights</li>
-<li>sometimes inaccurate:
-<ul>
-<li>cf: <span class="math inline">\(\left(\frac{1+u(x)}{1+v(x)}\right)^{100}\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="julia-packages" class="slide level2">
-<h2>Julia Packages:</h2>
-<ul>
-<li><p>Lots of <a href="https://juliadiff.org/">packages</a></p></li>
-<li><p><em>FiniteDiff.jl</em>, <em>FiniteDifferences.jl</em>, <em>SparseDiffTools.jl</em></p>
-<ul>
-<li>careful implementation of finite diff</li>
-</ul></li>
-<li><p><em>SymEngine.jl</em></p>
-<ul>
-<li>fast symbolic calculation</li>
-</ul></li>
-<li><p><em>Symbolics.jl</em></p>
-<ul>
-<li>fast, pure Julia</li>
-<li>less complete than SymEngine</li>
-</ul></li>
-</ul>
-</section>
-<section id="automatic-differentiation" class="slide level2">
-<h2>Automatic Differentiation</h2>
-<ul>
-<li><p>does not provide mathematical insights but solves the other problems</p></li>
-<li><p>can differentiate any piece of code</p></li>
-<li><p>two flavours</p>
-<ul>
-<li>forward accumulation</li>
-<li>reverse accumulation</li>
-</ul></li>
-</ul>
-</section>
-<section id="automatic-rewrite-source-code-transform" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Automatic rewrite: source code transform</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode julia hljs"><span id="cb1-1" class="hljs-ln-code"><a></a><span class="kw">function</span> <span class="fu">f</span>(x<span class="op">::</span><span class="dt">Float64</span>)</span>
-<span id="cb1-2" class="hljs-ln-code"><a></a>    a <span class="op">=</span> x <span class="op">+</span> <span class="fl">1</span></span>
-<span id="cb1-3" class="hljs-ln-code"><a></a>    b <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb1-4" class="hljs-ln-code"><a></a>    c <span class="op">=</span> <span class="fu">sin</span>(a) <span class="op">+</span> a <span class="op">+</span> b</span>
-<span id="cb1-5" class="hljs-ln-code"><a></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="automatic-rewrite-source-code-transform-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Automatic rewrite: source code transform</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource julia number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode julia hljs"><span id="cb2-1" class="hljs-ln-code"><a></a><span class="kw">function</span> <span class="fu">f</span>(x<span class="op">::</span><span class="dt">Float64</span>)</span>
-<span id="cb2-2" class="hljs-ln-code"><a></a></span>
-<span id="cb2-3" class="hljs-ln-code"><a></a>    <span class="co"># x is an argument</span></span>
-<span id="cb2-4" class="hljs-ln-code"><a></a>    x_dx <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-5" class="hljs-ln-code"><a></a></span>
-<span id="cb2-6" class="hljs-ln-code"><a></a>    a <span class="op">=</span> x <span class="op">+</span> <span class="fl">1</span></span>
-<span id="cb2-7" class="hljs-ln-code"><a></a>    a_dx <span class="op">=</span> x_dx</span>
-<span id="cb2-8" class="hljs-ln-code"><a></a></span>
-<span id="cb2-9" class="hljs-ln-code"><a></a>    b <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span></span>
-<span id="cb2-10" class="hljs-ln-code"><a></a>    b_dx <span class="op">=</span> <span class="fl">2</span><span class="op">*</span>x<span class="op">*</span>x_dx</span>
-<span id="cb2-11" class="hljs-ln-code"><a></a></span>
-<span id="cb2-12" class="hljs-ln-code"><a></a>    t <span class="op">=</span> <span class="fu">sin</span>(a)</span>
-<span id="cb2-13" class="hljs-ln-code"><a></a>    t_x <span class="op">=</span> <span class="fu">cos</span>(a)<span class="op">*</span>a_dx</span>
-<span id="cb2-14" class="hljs-ln-code"><a></a></span>
-<span id="cb2-15" class="hljs-ln-code"><a></a>    c <span class="op">=</span> t <span class="op">+</span> b</span>
-<span id="cb2-16" class="hljs-ln-code"><a></a>    c_x <span class="op">=</span> t_dx <span class="op">+</span> b_dx</span>
-<span id="cb2-17" class="hljs-ln-code"><a></a></span>
-<span id="cb2-18" class="hljs-ln-code"><a></a>    <span class="cf">return</span> (c, c_x)</span>
-<span id="cb2-19" class="hljs-ln-code"><a></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="dual-numbers-operator-overloading" class="slide level2">
-<h2>Dual numbers: operator overloading</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a><span class="kw">struct</span> DN</span>
-<span id="cb3-2"><a></a>    x<span class="op">::</span><span class="dt">Float64</span></span>
-<span id="cb3-3"><a></a>    dx<span class="op">::</span><span class="dt">Float64</span></span>
-<span id="cb3-4"><a></a><span class="kw">end</span></span>
-<span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="fu">+</span>(a<span class="op">::</span><span class="dt">DN</span>,b<span class="op">::</span><span class="dt">DN</span>) <span class="op">=</span> <span class="fu">DN</span>(a.x<span class="op">+</span>b.x, a.dx<span class="op">+</span>b.dx)</span>
-<span id="cb3-7"><a></a><span class="fu">-</span>(a<span class="op">::</span><span class="dt">DN</span>,b<span class="op">::</span><span class="dt">DN</span>) <span class="op">=</span> <span class="fu">DN</span>(a.x<span class="op">-</span>b.x, a.dx<span class="op">-</span>b.dx)</span>
-<span id="cb3-8"><a></a><span class="fu">*</span>(a<span class="op">::</span><span class="dt">DN</span>,b<span class="op">::</span><span class="dt">DN</span>) <span class="op">=</span> <span class="fu">DN</span>(a.x<span class="op">*</span>b.x, a.x<span class="op">*</span>b.dx<span class="op">+</span>a.dx<span class="op">*</span>b.x)</span>
-<span id="cb3-9"><a></a><span class="op">/</span>(a<span class="op">::</span><span class="dt">DN</span>,b<span class="op">::</span><span class="dt">DN</span>) <span class="op">=</span> <span class="fu">DN</span>(a.x<span class="op">/</span>b.x, (a.dx<span class="op">*</span>b.x<span class="op">-</span>a.x<span class="op">*</span>b.dx)<span class="op">/</span>b.dx<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb3-10"><a></a></span>
-<span id="cb3-11"><a></a><span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p>Can you compute <code>f(x)</code> using dual numbers?</p>
+<section id="section" class="slide level2">
+<h2></h2>
+<p>Consider the following problems:</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p>Monopoly pricing:</p>
+<p><span class="math display">\[\max_{q} \pi(q) - c(q)\]</span></p>
+</div><div class="column" style="width:25%;">
+<p>Shopping problem</p>
+<p><span class="math display">\[\max_{c_1,c_2, budget constraint} U(c_1,c_2)\]</span></p>
+</div><div class="column" style="width:50%;">
+<p>Consumption Savings</p>
+<p><span class="math display">\[\max_{c(), w_{t+1}=(w_t-c(w_t))(1+r)) + y_{t+1}} E_0 \sum_t \beta^t U(c(w_t))\]</span></p>
 </div>
-<div class="fragment">
-<p>(it might require some more definitions)</p>
+</div>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 13%">
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>objective</th>
+<th>action</th>
+<th>state</th>
+<th>transition</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>monopoly pricing</td>
+<td>profit</td>
+<td>choose quantity to produce</td>
+<td></td>
+<td></td>
+<td>optimization</td>
+</tr>
+<tr class="even">
+<td>shopping problem</td>
+<td>utility</td>
+<td>choose consumption composition</td>
+<td>budget <span class="math inline">\(B\)</span></td>
+<td></td>
+<td>comparative statics</td>
+</tr>
+<tr class="odd">
+<td>consumption/savings</td>
+<td>expected welfare</td>
+<td>save or consume</td>
+<td>available income</td>
+<td>evolution of wealth</td>
+<td>dynamic optimization</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-is-dynamic-optimization-hard" class="slide level2">
+<h2>Why is Dynamic Optimization Hard ?</h2>
+<p>In a dynamic optimization problem, the actions taken in a given state today, depend on the outcome in future states.</p>
+<p>Dynamic optimization can lead to deterministic (sometimes) or stochastic optimization problems (mostly)</p>
+</section>
+<section id="states-transitions-markov-chains" class="slide level2">
+<h2>States Transitions (Markov Chains)</h2>
+</section>
+<section id="section-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="tmp_files/figure-revealjs/mermaid-figure-1.png" style="width:10in;height:5in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Irreducible</strong>: all states can be reached with positive probability from any initial state.</p>
+</section>
+<section id="section-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="tmp_files/figure-revealjs/mermaid-figure-5.png" style="width:10in;height:5in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
 </div>
 </section>
-<section id="compatible-with-control-flow" class="slide level2">
-<h2>Compatible with control flow</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a></a><span class="im">import</span> <span class="bu">ForwardDiff</span>: Dual</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>x <span class="op">=</span> <span class="fu">Dual</span>(<span class="fl">1.0</span>, <span class="fl">1.0</span>)</span>
-<span id="cb4-4"><a></a>a <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>x</span>
-<span id="cb4-5"><a></a>b <span class="op">=</span> <span class="fu">sum</span>([(x)<span class="op">^</span>i<span class="op">/</span><span class="fu">i*</span>(<span class="op">-</span><span class="fl">1</span>)<span class="op">^</span>(i<span class="op">+</span><span class="fl">1</span>) for i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">5000</span>])</span>
-<span id="cb4-6"><a></a><span class="co"># compare with log(1+x)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>generalizes nicely to gradient computations</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a>x <span class="op">=</span> <span class="fu">Dual</span>(<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>)</span>
-<span id="cb5-2"><a></a>y <span class="op">=</span> <span class="fu">Dual</span>(<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>)</span>
-<span id="cb5-3"><a></a><span class="fu">exp</span>(x) <span class="op">+</span> <span class="fu">log</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="section-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="tmp_files/figure-revealjs/mermaid-figure-4.png" style="width:10in;height:5in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Not irreducible</strong>: a subset of states (poor), which absorbs all the mass coming in.</p>
 </section>
-<section id="technical-remark" class="slide level2">
-<h2>Technical remark</h2>
-<ul>
-<li>autodiff libraries, use special types and operator overloading to perform operations (like Dual numbers)</li>
-<li>this relies on Julia duck-typing ability
-<ul>
-<li>so don’t specify type arguments for functions you want to autodiff</li>
-</ul></li>
-<li>This works:</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="im">using</span> <span class="bu">ForwardDiff</span></span>
-<span id="cb6-2"><a></a><span class="fu">f</span>(x) <span class="op">=</span> [x[<span class="fl">1</span>] <span class="op">+</span> x[<span class="fl">2</span>], x[<span class="fl">1</span>]<span class="op">*</span>x[<span class="fl">2</span>]]</span>
-<span id="cb6-3"><a></a>ForwardDiff.<span class="fu">jacobian</span>(f, [<span class="fl">0.4</span>, <span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>This doesn’t:</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a></a><span class="im">using</span> <span class="bu">ForwardDiff</span></span>
-<span id="cb7-2"><a></a><span class="fu">g</span>(x<span class="op">::</span><span class="dt">Vector{Float64}</span>) <span class="op">=</span> [x[<span class="fl">1</span>] <span class="op">+</span> x[<span class="fl">2</span>], x[<span class="fl">1</span>]<span class="op">*</span>x[<span class="fl">2</span>]]</span>
-<span id="cb7-3"><a></a>ForwardDiff.<span class="fu">jacobian</span>(g, [<span class="fl">0.4</span>, <span class="fl">0.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="forward-accumulation-mode" class="slide level2">
-<h2>Forward Accumulation Mode</h2>
-<ul>
-<li>Forward Accumulation mode: isomorphic to dual number calculation
-<ul>
-<li>compute tree with values and derivatives at the same time</li>
-<li>efficient for <span class="math inline">\(f: R^n\rightarrow R^m\)</span>, with <span class="math inline">\(n&lt;&lt;m\)</span>
-<ul>
-<li>(keeps lots of empty gradients when <span class="math inline">\(n&gt;&gt;m\)</span>)</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="reverse-accumulation-mode" class="slide level2">
-<h2>Reverse Accumulation Mode</h2>
-<ul>
-<li>Reverse Accumulation / Back Propagation
-<ul>
-<li>efficient for <span class="math inline">\(f: R^n\rightarrow R^m\)</span>, with <span class="math inline">\(m&lt;&lt;n\)</span></li>
-<li>requires data storage (to keep intermediate values)</li>
-<li>graph / example</li>
-</ul></li>
-<li>Very good for machine learning:
-<ul>
-<li><span class="math inline">\(\nabla_{\theta} F(x;\theta)\)</span> where <span class="math inline">\(F\)</span> can be an objective</li>
-</ul></li>
-</ul>
-</section>
-<section id="libraries-for-autodiff" class="slide level2">
-<h2>Libraries for AutoDiff</h2>
-<ul>
-<li>See JuliaDiff: http://www.juliadiff.org/
-<ul>
-<li><em>ForwardDiff.jl</em></li>
-<li><em>ReverseDiff.jl</em></li>
-</ul></li>
-<li>New approaches:
-<ul>
-<li><em>Zygote.jl</em>: source to source</li>
-<li><em>Enzyme.jl</em>: differentiates llvm code</li>
-</ul></li>
-<li>Other libraries like <em>NLsolve</em> or <em>Optim.jl</em> rely on on the former libraries to perform automatic differentiation automatically.</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a></a><span class="im">using</span> <span class="bu">NLSolve</span></span>
-<span id="cb8-2"><a></a><span class="kw">function</span> <span class="fu">fun!</span>(F, x)</span>
-<span id="cb8-3"><a></a>    F[<span class="fl">1</span>] <span class="op">=</span> (x[<span class="fl">1</span>]<span class="op">+</span><span class="fl">3</span>)<span class="fu">*</span>(x[<span class="fl">2</span>]<span class="op">^</span><span class="fl">3</span><span class="op">-</span><span class="fl">7</span>)<span class="op">+</span><span class="fl">18</span></span>
-<span id="cb8-4"><a></a>    F[<span class="fl">2</span>] <span class="op">=</span> <span class="fu">sin</span>(x[<span class="fl">2</span>]<span class="fu">*exp</span>(x[<span class="fl">1</span>])<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb8-5"><a></a><span class="kw">end</span></span>
-<span id="cb8-6"><a></a><span class="fu">nlsolve</span>(fun!, [<span class="fl">0.1</span>, <span class="fl">0.2</span>], autodiff <span class="op">=</span> <span class="op">:</span>forward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="the-future-of-ai-deep-learning" class="slide level2">
-<h2>The future of AI / Deep Learning</h2>
-<p>What are the main options for deep learning?</p>
-<ul>
-<li>tensorflow, pytorch, jax python interfaces to manipulate tensors
-<ul>
-<li>gets compiled to fast code</li>
-</ul></li>
-<li>mojo: right now for inference</li>
-</ul>
-<p>What features are needed?</p>
-<ul>
-<li>compilation</li>
-<li>vectorization (processor SIMD, GPU)</li>
-<li>automatic differentiation for training</li>
-</ul>
-<p>Julia should be perfecty positioned</p>
-<div class="fragment">
-<p>But deep learning frameworks might not have reached critical mass. You can still try:</p>
-<ul>
-<li><em>Flux.jl</em></li>
-<li><em>Lux.jl</em></li>
-</ul>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column">
+<p>Periodic chain</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="tmp_files/figure-revealjs/mermaid-figure-3.png" style="width:10in;height:4.82in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<p>Aperiodic States</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="tmp_files/figure-revealjs/mermaid-figure-2.png" style="width:10in;height:2.14in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
-</div>
 </div>
 </div>
 </section>
