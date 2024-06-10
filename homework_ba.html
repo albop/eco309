@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Pablo Winant">
 
-<title>Introduction to Computational Economics - Computational Economics - ECO309</title>
+<title>Introduction to Computational Economics - Homework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-course-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-course-listing'] = new List('listing-course-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -288,25 +258,34 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#homework" id="toc-homework" class="nav-link active" data-scroll-target="#homework">Homework</a></li>
-  <li><a href="#indicative-schedule" id="toc-indicative-schedule" class="nav-link" data-scroll-target="#indicative-schedule">Indicative Schedule</a></li>
-  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
+  <li><a href="#a-simple-cge-model" id="toc-a-simple-cge-model" class="nav-link active" data-scroll-target="#a-simple-cge-model">A simple CGE model</a></li>
+  <li><a href="#the-data-and-the-social-accounting-mmatrix" id="toc-the-data-and-the-social-accounting-mmatrix" class="nav-link" data-scroll-target="#the-data-and-the-social-accounting-mmatrix">The data and the social accounting mmatrix</a></li>
+  <li><a href="#consumers" id="toc-consumers" class="nav-link" data-scroll-target="#consumers">Consumers</a></li>
+  <li><a href="#producers" id="toc-producers" class="nav-link" data-scroll-target="#producers">Producers</a></li>
+  <li><a href="#equilibrium" id="toc-equilibrium" class="nav-link" data-scroll-target="#equilibrium">Equilibrium</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="homework_ba.out.ipynb" download="homework_ba.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Computational Economics - ECO309</h1>
+<h1 class="title">Homework</h1>
+<p class="subtitle lead">Computational Economics (ECO309)</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pablo Winant </p>
+          </div>
+  </div>
     
   
     
@@ -317,96 +296,170 @@ window.Quarto = {
 </header>
 
 
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<p><mark>TODO</mark>: Return the <a href="./tutorials/homework.html">coursework</a> by June 30th.</p>
+<section id="a-simple-cge-model" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-cge-model">A simple CGE model</h2>
+<p>The goal of this exercise consists in solving a simple CGE model using Julia.</p>
+<p>Model is taken from <em>Handbook of Computible General Equilibrium Modeling</em>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
-<section id="indicative-schedule" class="level2">
-<h2 class="anchored" data-anchor-id="indicative-schedule">Indicative Schedule</h2>
-<div id="listing-course-listing" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
+<section id="the-data-and-the-social-accounting-mmatrix" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-and-the-social-accounting-mmatrix">The data and the social accounting mmatrix</h2>
+<p>In a CGE, the data about the economy’s exchanges is compiled in one single “Social Accounting Matrix”. It is essentially a matrix representation of the national accounts that can be arbitrary refined based on data availability.</p>
+<p>In this course work we consider the following simplified version. All items are in million euros.</p>
+<table class="table">
 <thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
+<tr class="header">
+<th style="text-align: center;">SAM</th>
+<th style="text-align: center;">BRD</th>
+<th style="text-align: center;">MLK</th>
+<th style="text-align: center;">CAP</th>
+<th style="text-align: center;">LAB</th>
+<th style="text-align: center;">HOH</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1712821292878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 28, 2024</span>
-</td>
-<td>
-<a href="./slides/session_1/index.html" class="title listing-title">Introduction</a>
-</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">BRD</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">15</td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1717494884796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4427" data-listing-title-sort="Discrete Dynamic Programming" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 28, 2024</span>
-</td>
-<td>
-<a href="./slides/session_7/index.html" class="title listing-title">Discrete Dynamic Programming</a>
-</td>
+<tr class="even">
+<td style="text-align: center;">MLK</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">35</td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1712181600000" data-listing-file-modified-sort="1712824917882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1211" data-listing-title-sort="Convergence of Sequences" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 4, 2024</span>
-</td>
-<td>
-<a href="./slides/session_2/index.html" class="title listing-title">Convergence of Sequences</a>
-</td>
+<tr class="odd">
+<td style="text-align: center;">CAP</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1713996000000" data-listing-file-modified-sort="1714032557528" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2630" data-listing-title-sort="Optimization" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 25, 2024</span>
-</td>
-<td>
-<a href="./slides/session_3/index.html" class="title listing-title">Optimization</a>
-</td>
+<tr class="even">
+<td style="text-align: center;">LAB</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1716933600000" data-listing-file-modified-sort="1717446628389" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="707" data-listing-title-sort="Differentiation" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 29, 2024</span>
-</td>
-<td>
-<a href="./slides/session_6/index.html" class="title listing-title">Differentiation</a>
-</td>
+<tr class="odd">
+<td style="text-align: center;">HOH</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<div class="listing-no-matching d-none">
-No matching items
+<p>In this table, there are:</p>
+<ul>
+<li>Two Goods: BRD and MLK</li>
+<li>Two Factors: CAP and LAB (capital and labour)</li>
+<li>One Agent: HOH (Households)</li>
+</ul>
+<p>To read the matrix, we consider that rows decomposes the inputs for each column (measured by their cost).</p>
+<p>For instance, the value of the production in the BRD-producing sector is decomposed between the payment to capital (5) and the payment to labor (10).</p>
+<p>We will assume there are fixed endowments in capital and labour and that they are owned by the household.</p>
+<p>We use the following notations:</p>
+<ul>
+<li><span class="math inline">\(X_i\)</span> household consumption of good i</li>
+<li><span class="math inline">\(F_{h,j}\)</span> the h-th factor input by firm j</li>
+<li><span class="math inline">\(Z_{j}\)</span> output of the j-th good</li>
+<li><span class="math inline">\(px_{i}\)</span> demand price of the i-th good</li>
+<li><span class="math inline">\(pz_{j}\)</span> supply price of the i-th good</li>
+<li><span class="math inline">\(pf_{h}\)</span> the h-th factor price}</li>
+</ul>
+<p>In these definitions the indices are conventionally: <span class="math inline">\(i \in \text{BRD,MLK}\)</span>, <span class="math inline">\(j\in \text{BRD,MLK}\)</span>, <span class="math inline">\(h \in \text{CAP,LAB}\)</span>).</p>
+<p>We also denote by a zero exponent, the variables at the steady-state. For instance, <span class="math inline">\(X_{BRD}^0\)</span> is the household consumption of good <span class="math inline">\(BRD\)</span>.</p>
+<p>We assume that the SAM corresponds to values observed at the steady-state.</p>
+</section>
+<section id="consumers" class="level2">
+<h2 class="anchored" data-anchor-id="consumers">Consumers</h2>
+<p>Given prices <span class="math inline">\(px_i\)</span>, households maximize utility of consumption <span class="math display">\[U = \prod_i X_i^{\alpha_i}\]</span> where <span class="math inline">\(\alpha_i\)</span> is the share parameter in the utility function (with <span class="math inline">\(\sum_i \alpha_i=1\)</span>)</p>
+<ol class="example" type="1">
+<li><strong>Write down the budget constraint of households. How can we calibrate <span class="math inline">\(\alpha_i\)</span> from the data?</strong></li>
+</ol>
+<div class="{callout-note}">
+<p><span class="math display">\[\alpha_i  = \frac{X^0_i}{\sum_j X^0_{j}}\]</span></p>
+</div>
+<ol start="2" class="example" type="1">
+<li><strong>Show that the household demand function satisfies <span class="math display">\[X_i  = \alpha_i \sum_h \frac{pf_h FF_h}{px_i}\]</span>.</strong></li>
+</ol>
+</section>
+<section id="producers" class="level2">
+<h2 class="anchored" data-anchor-id="producers">Producers</h2>
+<p>We assume that producers of final goods, use the following production function:</p>
+<p><span class="math display">\[Z_j   = b_j \prod_h F_{h,j}^{\beta_{h,j}}\]</span></p>
+<p>where <span class="math inline">\(\beta_{h,j}\)</span> is the share parameter in production function (<span class="math inline">\(\sum_h \beta_{h,j}=1\)</span>) and <span class="math inline">\(b_j\)</span> a scale parameter.</p>
+<ol start="3" class="example" type="1">
+<li><p><strong>Show that factor demand function can be written as:</strong> <span class="math display">\[ F_{h,j} = \beta_{h,j} \frac{pz_j Z_j }{pf_h} \]</span></p></li>
+<li><p><strong>How can we calibrate <span class="math inline">\(\beta_{h,j}\)</span> from the data? How can we recover <span class="math inline">\(b_j\)</span>?</strong></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\beta_{h,j} = \frac{F^0_{h,j}}{\sum_k F^0_{k,j}}\]</span> <span class="math display">\[b_j      = \frac{Z^0_j}{ \prod_h  (F^0_{h,j})^{\beta_{h,j}} }\]</span></p>
 </div>
 </div>
 </section>
-<section id="communication" class="level2">
-<h2 class="anchored" data-anchor-id="communication">Communication</h2>
+<section id="equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="equilibrium">Equilibrium</h2>
+<p>In equilibrium we have the following conditions:</p>
 <ul>
-<li>Zulip (best)</li>
-<li>Email to <code>pablo.winant@polytechnique.edu</code> or <code>pwinant@escp.eu</code>
-<ul>
-<li>subject starting with <code>[eco309]</code></li>
-</ul></li>
-<li>Github issues (PR also welcome)</li>
+<li><p>demand prices of the i-th good must match supply price of the same good: <span class="math display">\[px_{i} = pz_{i}\]</span></p></li>
+<li><p>good market must clear: <span class="math display">\[ X_i   = Z_i \]</span></p></li>
+<li><p>factor market must clear: <span class="math display">\[ \sum_j F_{h,j} = FF_h \]</span></p></li>
 </ul>
+<ol start="5" class="example" type="1">
+<li>Justify the steady-state identity: <span class="math inline">\(Z^0_j   = \sum_h F^0_{h,j}\)</span></li>
+</ol>
+<p>Calibration</p>
+<p><span class="math inline">\(i\in I\)</span>:goods <span class="math inline">\(h\in H\)</span>: factor</p>
+<p><span class="math inline">\(X^0_i   = SAM(i,"HOH")\)</span></p>
+<p><span class="math inline">\(F^0_{h,j} = SAM(h,j)\)</span></p>
+<p><span class="math inline">\(FF_h   = SAM("HOH",h)\)</span></p>
+<p>Definitions</p>
+<p><span class="math inline">\(X_i\)</span> household consumption of the i-th good</p>
+<p><span class="math inline">\(F_{h,j}\)</span> the h-th factor input by the j-th firm</p>
+<p><span class="math inline">\(Z_{j}\)</span> output of the j-th good</p>
+<p><span class="math inline">\(px_{i}\)</span> demand price of the i-th good</p>
+<p><span class="math inline">\(pz_{j}\)</span> supply price of the i-th good</p>
+<p><span class="math inline">\(pf_{h}\)</span> the h-th factor price</p>
+<p><span class="math inline">\(UU\)</span> utility [fictitious]</p>
+<p>good market clearing condition <span class="math display">\[ X_i   = Z_i \]</span></p>
+<p>factor market clearing condition <span class="math display">\[ \sum_j F_{h,j} = FF_h \]</span></p>
+<p>price equation <span class="math display">\[ px_i  = pz_i \]</span></p>
+<p>utility function [fictitious] $$ UU = _i X_i^{_i}</p>
 </section>
-<section id="assessment" class="level2">
-<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
-<ul>
-<li>tutorials (optional)</li>
-<li>coursework (mandatory)</li>
-<li>presentations (optional)</li>
-</ul>
-
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Consumer problem</p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>GAMS is a modeling software, routinely used for CGEs. You can checkout the code for the current model <a href="https://www.gams.com/latest/gamslib_ml/libhtml/gamslib_splcge.html">here</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

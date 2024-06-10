@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Computational Economics - Computational Economics - ECO309</title>
+<title>Introduction to Computational Economics - MIE 37 - Final Exam 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,35 +100,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-course-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-course-listing'] = new List('listing-course-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -288,19 +291,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#homework" id="toc-homework" class="nav-link active" data-scroll-target="#homework">Homework</a></li>
-  <li><a href="#indicative-schedule" id="toc-indicative-schedule" class="nav-link" data-scroll-target="#indicative-schedule">Indicative Schedule</a></li>
-  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
+  <li><a href="#part-i---linear-regression-and-stochastic-gradient-descent" id="toc-part-i---linear-regression-and-stochastic-gradient-descent" class="nav-link active" data-scroll-target="#part-i---linear-regression-and-stochastic-gradient-descent">Part I - Linear Regression and Stochastic Gradient Descent</a></li>
+  <li><a href="#part-ii---endogenous-exit" id="toc-part-ii---endogenous-exit" class="nav-link" data-scroll-target="#part-ii---endogenous-exit">Part II - Endogenous Exit</a>
+  <ul class="collapse">
+  <li><a href="#discretization-of-an-ar1" id="toc-discretization-of-an-ar1" class="nav-link" data-scroll-target="#discretization-of-an-ar1">Discretization of an AR1</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Exam_mie37_2024.out.ipynb" download="Exam_mie37_2024.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Computational Economics - ECO309</h1>
+<h1 class="title">MIE 37 - Final Exam 2024</h1>
 </div>
 
 
@@ -317,93 +321,144 @@ window.Quarto = {
 </header>
 
 
-<section id="homework" class="level2">
-<h2 class="anchored" data-anchor-id="homework">Homework</h2>
-<p><mark>TODO</mark>: Return the <a href="./tutorials/homework.html">coursework</a> by June 30th.</p>
-</section>
-<section id="indicative-schedule" class="level2">
-<h2 class="anchored" data-anchor-id="indicative-schedule">Indicative Schedule</h2>
-<div id="listing-course-listing" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1712821292878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="869" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 28, 2024</span>
-</td>
-<td>
-<a href="./slides/session_1/index.html" class="title listing-title">Introduction</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1717494884796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4427" data-listing-title-sort="Discrete Dynamic Programming" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 28, 2024</span>
-</td>
-<td>
-<a href="./slides/session_7/index.html" class="title listing-title">Discrete Dynamic Programming</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1712181600000" data-listing-file-modified-sort="1712824917882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1211" data-listing-title-sort="Convergence of Sequences" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 4, 2024</span>
-</td>
-<td>
-<a href="./slides/session_2/index.html" class="title listing-title">Convergence of Sequences</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1713996000000" data-listing-file-modified-sort="1714032557528" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2630" data-listing-title-sort="Optimization" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 25, 2024</span>
-</td>
-<td>
-<a href="./slides/session_3/index.html" class="title listing-title">Optimization</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1716933600000" data-listing-file-modified-sort="1717446628389" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="707" data-listing-title-sort="Differentiation" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 29, 2024</span>
-</td>
-<td>
-<a href="./slides/session_6/index.html" class="title listing-title">Differentiation</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<p><strong>Name</strong>:</p>
+<p><strong>Surname</strong>:</p>
+<p>After completing the following questions, send the edited notebook to <code>pablo.winant@ensae.fr</code>.</p>
+<p>You are allowed to use any online available resource, even to install Julia packages, but not to copy/paste any code.</p>
+<p>Also, don’t forget to comment your code and take any initiative you find relevant.</p>
+<section id="part-i---linear-regression-and-stochastic-gradient-descent" class="level2">
+<h2 class="anchored" data-anchor-id="part-i---linear-regression-and-stochastic-gradient-descent">Part I - Linear Regression and Stochastic Gradient Descent</h2>
+<p>We consider the following data generation process:</p>
+<p><span class="math display">\[y=0.4+2.5 x + \epsilon\]</span></p>
+<p>where <span class="math inline">\(x_i\)</span> is uniformly distributed between 0 and 1 and <span class="math inline">\(\epsilon\)</span> is drawn from a normal distribution with standard deviation <span class="math inline">\(\sigma=0.5\)</span>.</p>
+<ol type="1">
+<li><strong>Write a function <code>draw(a::Number, b::Number)::Tuple{Float64, Float64}</code> which generates one random draw for a pair <span class="math inline">\((x,y)\)</span>.</strong></li>
+</ol>
+<div id="bd614686" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ol start="2" type="1">
+<li><strong>Generate a sample <span class="math inline">\(d=(x_i, y_i)_{i=[1,N]}\)</span> of <span class="math inline">\(N=100000\)</span> different observations. Justify your choice for how to represent this data.</strong></li>
+</ol>
+<div id="418409d0" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="communication" class="level2">
-<h2 class="anchored" data-anchor-id="communication">Communication</h2>
+<ol start="3" type="1">
+<li><strong>Write the loss function <span class="math inline">\(L(d,a,b)=\frac{1}{N}\sum_{i=1}^N ( a x_i + b-y_i)^2\)</span>. Find the values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> minimizing this function by implementing the gradient descent algorithm (do not use any library). What is the best learning rate?</strong></li>
+</ol>
+<div id="cell-7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li><strong>Write another function <code>ξ(a::Number, b::Number)::Tuple{Float64, Float64, Float64}</code> which returns a random realization of <span class="math inline">\(( a x + b - y)^2\)</span> as well as its derivatives w.r.t. <code>a</code> and <code>b</code> (make sure the derivatives are computed for the same realization of <span class="math inline">\(\epsilon\)</span>). We call <code>ξ</code> the empirical loss.</strong></li>
+</ol>
+<p>(hint: here you can either compute the derivatives by hand, or use an automatic differentiation library)</p>
+<div id="2fced963" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5. Stochastic gradient algorithm.</strong></p>
+<p>The stochastic gradient algorithm minimizes <span class="math display">\[E\xi(a,b)\]</span> with the following steps:</p>
 <ul>
-<li>Zulip (best)</li>
-<li>Email to <code>pablo.winant@polytechnique.edu</code> or <code>pwinant@escp.eu</code>
+<li>start with an initial guess <span class="math inline">\(a_0,b_0\)</span></li>
+<li>given a guess <span class="math inline">\(a_k, b_k\)</span>
 <ul>
-<li>subject starting with <code>[eco309]</code></li>
+<li>compute <span class="math inline">\(\xi, \xi^{prime}_a, \xi^{prime}_b\)</span> using the function from the last function</li>
+<li>make a new guess <span class="math inline">\((a_{k+1}, b_{k+1}) = (1-\lambda) (a_{k}, b_{k}) - \lambda (\xi^{\prime}_a, \xi^{\prime}_b)\)</span></li>
 </ul></li>
-<li>Github issues (PR also welcome)</li>
 </ul>
+<p><strong>Implement the SGD algorithm. How many iterations does one needs to get a good approximation of <span class="math inline">\(a,b\)</span>? What value of $ $ works better? Compare with question 3.</strong></p>
+<div id="b28908e0" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6. (bonus) Illustrate the convergence by plotting the empirical loss for each step <span class="math inline">\(k\)</span> in the above alogorithm, as well as the validation loss in the same step. (Given <span class="math inline">\(a,b\)</span>, the validation loss is the empirical mean of <span class="math inline">\(\xi(a,b)\)</span> computed using <span class="math inline">\(N=1000\)</span> observations.)</strong></p>
+<div id="e13268b1" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="assessment" class="level2">
-<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
-<ul>
-<li>tutorials (optional)</li>
-<li>coursework (mandatory)</li>
-<li>presentations (optional)</li>
-</ul>
+<section id="part-ii---endogenous-exit" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii---endogenous-exit">Part II - Endogenous Exit</h2>
+<section id="discretization-of-an-ar1" class="level3">
+<h3 class="anchored" data-anchor-id="discretization-of-an-ar1">Discretization of an AR1</h3>
+<p>The following code, taken from Quantecon.jl approximates an AR1 process <span class="math display">\[y_t = \mu + \rho (y_{t-1}-\mu) + \epsilon_t\]</span> (where <span class="math inline">\(\nu\)</span> is the standard deviation of normal process <span class="math inline">\(\epsilon\)</span>), using a finite markov chain with <span class="math inline">\(N\)</span> different values.</p>
+<p>The output is a transition matrix and a vector containing discretized values <span class="math inline">\(y_1, y_2, ... y_p\)</span></p>
+<div id="43cedb56" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment the following line if "SpecialFunctions" is not on your system</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; Pkg.add("SpecialFunctions")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="516366bf" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpecialFunctions</span>: erfc</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">std_norm_cdf</span>(x<span class="op">::</span><span class="dt">T</span>) <span class="kw">where</span> {T <span class="op">&lt;:</span><span class="dt"> Real</span>} <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="fu">erfc</span>(<span class="op">-</span>x<span class="op">/</span><span class="fu">sqrt</span>(<span class="fl">2</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">std_norm_cdf</span>(x<span class="op">::</span><span class="dt">Array{T}</span>) <span class="kw">where</span> {T <span class="op">&lt;:</span><span class="dt"> Real</span>} <span class="op">=</span> <span class="fl">0.5</span> <span class="op">.*</span> <span class="fu">erfc</span>(<span class="op">-</span>x<span class="op">./</span><span class="fu">sqrt</span>(<span class="fl">2</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">tauchen</span>(N<span class="op">::</span><span class="dt">Integer</span>, ρ<span class="op">::</span><span class="dt">T1</span>, σ<span class="op">::</span><span class="dt">T2</span>, μ<span class="op">=</span><span class="fu">zero</span>(<span class="fu">promote_type</span>(T1, T2)), n_std<span class="op">::</span><span class="dt">T3</span>=<span class="fl">3</span>) <span class="kw">where</span> {T1 <span class="op">&lt;:</span><span class="dt"> Real</span>, T2 <span class="op">&lt;:</span><span class="dt"> Real</span>, T3 <span class="op">&lt;:</span><span class="dt"> Real</span>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get discretized space</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    a_bar <span class="op">=</span> n_std <span class="op">*</span> <span class="fu">sqrt</span>(σ<span class="op">^</span><span class="fl">2</span> <span class="op">/</span> (<span class="fl">1</span> <span class="op">-</span> ρ<span class="op">^</span><span class="fl">2</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="fu">range</span>(<span class="op">-</span>a_bar, stop<span class="op">=</span>a_bar, length<span class="op">=</span>N)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> y[<span class="fl">2</span>] <span class="op">-</span> y[<span class="fl">1</span>]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get transition probabilities</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    Π <span class="op">=</span> <span class="fu">zeros</span>(<span class="fu">promote_type</span>(T1, T2), N, N)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>N</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Do end points first</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        Π[row, <span class="fl">1</span>] <span class="op">=</span> <span class="fu">std_norm_cdf</span>((y[<span class="fl">1</span>] <span class="op">-</span> ρ<span class="op">*</span>y[row] <span class="op">+</span> d<span class="op">/</span><span class="fl">2</span>) <span class="op">/</span> σ)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        Π[row, N] <span class="op">=</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu">std_norm_cdf</span>((y[N] <span class="op">-</span> ρ<span class="op">*</span>y[row] <span class="op">-</span> d<span class="op">/</span><span class="fl">2</span>) <span class="op">/</span> σ)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># fill in the middle columns</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="op">=</span> <span class="fl">2</span><span class="op">:</span>N<span class="op">-</span><span class="fl">1</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>            Π[row, col] <span class="op">=</span> (<span class="fu">std_norm_cdf</span>((y[col] <span class="op">-</span> ρ<span class="op">*</span>y[row] <span class="op">+</span> d<span class="op">/</span><span class="fl">2</span>) <span class="op">/</span> σ) <span class="op">-</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">std_norm_cdf</span>((y[col] <span class="op">-</span> ρ<span class="op">*</span>y[row] <span class="op">-</span> d<span class="op">/</span><span class="fl">2</span>) <span class="op">/</span> σ))</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    yy <span class="op">=</span> y <span class="op">.+</span> μ <span class="op">/</span> (<span class="fl">1</span> <span class="op">-</span> ρ) <span class="co"># center process around its mean (wbar / (1 - rho)) in new variable</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    (;transitions<span class="op">=</span>Π, values<span class="op">=</span>yy)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>tauchen (generic function with 3 methods)</code></pre>
+</div>
+</div>
+<p><strong>1. Take <span class="math inline">\(\rho=0.95, \mu=0.1, \nu=0.1\)</span>. Approximate the AR1 with 200 discrete states, using the tauchen function above. Check that all rows sum to 1. Compute and plot the steady-state distribution.</strong></p>
+<div id="7b9d009c" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Consider a firm whose productivity <span class="math inline">\(y_t\)</span> is exogenous and evolves according to the markov chain above.</p>
+<p>Profits are given by <span class="math inline">\(\pi(y_t) = y_t\)</span>.</p>
+<p>At the start of each period, the firm decides whether to remain in operation and receive current profit <span class="math inline">\(\pi_t\)</span> or to exit and receive scrap value <span class="math inline">\(s&gt;0\)</span> for the sale of physical assets.</p>
+<p>Time is discounted using interest rate, that is <span class="math inline">\(\beta=\frac{1}{1+r} \in [0,1[\)</span>.</p>
+<p>The following code creates a parameterization of the firm’s problem:</p>
+<div id="30cd7d91" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Creates an instance of the firm exit model."</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">create_exit_model</span>(;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    n<span class="op">=</span><span class="fl">200</span>, <span class="co"># productivity grid size</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ρ<span class="op">=</span><span class="fl">0.95</span>, μ<span class="op">=</span><span class="fl">0.1</span>, ν<span class="op">=</span><span class="fl">0.1</span>, <span class="co"># persistence, mean and volatility</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    β<span class="op">=</span><span class="fl">0.98</span>, s<span class="op">=</span><span class="fl">100.0</span> <span class="co"># discount factor and scrap value</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    mc <span class="op">=</span> <span class="fu">tauchen</span>(n, ρ, ν, μ)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    z_vals, Q <span class="op">=</span> mc.state_values, mc.p</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (; n, z_vals, Q, β, s)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>create_exit_model</code></pre>
+</div>
+</div>
+<p><strong>2. What are the states of the problem? The controls? The rewards? What equation defines the value of the firm? How would you represent numerically the value function and the decision rule?</strong></p>
+<div id="b48b1e41" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3. Solve for the optimal exit decision using value function iteration. Plot the results.</strong></p>
+<div id="82879ed6" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4. (bonus) Taking into account the specific nature of this problem, propose a more efficient algorithm.</strong></p>
+<div id="c71a31dd" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -215,6 +249,12 @@ window.Quarto = {
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/homework.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,8 +332,121 @@ window.Quarto = {
 \end{bmatrix}\]</span></p>
 <p>with <span class="math inline">\(\alpha\in(0,1)\)</span> and <span class="math inline">\(\beta\in (0,1)\)</span>. First line corresponds to employment, second line to unemployment.</p>
 <p><strong>Which is the stationary equilibrium? (choose any value for <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>)</strong></p>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>α <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>β <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span>  [(<span class="fl">1</span><span class="op">-</span>α) α;  β (<span class="fl">1</span><span class="op">-</span>β)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2×2 Matrix{Float64}:
+ 0.8  0.2
+ 0.3  0.7</code></pre>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to find  μ P = μ </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we can rewrite as P' μ' = μ'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and solve (P' - I) x = 0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># identity operator:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span>: I</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> (P<span class="op">'-</span>I)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2×2 Matrix{Float64}:
+ -0.2   0.3
+  0.2  -0.3</code></pre>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cannot the system directly because M is not inversble</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># one row is colinear to the others</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># M\zeros(2)#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let' s replace one row of M with the condition |μ|=1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>M[<span class="kw">end</span>,<span class="op">:</span>] <span class="op">=</span> <span class="fu">ones</span>(<span class="fl">2</span>) <span class="co"># set equal to vector</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>M[<span class="kw">end</span>,<span class="op">:</span>]<span class="op">.=</span> <span class="fl">1.0</span>      <span class="co"># set equal to a scalar (with vectorization)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element view(::Matrix{Float64}, 2, :) with eltype Float64:
+ 1.0
+ 1.0</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2×2 Matrix{Float64}:
+ -0.2  0.3
+  1.0  1.0</code></pre>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.0</span> <span class="fl">1.0</span>] <span class="co"># one row vecto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>1×2 Matrix{Float64}:
+ 0.0  1.0</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">0.0</span>, <span class="fl">1.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Float64}:
+ 0.0
+ 1.0</code></pre>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span> M <span class="op">\</span> [<span class="fl">0.0</span>, <span class="fl">1.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Float64}:
+ 0.6000000000000001
+ 0.39999999999999997</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check μ is indeed the right solution</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(μ<span class="ch">' * P - μ'</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(μ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.0 5.551115123125783e-17]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>1.0</code></pre>
+</div>
+</div>
+<p>Other solution</p>
+<div id="cell-15" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>MM <span class="op">=</span> <span class="fu">cat</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    P<span class="op">'-</span>I,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ones</span>(<span class="fl">1</span>,<span class="fl">2</span>);</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    dims<span class="op">=</span><span class="fl">1</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3×2 Matrix{Float64}:
+ -0.2   0.3
+  0.2  -0.3
+  1.0   1.0</code></pre>
+</div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>MM <span class="op">\</span> [<span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>2-element Vector{Float64}:
+ 0.6
+ 0.3999999999999999</code></pre>
+</div>
+</div>
 <p><strong>In the long run, what will the the fraction <span class="math inline">\(p\)</span> of time spent unemployed? (Denote by <span class="math inline">\(X_m\)</span> the fraction of dates were one is unemployed)</strong></p>
 <p><strong>Illustrate this convergence by generating a simulated series of length 10000 starting at <span class="math inline">\(X_0=1\)</span>. Plot <span class="math inline">\(X_m-p\)</span> against <span class="math inline">\(m\)</span>. (Take <span class="math inline">\(\alpha=\beta=0.1\)</span>).</strong></p>
+<div id="cell-20" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ArgumentError: ArgumentError: Package Plot not found in current path.
+- Run `import Pkg; Pkg.add("Plot")` to install the Plot package.</code></pre>
+</div>
+</div>
 </section>
 <section id="job-search-model" class="level2">
 <h2 class="anchored" data-anchor-id="job-search-model">Job-Search Model</h2>
@@ -322,13 +475,351 @@ window.Quarto = {
 <li>Objective: <span class="math inline">\(\max E_0 \left\{ \sum \beta^t \log(w_t) \right\}\)</span></li>
 </ul>
 <p><strong>What are the states, the controls, the reward of this problem ? Write down the Bellman equation.</strong></p>
+<p>cf course</p>
 <p><strong>Define a parameter structure for the model.</strong></p>
+<div id="cell-25" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> (;</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    λ<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    cbar<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    β<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    wvec<span class="op">=</span>[<span class="fl">0.9</span>, <span class="fl">1.0</span>, <span class="fl">1.1</span>],</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    pvec<span class="op">=</span>[<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">/</span><span class="fl">3</span>]</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(λ = 0.01, cbar = 0.8, β = 0.9, wvec = [0.9, 1.0, 1.1], pvec = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333])</code></pre>
+</div>
+</div>
 <p><strong>Define a function <code>value_update(V_U::Vector{Float64}, V_E::Vector{Float64}, x::Vector{Bool}, p::Parameters)::Tuple{Vector, Vector}</code>, which takes in value functions tomorrow and a policy vector and return updated values for today.</strong></p>
+<div id="cell-27" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>V_U_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>V_E_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>x_0 <span class="op">=</span> [<span class="cn">false</span>, <span class="cn">false</span>, <span class="cn">false</span>]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">value_update</span>(V_U, V_E, x, model)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    (;cbar, λ, β) <span class="op">=</span> model</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    n_V_E <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    n_V_U <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    c_V_U <span class="op">=</span> <span class="fu">sum</span>( p<span class="op">*</span>V_U[j] <span class="cf">for</span> (j,p) <span class="kw">in</span>  <span class="fu">enumerate</span>(model.pvec ))</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>        n_V_E[i] <span class="op">=</span> <span class="fu">log</span>(model.wvec[i]) <span class="op">+</span> (<span class="fl">1</span><span class="op">-</span>λ)<span class="op">*</span>β<span class="op">*</span>V_E[i] <span class="op">+</span> λ<span class="op">*</span>β<span class="op">*</span>c_V_U</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x[i]</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>            n_V_U[i] <span class="op">=</span> <span class="fu">log</span>(model.cbar) <span class="op">+</span> β<span class="op">*</span>V_E[i]</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>            n_V_U[i] <span class="op">=</span> <span class="fu">log</span>(model.cbar) <span class="op">+</span> β<span class="op">*</span>c_V_U</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_V_U, n_V_E</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">value_update</span>(V_U_0, V_E_0, x_0, model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>([-0.2231435513142097, -0.2231435513142097, -0.2231435513142097], [-0.10536051565782628, 0.0, 0.09531017980432493])</code></pre>
+</div>
+</div>
 <p><strong>Define a function <code>policy_eval(x::Vector{Bool}, p::Parameter)::Tuple{Vector, Vector}</code> which takes in a policy vector and returns the value(s) of following this policies forever. You can add relevant arguments to the function.</strong></p>
+<div id="cell-29" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">policy_eval</span>(x, model; T<span class="op">=</span><span class="fl">500</span>, tol_η<span class="op">=</span><span class="fl">1e-6</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    V_U_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    V_E_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        V_U, V_E <span class="op">=</span> <span class="fu">value_update</span>(V_U_0, V_E_0, x, model)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        η <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.( [  V_U<span class="op">-</span>V_U_0   ;  V_E<span class="op">-</span>V_E_0   ]))</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> η<span class="op">&lt;</span>tol_η</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> V_U, V_E</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>        V_U_0, V_E_0 <span class="op">=</span> V_U, V_E</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>policy_eval (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="cell-30" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">policy_eval</span>([<span class="cn">false</span>, <span class="cn">false</span>, <span class="cn">false</span>], model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>([-2.2314266170257446, -2.2314266170257446, -2.2314266170257446], [-1.1508496241589632, -0.18424056588532145, 0.6901636885865156])</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">policy_eval</span>([<span class="cn">false</span>, <span class="cn">true</span>, <span class="cn">true</span>], model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>([-0.16894144584658277, -0.21867165307166767, 0.5682888378093481], [-0.9616363330197235, 0.0049692003147929036, 0.8793702660913234])</code></pre>
+</div>
+</div>
 <p><strong>Define a function <code>bellman_step(V_E::Vector, V_U::Vector, p::Parameters)::Tuple{Vector, Vector, Vector}</code> which returns updated values, together with improved policy rules.</strong></p>
+<div id="cell-33" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">bellman_step</span>(V_U, V_E, model)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    (;cbar, λ, β) <span class="op">=</span> model</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    n_V_E <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    n_V_U <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="fu">zeros</span>(<span class="dt">Bool</span>, <span class="fl">3</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    c_V_U <span class="op">=</span> <span class="fu">sum</span>( p<span class="op">*</span>V_U[j] <span class="cf">for</span> (j,p) <span class="kw">in</span>  <span class="fu">enumerate</span>(model.pvec ))</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>        n_V_E[i] <span class="op">=</span> <span class="fu">log</span>(model.wvec[i]) <span class="op">+</span> (<span class="fl">1</span><span class="op">-</span>λ)<span class="op">*</span>β<span class="op">*</span>V_E[i] <span class="op">+</span> λ<span class="op">*</span>β<span class="op">*</span>c_V_U</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># when unemployed</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>        v_accept <span class="op">=</span> <span class="fu">log</span>(model.cbar) <span class="op">+</span> β<span class="op">*</span>V_E[i]</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>        v_reject <span class="op">=</span> <span class="fu">log</span>(model.cbar) <span class="op">+</span> β<span class="op">*</span>c_V_U</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v_accept<span class="op">&gt;</span>v_reject</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>            n_V_U[i] <span class="op">=</span> v_accept</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>            x[i] <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>            n_V_U[i] <span class="op">=</span> v_reject</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>            x[i] <span class="op">=</span> <span class="cn">false</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_V_U, n_V_E, x</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>bellman_step (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bellman_step</span>(V_U_0, V_E_0, model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>([-0.2231435513142097, -0.2231435513142097, -0.2231435513142097], [-0.10536051565782628, 0.0, 0.09531017980432493], Bool[0, 0, 0])</code></pre>
+</div>
+</div>
 <p><strong>Implement Value Function</strong></p>
+<div id="cell-36" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">vfi</span>(model; T<span class="op">=</span><span class="fl">500</span>, tol_η<span class="op">=</span><span class="fl">1e-6</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    V_U_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    V_E_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        V_U, V_E, x <span class="op">=</span> <span class="fu">bellman_step</span>(V_U_0, V_E_0, model)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        η <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.( [  V_U<span class="op">-</span>V_U_0   ;  V_E<span class="op">-</span>V_E_0   ]))</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>t<span class="st"> : </span><span class="sc">$</span><span class="st">η")</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="st">        </span>if<span class="st"> η&lt;tol_η</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> V_U, V_E, x</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>        V_U_0, V_E_0 <span class="op">=</span> V_U, V_E</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">end</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>vfi (generic function with 2 methods)</code></pre>
+</div>
+</div>
+<div id="cell-37" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>V_U, V_E, x <span class="op">=</span> <span class="fu">vfi</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 : 0.2231435513142097
+2 : 0.09588451141295112
+3 : 0.08629606027165598
+4 : 0.07618551515584138
+5 : 0.06776620825824747
+6 : 0.06017209711438726
+7 : 0.05339623450323355
+8 : 0.04737184303259734
+9 : 0.042021967211819056
+10 : 0.037273116454005106
+11 : 0.033058519006658904
+12 : 0.029318432293365393
+13 : 0.025999667465517406
+14 : 0.023054948225977645
+15 : 0.020442277375651963
+16 : 0.018124355344447007
+17 : 0.01606805806256495
+18 : 0.014243971400986988
+19 : 0.01262597700763557
+20 : 0.011258315445731748
+21 : 0.010085339325077824
+22 : 0.009048942948106098
+23 : 0.008127581948617513
+24 : 0.007305091931290697
+25 : 0.006568831231085204
+26 : 0.005908548967294203
+27 : 0.005315685178421625
+28 : 0.004782929405322878
+29 : 0.004303934796933695
+30 : 0.0038731266315371604
+31 : 0.003485568889132873
+32 : 0.0031368671583823504
+33 : 0.002823094841018392
+34 : 0.0025407347664148094
+35 : 0.0022866313907867752
+36 : 0.0020579505814068977
+37 : 0.0018521450801185502
+38 : 0.0016669244002061046
+39 : 0.0015002283125924443
+40 : 0.0013502033256055368
+41 : 0.0012151817190101388
+42 : 0.0010936627941545707
+43 : 0.0009842960697428182
+44 : 0.0008858661997758199
+45 : 0.0007972794243694681
+46 : 0.0007175513900742336
+47 : 0.0006457961967782921
+48 : 0.0005812165450161944
+49 : 0.0005230948715527761
+50 : 0.0004707853731908962
+51 : 0.0004237068292487489
+52 : 0.00038133614240976055
+53 : 0.0003432025258554017
+54 : 0.0003088822719028439
+55 : 0.0002779940439044948
+56 : 0.00025019463903641626
+57 : 0.0002251751748508779
+58 : 0.00020265765719873485
+59 : 0.00018239189138036238
+60 : 0.00016415270218417266
+61 : 0.00014773743193119415
+62 : 0.00013296368871773545
+63 : 0.00011966731983381607
+64 : 0.00010770058784359549
+65 : 9.693052905479504e-5
+66 : 8.723747614691746e-5
+67 : 7.851372853084904e-5
+68 : 7.066235567687595e-5
+69 : 6.359612010864435e-5
+70 : 5.723650809752456e-5
+71 : 5.151285728743904e-5
+72 : 4.6361571558684034e-5
+73 : 4.1725414402837835e-5
+74 : 3.755287296258736e-5
+75 : 3.3797585666239804e-5
+76 : 3.0417827099560313e-5
+77 : 2.7376044389626486e-5
+78 : 2.4638439950708246e-5
+79 : 2.2174595955659626e-5
+80 : 1.9957136359938232e-5
+81 : 1.7961422724033227e-5
+82 : 1.6165280451674313e-5
+83 : 1.4548752406418064e-5
+84 : 1.3093877165748502e-5
+85 : 1.178448944921806e-5
+86 : 1.0606040504401726e-5
+87 : 9.545436453928247e-6
+88 : 8.59089280857983e-6
+89 : 7.731803527755154e-6
+90 : 6.958623174901923e-6
+91 : 6.262760857467242e-6
+92 : 5.6364847716983135e-6
+93 : 5.072836294500727e-6
+94 : 4.565552665036776e-6
+95 : 4.108997398666325e-6
+96 : 3.6980976588774084e-6
+97 : 3.3282878928453385e-6
+98 : 2.9954591036496225e-6
+99 : 2.6959131932402514e-6
+100 : 2.4263218739717374e-6
+101 : 2.1836896865190525e-6
+102 : 1.9653207178338405e-6
+103 : 1.7687886460504565e-6
+104 : 1.5919097814398597e-6
+105 : 1.4327188033735894e-6
+106 : 1.289446923014026e-6
+107 : 1.16050223064601e-6
+108 : 1.0444520076591246e-6
+109 : 9.400068069487233e-7</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>([-0.12918217853332556, -0.12918217853332556, 0.5715717530233522], [-0.9579912751556052, 0.008615634245837868, 0.88301794482632], Bool[0, 0, 1])</code></pre>
+</div>
+</div>
+<div id="cell-38" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Bool}:
+ 0
+ 0
+ 1</code></pre>
+</div>
+</div>
 <p><strong>Implement Policy Iteration and compare rates of convergence.</strong></p>
+<div id="cell-40" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">policy_iteration</span>(model; T<span class="op">=</span><span class="fl">500</span>, tol_η<span class="op">=</span><span class="fl">1e-6</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    V_U_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    V_E_0 <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">3</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        V_U, V_E, x <span class="op">=</span> <span class="fu">bellman_step</span>(V_U_0, V_E_0, model)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>        η <span class="op">=</span> <span class="fu">maximum</span>(<span class="fu">abs</span>.( [  V_U<span class="op">-</span>V_U_0   ;  V_E<span class="op">-</span>V_E_0   ]))</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>t<span class="st"> : </span><span class="sc">$</span><span class="st">η : </span><span class="sc">$</span>x<span class="st">"</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> η<span class="op">&lt;</span>tol_η</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> V_U, V_E, x</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">end</span></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>        V_U_0, V_E_0 <span class="op">=</span> <span class="fu">policy_eval</span>(x, model)</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>policy_iteration (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div id="cell-41" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>V_U, V_E, x <span class="op">=</span> <span class="fu">policy_iteration</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 : 0.2231435513142097 : Bool[0, 0, 0]
+2 : 2.6294303854393988 : Bool[1, 1, 1]
+3 : 0.6462314803394785 : Bool[0, 1, 1]
+4 : 0.04973082342478724 : Bool[0, 0, 1]
+5 : 8.853353918869544e-7 : Bool[0, 0, 1]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>([-0.1291816864905906, -0.1291816864905906, 0.5715722450660872], [-0.9579914735969917, 0.00861579833752028, 0.883018436869055], Bool[0, 0, 1])</code></pre>
+</div>
+</div>
 <p><strong>Discuss the Effects of the Parameters</strong></p>
+<div id="cell-43" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">policy_iteration</span>(model)[<span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 : 0.2231435513142097 : Bool[0, 0, 0]
+2 : 2.6294303854393988 : Bool[1, 1, 1]
+3 : 0.6462314803394785 : Bool[0, 1, 1]
+4 : 0.04973082342478724 : Bool[0, 0, 1]
+5 : 8.853353918869544e-7 : Bool[0, 0, 1]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Bool}:
+ 0
+ 0
+ 1</code></pre>
+</div>
+</div>
+<div id="cell-44" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">policy_iteration</span>(<span class="fu">merge</span>(model, (;cbar<span class="op">=</span><span class="fl">0.3</span>)))[<span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 : 1.2039728043259361 : Bool[0, 0, 0]
+2 : 10.728021688918453 : Bool[1, 1, 1]
+3 : 8.015472237055121e-7 : Bool[1, 1, 1]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>3-element Vector{Bool}:
+ 1
+ 1
+ 1</code></pre>
+</div>
+</div>
+<div id="cell-45" class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">merge</span>(model, (;cbar<span class="op">=</span><span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
