@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/slides/session_optimization/index.html",
       "/slides/session_introduction/index.html",
       "/slides/session_convergence/index.html",
+      "/slides/session_optimization/index.html",
       "/slides/session_perturbation/index.html",
       "/slides/session_ddp/index.html"
     ]
