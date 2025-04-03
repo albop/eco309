@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Convergence: Solow Model – Introduction to Computational Economics</title>
+<title>Homework – Introduction to Computational Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,59 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-944fc646c7e2aa292c8c646e2ff00dcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-944fc646c7e2aa292c8c646e2ff00dcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,7 +97,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -160,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Introduction to Computational Economics</a> 
+      <a href="./">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -181,31 +147,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence of Sequences</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perturbation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -222,19 +188,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
@@ -251,7 +217,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+  <a href="./pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
@@ -267,7 +233,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link active" data-scroll-target="#solow-model">Solow Model</a></li>
+  <li><a href="#a-simple-cge-model" id="toc-a-simple-cge-model" class="nav-link active" data-scroll-target="#a-simple-cge-model">A simple CGE model</a></li>
+  <li><a href="#the-data-and-the-social-accounting-mmatrix" id="toc-the-data-and-the-social-accounting-mmatrix" class="nav-link" data-scroll-target="#the-data-and-the-social-accounting-mmatrix">The data and the social accounting mmatrix</a></li>
+  <li><a href="#consumers" id="toc-consumers" class="nav-link" data-scroll-target="#consumers">Consumers</a></li>
+  <li><a href="#producers" id="toc-producers" class="nav-link" data-scroll-target="#producers">Producers</a></li>
+  <li><a href="#equilibrium" id="toc-equilibrium" class="nav-link" data-scroll-target="#equilibrium">Equilibrium</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +247,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Convergence: Solow Model</h1>
+<h1 class="title">Homework</h1>
 </div>
 
 
@@ -293,146 +264,151 @@ window.Quarto = {
 </header>
 
 
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
-<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
-<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
-<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
-<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
-<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
-<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
-<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
-<p>The goal of the representative agent is to maximize:</p>
-<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
-<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
-<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
-<div id="cell-5" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (;β<span class="op">=</span><span class="fl">0.96</span>, δ<span class="op">=</span><span class="fl">0.1</span>, α<span class="op">=</span><span class="fl">0.3</span>, γ<span class="op">=</span><span class="fl">4.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>(β = 0.96, δ = 0.1, α = 0.3, γ = 4.0)</code></pre>
-</div>
-</div>
-<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
-<p><span class="math display">\[k_{t+1}= (1-\delta) k_t + (1-s) k_t^{\alpha}\]</span></p>
-<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
-<div id="cell-9" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function f(k::Float64, p::NamedTuple)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we added a keyword argument to specify the saving rate</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f</span>(k, p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (;α, δ) <span class="op">=</span> p <span class="co"># keyword unpacking syntax</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> <span class="fu">k*</span>(<span class="fl">1</span><span class="op">-</span>δ) <span class="op">+</span> s<span class="op">*</span>k<span class="op">^</span>α</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> val </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>f (generic function with 2 methods)</code></pre>
-</div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">0.1</span>, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>0.1902374467254545</code></pre>
-</div>
-</div>
-<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
-<div id="cell-12" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">simulate</span>(k0, T, p; s<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    sim <span class="op">=</span> [k0]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>T    <span class="co"># same as for i in ... or for i=...</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># in Julia, intervals contain the lower and upper bound</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        k1 <span class="op">=</span> <span class="fu">f</span>(k0, p; s<span class="op">=</span>s)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add new value to simulation vector</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">push!</span>(sim, k1)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        k0 <span class="op">=</span> k1</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sim</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>simulate (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-13" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> <span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>101-element Vector{Float64}:
- 0.2
- 0.30340677254400195
- 0.4129080792968781
- 0.525003373019628
- 0.6373491155565568
- 0.7483344417178636
- 0.856841626057419
- 0.9620988898971137
- 1.0635841029776287
- 1.1609587708409257
- ⋮
- 2.6876186883735818
- 2.6879113388853018
- 2.6881835130861362
- 2.6884366430712516
- 2.6886720608576273
- 2.688891005366757
- 2.689094628921639
- 2.6892840032916374
- 2.6894601253165105</code></pre>
-</div>
-</div>
-<div id="cell-14" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sometimes, we want to avoid using too much memory</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in that case we try to do as many inplace operations as possible</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">simulate_preallocate</span>(k, T, p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="fu">zeros</span>(T) <span class="co"># allocates memore</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    v[<span class="fl">1</span>] <span class="op">=</span> k</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span>(T<span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        k0 <span class="op">=</span> v[t]</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        v[t<span class="op">+</span><span class="fl">1</span>] <span class="op">=</span> <span class="fu">f</span>(k0, p; s<span class="op">=</span>s)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>simulate_preallocate (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">simulate</span>(<span class="fl">0.2</span>, <span class="fl">1000000</span>, p);</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">simulate_preallocate</span>(<span class="fl">0.2</span>, <span class="fl">1000000</span>, p);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.067737 seconds (14 allocations: 9.781 MiB)
-  0.055613 seconds (2 allocations: 7.629 MiB)</code></pre>
-</div>
-</div>
-<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
-<div id="cell-17" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pl<span class="op">=</span> <span class="fu">plot</span>(<span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;); label<span class="op">=</span><span class="st">"baseline"</span>, title<span class="op">=</span><span class="st">"Convergence of Solow Model"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(pl, <span class="fu">simulate</span>(<span class="fl">6.0</span>, <span class="fl">100</span>, p;); label<span class="op">=</span><span class="st">"high initial capital"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(pl, <span class="fu">simulate</span>(<span class="fl">0.5</span>, <span class="fl">100</span>, p;s<span class="op">=</span><span class="fl">0.2</span>); label<span class="op">=</span><span class="st">"lower saving rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
-<div id="cell-19" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">steady_state</span>(p; s<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    sim <span class="op">=</span> <span class="fu">simulate</span>(<span class="fl">0.1</span>, <span class="fl">1000</span>, p)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sim[<span class="kw">end</span>]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>steady_state (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">steady_state</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>2.691800385264708</code></pre>
-</div>
-</div>
+<p>Computational Economics (ECO309)</p>
+<p>Pablo Winant</p>
+<section id="a-simple-cge-model" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-cge-model">A simple CGE model</h2>
+<p>The goal of this exercise consists in solving a simple CGE model using Julia.</p>
+<p>Model is taken from <em>Handbook of Computible General Equilibrium Modeling</em>. [1]</p>
+</section>
+<section id="the-data-and-the-social-accounting-mmatrix" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-and-the-social-accounting-mmatrix">The data and the social accounting mmatrix</h2>
+<p>In a CGE, the data about the economy’s exchanges is compiled in one single “Social Accounting Matrix”. It is essentially a matrix representation of the national accounts that can be arbitrary refined based on data availability.</p>
+<p>In this course work we consider the following simplified version. All items are in million euros.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">SAM</th>
+<th style="text-align: center;">BRD</th>
+<th style="text-align: center;">MLK</th>
+<th style="text-align: center;">CAP</th>
+<th style="text-align: center;">LAB</th>
+<th style="text-align: center;">HOH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">BRD</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">MLK</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CAP</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">LAB</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">HOH</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>In this table, there are:</p>
+<ul>
+<li>Two Goods: BRD and MLK</li>
+<li>Two Factors: CAP and LAB (capital and labour)</li>
+<li>One Agent: HOH (Households)</li>
+</ul>
+<p>To read the matrix, we consider that rows decomposes the inputs for each column (measured by their cost).</p>
+<p>For instance, the value of the production in the BRD-producing sector is decomposed between the payment to capital (5) and the payment to labor (10).</p>
+<p>We will assume there are fixed endowments in capital and labour and that they are owned by the household.</p>
+<p>We use the following notations:</p>
+<ul>
+<li><span class="math inline">\(X_i\)</span> household consumption of good i</li>
+<li><span class="math inline">\(F_{h,j}\)</span> the h-th factor input by firm j</li>
+<li><span class="math inline">\(Z_{j}\)</span> output of the j-th good</li>
+<li><span class="math inline">\(px_{i}\)</span> demand price of the i-th good</li>
+<li><span class="math inline">\(pz_{j}\)</span> supply price of the i-th good</li>
+<li><span class="math inline">\(pf_{h}\)</span> the h-th factor price}</li>
+</ul>
+<p>In these definitions the indices are conventionally: <span class="math inline">\(i \in \text{BRD,MLK}\)</span>, <span class="math inline">\(j\in \text{BRD,MLK}\)</span>, <span class="math inline">\(h \in \text{CAP,LAB}\)</span>).</p>
+<p>We also denote by a zero exponent, the variables at the steady-state. For instance, <span class="math inline">\(X_{BRD}^0\)</span> is the household consumption of good <span class="math inline">\(BRD\)</span>.</p>
+<p>We assume that the SAM corresponds to values observed at the steady-state.</p>
+</section>
+<section id="consumers" class="level2">
+<h2 class="anchored" data-anchor-id="consumers">Consumers</h2>
+<p>Given prices <span class="math inline">\(px_i\)</span>, households maximize utility of consumption <span class="math display">\[U = \prod_i X_i^{\alpha_i}\]</span> where <span class="math inline">\(\alpha_i\)</span> is the share parameter in the utility function (with <span class="math inline">\(\sum_i \alpha_i=1\)</span>)</p>
+<ol type="1">
+<li><strong>Write down the budget constraint of households. How can we calibrate <span class="math inline">\(\alpha_i\)</span> from the data?</strong></li>
+</ol>
+<p><span class="math display">\[\alpha_i  = \frac{X^0_i}{\sum_j X^0_{j}}\]</span></p>
+<ol type="1">
+<li><strong>Show that the household demand function satisfies <span class="math display">\[X_i  = \alpha_i \sum_h \frac{pf_h FF_h}{px_i}\]</span>.</strong></li>
+</ol>
+</section>
+<section id="producers" class="level2">
+<h2 class="anchored" data-anchor-id="producers">Producers</h2>
+<p>We assume that producers of final goods, use the following production function:</p>
+<p><span class="math display">\[Z_j   = b_j \prod_h F_{h,j}^{\beta_{h,j}}\]</span></p>
+<p>where <span class="math inline">\(\beta_{h,j}\)</span> is the share parameter in production function (<span class="math inline">\(\sum_h \beta_{h,j}=1\)</span>) and <span class="math inline">\(b_j\)</span> a scale parameter.</p>
+<ol type="1">
+<li><p><strong>Show that factor demand function can be written as:</strong> <span class="math display">\[ F_{h,j} = \beta_{h,j} \frac{pz_j Z_j }{pf_h} \]</span></p></li>
+<li><p><strong>How can we calibrate <span class="math inline">\(\beta_{h,j}\)</span> from the data? How can we recover <span class="math inline">\(b_j\)</span>?</strong></p></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Note</strong></p>
+<p><span class="math display">\[\beta_{h,j} = \frac{F^0_{h,j}}{\sum_k F^0_{k,j}}\]</span> <span class="math display">\[b_j      = \frac{Z^0_j}{ \prod_h  (F^0_{h,j})^{\beta_{h,j}} }\]</span></p>
+</blockquote>
+</section>
+<section id="equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="equilibrium">Equilibrium</h2>
+<p>In equilibrium we have the following conditions:</p>
+<ul>
+<li><p>demand prices of the i-th good must match supply price of the same good: <span class="math display">\[px_{i} = pz_{i}\]</span></p></li>
+<li><p>good market must clear: <span class="math display">\[ X_i   = Z_i \]</span></p></li>
+<li><p>factor market must clear: <span class="math display">\[ \sum_j F_{h,j} = FF_h \]</span></p></li>
+</ul>
+<ol type="1">
+<li>Justify the steady-state identity: <span class="math inline">\(Z^0_j   = \sum_h F^0_{h,j}\)</span></li>
+</ol>
+<p>Calibration</p>
+<p><span class="math inline">\(i\in I\)</span>:goods <span class="math inline">\(h\in H\)</span>: factor</p>
+<p><span class="math inline">\(X^0_i   = SAM(i,"HOH")\)</span></p>
+<p><span class="math inline">\(F^0_{h,j} = SAM(h,j)\)</span></p>
+<p><span class="math inline">\(FF_h   = SAM("HOH",h)\)</span></p>
+<p>Definitions</p>
+<p><span class="math inline">\(X_i\)</span> household consumption of the i-th good</p>
+<p><span class="math inline">\(F_{h,j}\)</span> the h-th factor input by the j-th firm</p>
+<p><span class="math inline">\(Z_{j}\)</span> output of the j-th good</p>
+<p><span class="math inline">\(px_{i}\)</span> demand price of the i-th good</p>
+<p><span class="math inline">\(pz_{j}\)</span> supply price of the i-th good</p>
+<p><span class="math inline">\(pf_{h}\)</span> the h-th factor price</p>
+<p><span class="math inline">\(UU\)</span> utility [fictitious]</p>
+<p>good market clearing condition <span class="math display">\[ X_i   = Z_i \]</span></p>
+<p>factor market clearing condition <span class="math display">\[ \sum_j F_{h,j} = FF_h \]</span></p>
+<p>price equation <span class="math display">\[ px_i  = pz_i \]</span></p>
+<p>utility function [fictitious] $$ UU = _i X_i^{_i}</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>Consumer problem</p>
+<p>[1] GAMS is a modeling software, routinely used for CGEs. You can checkout the code for the current model <a href="https://www.gams.com/latest/gamslib_ml/libhtml/gamslib_splcge.html">here</a></p>
 
 
 </section>
@@ -528,7 +504,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

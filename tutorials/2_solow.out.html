@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pablo Winant">
 
 <title>Convergence: Solow Model – Introduction to Computational Economics</title>
 <style>
@@ -147,7 +146,9 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/1_1_Julia_Basics.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/2_solow.html">Convergence: Solow Model</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Introduction to Computational Economics
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -230,7 +231,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
@@ -271,12 +272,12 @@ window.Quarto = {
   <ul>
   <li><a href="#solow-model" id="toc-solow-model" class="nav-link active" data-scroll-target="#solow-model">Solow Model</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_solow.out.ipynb" download="2_solow.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/1_1_Julia_Basics.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/2_solow.html">Convergence: Solow Model</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Convergence: Solow Model</h1>
 </div>
@@ -285,12 +286,6 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Pablo Winant </p>
-          </div>
-  </div>
     
   
     
@@ -301,6 +296,7 @@ window.Quarto = {
 </header>
 
 
+<p>Pablo Winant</p>
 <section id="solow-model" class="level3">
 <h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
 <p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
@@ -955,7 +951,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

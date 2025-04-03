@@ -283,7 +283,7 @@ window.Quarto = {
   <li><a href="#a-firms-problem" id="toc-a-firms-problem" class="nav-link" data-scroll-target="#a-firms-problem">A firm’s problem</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="homework_correction.out.ipynb" download="homework_correction.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -291,7 +291,6 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Homework</h1>
-<p class="subtitle lead">Computational Economics (ECO309)</p>
 </div>
 
 
@@ -308,6 +307,7 @@ window.Quarto = {
 </header>
 
 
+<p>Computational Economics (ECO309)</p>
 <p><strong>Name</strong>:</p>
 <p><strong>Surname</strong>:</p>
 <p>After completing the following questions, send the edited notebook to <code>pablo.winant@polytechnique.fr</code></p>
@@ -316,7 +316,7 @@ window.Quarto = {
 <section id="part-i-a-simple-cge-model" class="level2">
 <h2 class="anchored" data-anchor-id="part-i-a-simple-cge-model">Part I : A simple CGE model</h2>
 <p>The goal of this exercise consists in solving a simple CGE model using Julia.</p>
-<p>Model is taken from <em>Handbook of Computible General Equilibrium Modeling</em>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Model is taken from <em>Handbook of Computible General Equilibrium Modeling</em>. [1]</p>
 <section id="the-data-and-the-social-accounting-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="the-data-and-the-social-accounting-matrix">The data and the social accounting matrix</h3>
 <p>In a CGE, the data about the economy’s exchanges is compiled in one single “Social Accounting Matrix”. It is essentially a matrix representation of the national accounts that can be arbitrary refined based on data availability.</p>
@@ -383,9 +383,10 @@ window.Quarto = {
 </ul>
 <p>Each of the rows feature a decomposition of the spending associated with each column.</p>
 <p>For instance, the value of the production in the BRD-producing sector (column BRD) is decomposed between the payment to capital (5) and the payment to labor (10). The full capital income goes to households (25). Households spend their income between BRD (15) and MLK (35.)</p>
-<ol class="example" type="1">
+<ol type="1">
 <li>Create a DataFrame representing the SAM matrix.</li>
 </ol>
+<p>[1] GAMS is a modeling software, routinely used for CGEs. You can checkout the code for the current model <a href="https://www.gams.com/latest/gamslib_ml/libhtml/gamslib_splcge.html">here</a></p>
 <div id="d302947e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -412,37 +413,26 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="consumers">Consumers</h3>
 <p>Households are endowed with capital (resp labour) in quantity <span class="math inline">\(F_{CAP}\)</span> resp <span class="math inline">\(F_{LAB}\)</span>) that they sell to the goods producing firms at price <span class="math inline">\(p^f_{CAP}\)</span> (resp <span class="math inline">\(p^f_{LAB}\)</span>).</p>
 <p>Given prices of goods <span class="math inline">\(p^x_i\)</span>, households maximize utility of consumption <span class="math display">\[U = \prod_i X_i^{\alpha_i}\]</span> where <span class="math inline">\(\alpha_i\)</span> is the share parameter in the utility function (with <span class="math inline">\(\sum_i \alpha_i=1\)</span>)</p>
-<ol start="2" class="example" type="1">
+<ol type="1">
 <li><p><strong>Write down the budget constraint of households. Show that household’s demand can be written as function of total gdp and price of goods as in <span class="math display">\[X_i  = \alpha_i\frac{ \sum_h  p^f_h F_h}{p^x_i}\]</span>.</strong></p></li>
 <li><p><strong>According to the SAM matrix, what is the value of gdp in the model? How can we calibrate the values of <span class="math inline">\(\alpha_i\)</span>?</strong></p></li>
 </ol>
-<div class="{callout-note}">
 <p><span class="math display">\[X_i  = \alpha_i  \frac{\sum_h p^f_h F_h}{p^x_i}\]</span> <span class="math display">\[\alpha_i  = \frac{p^x_i X^0_i}{\sum_j p^x_j X^0_{j}}\]</span></p>
-</div>
 </section>
 <section id="producers" class="level3">
 <h3 class="anchored" data-anchor-id="producers">Producers</h3>
 <p>We assume that producers of final goods, use the following production function:</p>
 <p><span class="math display">\[Z_j   = b_j \prod_h F_{h,j}^{\beta_{h,j}}\]</span></p>
 <p>where <span class="math inline">\(\beta_{h,j}\)</span> is the share parameter in production function (<span class="math inline">\(\sum_h \beta_{h,j}=1\)</span>) and <span class="math inline">\(b_j\)</span> is a scale parameter. Firms rent labour and capital at market price and are perfectly competitive.</p>
-<ol start="4" class="example" type="1">
+<ol type="1">
 <li><p><strong>Show that factor demand function can be written as:</strong> <span class="math display">\[ F_{h,j} = \beta_{h,j} \frac{p^z_j Z_j }{p^f_h} \]</span></p></li>
 <li><p><strong>How can we calibrate <span class="math inline">\(\beta_{h,j}\)</span> from the data? How can we recover <span class="math inline">\(b_j\)</span>?</strong></p></li>
-<li><p><strong>Without loss of generality we can assume that all prices are equal to 1 in the initial equilibrium. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> What are then the values for endowments <span class="math inline">\(F_h\)</span> consistent with the SAM? How can we calibrate the value of <span class="math inline">\(b_j\)</span>?</strong></p></li>
+<li><p><strong>Without loss of generality we can assume that all prices are equal to 1 in the initial equilibrium. [1] What are then the values for endowments <span class="math inline">\(F_h\)</span> consistent with the SAM? How can we calibrate the value of <span class="math inline">\(b_j\)</span>?</strong></p></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p><strong>Note</strong></p>
 <p><span class="math display">\[\beta_{h,j} = \frac{F^0_{h,j}}{\sum_k F^0_{k,j}}\]</span> <span class="math display">\[b_j      = \frac{Z^0_j}{ \prod_h  (F^0_{h,j})^{\beta_{h,j}} }\]</span></p>
-</div>
-</div>
+</blockquote>
 </section>
 <section id="equilibrium" class="level3">
 <h3 class="anchored" data-anchor-id="equilibrium">Equilibrium</h3>
@@ -453,17 +443,18 @@ Note
 <li><p>factor markets must clear: <span class="math display">\[ \sum_j F_{h,j} = F_h \]</span></p></li>
 <li><p>the price of labour is taken as the numeraire <span class="math inline">\(p_{LAB} = 1\)</span> (the other prices are endogenous).</p></li>
 </ul>
+<p>[1] this can be done by renormalizing the unit of the quantities.</p>
 <!-- @. __Justify the steady-state identity: $Z^0_j   = \sum_h F^0_{h,j}$.__ -->
 </section>
 <section id="calibration-and-solution" class="level3">
 <h3 class="anchored" data-anchor-id="calibration-and-solution">Calibration and solution</h3>
-<ol start="7" class="example" type="1">
+<ol type="1">
 <li><strong>Define a structure <code>model</code>, containing the parameters of the model that can be directly calibrated from the data (i.e.&nbsp;<span class="math inline">\(\alpha_i\)</span>,<span class="math inline">\(\beta_{ij}\)</span>, <span class="math inline">\(b_j\)</span>, <span class="math inline">\(F_h\)</span> …).</strong></li>
 </ol>
 <div id="703ee725" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Choose the structure your prefer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="8" class="example" type="1">
+<ol type="1">
 <li><strong>Create an initial set of values <code>vars0</code> for the model <em>variables</em> to be solved for. These variables should be consistent with the Social Accounting Matrix.</strong></li>
 </ol>
 <div id="d6efd3d8" class="cell">
@@ -483,7 +474,7 @@ Note
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="9" class="example" type="1">
+<ol type="1">
 <li><strong>Write a function which packs the set of variable values into a julia vector. Write the reverse function to unpack a vector into a structure of the same type as vars. Check that these two functions are consistent (i.e.&nbsp;<code>pack(unpack(u)) == u</code>).</strong></li>
 </ol>
 <div id="4d086f6e" class="cell">
@@ -503,7 +494,7 @@ Note
 <pre><code>unpack (generic function with 1 method)</code></pre>
 </div>
 </div>
-<ol start="10" class="example" type="1">
+<ol type="1">
 <li><strong>Write a function <code>residuals</code> which check whether the model equations are satisfied for a particular guess <code>v0</code>. The output can be a simple vector. Check the residuals for the initial guess <code>vars0</code>. They should be zeros is if the initial values and the model equations have been carefully chosen.</strong></li>
 </ol>
 <div id="fd624138" class="cell">
@@ -514,13 +505,13 @@ Note
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="11" class="example" type="1">
+<ol type="1">
 <li><strong>Add a new method to the function <code>residuals</code>, which now takes a vector as argument (using the unpack function). Compute the jacobian of that new function. Verify that the rank of this jacobian equals the number of variables to be determined. If the number of equations is greater than the number of variables to be determined, can you identify one equation that can be safely removed?</strong>.</li>
 </ol>
 <div id="2da9cf90" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="12" class="example" type="1">
+<ol type="1">
 <li><strong>Write a method to solve the system in all the endogenous variables when the initial guess is close to the initial equilibrium. You can use your method of choice (using your own code, using nlsolve, …). To ease convergence, you might want to take into account information about variable boundaries (all variables are positive).</strong></li>
 </ol>
 <div id="d926e4a3" class="cell">
@@ -529,13 +520,13 @@ Note
 </section>
 <section id="applications" class="level3">
 <h3 class="anchored" data-anchor-id="applications">Applications</h3>
-<ol start="13" class="example" type="1">
+<ol type="1">
 <li><strong>A massive migration doubles the endowment of labour, which is now equal to 50. Assuming structural parameters are unchanged, Compute the new equilibrium using the same code as before. Comment on the changes in quantities and prices. Could you have predicted them?</strong></li>
 </ol>
 <div id="9d902800" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="14" class="example" type="1">
+<ol type="1">
 <li><strong>What happens if the labour share in both production sectors is reduced by 1%? (i.e.&nbsp;<span class="math inline">\(\beta_{LAB,j}\)</span> is reduced by 1%).</strong></li>
 </ol>
 <div id="294abf9b" class="cell">
@@ -587,13 +578,13 @@ Note
 <pre><code>tauchen (generic function with 3 methods)</code></pre>
 </div>
 </div>
-<ol start="15" class="example" type="1">
+<ol type="1">
 <li><strong>Take <span class="math inline">\(\rho=0.95, \mu=0.1, \nu=0.1\)</span>. Approximate the AR1 with 200 discrete states, using the tauchen function above. Check that all rows sum to 1. Compute and plot the steady-state distribution.</strong></li>
 </ol>
 <div id="41465ba4" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="16" class="example" type="1">
+<ol type="1">
 <li><strong>Simulate the evolution of the above markov chain for 10000 periods. Compute the mean and standard deviation of all the simulated values. Compare these moments with the results obtained in the preceding question.</strong></li>
 </ol>
 <div id="3063ccca" class="cell" data-execution_count="17">
@@ -628,15 +619,16 @@ Note
 <p>Given that we have discretized the AR1 as a markov chain, one can also write it</p>
 <p><span class="math display">\[V(y_i) = \max_{c(y_i)} \pi(y_i) + \beta \begin{cases} \sum_j P_{ij} V(y_j)  &amp; \text{if } c(y_i)=\text{true} \\ s &amp; \text{otherwise} \end{cases}\]</span></p>
 <p>For this problem it is natural to encode a guess for the value function <span class="math inline">\((V(y_i))_i\)</span> as a <code>Vector{Float64}</code> of length <span class="math inline">\(p\)</span> and the vector of controls <span class="math inline">\((c(y_i))_i\)</span> as a <code>Vector{Float64}</code> of length <span class="math inline">\(p\)</span>.</p>
-<ol start="17" class="example" type="1">
+<ol type="1">
 <li><strong>Write a function <code>bellman_step(model, V)</code> which takes in the model parameterization, as well as a guess for the next period value function (<span class="math inline">\(V()\)</span> on the right hand side of the Bellman equation) and returns a new updated value (<span class="math inline">\(V()\)</span> on the left).</strong></li>
 </ol>
 <div id="de81b671" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="18" class="example" type="1">
-<li><strong>Apply the <code>bellman_step</code> function until convergence, starting from any initial guess.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Show that convergence speed is linear. Plot the resulting value function and optimal choices. Comment.</strong></li>
+<ol type="1">
+<li><strong>Apply the <code>bellman_step</code> function until convergence, starting from any initial guess.[1] Show that convergence speed is linear. Plot the resulting value function and optimal choices. Comment.</strong></li>
 </ol>
+<p>[1] This is known as the value function iteration algorithm.</p>
 <div id="35893367" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -645,15 +637,7 @@ Note
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>GAMS is a modeling software, routinely used for CGEs. You can checkout the code for the current model <a href="https://www.gams.com/latest/gamslib_ml/libhtml/gamslib_splcge.html">here</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>this can be done by renormalizing the unit of the quantities.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>This is known as the value function iteration algorithm.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -744,7 +728,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
