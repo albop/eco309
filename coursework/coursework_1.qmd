@@ -1,0 +1,117 @@
+---
+title: Coursework 2025 - Deep Learning
+format:
+  html: default
+  ipynb: default
+---
+
+## Learning the Consumption Rule
+
+This exercise is inspired from *Individual learning about consumption* by Todd Allen and Chris Carroll [link](https://www.econstor.eu/bitstream/10419/72016/1/328292125.pdf) and from *Deep Learning for Solving Economic models* by Maliar, Maliar and Winant [link](https://web.stanford.edu/~maliars/Files/JME2021.pdf)
+
+We consider the following consumption saving problem. An agent receives random income $y_t = \exp(\epsilon_t)$ where $\epsilon_t\sim \mathcal{N}(\sigma)$ ($\sigma$ is the standard deviation.)
+
+Consumer starts the period with available income $w_t$. The law of motion for available income is:
+
+$$w_t = \exp(\epsilon_t) + (w_{t-1}-c_{t-1}) r$$
+
+where consumption $c_t \in ]0,w_t]$ is chosen in each period in order to maximize:
+
+$$E_t \sum_{t=0}^T \beta^t U(c_t)$$
+
+given initial available income $w_0$.
+
+In the questions below, we will use the following calibration:
+
+- $\beta = 0.9$
+- $\sigma = 0.1$
+- $T=100$
+- $U(x) = \frac{x^{1-\gamma}}{1-\gamma}$ with $\gamma=2$
+- $w_0 = 1.1$ (alternatively, consider values 0.5 and 1)
+
+The theoretical solution to this problem is a concave function $\varphi$ such that $\varphi(x)\in ]0,x]$ and $\forall t,  c_t=\varphi(w_t)$. Qualitatively, agents accumulate savings, up to a certain point (a buffer stock), beyond which wealth is not increasing any more (in expectation).
+
+Carroll and Allen have noticed that the true solution can be approximated very well by a simple rule:
+
+$\psi(x) = \min(x, \theta_0 + \theta_1 (x - \theta_0) )$
+
+The main question they ask in the aforementioned paper is whether it is realistic that agents would learn good values of $\theta_0$ and $\theta_1$ by observing past experiences.
+
+We would like to examine this result by checking convergence of speed of stochastic gradient algorithm.
+
+### Lifetime reward
+
+__Define a NamedTuple to hold the parameter values__
+
+
+__Define simple rule fonction `consumption(w::Number, θ_0::Number, θ_1::Number, p::NamedTuple)`
+which compute consumption using a simple rule. What is the meaning of $\theta_0$ and $\theta_1$? Make a plot in the space $w,c$, including consumption rule and the line where $w_{t+1} = w_t$.__
+
+(remark for later: `Number` type is compatible with ForwardDiff.jl 😉)
+
+```julia
+# your code...
+```
+
+
+__Write a function `lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number, p::NamedTuple)` which computes one realization of $\sum \beta^t U(c_t)$ for initial wealth `w_0` and simple rule `θ_0`, `θ_1`. Mathematically, we denote it by $\xi(\omega; \theta_0, \theta_1)$, where $\omega$ represents the succession of random income draws.__
+
+```julia
+# your code...
+```
+
+__Write a function `expected_lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number,  p::NamedTuple; N=1000)` which computes expected lifetime reward using `N` Monte-Carlo draws. Mathematically, we write it $\Xi^{N}(\theta_0, \theta_1) =\frac{1}{N} \sum_1^N {\xi(\omega_N; \theta_0, \theta_1)}$. Check empirically that standard deviation of these draws decrease proportionally to $\frac{1}{\sqrt{N}}$ .__
+
+```julia
+# your code...
+```
+
+__Using a high enough number for `N`, compute optimal values for $\theta_0$ and $\theta_1$. What is the matching value for the objective function converted into an equivalent stream of deterministic consumption ? That is if `V` is the approximated value computed above, what is $\bar{c}\in \R$ such that $ V= \sum_{t=0}^T \beta^t U(\bar{c})$ ?__
+
+```julia
+# your code...
+```
+
+__Using a high enough number for `N`, make contour plots of lifetime rewards as a function of `θ_0` and `θ_1`. Ideally, represent lines with $1\%$ consumption loss, $5\%$ and $10\%$ deterministic consumption loss w.r.t. to maximum.__
+
+```julia
+# your code...
+```
+
+### Learning to save
+
+We now focus on the number of steps it takes to optimize $\theta_0$, $\theta_1$.
+
+__Implement a function `∇(θ::Vector; N=1000)::Vector` which computes the gradient of the objective w.r.t. `θ==[θ_0,θ_1]`. (You need to use automatic differentiation, otherwise you might get incorrect results).__
+
+```julia
+# your code...
+```
+
+__Implement a gradient descent algorithm to maximize $\Xi^N(\theta_0, \theta_1)$ using learning rate $\lambda \in ]0,1]$. Stop after a predefined number of iterations. Compare convergence speed for different values of $\lambda$ and plot them on the $\theta_0, \theta_1$ plan. How many steps does it take to enter the `1%` error zone? The `5%` and the `10%` error zone?__
+
+```julia
+# your code...
+```
+
+__Even for big N, the evaluated value of ∇ are stochastic, and always slightly inaccurate. In average, they are non-biased and the algorithm converges in expectation (it fluctuates around the maximum). This is called the stochastic gradient method.__
+
+```julia
+# your code...
+```
+
+__What are the values of $N$ and $\lambda$ which minimize the number of iterations before reaching the target zones (at 1%, 2%, etc...)? How many simulations periods does it correspond to? Would you say it is realistic that consumers learn from their own experience?__
+
+```julia
+# your code...
+```
+
+
+## (Bonus)
+
+If you want to go further, you can try to answer one of the following two questions.
+
+__Use a deeplearning library (for instance Lux.jl) to find the optimal simple rule__
+
+
+__Implement that All-in-one expectation operator to learn the optimal rule (check [the notebook on quantecon](https://github.com/QuantEcon/notebook-gallery/blob/main/ipynb/pablo_winant-dl_notebook.ipynb))__

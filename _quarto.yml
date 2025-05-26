@@ -25,10 +25,16 @@ website:
             - tutorials/7_discrete_dynamic_programming.ipynb
             # - tutorials/6_automatic_differentiation.ipynb
             # - tutorials/homework.ipynb
+
         - section: "Pushups"
           contents:
             - pushups/1_epidemiology.ipynb
             - pushups/2_Optimization_pushups.ipynb
+        
+        - section: "Coursework"
+          contents:
+            - coursework/coursework_1.ipynb
+            - coursework/coursework_2.qmd
 
 format:
   html:
