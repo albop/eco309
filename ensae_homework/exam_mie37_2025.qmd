@@ -1,0 +1,10 @@
+---
+title: MIE 37 - Final Exam 2025
+format:
+    html: default
+    ipynb: default
+---
+
+![](../../wip.png)
+
+Come back later
