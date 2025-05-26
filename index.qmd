@@ -12,6 +12,10 @@ listing:
   fields: [date, title]
 ---
 
+<!-- ## Homework
+
+<mark>TODO</mark>: Return the [coursework](tutorials/homework.ipynb) by June 30th. -->
+
 ## Indicative Schedule
 
 ::: {#course-listing}
@@ -21,13 +25,13 @@ listing:
 ## Communication
 
 - Zulip (best)
-- Email to `pablo.winant@polytechniqe.edu` or `pwinant@escp.eu`
+- Email to `pablo.winant@polytechnique.edu` or `pwinant@escp.eu`
   - subject starting with `[eco309]`
 - Github issues (PR also welcome)
 
 ## Assessment
 
-- tutorials (optional) 
+- pushups (optional) 
 - coursework (mandatory)
 - presentations (optional)
 

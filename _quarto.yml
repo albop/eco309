@@ -1,6 +1,6 @@
 project:
   type: website
-exectute:
+execute:
   echo: true
 website:
   title: "Introduction to Computational Economics"
@@ -10,17 +10,21 @@ website:
       contents:
         - section: "Slides"
           contents:
-            - slides/session_1/index.qmd
-            - slides/session_2/index.qmd
-            - slides/session_3/index.qmd
-            - slides/session_6/index.qmd
+            - slides/session_introduction/index.qmd
+            - slides/session_convergence/index.qmd
+            - slides/session_optimization/index.qmd
+            - slides/session_perturbation/index.qmd
+            - slides/session_ddp/index.qmd
+
 
         - section: "Tutorials"
           contents:
             - tutorials/1_1_Julia_Basics.ipynb
             - tutorials/2_solow.ipynb
             - tutorials/3_Optimization.ipynb
-            - tutorials/6_automatic_differentiation.ipynb
+            - tutorials/7_discrete_dynamic_programming.ipynb
+            # - tutorials/6_automatic_differentiation.ipynb
+            # - tutorials/homework.ipynb
         - section: "Pushups"
           contents:
             - pushups/1_epidemiology.ipynb

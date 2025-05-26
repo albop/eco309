@@ -2,11 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
-      "/slides/session_1/index.html",
-      "/slides/session_2/index.html",
-      "/slides/session_3/index.html",
-      "/slides/session_6/index.html",
-      "/slides/session_7/index.html"
+      "/slides/session_introduction/index.html",
+      "/slides/session_convergence/index.html",
+      "/slides/session_optimization/index.html",
+      "/slides/session_perturbation/index.html",
+      "/slides/session_ddp/index.html"
     ]
   }
 ]
