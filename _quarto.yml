@@ -33,7 +33,7 @@ website:
         
         - section: "Coursework"
           contents:
-            - coursework/coursework_1.ipynb
+            - coursework/coursework_1.qmd
             - coursework/coursework_2.qmd
 
 format:

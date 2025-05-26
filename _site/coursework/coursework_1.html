@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,10 +69,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-944fc646c7e2aa292c8c646e2ff00dcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -271,8 +305,9 @@ window.Quarto = {
   <li><a href="#lifetime-reward" id="toc-lifetime-reward" class="nav-link" data-scroll-target="#lifetime-reward">Lifetime reward</a></li>
   <li><a href="#learning-to-save" id="toc-learning-to-save" class="nav-link" data-scroll-target="#learning-to-save">Learning to save</a></li>
   </ul></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">(Bonus)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="coursework_1.out.ipynb" download="coursework_1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="coursework_1.ipynb" download="coursework_1.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -296,9 +331,6 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Name</strong>:</p>
-<p><strong>Surname</strong>:</p>
-<p>After completing the following questions, send the edited notebook to <code>pablo.winant@ensae.fr</code>. You can work in (small) teams but are not allowed to copy/paste any code. Don’t forget to comment your code and take any initiative you find relevant.</p>
 <section id="learning-the-consumption-rule" class="level2">
 <h2 class="anchored" data-anchor-id="learning-the-consumption-rule">Learning the Consumption Rule</h2>
 <p>This exercise is inspired from <em>Individual learning about consumption</em> by Todd Allen and Chris Carroll <a href="https://www.econstor.eu/bitstream/10419/72016/1/328292125.pdf">link</a> and from <em>Deep Learning for Solving Economic models</em> by Maliar, Maliar and Winant <a href="https://web.stanford.edu/~maliars/Files/JME2021.pdf">link</a></p>
@@ -326,21 +358,36 @@ window.Quarto = {
 <p><strong>Define a NamedTuple to hold the parameter values</strong></p>
 <p><strong>Define simple rule fonction <code>consumption(w::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which compute consumption using a simple rule. What is the meaning of <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>? Make a plot in the space <span class="math inline">\(w,c\)</span>, including consumption rule and the line where <span class="math inline">\(w_{t+1} = w_t\)</span>.</strong></p>
 <p>(remark for later: <code>Number</code> type is compatible with ForwardDiff.jl 😉)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Write a function <code>lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which computes one realization of <span class="math inline">\(\sum \beta^t U(c_t)\)</span> for initial wealth <code>w_0</code> and simple rule <code>θ_0</code>, <code>θ_1</code>. Mathematically, we denote it by <span class="math inline">\(\xi(\omega; \theta_0, \theta_1)\)</span>, where <span class="math inline">\(\omega\)</span> represents the succession of random income draws.</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Write a function <code>expected_lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number,  p::NamedTuple; N=1000)</code> which computes expected lifetime reward using <code>N</code> Monte-Carlo draws. Mathematically, we write it <span class="math inline">\(\Xi^{N}(\theta_0, \theta_1) =\frac{1}{N} \sum_1^N {\xi(\omega_N; \theta_0, \theta_1)}\)</span>. Check empirically that standard deviation of these draws decrease proportionally to <span class="math inline">\(\frac{1}{\sqrt{N}}\)</span> .</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>__Using a high enough number for <code>N</code>, compute optimal values for <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>. What is the matching value for the objective function converted into an equivalent stream of deterministic consumption ? That is if <code>V</code> is the approximated value computed above, what is <span class="math inline">\(\bar{c}\in \R\)</span> such that $ V= _{t=0}^T ^t U({c})$ ?__</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Using a high enough number for <code>N</code>, make contour plots of lifetime rewards as a function of <code>θ_0</code> and <code>θ_1</code>. Ideally, represent lines with <span class="math inline">\(1\%\)</span> consumption loss, <span class="math inline">\(5\%\)</span> and <span class="math inline">\(10\%\)</span> deterministic consumption loss w.r.t. to maximum.</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="learning-to-save" class="level3">
 <h3 class="anchored" data-anchor-id="learning-to-save">Learning to save</h3>
 <p>We now focus on the number of steps it takes to optimize <span class="math inline">\(\theta_0\)</span>, <span class="math inline">\(\theta_1\)</span>.</p>
 <p><strong>Implement a function <code>∇(θ::Vector; N=1000)::Vector</code> which computes the gradient of the objective w.r.t. <code>θ==[θ_0,θ_1]</code>. (You need to use automatic differentiation, otherwise you might get incorrect results).</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Implement a gradient descent algorithm to maximize <span class="math inline">\(\Xi^N(\theta_0, \theta_1)\)</span> using learning rate <span class="math inline">\(\lambda \in ]0,1]\)</span>. Stop after a predefined number of iterations. Compare convergence speed for different values of <span class="math inline">\(\lambda\)</span> and plot them on the <span class="math inline">\(\theta_0, \theta_1\)</span> plan. How many steps does it take to enter the <code>1%</code> error zone? The <code>5%</code> and the <code>10%</code> error zone?</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Even for big N, the evaluated value of ∇ are stochastic, and always slightly inaccurate. In average, they are non-biased and the algorithm converges in expectation (it fluctuates around the maximum). This is called the stochastic gradient method.</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>What are the values of <span class="math inline">\(N\)</span> and <span class="math inline">\(\lambda\)</span> which minimize the number of iterations before reaching the target zones (at 1%, 2%, etc…)? How many simulations periods does it correspond to? Would you say it is realistic that consumers learn from their own experience?</strong></p>
-
-
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">(Bonus)</h2>
+<p>If you want to go further, you can try to answer one of the following two questions.</p>
+<p><strong>Use a deeplearning library (for instance Lux.jl) to find the optimal simple rule</strong></p>
+<p><strong>Implement that All-in-one expectation operator to learn the optimal rule (check <a href="https://github.com/QuantEcon/notebook-gallery/blob/main/ipynb/pablo_winant-dl_notebook.ipynb">the notebook on quantecon</a>)</strong></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -434,7 +481,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

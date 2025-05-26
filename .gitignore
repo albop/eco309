@@ -1,4 +1,4 @@
-site*
+_site*
 *-checkpoint.ipynb
 *checkpoint*
 /.quarto/

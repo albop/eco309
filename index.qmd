@@ -31,9 +31,12 @@ listing:
 
 ## Assessment
 
+::: {.callout-important title="Mandatory Coursework"}
+
+Choose *one* of the two coursework subject and return your work by __June 22__.
+
+:::
+
 - pushups (optional) 
 - coursework (mandatory)
 - presentations (optional)
-
-
-
