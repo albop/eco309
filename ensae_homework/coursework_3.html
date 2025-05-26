@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Coursework 2025 - Consumption Saving – Introduction to Computational Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Introduction to Computational Economics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Introduction to Computational Economics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Slides</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence of Sequences</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Perturbation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discrete Dynamic Programming</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence: Solow Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discrete Dynamic Programming</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pushups</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epidemiology Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization Pushups</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Coursework</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coursework 2025 - Deep Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Coursework 2025 - Cake Eating Problem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-i-approximations" id="toc-part-i-approximations" class="nav-link active" data-scroll-target="#part-i-approximations">Part I : Approximations</a>
+  <ul class="collapse">
+  <li><a href="#interpolation" id="toc-interpolation" class="nav-link" data-scroll-target="#interpolation">Interpolation</a></li>
+  <li><a href="#discretizing-a-shock" id="toc-discretizing-a-shock" class="nav-link" data-scroll-target="#discretizing-a-shock">Discretizing a shock</a></li>
+  </ul></li>
+  <li><a href="#part-ii-the-ayiagari-model" id="toc-part-ii-the-ayiagari-model" class="nav-link" data-scroll-target="#part-ii-the-ayiagari-model">Part II : The Ayiagari Model</a>
+  <ul class="collapse">
+  <li><a href="#aggregate-production" id="toc-aggregate-production" class="nav-link" data-scroll-target="#aggregate-production">Aggregate production</a></li>
+  <li><a href="#consumption-savings-problem" id="toc-consumption-savings-problem" class="nav-link" data-scroll-target="#consumption-savings-problem">Consumption-Savings Problem</a></li>
+  <li><a href="#computing-the-stable-distribution" id="toc-computing-the-stable-distribution" class="nav-link" data-scroll-target="#computing-the-stable-distribution">Computing the Stable Distribution</a></li>
+  <li><a href="#solve-the-model" id="toc-solve-the-model" class="nav-link" data-scroll-target="#solve-the-model">Solve the Model</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="coursework_3.ipynb" download="coursework_3.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Coursework 2025 - Consumption Saving</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="part-i-approximations" class="level2">
+<h2 class="anchored" data-anchor-id="part-i-approximations">Part I : Approximations</h2>
+<section id="interpolation" class="level3">
+<h3 class="anchored" data-anchor-id="interpolation">Interpolation</h3>
+<p>Consider the function <span class="math inline">\(f(x)=\frac{sin(|x|)}{|x|+0.0001}\)</span> defined on <span class="math inline">\([a,b]\)</span> with <span class="math inline">\(a=-2\)</span> and <span class="math inline">\(b=2\)</span>.</p>
+<p>Consider the grid points <span class="math inline">\(x_i=a+\frac{i}{N-1}(b-a)\)</span> for <span class="math inline">\(i\in[0,N]\)</span>.</p>
+<ol class="example" type="1">
+<li>Define in julia <code>a</code>, <code>b</code>, <code>N</code> and the function <code>f</code> . Compute the vector of grid points <code>s</code> (a vector of size <code>N</code>) then the values <code>y</code> (a vector of size <code>N</code>)that <code>f</code> takes at these grid points.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" class="example" type="1">
+<li>Define a function <code>interp(s,y,x)</code> which approximates the original function <code>f</code> at any <span class="math inline">\(x\in[-2,2]\)</span> but is defined using only <code>s</code> and <code>y</code> (or if you prefer <code>a</code>,<code>b</code>, <code>N</code> and <code>y</code>). (hint: you can use the library <code>Interpolations.jl</code>)</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" class="example" type="1">
+<li>On the same plot, represent <code>(s,y)</code> as a scatter plot, the function <code>f</code> and the interpolated values using <code>interp</code>. For the <span class="math inline">\(x\)</span>-axis choose <span class="math inline">\([a-0.1, b+0.1]\)</span>. How does interp behave outside of <span class="math inline">\([a,b]\)</span> (i.e.&nbsp;when it extrtapolates). Can you find a way to make it exptrapolate linearly?</li>
+</ol>
+<pre class="juliathis"><code># your code here</code></pre>
+</section>
+<section id="discretizing-a-shock" class="level3">
+<h3 class="anchored" data-anchor-id="discretizing-a-shock">Discretizing a shock</h3>
+<p>Consider a random shock <span class="math inline">\(\epsilon\)</span> that follows a normal law with standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p>The goal here is just to compute numerically the integral</p>
+<p><span class="math display">\[\mathbb{E} f(\epsilon)\]</span></p>
+<ol start="4" class="example" type="1">
+<li>Define a variable <span class="math inline">\(\sigma\)</span>. Choose a function <code>f</code> so that you can compute the above integral in closed form.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="monte-carlo" class="level4">
+<h4 class="anchored" data-anchor-id="monte-carlo">Monte-Carlo</h4>
+<p>Take an integer <span class="math inline">\(K&gt;0\)</span>.</p>
+<ol start="5" class="example" type="1">
+<li>Try to evaluate the integral above by running <span class="math inline">\(K\)</span> random draws i.e.&nbsp;by using the formula <span class="math inline">\(f^{MC, K} = \frac{1}{K}\sum_{i=1}^K f(\epsilon_i)\)</span> where <span class="math inline">\(\epsilon_i\)</span> is a random draw. Ths is the Monte-Carlo approach.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" class="example" type="1">
+<li>Evaluate the standard deviation in <span class="math inline">\(f^{MC, K}\)</span> by evaluating this function repeatedly. How does the standard deviation depend on <span class="math inline">\(K\)</span> ?</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gauss-hermite" class="level4">
+<h4 class="anchored" data-anchor-id="gauss-hermite">Gauss-Hermite</h4>
+<p>Discretizing the shock consists in finding real numbers <span class="math inline">\((x_1, ... x_K)\)</span> and positive real numbers <span class="math inline">\((w_1, ... w_K)\)</span> such that for a “suitable” function <span class="math inline">\(f(\epsilon)\)</span> we can write:</p>
+<p><span class="math display">\[\mathbb{E} f(\epsilon) \approx \sum_{i=1}^K w_i f(e_i)\]</span></p>
+<p>The Gauss-Hermite quadrature is such a discretization scheme. It is widely documented and there are good Julia libraries for it.</p>
+<ol start="7" class="example" type="1">
+<li>Approximate the expectation above using Gauss-Hermite nodes and weights. What is the error? How does it depend on <span class="math inline">\(K\)</span> for the function you have chosen?</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="part-ii-the-ayiagari-model" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-the-ayiagari-model">Part II : The Ayiagari Model</h2>
+<p>In this exercise, we try to solve the Ayiagari model.</p>
+<p>The Ayiagari model features a continuum of households indexed by <span class="math inline">\(i\in[0,1]\)</span>, who take wage rate <span class="math inline">\(\color{red} w\)</span> and interest rate <span class="math inline">\(\color{red} r\)</span> as given.</p>
+<p>Each households <span class="math inline">\(i\)</span> is hit by a random productivity shock (<span class="math inline">\(\color{green}e^i_t\)</span>), normally distributed, with variance <span class="math inline">\(\sigma\)</span> and mean <span class="math inline">\(1\)</span> so that, at the aggregate, the average productivity is <span class="math inline">\(1\)</span>.</p>
+<p>Each household supplies <span class="math inline">\(\color{green}e^i_t\)</span> units of work, and can decide to consume <span class="math inline">\(c^i_t\)</span> or save her available income <span class="math inline">\(a^i_{t}\)</span>.</p>
+<p>Available income <span class="math inline">\(a^i_t\)</span> thus follows the law of motion:</p>
+<p><span class="math display">\[a^i_{t+1} = {\color{red}w } {\color{green}e^i_{t+1}} +  (a^i_{t} - c^i_{t}) {\color{red}r}\]</span></p>
+<p>There is no borrowing so that <span class="math inline">\(0&lt;c^i_t\leq a^i_{t}\)</span>. The household choooses consumption optimally in order to maximize:</p>
+<p><span class="math display">\[\mathbb{E}_0 \sum_t \beta^t U(c^i_t)\]</span></p>
+<p>with <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\gamma=4.0\)</span>.</p>
+<p>Aggregate savings are turned into productive capital:</p>
+<p><span class="math display">\[K = \int_i a^i_t \]</span></p>
+<p>Note that in equilibrium the distribution of savings is invariant, hence the absence of a time-subscript for aggregate capital.</p>
+<p>Also, the ergodicity property implies that the invariant distribution across all agents is identical to the distribution of asset levels reached across time by any single agent <span class="math inline">\(i\)</span> so that we also have:</p>
+<p><span class="math display">\[K = \mathbb{E} [ a^i_t ]\]</span></p>
+<p>Capital is rented by competitive firms that all produce with the same Cobb-Douglas technology. Total production is:</p>
+<p><span class="math display">\[Y = K^{\alpha} L^{1-\alpha}\]</span></p>
+<p>with <span class="math inline">\(L=\overline{L}=1\)</span> and <span class="math inline">\(\alpha=0.3\)</span>.</p>
+<p>Wage rate and interest rate are then determined by marginal conditions:</p>
+<p><span class="math display">\[{\color{red}r}=\alpha \frac{Y}{K}\]</span> <span class="math display">\[{\color{red}w}=(1-\alpha) \frac{Y}{L}\]</span></p>
+<p>From the structure of the whole model, it is clear that capital <span class="math inline">\(\overline{K}\)</span> determines the whole equilibrium.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because there is no depreciation, the rental rate determined by the marginal conditions, equals the returns on savings when they are turned into productive capital.</p>
+</div>
+</div>
+<section id="aggregate-production" class="level3">
+<h3 class="anchored" data-anchor-id="aggregate-production">Aggregate production</h3>
+<ol start="8" class="example" type="1">
+<li>Create a namedtuple (or a structure) <code>m</code> to hold all the model informations.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" class="example" type="1">
+<li>Create a function <code>rates(K,m)::Tuple{Float64,Float64}</code> that takes aggregate capital and return the rental rate of capital and the wage rate.</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="10" class="example" type="1">
+<li>Choose an initial level of capital <span class="math inline">\(K_0\)</span> and corresponding rates <span class="math inline">\(p_0=(r_0,w_0)\)</span> so that <span class="math inline">\(\beta &lt; \beta r_0 &lt; 1\)</span>. Define the corresponding varaibles <code>K_0</code> and <code>p_0</code>.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The second part of this inequality ensures that wealth distribution is well defined – agents don’t want to accumulate assets until they have unbounded wealth.</p>
+</div>
+</div>
+</section>
+<section id="consumption-savings-problem" class="level3">
+<h3 class="anchored" data-anchor-id="consumption-savings-problem">Consumption-Savings Problem</h3>
+<p>We now solve the individual problem given the vector of rates <code>p</code>. This can be done using any solution method (any version of time-iteration for instance). Here we choose to use the classic value-function iteration instead.</p>
+<p>Given the formulation of the household problem, we can look for a decision rule for consumption <span class="math inline">\(c(a)\)</span> with <span class="math inline">\(c(a)\in]0,a]\)</span>. To implement value function iteration, we will also define <span class="math inline">\(V(a)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since all agents are identical ex ante, we need to solve only one optimization problem. Hence we drop the <span class="math inline">\(i\)</span> subscripts.</p>
+</div>
+</div>
+<p>In theory, the state-space is <span class="math inline">\(]0,\infty]\)</span> but in practice we approximate the system on <span class="math inline">\(]0,\overline{A}]\)</span> and adjust <span class="math inline">\(\overline{A}\)</span> until the solution is well defined.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(\color{green}e^i_t\)</span> has a compact support, theoretical considerations show that one can choose such an <span class="math inline">\(\overline{A}\)</span>.</p>
+</div>
+</div>
+<ol start="11" class="example" type="1">
+<li>Write the Bellman equation</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>your text there</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="approximate-space" class="level4">
+<h4 class="anchored" data-anchor-id="approximate-space">Approximate space</h4>
+<p>To represent functions (<span class="math inline">\(c()\)</span> and <span class="math inline">\(V()\)</span>) using a finite number of parameters, we discretize the state-space into a finite grid <code>g</code>, made of <span class="math inline">\(N\)</span> linearly spaced points between <span class="math inline">\(\epsilon&gt;0\)</span> and <span class="math inline">\(\overline{A}\)</span> (the role of <span class="math inline">\(\epsilon&gt;0\)</span> is to avoid undefined behaviour for <span class="math inline">\(c=0\)</span>).</p>
+<p>We use gauss-hermite nodes and weights weights to approximate the shock <span class="math inline">\(\epsilon\)</span>.</p>
+<ol start="12" class="example" type="1">
+<li>Create a namedtuple <code>dis</code> to represent the discretized model (i.e.&nbsp;the grid and the quadrature).</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="value-function-iteration" class="level4">
+<h4 class="anchored" data-anchor-id="value-function-iteration">Value Function Iteration</h4>
+<ol start="13" class="example" type="1">
+<li>Take an initial guess <code>vvec</code> (preferably concave) for the values on the grid and define the function <code>value_update(a, c, vvec, m, p, dis)::Float64</code> which compute the expression inside the <code>max</code> in the Bellman equation for any state <code>a</code>, any acceptable consumption level <code>c</code> and a continuation value, obtained by interpolating the values <code>vvec</code> at any point outside the grid.</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="14" class="example" type="1">
+<li>Use your preferred method for constrained optimization to compute the value <span class="math inline">\(c\in]0,a]\)</span> which maximizes the function <code>value_update</code> for a given <code>a</code> of your choice.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the crucial step. You can test whether it works for different values of <code>a</code> and debug what’s going by making a plot.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="15" class="example" type="1">
+<li>Write a function <code>bellman_step(vvec, m, p, dis)::Tuple{Vector, Vector}</code> which takes in a vector representing the value function tomorrow and returns a new value vector and policy vector resulting from the maximization.</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="16" class="example" type="1">
+<li>Write a <code>vfi(m, p, dis)</code> function, which solves the consumption savings problem by value function iteration. It should return the vector of values and the consumption vector.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="17" class="example" type="1">
+<li>Check that the solution makes sense: plot the solution, the boundaries, check the extrapolation behaviour…</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="policy-function-iteration" class="level4">
+<h4 class="anchored" data-anchor-id="policy-function-iteration">Policy Function Iteration</h4>
+<ol start="18" class="example" type="1">
+<li>Solve the consumption savings problem using policy function iteration (i.e.&nbsp;using howard improvement steps). Compare execution time with value function iteration.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You might need to define some intermediary functions, like <code>value_step</code> which updates the value at all grid points, for a given vector of policy choices and <code>policy_eval</code> which returns the value vector obtained by iterating <code>value_step</code> many times.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="computing-the-stable-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="computing-the-stable-distribution">Computing the Stable Distribution</h3>
+<p>Now that we have a consumption rule represented by a vector of consumption values <code>cvec</code>, we would like to compute the corresponding ergodic distribution in order to approximate capital supply <span class="math inline">\(\int_i a_i\)</span></p>
+<section id="with-monte-carlo" class="level4">
+<h4 class="anchored" data-anchor-id="with-monte-carlo">With Monte Carlo</h4>
+<ol start="19" class="example" type="1">
+<li>Write a function <code>transition(a, cvec, m, p)</code> which returns a new random asset level, from an initial <code>a</code>. The consumption choices are defined using <code>cvec</code> and can be interpolated as before.</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="20" class="example" type="1">
+<li>Propose a way to draw <span class="math inline">\(L=1000\)</span> random points from the ergodic distribution. Plot the result.</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="21" class="example" type="1">
+<li>Compute the average of these values. It corresponds to the capital supply. What is the standard deviation of this method? (you can evaluate the standard deviation by performing the procedure again)</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="with-a-markov-chain" class="level4">
+<h4 class="anchored" data-anchor-id="with-a-markov-chain">With a Markov Chain</h4>
+<ol start="22" class="example" type="1">
+<li>Write a function <code>transition(a, c, m, p, dis)::Vector{Tuple{Float64, Float64}}</code> which returns a vector of asset levels with matching probabilities, obtained from initial level <code>a</code>, with consumption choice <code>c</code> for the various realizations of the discretized shocks (obtained from the quadrature).</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="23" class="example" type="1">
+<li>Use the <code>transition</code> function to define a stochastic matrix <code>P</code> of size <span class="math inline">\(N\times N\)</span> such that <span class="math inline">\(P_{ij}\)</span> represents the probability of reaching grid point <span class="math inline">\(j\)</span> from grid point <span class="math inline">\(i\)</span>. Use the trembling hand method to deal with asset levels that are out of the approximation grid.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Tremblilng hand">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tremblilng hand
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When a given asset level <span class="math inline">\(a\)</span> reached with probability <span class="math inline">\(w\)</span> falls between two grid points <span class="math inline">\(a_j\)</span> and <span class="math inline">\(a_{j+1}\)</span>, we consider that it reaches <span class="math inline">\(a_j\)</span> with probability <span class="math inline">\(w\frac{a_{j+1}-a}{a_{j+1}-a_j}\)</span> and <span class="math inline">\(a_{j+1}\)</span> with probability <span class="math inline">\(w\frac{a_{a-a_j}{a_{j+1}-a_j}\)</span>. This trick ensures that the stochastic matrix depends smoothly on the decision rule.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="24" class="example" type="1">
+<li>Compute the stable distribution <span class="math inline">\(\mu\)</span> of <span class="math inline">\(P\)</span>. Compute the capital demand.</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="solve-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="solve-the-model">Solve the Model</h3>
+<ol start="25" class="example" type="1">
+<li>Using everything you have done so far write a function <code>capital_supply(K, m, p, dis)</code> which computes the rates corresponding to <code>K</code>, solves the consumption problem, computes the ergodic distribution and the corresponding capital supply.</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="26" class="example" type="1">
+<li>Plot capital supply and capital demand (line <span class="math inline">\(K=K\)</span>) for different levels of capital. Find the level of capital such that market for capital clears.</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

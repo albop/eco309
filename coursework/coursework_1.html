@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Convergence: Solow Model – Introduction to Computational Economics</title>
+<title>Coursework 2025 - Deep Learning – Introduction to Computational Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,7 +131,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -109,9 +143,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Introduction to Computational Economics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../coursework/coursework_1.html">Coursework</a></li><li class="breadcrumb-item"><a href="../coursework/coursework_1.html">Coursework 2025 - Deep Learning</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -126,7 +158,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Introduction to Computational Economics</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,31 +179,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence of Sequences</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perturbation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -188,25 +220,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -223,13 +255,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization Pushups</span></a>
   </div>
 </li>
@@ -246,13 +278,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Coursework 2025 - Deep Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursework 2025 - Cake Eating Problem</span></a>
   </div>
 </li>
@@ -268,16 +300,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link active" data-scroll-target="#solow-model">Solow Model</a></li>
+  <li><a href="#learning-the-consumption-rule" id="toc-learning-the-consumption-rule" class="nav-link active" data-scroll-target="#learning-the-consumption-rule">Learning the Consumption Rule</a>
+  <ul class="collapse">
+  <li><a href="#lifetime-reward" id="toc-lifetime-reward" class="nav-link" data-scroll-target="#lifetime-reward">Lifetime reward</a></li>
+  <li><a href="#learning-to-save" id="toc-learning-to-save" class="nav-link" data-scroll-target="#learning-to-save">Learning to save</a></li>
+  </ul></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">(Bonus)</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="coursework_1.ipynb" download="coursework_1.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../coursework/coursework_1.html">Coursework</a></li><li class="breadcrumb-item"><a href="../coursework/coursework_1.html">Coursework 2025 - Deep Learning</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Convergence: Solow Model</h1>
+<h1 class="title">Coursework 2025 - Deep Learning</h1>
 </div>
 
 
@@ -294,26 +331,61 @@ window.Quarto = {
 </header>
 
 
-<p>Pablo Winant</p>
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
-<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
-<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
-<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
-<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
-<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
-<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
-<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
-<p>The goal of the representative agent is to maximize:</p>
-<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
-<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
-<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
-<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
-<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
-<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
-<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
-<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
+<section id="learning-the-consumption-rule" class="level2">
+<h2 class="anchored" data-anchor-id="learning-the-consumption-rule">Learning the Consumption Rule</h2>
+<p>This exercise is inspired from <em>Individual learning about consumption</em> by Todd Allen and Chris Carroll <a href="https://www.econstor.eu/bitstream/10419/72016/1/328292125.pdf">link</a> and from <em>Deep Learning for Solving Economic models</em> by Maliar, Maliar and Winant <a href="https://web.stanford.edu/~maliars/Files/JME2021.pdf">link</a></p>
+<p>We consider the following consumption saving problem. An agent receives random income <span class="math inline">\(y_t = \exp(\epsilon_t)\)</span> where <span class="math inline">\(\epsilon_t\sim \mathcal{N}(\sigma)\)</span> (<span class="math inline">\(\sigma\)</span> is the standard deviation.)</p>
+<p>Consumer starts the period with available income <span class="math inline">\(w_t\)</span>. The law of motion for available income is:</p>
+<p><span class="math display">\[w_t = \exp(\epsilon_t) + (w_{t-1}-c_{t-1}) r\]</span></p>
+<p>where consumption <span class="math inline">\(c_t \in ]0,w_t]\)</span> is chosen in each period in order to maximize:</p>
+<p><span class="math display">\[E_t \sum_{t=0}^T \beta^t U(c_t)\]</span></p>
+<p>given initial available income <span class="math inline">\(w_0\)</span>.</p>
+<p>In the questions below, we will use the following calibration:</p>
+<ul>
+<li><span class="math inline">\(\beta = 0.9\)</span></li>
+<li><span class="math inline">\(\sigma = 0.1\)</span></li>
+<li><span class="math inline">\(T=100\)</span></li>
+<li><span class="math inline">\(U(x) = \frac{x^{1-\gamma}}{1-\gamma}\)</span> with <span class="math inline">\(\gamma=2\)</span></li>
+<li><span class="math inline">\(w_0 = 1.1\)</span> (alternatively, consider values 0.5 and 1)</li>
+</ul>
+<p>The theoretical solution to this problem is a concave function <span class="math inline">\(\varphi\)</span> such that <span class="math inline">\(\varphi(x)\in ]0,x]\)</span> and <span class="math inline">\(\forall t,  c_t=\varphi(w_t)\)</span>. Qualitatively, agents accumulate savings, up to a certain point (a buffer stock), beyond which wealth is not increasing any more (in expectation).</p>
+<p>Carroll and Allen have noticed that the true solution can be approximated very well by a simple rule:</p>
+<p><span class="math inline">\(\psi(x) = \min(x, \theta_0 + \theta_1 (x - \theta_0) )\)</span></p>
+<p>The main question they ask in the aforementioned paper is whether it is realistic that agents would learn good values of <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span> by observing past experiences.</p>
+<p>We would like to examine this result by checking convergence of speed of stochastic gradient algorithm.</p>
+<section id="lifetime-reward" class="level3">
+<h3 class="anchored" data-anchor-id="lifetime-reward">Lifetime reward</h3>
+<p><strong>Define a NamedTuple to hold the parameter values</strong></p>
+<p><strong>Define simple rule fonction <code>consumption(w::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which compute consumption using a simple rule. What is the meaning of <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>? Make a plot in the space <span class="math inline">\(w,c\)</span>, including consumption rule and the line where <span class="math inline">\(w_{t+1} = w_t\)</span>.</strong></p>
+<p>(remark for later: <code>Number</code> type is compatible with ForwardDiff.jl 😉)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Write a function <code>lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number, p::NamedTuple)</code> which computes one realization of <span class="math inline">\(\sum \beta^t U(c_t)\)</span> for initial wealth <code>w_0</code> and simple rule <code>θ_0</code>, <code>θ_1</code>. Mathematically, we denote it by <span class="math inline">\(\xi(\omega; \theta_0, \theta_1)\)</span>, where <span class="math inline">\(\omega\)</span> represents the succession of random income draws.</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Write a function <code>expected_lifetime_reward(w_0::Number, θ_0::Number, θ_1::Number,  p::NamedTuple; N=1000)</code> which computes expected lifetime reward using <code>N</code> Monte-Carlo draws. Mathematically, we write it <span class="math inline">\(\Xi^{N}(\theta_0, \theta_1) =\frac{1}{N} \sum_1^N {\xi(\omega_N; \theta_0, \theta_1)}\)</span>. Check empirically that standard deviation of these draws decrease proportionally to <span class="math inline">\(\frac{1}{\sqrt{N}}\)</span> .</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>__Using a high enough number for <code>N</code>, compute optimal values for <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span>. What is the matching value for the objective function converted into an equivalent stream of deterministic consumption ? That is if <code>V</code> is the approximated value computed above, what is <span class="math inline">\(\bar{c}\in \R\)</span> such that $ V= _{t=0}^T ^t U({c})$ ?__</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Using a high enough number for <code>N</code>, make contour plots of lifetime rewards as a function of <code>θ_0</code> and <code>θ_1</code>. Ideally, represent lines with <span class="math inline">\(1\%\)</span> consumption loss, <span class="math inline">\(5\%\)</span> and <span class="math inline">\(10\%\)</span> deterministic consumption loss w.r.t. to maximum.</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="learning-to-save" class="level3">
+<h3 class="anchored" data-anchor-id="learning-to-save">Learning to save</h3>
+<p>We now focus on the number of steps it takes to optimize <span class="math inline">\(\theta_0\)</span>, <span class="math inline">\(\theta_1\)</span>.</p>
+<p><strong>Implement a function <code>∇(θ::Vector; N=1000)::Vector</code> which computes the gradient of the objective w.r.t. <code>θ==[θ_0,θ_1]</code>. (You need to use automatic differentiation, otherwise you might get incorrect results).</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Implement a gradient descent algorithm to maximize <span class="math inline">\(\Xi^N(\theta_0, \theta_1)\)</span> using learning rate <span class="math inline">\(\lambda \in ]0,1]\)</span>. Stop after a predefined number of iterations. Compare convergence speed for different values of <span class="math inline">\(\lambda\)</span> and plot them on the <span class="math inline">\(\theta_0, \theta_1\)</span> plan. How many steps does it take to enter the <code>1%</code> error zone? The <code>5%</code> and the <code>10%</code> error zone?</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Even for big N, the evaluated value of ∇ are stochastic, and always slightly inaccurate. In average, they are non-biased and the algorithm converges in expectation (it fluctuates around the maximum). This is called the stochastic gradient method.</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What are the values of <span class="math inline">\(N\)</span> and <span class="math inline">\(\lambda\)</span> which minimize the number of iterations before reaching the target zones (at 1%, 2%, etc…)? How many simulations periods does it correspond to? Would you say it is realistic that consumers learn from their own experience?</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">(Bonus)</h2>
+<p>If you want to go further, you can try to answer one of the following two questions.</p>
+<p><strong>Use a deeplearning library (for instance Lux.jl) to find the optimal simple rule</strong></p>
+<p><strong>Implement that All-in-one expectation operator to learn the optimal rule (check <a href="https://github.com/QuantEcon/notebook-gallery/blob/main/ipynb/pablo_winant-dl_notebook.ipynb">the notebook on quantecon</a>)</strong></p>
 
 
 </section>

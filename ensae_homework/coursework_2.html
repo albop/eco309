@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Convergence: Solow Model – Introduction to Computational Economics</title>
+<title>Coursework 2025 - Consumption Saving – Introduction to Computational Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,7 +131,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -126,7 +160,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Introduction to Computational Economics</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,31 +181,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence of Sequences</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perturbation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -188,25 +222,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -223,13 +257,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization Pushups</span></a>
   </div>
 </li>
@@ -246,13 +280,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursework 2025 - Deep Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursework 2025 - Cake Eating Problem</span></a>
   </div>
 </li>
@@ -268,16 +302,22 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link active" data-scroll-target="#solow-model">Solow Model</a></li>
+  <li><a href="#general-problem" id="toc-general-problem" class="nav-link active" data-scroll-target="#general-problem">General Problem</a></li>
+  <li><a href="#calibration" id="toc-calibration" class="nav-link" data-scroll-target="#calibration">Calibration</a></li>
+  <li><a href="#representing-the-decision-function" id="toc-representing-the-decision-function" class="nav-link" data-scroll-target="#representing-the-decision-function">Representing the decision function</a></li>
+  <li><a href="#discretizing-epsilon_t1" id="toc-discretizing-epsilon_t1" class="nav-link" data-scroll-target="#discretizing-epsilon_t1">Discretizing <span class="math inline">\(\epsilon_{t+1}\)</span></a></li>
+  <li><a href="#euler-equation" id="toc-euler-equation" class="nav-link" data-scroll-target="#euler-equation">Euler equation</a></li>
+  <li><a href="#time-iteration" id="toc-time-iteration" class="nav-link" data-scroll-target="#time-iteration">Time Iteration</a></li>
+  <li><a href="#bonuses" id="toc-bonuses" class="nav-link" data-scroll-target="#bonuses">Bonuses</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="coursework_2.out.ipynb" download="coursework_2.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Convergence: Solow Model</h1>
+<h1 class="title">Coursework 2025 - Consumption Saving</h1>
 </div>
 
 
@@ -294,26 +334,139 @@ window.Quarto = {
 </header>
 
 
-<p>Pablo Winant</p>
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
-<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
-<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
-<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
-<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
-<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
-<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
-<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
-<p>The goal of the representative agent is to maximize:</p>
-<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
-<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
-<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
-<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
-<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
-<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
-<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
-<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
+<p><strong>Name</strong>:</p>
+<p><strong>Surname</strong>:</p>
+<p>After completing the following questions, send the edited notebook to <code>pablo.winant@ensae.fr</code>. You can work in (small) teams but are not allowed to copy/paste any code. Don’t forget to comment your code and take any initiative you find relevant.</p>
+<section id="general-problem" class="level2">
+<h2 class="anchored" data-anchor-id="general-problem">General Problem</h2>
+<p>We seek to solve numerically the following consumption-saving problem using the time-iteration algorithm.</p>
+<p>Income is an iid normally distributed process with standard deviation <span class="math inline">\(\sigma\)</span>. Interest rate is <span class="math inline">\(r\in [1,\frac{1}{\beta}[\)</span> where <span class="math inline">\(\beta\in]0,1[\)</span> is the discount factor.</p>
+<p>Available income is <span class="math inline">\(w_t\)</span> and follows the law of motion:</p>
+<p><span class="math display">\[w_{t+1} = e^ {\epsilon_{t+1}} +  (w_{t} - c_{t}) r\]</span></p>
+<p>where <span class="math inline">\(c_t \in ]0,w_t]\)</span> is consumption chosen at date <span class="math inline">\(t\)</span> (which includes an implicit no borrowing constraint).</p>
+</section>
+<section id="calibration" class="level2">
+<h2 class="anchored" data-anchor-id="calibration">Calibration</h2>
+<p>We will use the following calibration:</p>
+<p><span class="math inline">\(\sigma = 0.01\)</span></p>
+<p><span class="math inline">\(\beta = 0.96\)</span></p>
+<p><span class="math inline">\(r = 1.03\)</span></p>
+<p><strong>Choose a structure <code>model</code> to represent the model parameters.</strong></p>
+<div id="d583ccea" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="representing-the-decision-function" class="level2">
+<h2 class="anchored" data-anchor-id="representing-the-decision-function">Representing the decision function</h2>
+<p>The solution of the model is a decision rule <span class="math inline">\(c(w)\)</span>.</p>
+<p>In what follows, we will approximate it by a function defined over <span class="math inline">\([0,w_{max}[\)</span>, pinned down by the values it takes on <span class="math inline">\(N\)</span> linearly spaced grid points.</p>
+<p>In our solutions algorithm, we will use the initial guess <span class="math inline">\(\varphi_0(w) = min(w, p_0+p_1(w-p_0))\)</span>.</p>
+<p><strong>Create a structure <code>approx</code> to represent the approximation space. This structure should contain the parameters, as well as a <code>points::Vector{Float64}</code> array coontaining the (regularly spaced) list of grid points.</strong></p>
+<p>To start with you can take <span class="math inline">\(w_{max}=5\)</span>, <span class="math inline">\(N=20\)</span>, <span class="math inline">\(p_0=0.95, p_1=0.03\)</span> but don’t hesitate to change these values later if needed.</p>
+<div id="9f968914" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># approx = ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Define a method <code>φ_0(w::Float64)::Float64</code> for the initial guess. Plot it against <span class="math inline">\(w\)</span> in the approximation space.</strong></p>
+<p><strong>Compute the values <code>c_0::{Float64}</code>of <code>φ_0()</code> on the grid <code>points</code></strong></p>
+<p><strong>Use the <code>Interpolations.jl</code> library to define a function <code>φ(w::Float64)</code> defined for any <code>w</code> using piecewise <em>linear</em> interpolation in such a way that it takes values <code>c_0</code> on the grid <code>points</code>.</strong></p>
+<p><strong>Create a single plot with</strong>:</p>
+<ul>
+<li>the function <code>φ_0()</code></li>
+<li>the interpolated function <span class="math inline">\(φ\)</span></li>
+<li>its values <code>c_0</code> on the grid points</li>
+</ul>
+<p><strong>Bonus: add to the graph the function obtained using cubic spline interpolation. What <em>could</em> be the problem?</strong></p>
+</section>
+<section id="discretizing-epsilon_t1" class="level2">
+<h2 class="anchored" data-anchor-id="discretizing-epsilon_t1">Discretizing <span class="math inline">\(\epsilon_{t+1}\)</span></h2>
+<p><strong>Represent the shock <span class="math inline">\(\epsilon\)</span> by two vectors <span class="math inline">\((e_1, ... e_q)\)</span> and <span class="math inline">\((l_1, ..., l_q)\)</span> with <span class="math inline">\(q=10\)</span> such that for a suitable function <span class="math inline">\(g\)</span> we can approximate <span class="math inline">\(E_{\epsilon} (g(\epsilon))\)</span> by <span class="math inline">\(\sum_{i=1}^q l_i e_i\)</span> .</strong></p>
+<p>(choose the method you want)</p>
+<div id="9e5cbd11" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e = ...</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># w = ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Test that it works by computing <span class="math inline">\(E_{\epsilon} \left[ \epsilon^2 \right]\)</span>.</strong></p>
+<p><strong>Redefine <code>approx</code> so as to include the discretized shock</strong></p>
+</section>
+<section id="euler-equation" class="level2">
+<h2 class="anchored" data-anchor-id="euler-equation">Euler equation</h2>
+<p><strong>Write down the Euler equation, paying attention to the slackness condition.</strong></p>
+<p>It should be of the form <span class="math display">\[0 \leq \underbrace{E_t \left[ f(w_t, c_t, w_{t+1}, c_{t+1}, \epsilon_{t+1}) \right]}_{\Phi_t} \perp c_t \leq w_t\]</span></p>
+<p>where <span class="math inline">\(f\)</span> is a function to be explicited.</p>
+<p><strong>Define the function <code>Phi(w::Float64,c::Float64,φ::Fun, model, approx)</code> which approximates the residuals of the euler equation given the available income today, the consumption choice today, the consumption <em>function</em> tomorrow and the model/approx structures.</strong></p>
+<p><strong>Overload <code>Phi</code> function with another method <code>Phi(w::Float64,c::Float64,φ::Fun, model, approx, slackness=true)</code> which uses the Fisher-Burmeister transform to incorporate the credit constraint.</strong></p>
+<p><strong>Plot the optization residuals (i.e.&nbsp;values of <span class="math inline">\(\Phi_t\)</span>) corresponding to the initial guess function with and without the complementarity constraints.</strong></p>
+</section>
+<section id="time-iteration" class="level2">
+<h2 class="anchored" data-anchor-id="time-iteration">Time Iteration</h2>
+<p><strong>(prep): Assuming the initial guess <span class="math inline">\(φ_0()\)</span> is the decision rule followed tomorrow, determine, for a given value <code>w</code> in the state-space, the optimal consumption choice made today. This can be achieved by feeding the appropriate function into the right nonlinear root-finder.</strong></p>
+<p><strong>(prep): Find the vector of all the optimal consumption choices on the grid today, given the decision rule tomorrow.</strong></p>
+<p><strong>Plot the optimization residuals (i.e.&nbsp;values of <span class="math inline">\(\Phi_t\)</span>) for the initial guess function</strong></p>
+<p><strong>Write down the time-iteration algorithm.</strong></p>
+<p>You can use the course as reference and/or repeat the recurrence steps below:</p>
+<ul>
+<li>given an initial guess for the consumption vector <code>c0</code></li>
+<li>create a function defined <code>φ</code> on <code>[0,wmax]</code> which interpolates <code>c0</code> on the grid</li>
+<li>for each grid point <code>w</code> in the grid, solve the system <code>u-&gt;Phi(w,u,φ, model, approx, slackness=true)</code>
+<ul>
+<li>store the result as a vector <code>c1</code></li>
+</ul></li>
+<li>check whether <code>c1</code> is close to <code>c0</code>
+<ul>
+<li>yes: check the system is indeed solved and return</li>
+<li>no: start again with <code>c1</code> as <code>c0</code></li>
+</ul></li>
+</ul>
+<div id="86dbbbeb" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here is a placeholder implementation to help you structure your program.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  feel free to modify or discard</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">φ: Float64-&gt;Float64 Initial guess for the consumption function</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">model: parameters representing the model</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">approx: parameters defining the approximation and solution method</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">K: max number of iterations</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">... other parameters for you to choose</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">time_iteration</span>(φ<span class="fl">0</span>, model, approx; K<span class="op">=</span><span class="fl">200</span>, <span class="op">...</span> )</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convert initial function φ0 into a consumption vector by evaluating φ on the grid</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># c0 = ... :: Vector{Float64}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k<span class="op">=</span><span class="fl">1</span><span class="op">:</span>K</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># convert consumption vector c0 into a function φ</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># φ = ...</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># solve for the optimal consumption for all grid points</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ...</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># c1  :: Vector{Float64}</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check distance between c0 and c1</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># η = ...</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if distance is small return function `varphi`</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Check that the value returned by <code>time_iteration</code> is actually a solution to the system. How fast is the convergence? Graphical representation.</strong></p>
+</section>
+<section id="bonuses" class="level2">
+<h2 class="anchored" data-anchor-id="bonuses">Bonuses</h2>
+<p><strong>(easy): perform some sensitivity analysis on the model to explain the effect of the main parameters</strong></p>
+<p><strong>(medium): Give the solution to the above problem, simulate the law of motion for the available income. Find a way to plot the distriution of that income over a long period of time.</strong></p>
+<p><strong>(hard): Propose and implement some ideas to speed up the solution process.</strong></p>
+<p>One promising avenue consists in solving for all consumption values at all grid points as one single system of equation after recognizing that the jacobian of this particular system has a specific structure.</p>
 
 
 </section>
@@ -409,7 +562,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/albop\.github\.io\/eco309\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

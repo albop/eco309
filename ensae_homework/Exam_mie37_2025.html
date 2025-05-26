@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Convergence: Solow Model – Introduction to Computational Economics</title>
+<title>MIE 37 - Final Exam 2025 – Introduction to Computational Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-76dbf92cf274c301cfba02d819ddc96e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,7 +131,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -126,7 +160,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../">Introduction to Computational Economics</a> 
+      <a href="../">Introduction to Computational Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -147,31 +181,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_introduction/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_convergence/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence of Sequences</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_optimization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_perturbation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perturbation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/session_ddp/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -188,25 +222,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/1_1_Julia_Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/2_solow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Convergence: Solow Model</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_Optimization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/7_discrete_dynamic_programming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discrete Dynamic Programming</span></a>
   </div>
 </li>
@@ -223,13 +257,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/1_epidemiology.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Epidemiology Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
+  <a href="../pushups/2_Optimization_pushups.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization Pushups</span></a>
   </div>
 </li>
@@ -246,13 +280,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursework 2025 - Deep Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../coursework/coursework_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursework 2025 - Cake Eating Problem</span></a>
   </div>
 </li>
@@ -268,16 +302,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#solow-model" id="toc-solow-model" class="nav-link active" data-scroll-target="#solow-model">Solow Model</a></li>
+  <li><a href="#part-ι-useful-skills" id="toc-part-ι-useful-skills" class="nav-link active" data-scroll-target="#part-ι-useful-skills">Part Ι: Useful Skills</a></li>
+  <li><a href="#part-ii-cake-eating-problem-with-regeneration" id="toc-part-ii-cake-eating-problem-with-regeneration" class="nav-link" data-scroll-target="#part-ii-cake-eating-problem-with-regeneration">Part II: Cake-Eating Problem with Regeneration</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Exam_mie37_2025.ipynb" download="Exam_mie37_2025.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Convergence: Solow Model</h1>
+<h1 class="title">MIE 37 - Final Exam 2025</h1>
 </div>
 
 
@@ -294,26 +329,103 @@ window.Quarto = {
 </header>
 
 
-<p>Pablo Winant</p>
-<section id="solow-model" class="level3">
-<h3 class="anchored" data-anchor-id="solow-model">Solow Model</h3>
-<p>A representative agent uses capital <span class="math inline">\(k_t\)</span> to produce <span class="math inline">\(y_t\)</span> using the following production function:</p>
-<p><span class="math display">\[y_t = k_t^{\alpha}\]</span></p>
-<p>He chooses to consume an amount <span class="math inline">\(c_t \in ]0, y_t]\)</span> and invests what remains:</p>
-<p><span class="math display">\[i_t = y_t - c_t\]</span></p>
-<p>He accumulates capital <span class="math inline">\(k_t\)</span> according to:</p>
-<p><span class="math display">\[k_{t+1} = \left( 1-\delta \right) k_{t} + i_{t}\]</span></p>
-<p>where <span class="math inline">\(\delta\)</span> is the depreciation rate and <span class="math inline">\(i_t\)</span> is the amount invested.</p>
-<p>The goal of the representative agent is to maximize:</p>
-<p><span class="math display">\[\sum_{t\geq 0} \beta^t U(c_t)\]</span></p>
-<p>where <span class="math inline">\(U(x)=\frac{x^{1-\gamma}}{1-\gamma}\)</span> and <span class="math inline">\(\beta&lt;1\)</span> is the discount factor.</p>
-<p>For now, we ignore the objective and assume that the saving rate <span class="math inline">\(s=\frac{c_t}{y_t}\)</span> is constant over time.</p>
-<p><strong>Create a <code>NamedTuple</code> to hold parameter values <span class="math inline">\(\beta=0.96\)</span>, <span class="math inline">\(\delta=0.1\)</span>, <span class="math inline">\(\alpha=0.3\)</span>, <span class="math inline">\(\gamma=4\)</span>.</strong></p>
-<p><strong>Write down the formula of function <span class="math inline">\(f\)</span> such that <span class="math inline">\(k_{t+1}\)</span>: <span class="math inline">\(k_{t+1} = f(k_t)\)</span>.</strong></p>
-<p><strong>Define a function <code>f(k::Float64, p::NamedTuple)::Float64</code> to represent <span class="math inline">\(f\)</span> for a given calibration</strong></p>
-<p><strong>Write a function <code>simulate(k0::Float64, T::Int, p::NamedTuple)::Vector{Float64}</code> to compute the simulation over <code>T</code> periods starting from initial capital level <code>k0</code>.</strong></p>
-<p><strong>Make a nice plot to illustrate the convergence. Do we get convergence from any initial level of capital?</strong></p>
-<p><strong>Suppose you were interested in using <code>f</code> to compute the steady-state. What would you propose to measure convergence speed? To speed-up convergence? Implement these ideas.</strong></p>
+<p><strong>Name</strong>:</p>
+<p><strong>Surname</strong>:</p>
+<p>After completing the following questions, send the edited notebook, to <code>pablo.winant@ensae.fr</code></p>
+<p>You are allowed to use any online available resource, even to install Julia packages, but not to copy/paste any code.</p>
+<p>Also, don’t forget to comment your code and take any initiative you find relevant.</p>
+<hr>
+<section id="part-ι-useful-skills" class="level2">
+<h2 class="anchored" data-anchor-id="part-ι-useful-skills">Part Ι: Useful Skills</h2>
+<ol class="example" type="1">
+<li>Create a random 10x10 matrix <code>R</code> using <code>rand(10,10)</code>. Normalize each row in <code>R</code>, in order to create a stochastic matrix (the sum of each row is equal to 1, and all coefficients are positive). Compute the only vector <code>v</code> with positive coefficients summing to 1, such that <code>v' R == v'</code></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># R = ...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># v = ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> <span class="fu">maximum</span>(abs, v<span class="op">'</span> R <span class="op">-</span> v<span class="op">'</span>)<span class="op">&lt;</span><span class="fl">1e-8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" class="example" type="1">
+<li>Find <span class="math inline">\(u\)</span> such that <span class="math inline">\(tanh(u)=0.5\)</span> by writing your own solver (no solver library but any algorithm you want).</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code...</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># u = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> <span class="fu">maximum</span>(<span class="fu">tanh</span>(u) <span class="op">-</span> <span class="fl">0.5</span>)<span class="op">&lt;</span><span class="fl">1e-8</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@assert</span> <span class="fu">maximum</span>(<span class="fu">u-tan</span>(<span class="fl">0.5</span>))<span class="op">&lt;</span><span class="fl">1e-8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="part-ii-cake-eating-problem-with-regeneration" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-cake-eating-problem-with-regeneration">Part II: Cake-Eating Problem with Regeneration</h2>
+<p><img src="cake-eating-problem.png" class="img-fluid"></p>
+<p>We consider the following variant of the cake-eating problem. It can be interpreted as a model of sustainable consumption for a renewable resource.</p>
+<p>An agent has a finite amount of cake <span class="math inline">\(k_t\)</span> and must decide in each period how much of it to consume: <span class="math inline">\(c_t\in[0,k_t]\)</span>.</p>
+<p>The part of the cake that is not consumed degenerates at rate <span class="math inline">\(\delta\)</span> but new cake is also regenerated at rate <span class="math inline">\(\rho\)</span> so that the law of motion for the cake is:</p>
+<p><span class="math display">\[k_{t+1}=\delta (k_{t}-c_{t}) + \rho\]</span></p>
+<p>with <span class="math inline">\(\delta\in]0,1]\)</span> and <span class="math inline">\(\rho&gt;0\)</span>..</p>
+<p>The goal is to maximize the present discounted value of utility over an infinite horizon:</p>
+<p><span class="math display">\[\sum_{t\geq0} \beta^t u(c_t)\]</span></p>
+<p>with <span class="math inline">\(u(x) = \frac{x^{1-\sigma}}{1-\sigma}\)</span></p>
+<p>We can use the parameters <span class="math inline">\(\beta=0.95\)</span>, <span class="math inline">\(\sigma=2\)</span>, <span class="math inline">\(\delta=0.9\)</span>.</p>
+<ol start="3" class="example" type="1">
+<li>What is the maximal value <span class="math inline">\(\overline{K}\)</span> for the cake that can be obtained using natural regeneration? Choose <span class="math inline">\(N&gt;0\)</span> and discretize the values for the cake into a vector <span class="math inline">\(K=(K_1, ... ,K_N)\)</span> of linearly spaced values.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" class="example" type="1">
+<li>Create a named tuple (or any other Julia construct) to store all parameters of the (discretized) model. In what follows, all Julia functions will take an additional parameter <code>m</code> carrying all these informations.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Since the transition for the cake is deterministic, we can identify the choice of consumption with the choice of next period cake. Here we will make the assumption that next period level must stay on the discretized grid.</p>
+<p>This yields the following, discretized, Bellman equation <span class="math display">\[V(K_i) = \max_{j \in A(i)} U(K_i,K_j) + \beta V(K_j)\]</span> where <span class="math inline">\(A(i)\)</span> is the set of all possible cake indices that can be chosen for tomorrow given today’s index and where <span class="math inline">\(U(K_i,K_j)\)</span> is utility obtained from consumption today.</p>
+<ol start="5" class="example" type="1">
+<li>What is <span class="math inline">\(U(K_i,K_j)\)</span>? Write a function <code>U(a,b,m)::Float64</code> to represent it in Julia.</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" class="example" type="1">
+<li>Write a function <code>A(i,m)::Tuple{Int, Int}</code> which maps the index <span class="math inline">\(i\)</span> of today’s cake <span class="math inline">\(K_i\)</span> with a tuple containing the lowest and highest possible indices for the cake tomorrow.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="7" class="example" type="1">
+<li>Make an initial guess <code>v0</code> for the value function represented (a vector of <code>Float64</code> of length <code>N</code>) and an admissible guess <code>x0</code> for the optimal choices (a vector of <code>Int64</code> of length <code>N</code>).</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="8" class="example" type="1">
+<li>For the initial guess, plot the values and the consumptions against the size of the cake</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" class="example" type="1">
+<li>Write a function <code>bellman_step(v::Vector{Float64}, m)::Tuple{Vector{Float64}, Vector{Int64}}</code> which associates <span class="math inline">\(\tilde{V}(K_1), ..., \tilde{V}(K_N)\)</span> to <span class="math inline">\(V(K_1), ... V(K_N)\)</span> in <span class="math display">\[V(K_i) = \max_{j \in A(i)} U(K_i,K_j) + \beta \tilde{V}(K_j)\]</span> This function returns the new value and the controls resulting from the optimization.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="10" class="example" type="1">
+<li>Implement the value function algorithm to find the optimal consumption policy by iterating on Bellman step until convergence.</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="11" class="example" type="1">
+<li>Plot the optimal consumption rule.</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="12" class="example" type="1">
+<li>Implement the policy iteration algorithm.</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The policy iteration algorithm can be obtained from the value function algorithm: after each bellman step which yields a new policy rule <span class="math inline">\(p(i)\)</span>, compute the value of this policy, i.e.&nbsp;the value <span class="math inline">\(V\)</span> such that:</p>
+<p><span class="math display">\[V(K_i) = \left. \left\{U(K_i,K_j) + \beta V(K_j)\right\} \right|_{j=p(i)}\]</span></p>
+</div>
+</div>
+<ol start="13" class="example" type="1">
+<li>Comment on the results (interpret, vary the parameters, …)</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
